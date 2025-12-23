@@ -55,7 +55,7 @@ import io.github.chenyilei2016.adv.JSON;
 /**
  * AmcAdvertiserUpdate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T17:23:39.678562+08:00[Asia/Shanghai]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-12-23T17:38:20.077894+08:00[Asia/Shanghai]", comments = "Generator version: 7.12.0")
 public class AmcAdvertiserUpdate {
   public static final String SERIALIZED_NAME_ADVERTISERS_TO_ADD = "advertisersToAdd";
   @SerializedName(SERIALIZED_NAME_ADVERTISERS_TO_ADD)
