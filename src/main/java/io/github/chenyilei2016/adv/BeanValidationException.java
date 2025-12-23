@@ -26,6 +26,7 @@ public class BeanValidationException extends ValidationException {
     Set<ConstraintViolation<Object>> violations;
 
     public BeanValidationException(Set<ConstraintViolation<Object>> violations) {
+        super(violations.toString());
         this.violations = violations;
     }
 
