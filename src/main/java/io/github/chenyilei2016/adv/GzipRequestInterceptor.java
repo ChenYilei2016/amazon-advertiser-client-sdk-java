@@ -1,6 +1,6 @@
 /*
- * AMC Administration
- * This set of APIs allow developers to manage their Amazon Marketing Cloud accounts and instances.
+ * Rule-Based Audiences
+ * Create query based audience execution metadata to activate in DSP.
  *
  * The version of the OpenAPI document: 3.0
  * 

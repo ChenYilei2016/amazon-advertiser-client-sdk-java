@@ -33,3 +33,8 @@ java -jar ./openapi-cli/openapi-generator-cli-7.12.0.jar generate \
 ## AMC 
 https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AMCAdministration_prod_3p.json
 https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Rule-BasedAudiences_prod_3p.json
+
+
+### rule based api
+https://advertising.amazon.com/API/docs/en-us/amc-rba
+* https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/Rule-BasedAudiences_prod_3p.json

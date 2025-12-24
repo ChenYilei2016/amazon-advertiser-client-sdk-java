@@ -1,6 +1,6 @@
 /*
- * AMC Administration
- * This set of APIs allow developers to manage their Amazon Marketing Cloud accounts and instances.
+ * Rule-Based Audiences
+ * Create query based audience execution metadata to activate in DSP.
  *
  * The version of the OpenAPI document: 3.0
  * 
@@ -93,60 +93,31 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AcrCustomerPartner.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AddCollaborationCustomerPartnersPayload.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AddCollaborationCustomerPartnersResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.Advertiser.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcAdvertiserIdentifier.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcAdvertiserUpdate.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcAdvertiserUpdateLite.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateAdvertiserUpdateRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateAdvertiserUpdateResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateInstanceRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateInstanceResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcGetAdvertiserUpdateResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcListAdvertiserUpdatesResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcUpdateInstanceRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcUpdateInstanceResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkAmcAccount.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkBadRequestExceptionResponseContent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkForbiddenRequestExceptionResponseContent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkListAmcAccountsResponseContent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkServerExceptionResponseContent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkTooManyRequestsExceptionResponseContent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkUnauthorizedRequestExceptionResponseContent.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CollaborationIdMappingJob.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CollaborationIdMappingJobMetrics.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CollaborationIdMappingJobSummary.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CollaborationIdMappingTable.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CollaborationIdNamespaceAssociation.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CollaborationMember.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CollaborationSummary.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationIdMappingTablePayload.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationIdMappingTableResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.Error.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.GetCollaborationIdMappingJobForTrackingIdResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.GetCollaborationIdMappingJobResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.GetInstanceAdvertisersResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.GetInstanceCollaborationResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.GetInstanceResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.Instance.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.InstanceCustomerAwsAccountMetadataPayload.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingJobsPayload.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingJobsResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingTablesPayload.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingTablesResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdNamespacesPayload.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdNamespacesResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.ListInstancesResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.RefreshCollaborationIdMappingTableResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerPartnersPayload.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerPartnersResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcAdmin.UpdateInstanceCustomerAwsAccountMetadataResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCLookalikeAudiencesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCLookalikeAudiencesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesExecutionMetadata.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesExecutionMetadataList.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesExecutionMetadataListV11.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesExecutionMetadataListV12.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesExecutionMetadataV11.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesExecutionMetadataV12.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesUpdateRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AMCQueryBasedAudiencesUpdateResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.AudienceError.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.ComplexDataType.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.ComplexDataTypeOneOf.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.ComplexDataTypeOneOf1.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.ComplexDataTypeOneOf2.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.ComplexDataTypeOneOf3.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.ComplexDataTypeOneOf3FieldsInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.DataTypes.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.LookalikeAudienceErrorResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.QueryBasedAudienceErrorResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.QueryBasedAudienceExecutionState.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.QueryBasedAudienceInputParamInner.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.github.chenyilei2016.adv.model.amcRuleBased.QueryBasedAudienceInputParamInnerDataType.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }
 
