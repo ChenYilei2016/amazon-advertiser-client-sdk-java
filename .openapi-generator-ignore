@@ -34,6 +34,8 @@ gradlew.bat
 settings.gradle
 .travis.yml
 
+src/test/java/io/github/chenyilei2016/adv/model/**
+
 src/main/java/io/github/chenyilei2016/adv/auth/ApiKeyAuth.java
 src/main/java/io/github/chenyilei2016/adv/auth/HttpBearerAuth.java
 
