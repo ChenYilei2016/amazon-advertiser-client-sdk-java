@@ -3,6 +3,7 @@
 
 # api based
 generate jdk 17+ 
+api 使用jdk 8+
 生成by  openapi-generator-cli-7.12.0.jar
 
 
