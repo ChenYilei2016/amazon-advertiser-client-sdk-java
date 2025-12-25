@@ -1,6 +1,6 @@
 /*
- * Sponsored Products
- *  
+ * AMC Administration
+ * This set of APIs allow developers to manage their Amazon Marketing Cloud accounts and instances.
  *
  * The version of the OpenAPI document: 3.0
  * 

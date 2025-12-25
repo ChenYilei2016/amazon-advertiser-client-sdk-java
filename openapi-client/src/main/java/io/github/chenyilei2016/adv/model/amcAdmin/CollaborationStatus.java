@@ -13,13 +13,18 @@
 
 package io.github.chenyilei2016.adv.model.amcAdmin;
 
-import com.google.gson.JsonElement;
+import java.util.Objects;
+import com.google.gson.annotations.SerializedName;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+import org.hibernate.validator.constraints.*;
+
+import java.io.IOException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-
-import java.io.IOException;
 
 /**
  * The valid statuses of an AWS Clean Rooms collaboration in an AMC instance. |Status|Description| |-----------|-----------| |NOT_STARTED|Collaboration creation has not started yet.| |IN_PROGRESS|Collaboration creation is in progress.| |PENDING_ACCEPTANCE|The collaboration is waiting for the instance owner to join to become active.| |ACTIVE|The collaboration is active and ready for use.| |REJECTED|The owner of the instance left the collaboration.| |DELETED|The collaboration was deleted by the creator.\&quot;,

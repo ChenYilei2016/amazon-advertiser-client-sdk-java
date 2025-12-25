@@ -13,13 +13,18 @@
 
 package io.github.chenyilei2016.adv.model.amcAdmin;
 
-import com.google.gson.JsonElement;
+import java.util.Objects;
+import com.google.gson.annotations.SerializedName;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+import org.hibernate.validator.constraints.*;
+
+import java.io.IOException;
 import com.google.gson.TypeAdapter;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-
-import java.io.IOException;
 
 /**
  * The status a job can be in.

@@ -1,6 +1,6 @@
 /*
- * Sponsored Products
- *  
+ * AMC Administration
+ * This set of APIs allow developers to manage their Amazon Marketing Cloud accounts and instances.
  *
  * The version of the OpenAPI document: 3.0
  * 
@@ -15,9 +15,14 @@ package io.github.chenyilei2016.adv;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import okio.*;
 
 import java.io.IOException;
+
+import okio.Buffer;
+import okio.BufferedSink;
+import okio.ForwardingSink;
+import okio.Okio;
+import okio.Sink;
 
 public class ProgressRequestBody extends RequestBody {
 

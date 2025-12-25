@@ -33,7 +33,11 @@ gradlew
 gradlew.bat
 settings.gradle
 .travis.yml
+build.sbt
 git_push.sh
+.github
+.openapi-generator
+.gitignore
 
 
 src/test/java/io/github/chenyilei2016/adv/model/**

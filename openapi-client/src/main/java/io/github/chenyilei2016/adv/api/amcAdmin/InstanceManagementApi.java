@@ -13,18 +13,50 @@
 
 package io.github.chenyilei2016.adv.api.amcAdmin;
 
-import com.google.gson.reflect.TypeToken;
-import io.github.chenyilei2016.adv.*;
-import io.github.chenyilei2016.adv.model.amcAdmin.*;
+import io.github.chenyilei2016.adv.ApiCallback;
+import io.github.chenyilei2016.adv.ApiClient;
+import io.github.chenyilei2016.adv.ApiException;
+import io.github.chenyilei2016.adv.ApiResponse;
+import io.github.chenyilei2016.adv.Configuration;
+import io.github.chenyilei2016.adv.Pair;
+import io.github.chenyilei2016.adv.ProgressRequestBody;
+import io.github.chenyilei2016.adv.ProgressResponseBody;
+import io.github.chenyilei2016.adv.BeanValidationException;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
-import javax.validation.constraints.NotNull;
 import javax.validation.executable.ExecutableValidator;
+import java.util.Set;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.util.*;
+
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateAdvertiserUpdateRequest;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateAdvertiserUpdateResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateInstanceRequest;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcCreateInstanceResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcGetAdvertiserUpdateResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcListAdvertiserUpdatesResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcUpdateInstanceRequest;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcUpdateInstanceResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.Error;
+import io.github.chenyilei2016.adv.model.amcAdmin.GetInstanceAdvertisersResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.GetInstanceResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.InstanceCustomerAwsAccountMetadataPayload;
+import io.github.chenyilei2016.adv.model.amcAdmin.ListInstancesResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.UpdateInstanceCustomerAwsAccountMetadataResponse;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class InstanceManagementApi {
     private ApiClient localVarApiClient;

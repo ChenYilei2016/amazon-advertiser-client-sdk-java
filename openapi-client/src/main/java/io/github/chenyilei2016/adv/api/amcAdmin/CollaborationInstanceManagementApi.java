@@ -13,18 +13,57 @@
 
 package io.github.chenyilei2016.adv.api.amcAdmin;
 
-import com.google.gson.reflect.TypeToken;
-import io.github.chenyilei2016.adv.*;
-import io.github.chenyilei2016.adv.model.amcAdmin.*;
+import io.github.chenyilei2016.adv.ApiCallback;
+import io.github.chenyilei2016.adv.ApiClient;
+import io.github.chenyilei2016.adv.ApiException;
+import io.github.chenyilei2016.adv.ApiResponse;
+import io.github.chenyilei2016.adv.Configuration;
+import io.github.chenyilei2016.adv.Pair;
+import io.github.chenyilei2016.adv.ProgressRequestBody;
+import io.github.chenyilei2016.adv.ProgressResponseBody;
+import io.github.chenyilei2016.adv.BeanValidationException;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
-import javax.validation.constraints.NotNull;
 import javax.validation.executable.ExecutableValidator;
+import java.util.Set;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.util.*;
+
+import io.github.chenyilei2016.adv.model.amcAdmin.AddCollaborationCustomerPartnersPayload;
+import io.github.chenyilei2016.adv.model.amcAdmin.AddCollaborationCustomerPartnersResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationIdMappingTablePayload;
+import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationIdMappingTableResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationRequest;
+import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.Error;
+import io.github.chenyilei2016.adv.model.amcAdmin.GetCollaborationIdMappingJobForTrackingIdResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.GetCollaborationIdMappingJobResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.GetInstanceCollaborationResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingJobsPayload;
+import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingJobsResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingTablesPayload;
+import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingTablesResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdNamespacesPayload;
+import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdNamespacesResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.RefreshCollaborationIdMappingTableResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerPartnersPayload;
+import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerPartnersResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerRequest;
+import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerResponse;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CollaborationInstanceManagementApi {
     private ApiClient localVarApiClient;

@@ -1,6 +1,6 @@
 /*
- * Sponsored Products
- *  
+ * AMC Administration
+ * This set of APIs allow developers to manage their Amazon Marketing Cloud accounts and instances.
  *
  * The version of the OpenAPI document: 3.0
  * 
@@ -13,13 +13,14 @@
 
 package io.github.chenyilei2016.adv.auth;
 
-import io.github.chenyilei2016.adv.ApiException;
 import io.github.chenyilei2016.adv.Pair;
+import io.github.chenyilei2016.adv.ApiException;
+
 import okhttp3.Credentials;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Map;
+import java.util.List;
 
 public class HttpBasicAuth implements Authentication {
     private String username;

@@ -13,18 +13,42 @@
 
 package io.github.chenyilei2016.adv.api.amcAdmin;
 
-import com.google.gson.reflect.TypeToken;
-import io.github.chenyilei2016.adv.*;
-import io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkListAmcAccountsResponseContent;
+import io.github.chenyilei2016.adv.ApiCallback;
+import io.github.chenyilei2016.adv.ApiClient;
+import io.github.chenyilei2016.adv.ApiException;
+import io.github.chenyilei2016.adv.ApiResponse;
+import io.github.chenyilei2016.adv.Configuration;
+import io.github.chenyilei2016.adv.Pair;
+import io.github.chenyilei2016.adv.ProgressRequestBody;
+import io.github.chenyilei2016.adv.ProgressResponseBody;
+import io.github.chenyilei2016.adv.BeanValidationException;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
-import javax.validation.constraints.NotNull;
 import javax.validation.executable.ExecutableValidator;
+import java.util.Set;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.util.*;
+
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkBadRequestExceptionResponseContent;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkForbiddenRequestExceptionResponseContent;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkListAmcAccountsResponseContent;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkServerExceptionResponseContent;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkTooManyRequestsExceptionResponseContent;
+import io.github.chenyilei2016.adv.model.amcAdmin.AmcpLinkUnauthorizedRequestExceptionResponseContent;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AmcAccountsApi {
     private ApiClient localVarApiClient;
