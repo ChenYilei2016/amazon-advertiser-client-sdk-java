@@ -6,25 +6,20 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.advice.AmznClientCrudTypeEnum;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.advice.AmznClientRequestBeforeInvoke;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.advice.AmznClientResponseBeforeReturn;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.cache.AmznAdvConfigManager;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.context.AmznAdClientHelper;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.gson.GsonFromStringDeserializer;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.support.MediaTypePair;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.support.SpecialClientDetail;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.wrapper.Amzn401UnauthorizedRetryWrapper;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.wrapper.AmznIOTimeOutRetryWrapper;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.wrapper.AmznRateLimitRetryWrapper;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.constants.AmznConstants;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.dto.AccessTokenRequestMeta;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.dto.AmznTokenResponse;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.dto.ProfileDetailMeta;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.exceptions.AmznApiResponseException;
-import com.zbycorp.fenghuo.domain.common.exceptions.AmznRequestException;
-import com.zbycorp.fenghuo.domain.common.exceptions.CommonException;
-import com.zbycorp.fenghuo.domain.common.rpc.nacos.bo.AmazonAccountConfigBO;
+import io.github.chenyilei2016.myclient.kernel.advice.AmznClientCrudTypeEnum;
+import io.github.chenyilei2016.myclient.kernel.advice.AmznClientRequestBeforeInvoke;
+import io.github.chenyilei2016.myclient.kernel.advice.AmznClientResponseBeforeReturn;
+import io.github.chenyilei2016.myclient.kernel.cache.AmznAdvConfigManager;
+import io.github.chenyilei2016.myclient.kernel.context.AmznAdClientHelper;
+import io.github.chenyilei2016.myclient.kernel.core.AccessTokenRequestMeta;
+import io.github.chenyilei2016.myclient.kernel.core.AmznTokenResponse;
+import io.github.chenyilei2016.myclient.kernel.core.ProfileDetailMeta;
+import io.github.chenyilei2016.myclient.kernel.gson.GsonFromStringDeserializer;
+import io.github.chenyilei2016.myclient.kernel.support.MediaTypePair;
+import io.github.chenyilei2016.myclient.kernel.support.SpecialClientDetail;
+import io.github.chenyilei2016.myclient.kernel.wrapper.Amzn401UnauthorizedRetryWrapper;
+import io.github.chenyilei2016.myclient.kernel.wrapper.AmznIOTimeOutRetryWrapper;
+import io.github.chenyilei2016.myclient.kernel.wrapper.AmznRateLimitRetryWrapper;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +37,6 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 
-import static com.zbycorp.fenghuo.domain.common.amazonconnect.utils.RestTemplateUtil.getHttpHeadersDefaultApplicationJsonUtf8;
 
 /**
  * 使用gson 作为序列化和反序列化
