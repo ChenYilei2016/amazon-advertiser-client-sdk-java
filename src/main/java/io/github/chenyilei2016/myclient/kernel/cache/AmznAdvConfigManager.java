@@ -1,6 +1,7 @@
 package io.github.chenyilei2016.myclient.kernel.cache;
 
 import io.github.chenyilei2016.myclient.kernel.core.AccessTokenRequestMeta;
+import io.github.chenyilei2016.myclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.myclient.kernel.core.AmznTokenResponse;
 import io.github.chenyilei2016.myclient.kernel.core.ProfileDetailMeta;
 import io.github.chenyilei2016.myclient.kernel.utils.RestTemplateUtil;
@@ -97,7 +98,7 @@ public class AmznAdvConfigManager implements InitializingBean, DisposableBean {
     protected AmznTokenResponse doRefreshToken(RestTemplate client, AccessTokenRequestMeta accessTokenRequestMeta) {
         return AmznIOTimeOutRetryWrapper.wrap(() -> {
                     String apiTokenUrl = "https://api.amazon.com/auth/o2/token";
-                    HttpHeaders httpHeaders = getHttpHeadersOfFormUrlencoded();
+                    HttpHeaders httpHeaders = RestTemplateUtil.getHttpHeadersOfFormUrlencoded();
                     String grantType = "grant_type=" + accessTokenRequestMeta.getGrantType();
                     String refreshToken = "refresh_token=" + accessTokenRequestMeta.getRefreshToken();
                     String clientId = "client_id=" + accessTokenRequestMeta.getClientId();

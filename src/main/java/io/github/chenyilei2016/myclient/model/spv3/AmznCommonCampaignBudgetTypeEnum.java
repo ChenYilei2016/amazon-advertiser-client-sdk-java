@@ -1,6 +1,6 @@
 package io.github.chenyilei2016.myclient.model.spv3;
 
-import com.zbycorp.fenghuo.domain.common.constants.BaseEnum;
+import io.github.chenyilei2016.myclient.kernel.core.BaseEnum;
 import lombok.Getter;
 
 /**

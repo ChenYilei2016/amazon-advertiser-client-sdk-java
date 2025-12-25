@@ -1,22 +1,26 @@
 package io.github.chenyilei2016.myclient;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import io.github.chenyilei2016.myclient.kernel.advice.AmznClientCrudTypeEnum;
 import io.github.chenyilei2016.myclient.kernel.advice.AmznClientRequestBeforeInvoke;
 import io.github.chenyilei2016.myclient.kernel.advice.AmznClientResponseBeforeReturn;
 import io.github.chenyilei2016.myclient.kernel.cache.AmznAdvConfigManager;
 import io.github.chenyilei2016.myclient.kernel.context.AmznAdClientHelper;
 import io.github.chenyilei2016.myclient.kernel.core.AccessTokenRequestMeta;
+import io.github.chenyilei2016.myclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.myclient.kernel.core.AmznTokenResponse;
 import io.github.chenyilei2016.myclient.kernel.core.ProfileDetailMeta;
+import io.github.chenyilei2016.myclient.kernel.exceptions.AmznApiException;
+import io.github.chenyilei2016.myclient.kernel.exceptions.AmznApiRetryMaxException;
 import io.github.chenyilei2016.myclient.kernel.gson.GsonFromStringDeserializer;
+import io.github.chenyilei2016.myclient.kernel.gson.GsonUtil;
 import io.github.chenyilei2016.myclient.kernel.support.MediaTypePair;
 import io.github.chenyilei2016.myclient.kernel.support.SpecialClientDetail;
+import io.github.chenyilei2016.myclient.kernel.utils.RestTemplateUtil;
 import io.github.chenyilei2016.myclient.kernel.wrapper.Amzn401UnauthorizedRetryWrapper;
 import io.github.chenyilei2016.myclient.kernel.wrapper.AmznIOTimeOutRetryWrapper;
 import io.github.chenyilei2016.myclient.kernel.wrapper.AmznRateLimitRetryWrapper;
@@ -43,7 +47,6 @@ import java.util.function.Supplier;
  *
  * @author chenyilei
  * @date 2023/04/03 17:19
- * @see com.zbycorp.fenghuo.domain.common.amazonconnect.baseservice.BaseClient
  */
 @Slf4j
 @Component
@@ -95,7 +98,7 @@ public class AmznAdClient {
             //没有传endpoint去缓存里查询
             ProfileDetailMeta profileDetailMeta = this.amznAdvConfigManager.getProfileDetailMeta(amznBaseRequest.getProfileId());
             if (null == profileDetailMeta) {
-                throw CommonException.createBizException("不存在的店铺profileId:{}", amznBaseRequest.getProfileId());
+                throw AmznApiException.createBizException("不存在的店铺profileId:{}", amznBaseRequest.getProfileId());
             }
             String endpoint = profileDetailMeta.getEndpointUrl();
             requestUrl = String.format("%s%s", endpoint, amznBaseRequest.getUrl());
@@ -121,7 +124,7 @@ public class AmznAdClient {
         Supplier<String> doGetRequestUrl = () -> {
             Map<String, Object> copyBodyMap = Maps.newHashMap(amznBaseRequest.getBody());
             if (StringUtils.isNotBlank(amznBaseRequest.getJsonBody())) {
-                Map<String, String> map = JSON.parseObject(amznBaseRequest.getJsonBody(), new TypeReference<Map<String, String>>() {
+                Map<String, String> map = GsonUtil.parseObject(amznBaseRequest.getJsonBody(), new TypeToken<Map<String, String>>() {
                 });
                 copyBodyMap.putAll(map);
             }
@@ -155,7 +158,7 @@ public class AmznAdClient {
         Supplier<String> doGetRequestUrl = () -> {
             Map<String, Object> copyBodyMap = Maps.newHashMap(amznBaseRequest.getBody());
             if (StringUtils.isNotBlank(amznBaseRequest.getJsonBody())) {
-                Map<String, String> map = JSON.parseObject(amznBaseRequest.getJsonBody(), new TypeReference<Map<String, String>>() {
+                Map<String, String> map = GsonUtil.parseObject(amznBaseRequest.getJsonBody(), new TypeToken<Map<String, String>>() {
                 });
                 copyBodyMap.putAll(map);
             }
@@ -255,11 +258,12 @@ public class AmznAdClient {
         if (null == specialClientDetail.getSpecialAccountType()) {
             return;
         }
-        AmazonAccountConfigBO amazonAccountConfigBO = amznAdvConfigManager.getAmznAdvTokenCacheManager().getAmazonAccountMap().get(specialClientDetail.getSpecialAccountType());
-        if (null != amazonAccountConfigBO) {
-            specialClientDetail.setClientId(amazonAccountConfigBO.getAdvClientId());
-            specialClientDetail.setClientSecret(amazonAccountConfigBO.getAdvClientSecret());
-        }
+        //todo: cyl
+//        AmazonAccountConfigBO amazonAccountConfigBO = amznAdvConfigManager.getAmznAdvTokenCacheManager().getAmazonAccountMap().get(specialClientDetail.getSpecialAccountType());
+//        if (null != amazonAccountConfigBO) {
+//            specialClientDetail.setClientId(amazonAccountConfigBO.getAdvClientId());
+//            specialClientDetail.setClientSecret(amazonAccountConfigBO.getAdvClientSecret());
+//        }
     }
 
 
@@ -267,7 +271,7 @@ public class AmznAdClient {
     private static HttpHeaders buildBaseMediaTypeHeaders(AmznBaseRequest amznBaseRequest, MediaTypePair mediaTypePair) {
         HttpHeaders httpHeaders;
         if (null == mediaTypePair) {
-            httpHeaders = getHttpHeadersDefaultApplicationJsonUtf8(amznBaseRequest.getMediaType(), amznBaseRequest.getMediaTypeAccept());
+            httpHeaders = RestTemplateUtil.getHttpHeadersDefaultApplicationJsonUtf8(amznBaseRequest.getMediaType(), amznBaseRequest.getMediaTypeAccept());
         } else {
             httpHeaders = new HttpHeaders();
             httpHeaders.setContentType(MediaType.valueOf(mediaTypePair.getContentType()));
@@ -340,15 +344,14 @@ public class AmznAdClient {
             if (!responseEntity.getStatusCode().is2xxSuccessful()) {
                 log.warn("请求亚马逊返回异常 traceId:{} ,url:{} response:{}", responseEntity.getHeaders()
                         .getFirst(AmznConstants.HEADER_requestId), requestUrl, responseEntity);
-                throw AmznRequestException.createAmznBizException("请求亚马逊返回异常:{}", responseEntity.getStatusCode()
-                        .value(), responseEntity.getBody());
+                throw AmznApiException.createBizException("请求亚马逊返回异常:{}", responseEntity.getStatusCode().value(), responseEntity.getBody());
             }
         } catch (HttpClientErrorException httpClientErrorException) {
             log.warn("请求亚马逊网络异常, responseHeaders:{}, responseErrorBody:{}", httpClientErrorException.getResponseHeaders(), httpClientErrorException.getResponseBodyAsString(), httpClientErrorException);
-            throw CommonException.createBizException("请求亚马逊网络异常:{}", httpClientErrorException.getMessage());
-        } catch (AmznApiResponseException amznApiResponseException) {
+            throw AmznApiException.createBizException("请求亚马逊网络异常:{}", httpClientErrorException.getMessage());
+        } catch (AmznApiRetryMaxException amznApiResponseException) {
             Throwable throwable = amznApiResponseException.getCause() != null ? amznApiResponseException.getCause() : amznApiResponseException;
-            throw CommonException.createBizException(throwable, "请求亚马逊接口异常:" + throwable.getMessage());
+            throw AmznApiException.createBizException(throwable, "请求亚马逊接口重试上限异常:" + throwable.getMessage());
         }
         return responseEntity;
     }

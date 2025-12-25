@@ -14,37 +14,9 @@
 package io.github.chenyilei2016.adv.api.amcAdmin;
 
 import io.github.chenyilei2016.adv.ApiException;
-import io.github.chenyilei2016.adv.model.amcAdmin.AddCollaborationCustomerPartnersPayload;
-import io.github.chenyilei2016.adv.model.amcAdmin.AddCollaborationCustomerPartnersResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationIdMappingTablePayload;
-import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationIdMappingTableResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationRequest;
-import io.github.chenyilei2016.adv.model.amcAdmin.CreateCollaborationResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.Error;
-import io.github.chenyilei2016.adv.model.amcAdmin.GetCollaborationIdMappingJobForTrackingIdResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.GetCollaborationIdMappingJobResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.GetInstanceCollaborationResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingJobsPayload;
-import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingJobsResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingTablesPayload;
-import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdMappingTablesResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdNamespacesPayload;
-import io.github.chenyilei2016.adv.model.amcAdmin.ListCollaborationIdNamespacesResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.RefreshCollaborationIdMappingTableResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerPartnersPayload;
-import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerPartnersResponse;
-import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerRequest;
-import io.github.chenyilei2016.adv.model.amcAdmin.UpdateCollaborationCustomerResponse;
+import io.github.chenyilei2016.adv.model.amcAdmin.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 /**
  * API tests for CollaborationInstanceManagementApi
@@ -323,7 +295,6 @@ public class CollaborationInstanceManagementApiTest {
         UpdateCollaborationCustomerPartnersPayload updateCollaborationCustomerPartnersPayload = null;
         String amazonAdvertisingAPIScope = null;
         UpdateCollaborationCustomerPartnersResponse response = api.updateCollaborationCustomerPartners(amazonAdvertisingAPIClientId, amazonAdvertisingAPIAdvertiserId, amazonAdvertisingAPIMarketplaceId, instanceId, collaborationId, updateCollaborationCustomerPartnersPayload, amazonAdvertisingAPIScope);
-        // TODO: test validations
     }
 
 }

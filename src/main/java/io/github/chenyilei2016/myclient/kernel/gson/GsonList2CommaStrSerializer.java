@@ -3,7 +3,7 @@ package io.github.chenyilei2016.myclient.kernel.gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.zbycorp.fenghuo.domain.common.utils.StrUtils;
+import io.github.chenyilei2016.myclient.kernel.utils.StrUtils;
 
 import java.lang.reflect.Type;
 import java.util.List;

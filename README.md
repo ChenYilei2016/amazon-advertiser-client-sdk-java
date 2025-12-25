@@ -26,6 +26,9 @@ java -jar ./openapi-cli/openapi-generator-cli-7.12.0.jar generate \
 
 ```
 
+# 目的
+亚马逊生成的api有问题, 借助AI 转换成适合的client
+
 
 # API 
 
