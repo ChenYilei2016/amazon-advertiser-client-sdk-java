@@ -1,6 +1,6 @@
 package io.github.chenyilei2016.myclient.wrapper;
 
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.exceptions.AmznApiResponseException;
+import io.github.chenyilei2016.myclient.exceptions.AmznApiRetryMaxException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -45,7 +45,7 @@ public class AmznIOTimeOutRetryWrapper<T> implements Callable<T> {
                         Thread.sleep(200L);
                     } else {
                         //超出重试次数
-                        throw new AmznApiResponseException(e, "IOTimeOut重试超次数 , " + e.getMessage());
+                        throw new AmznApiRetryMaxException(e, "IOTimeOut重试超次数 , " + e.getMessage());
                     }
                 } else {
                     //其他以报错方式抛出

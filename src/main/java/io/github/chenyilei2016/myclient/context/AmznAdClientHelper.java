@@ -1,6 +1,7 @@
 package io.github.chenyilei2016.myclient.context;
 
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.support.SpecialClientDetail;
+
+import io.github.chenyilei2016.myclient.support.SpecialClientDetail;
 
 /**
  * @author chenyilei

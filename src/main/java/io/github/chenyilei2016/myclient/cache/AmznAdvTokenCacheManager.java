@@ -1,12 +1,10 @@
 package io.github.chenyilei2016.myclient.cache;
 
 import com.alicp.jetcache.Cache;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.baseserviceV2.config.AmznMultiLevelTokenCacheConfig;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.dto.AccessTokenRequestMeta;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.dto.AmznTokenResponse;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.dto.ProfileDetailMeta;
-import com.zbycorp.fenghuo.domain.common.rpc.nacos.AmazonConfigProperties;
-import com.zbycorp.fenghuo.domain.common.rpc.nacos.bo.AmazonAccountConfigBO;
+import io.github.chenyilei2016.myclient.config.AmznMultiLevelTokenCacheConfig;
+import io.github.chenyilei2016.myclient.core.AccessTokenRequestMeta;
+import io.github.chenyilei2016.myclient.core.AmznTokenResponse;
+import io.github.chenyilei2016.myclient.core.ProfileDetailMeta;
 import lombok.Getter;
 
 import java.util.Collections;
@@ -40,6 +38,11 @@ public class AmznAdvTokenCacheManager {
         return profileDetailCache.get(profileId);
     }
 
+    /**
+     * TODO:
+     * @param profileId
+     * @return
+     */
     public AmznTokenResponse getAdvTokenResponse(String profileId) {
         ProfileDetailMeta profileDetailMeta = getProfileDetailMeta(profileId);
         if (profileDetailMeta == null) {

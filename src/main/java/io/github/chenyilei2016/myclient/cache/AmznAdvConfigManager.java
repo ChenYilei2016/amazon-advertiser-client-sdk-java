@@ -1,5 +1,8 @@
 package io.github.chenyilei2016.myclient.cache;
 
+import io.github.chenyilei2016.myclient.core.AccessTokenRequestMeta;
+import io.github.chenyilei2016.myclient.core.AmznTokenResponse;
+import io.github.chenyilei2016.myclient.core.ProfileDetailMeta;
 import io.github.chenyilei2016.myclient.utils.RestTemplateUtil;
 import io.github.chenyilei2016.myclient.utils.TrustSSLConstant;
 import io.github.chenyilei2016.myclient.wrapper.AmznIOTimeOutRetryWrapper;

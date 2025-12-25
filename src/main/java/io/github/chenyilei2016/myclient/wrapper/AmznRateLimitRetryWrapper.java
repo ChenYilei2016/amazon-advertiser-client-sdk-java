@@ -2,7 +2,7 @@ package io.github.chenyilei2016.myclient.wrapper;
 
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.RandomUtil;
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.exceptions.AmznApiResponseException;
+import io.github.chenyilei2016.myclient.exceptions.AmznApiRetryMaxException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
@@ -102,7 +102,7 @@ public class AmznRateLimitRetryWrapper implements Callable<ResponseEntity<String
                 } else if (retryTimes <= 0 && retryAfterTime > 0) {
                     //重试次数用完了, 依然失败
                     log.warn("AmznRateLimitRetryWrapper 请求亚马逊重试多次依然失败,重试次数:{}, url:{} ,headers:{},method:{}", totalRetryTimes, requestUrl, responseHeaders, httpMethod);
-                    throw new AmznApiResponseException(httpClientErrorException, "请求亚马逊接口重试多次异常, +" + httpClientErrorException.getMessage());
+                    throw new AmznApiRetryMaxException(httpClientErrorException, "请求亚马逊接口重试多次异常, +" + httpClientErrorException.getMessage());
                 } else {
                     log.warn("AmznRateLimitRetryWrapper 不是重试的HttpClientErrorException, 请求亚马逊接口出错 非限流重试  ,url:{} response:{}", requestUrl, responseEntity);
                     throw httpClientErrorException;
