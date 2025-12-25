@@ -11,7 +11,7 @@ api 使用jdk 8+
 
 ```shell
 
-cd amazon-advertiser-client-sdk-java ;
+cd openapi-client ;
 
 java -jar ./openapi-cli/openapi-generator-cli-7.12.0.jar generate \
    -i https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AMCAdministration_prod_3p.json \
