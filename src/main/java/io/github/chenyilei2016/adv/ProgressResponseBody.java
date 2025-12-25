@@ -1,6 +1,6 @@
 /*
- * Rule-Based Audiences
- * Create query based audience execution metadata to activate in DSP.
+ * Sponsored Products
+ *  
  *
  * The version of the OpenAPI document: 3.0
  * 
@@ -15,14 +15,9 @@ package io.github.chenyilei2016.adv;
 
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
+import okio.*;
 
 import java.io.IOException;
-
-import okio.Buffer;
-import okio.BufferedSource;
-import okio.ForwardingSource;
-import okio.Okio;
-import okio.Source;
 
 public class ProgressResponseBody extends ResponseBody {
 

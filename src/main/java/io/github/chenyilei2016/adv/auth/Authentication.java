@@ -1,6 +1,6 @@
 /*
- * Rule-Based Audiences
- * Create query based audience execution metadata to activate in DSP.
+ * Sponsored Products
+ *  
  *
  * The version of the OpenAPI document: 3.0
  * 
@@ -13,12 +13,12 @@
 
 package io.github.chenyilei2016.adv.auth;
 
-import io.github.chenyilei2016.adv.Pair;
 import io.github.chenyilei2016.adv.ApiException;
+import io.github.chenyilei2016.adv.Pair;
 
 import java.net.URI;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public interface Authentication {
     /**
