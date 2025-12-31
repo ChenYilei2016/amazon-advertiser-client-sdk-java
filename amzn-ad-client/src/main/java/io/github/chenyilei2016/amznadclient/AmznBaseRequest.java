@@ -27,6 +27,13 @@ public class AmznBaseRequest {
     private static final Pattern urlReplacePattern = Pattern.compile("\\{([^}]+)}");
 
     /**
+     * AmznAdClient引用
+     * <p>通过AmznAdClient.newRequest()创建AmznBaseRequest时会自动设置此字段
+     */
+    @Getter
+    private transient io.github.chenyilei2016.amznadclient.AmznAdClient amznAdClient;
+
+    /**
      * Token提供者 - 策略模式
      * <p>如果设置了此字段,将优先使用TokenProvider获取token,而不是使用profileId或specialClientDetail。
      * <p>这提供了最大的灵活性,允许用户完全自定义token获取逻辑。
@@ -100,8 +107,22 @@ public class AmznBaseRequest {
     private transient AmznClientCrudTypeEnum crudTypeEnum;
 
 
+    /**
+     * 创建AmznBaseRequest建造者
+     * @deprecated 推荐使用 {@link io.github.chenyilei2016.amznadclient.AmznAdClient#newRequest()}
+     */
+    @Deprecated
     public static AmznBaseRequest builder() {
         return new AmznBaseRequest();
+    }
+
+    /**
+     * 内部方法: 设置AmznAdClient引用
+     * <p>此方法由AmznAdClient.newRequest()调用
+     */
+    AmznBaseRequest setAmznAdClient(io.github.chenyilei2016.amznadclient.AmznAdClient amznAdClient) {
+        this.amznAdClient = amznAdClient;
+        return this;
     }
 
     public AmznBaseRequest mediaType(String mediaType) {
@@ -161,9 +182,26 @@ public class AmznBaseRequest {
         return this;
     }
 
-    public AmznBaseRequest jsonBody(AmznAdClient amznAdClient, Object jsonBody) {
+    /**
+     * 设置JSON请求体(自动序列化并验证)
+     * <p>如果AmznBaseRequest是通过AmznAdClient.newRequest()创建的,可以直接使用jsonBody(Object)
+     */
+    public AmznBaseRequest jsonBody(io.github.chenyilei2016.amznadclient.AmznAdClient amznAdClient, Object jsonBody) {
         ValidateBean.validateThrow(jsonBody);
         this.jsonBody = amznAdClient.getRequestGson().toJson(jsonBody);
+        return this;
+    }
+
+    /**
+     * 设置JSON请求体(自动序列化并验证)
+     * <p>使用AmznBaseRequest内部的amznAdClient引用
+     */
+    public AmznBaseRequest jsonBody(Object jsonBody) {
+        if (this.amznAdClient == null) {
+            throw new IllegalStateException("AmznAdClient未设置,请使用AmznAdClient.newRequest()创建AmznBaseRequest");
+        }
+        ValidateBean.validateThrow(jsonBody);
+        this.jsonBody = this.amznAdClient.getRequestGson().toJson(jsonBody);
         return this;
     }
 
@@ -227,6 +265,10 @@ public class AmznBaseRequest {
      */
     public AmznBaseRequest tokenProvider(TokenProvider tokenProvider) {
         this.tokenProvider = tokenProvider;
+        // 如果TokenProvider实现了AmznAdClientAware,自动注入AmznAdClient
+        if (tokenProvider instanceof io.github.chenyilei2016.amznadclient.kernel.support.AmznAdClientAware && this.amznAdClient != null) {
+            ((io.github.chenyilei2016.amznadclient.kernel.support.AmznAdClientAware) tokenProvider).setAmznAdClient(this.amznAdClient);
+        }
         return this;
     }
 
@@ -238,6 +280,10 @@ public class AmznBaseRequest {
      */
     public AmznBaseRequest endpointProvider(EndpointProvider endpointProvider) {
         this.endpointProvider = endpointProvider;
+        // 如果EndpointProvider实现了AmznAdClientAware,自动注入AmznAdClient
+        if (endpointProvider instanceof io.github.chenyilei2016.amznadclient.kernel.support.AmznAdClientAware && this.amznAdClient != null) {
+            ((io.github.chenyilei2016.amznadclient.kernel.support.AmznAdClientAware) endpointProvider).setAmznAdClient(this.amznAdClient);
+        }
         return this;
     }
 

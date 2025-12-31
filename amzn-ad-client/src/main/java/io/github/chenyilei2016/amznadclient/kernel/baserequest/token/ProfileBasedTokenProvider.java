@@ -1,26 +1,29 @@
 package io.github.chenyilei2016.amznadclient.kernel.baserequest.token;
 
-import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
+import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.support.AmznAdClientAware;
 import lombok.Getter;
 import org.springframework.http.HttpHeaders;
 
 /**
  * 基于ProfileId的Token提供者
  *
- * <p>这是最常用的token获取方式,通过profileId从{@link AmznAdvConfigManager}中查询
+ * <p>这是最常用的token获取方式,通过profileId从{@link IAmznAdvConfigManager}中查询
  * 相关的配置信息(如endpoint、refreshToken、accountType等),然后获取访问令牌。
  *
  * <p>此实现对应于SDK中的第一种token获取方式,适用于大多数Amazon广告API调用场景。
  *
  * <p>使用示例:
  * <pre>{@code
- * AmznAdvConfigManager configManager = ...;
+ * // 方式1: 手动传入configManager
  * TokenProvider provider = new ProfileBasedTokenProvider(configManager, "12345");
  *
- * AmznBaseRequest request = AmznBaseRequest.builder()
- *     .tokenProvider(provider)
+ * // 方式2: 通过AmznAdClient.newRequest()自动注入(推荐)
+ * AmznBaseRequest request = amznAdClient.newRequest()
+ *     .tokenProvider(new ProfileBasedTokenProvider("12345"))
  *     .url("/sp/campaigns/list")
  *     .build();
  * }</pre>
@@ -28,25 +31,47 @@ import org.springframework.http.HttpHeaders;
  * @author chenyilei
  * @date 2025/12/31
  * @see TokenProvider
- * @see AmznAdvConfigManager
+ * @see IAmznAdvConfigManager
  */
 @Getter
-public class ProfileBasedTokenProvider implements TokenProvider {
+public class ProfileBasedTokenProvider implements TokenProvider, AmznAdClientAware {
 
     /**
      * Amazon广告配置管理器,用于查询profileId对应的配置信息
      */
-    private final IAmznAdvConfigManager configManager;
+    private IAmznAdvConfigManager configManager;
 
     /**
      * Amazon广告账户的profileId
      */
     private final String profileId;
 
+    /**
+     * 构造函数 - 仅指定profileId
+     * <p>configManager会通过AmznAdClientAware自动注入
+     *
+     * @param profileId Amazon广告账户的profileId
+     */
+    public ProfileBasedTokenProvider(String profileId) {
+        this.profileId = profileId;
+    }
 
+    /**
+     * 构造函数 - 手动指定configManager和profileId
+     *
+     * @param configManager Amazon广告配置管理器
+     * @param profileId Amazon广告账户的profileId
+     */
     public ProfileBasedTokenProvider(IAmznAdvConfigManager configManager, String profileId) {
         this.configManager = configManager;
         this.profileId = profileId;
+    }
+
+    @Override
+    public void setAmznAdClient(AmznAdClient amznAdClient) {
+        if (this.configManager == null) {
+            this.configManager = amznAdClient.getAmznAdvConfigManager();
+        }
     }
 
     /**
@@ -65,6 +90,9 @@ public class ProfileBasedTokenProvider implements TokenProvider {
      */
     @Override
     public AmznTokenResponse getAccessToken() {
+        if (configManager == null) {
+            throw new IllegalStateException("configManager未设置,请使用AmznAdClient.newRequest()创建请求或手动传入configManager");
+        }
         return configManager.getAdvTokenByProfileId(profileId);
     }
 

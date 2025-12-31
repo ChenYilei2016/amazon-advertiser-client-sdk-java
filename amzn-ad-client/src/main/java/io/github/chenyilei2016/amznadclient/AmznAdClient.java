@@ -88,6 +88,17 @@ public class AmznAdClient {
         return this.amznAdvConfigManager.getApiClient();
     }
 
+    /**
+     * 创建新的AmznBaseRequest
+     * <p>推荐使用此方法创建请求,AmznBaseRequest会自动持有AmznAdClient引用,
+     * 可以使用更简洁的API,例如直接调用jsonBody(Object)而不需要传入AmznAdClient
+     * 
+     * @return 新的AmznBaseRequest实例
+     */
+    public AmznBaseRequest newRequest() {
+        return new AmznBaseRequest().setAmznAdClient(this);
+    }
+
 
     /**
      * 获取请求URL

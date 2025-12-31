@@ -27,9 +27,10 @@ public class AmznSpCampaignClient {
      */
     public AmznSpCampaignListResponse list(AmznSpCampaignListRequest amznSpCampaignListRequest) {
         ValidateBean.validateThrow(amznSpCampaignListRequest);
-        AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
-                .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignListRequest.getProfileId()))
-                .endpointProvider(new ProfileBasedEndpointProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignListRequest.getProfileId()))
+
+        AmznBaseRequest amznBaseRequest = amznAdClient.newRequest()
+                .tokenProvider(new ProfileBasedTokenProvider(amznSpCampaignListRequest.getProfileId()))
+                .endpointProvider(new ProfileBasedEndpointProvider(amznSpCampaignListRequest.getProfileId()))
                 .url("/sp/campaigns/list")
                 .mediaType("application/vnd.spCampaign.v3+json")
                 .headerValue(AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getKey(), AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getValue())
@@ -42,9 +43,9 @@ public class AmznSpCampaignClient {
 
     public AmznSpCampaignChangeResponse update(AmznSpCampaignUpdateRequest amznSpCampaignUpdateRequest) {
         ValidateBean.validateThrow(amznSpCampaignUpdateRequest);
-        AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
-                .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignUpdateRequest.getProfileId()))
-                .endpointProvider(new ProfileBasedEndpointProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignUpdateRequest.getProfileId()))
+        AmznBaseRequest amznBaseRequest = amznAdClient.newRequest()
+                .tokenProvider(new ProfileBasedTokenProvider(amznSpCampaignUpdateRequest.getProfileId()))
+                .endpointProvider(new ProfileBasedEndpointProvider(amznSpCampaignUpdateRequest.getProfileId()))
                 .url("/sp/campaigns")
                 .mediaType("application/vnd.spCampaign.v3+json")
                 .headerValue(AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getKey(), AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getValue())
@@ -57,7 +58,7 @@ public class AmznSpCampaignClient {
 
     public AmznSpCampaignChangeResponse create(AmznSpCampaignCreateRequest amznSpCampaignCreateRequest) {
         ValidateBean.validateThrow(amznSpCampaignCreateRequest);
-        AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
+        AmznBaseRequest amznBaseRequest = amznAdClient.newRequest()
                 .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignCreateRequest.getProfileId()))
                 .endpointProvider(new ProfileBasedEndpointProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignCreateRequest.getProfileId()))
                 .url("/sp/campaigns")
@@ -74,7 +75,7 @@ public class AmznSpCampaignClient {
 
     public AmznSpCampaignChangeResponse delete(AmznSpCampaignDeleteRequest amznSpCampaignDeleteRequest) {
         ValidateBean.validateThrow(amznSpCampaignDeleteRequest);
-        AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
+        AmznBaseRequest amznBaseRequest = amznAdClient.newRequest()
                 .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignDeleteRequest.getProfileId()))
                 .endpointProvider(new ProfileBasedEndpointProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignDeleteRequest.getProfileId()))
                 .url("/sp/campaigns/delete")
