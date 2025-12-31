@@ -5,17 +5,14 @@ import com.google.gson.reflect.TypeToken;
 import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.AmznBaseRequest;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum;
-import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
-import io.github.chenyilei2016.amznadclient.kernel.token.DirectCredentialsTokenProvider;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.FixedEndpointProvider;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.DirectCredentialsTokenProvider;
 import io.github.chenyilei2016.amznadclient.model.account.AdAccountBudgetBO;
 import io.github.chenyilei2016.amznadclient.model.common.AmznRegionEnum;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
 
@@ -66,9 +63,9 @@ public class AmznAdAccountClient {
         }.getAccountDetail(amazonAccountType);
 
         AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
-                .endpointUrlPrefix(endpointUrlPrefix)
                 .url("/v2/profiles")
                 .crudTypeEnum(AmznClientCrudTypeEnum.QUERY)
+                .endpointProvider(new FixedEndpointProvider(endpointUrlPrefix))
                 .tokenProvider(new DirectCredentialsTokenProvider(
                         amznAdClient.getAmznAdvConfigManager(),
                         accountDetail.getAdvClientId(),

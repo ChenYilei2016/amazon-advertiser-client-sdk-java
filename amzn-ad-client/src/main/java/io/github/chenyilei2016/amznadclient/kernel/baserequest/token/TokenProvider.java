@@ -1,4 +1,4 @@
-package io.github.chenyilei2016.amznadclient.kernel.token;
+package io.github.chenyilei2016.amznadclient.kernel.baserequest.token;
 
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import org.springframework.http.HttpHeaders;

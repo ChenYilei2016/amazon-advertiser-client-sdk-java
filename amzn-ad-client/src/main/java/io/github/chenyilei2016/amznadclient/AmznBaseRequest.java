@@ -2,9 +2,9 @@ package io.github.chenyilei2016.amznadclient;
 
 import com.google.common.collect.Maps;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.EndpointProvider;
 import io.github.chenyilei2016.amznadclient.kernel.support.MediaTypePair;
-import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
-import io.github.chenyilei2016.amznadclient.kernel.token.TokenProvider;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.TokenProvider;
 import lombok.*;
 import org.springframework.http.HttpHeaders;
 
@@ -33,18 +33,12 @@ public class AmznBaseRequest {
     private transient TokenProvider tokenProvider;
     
     /**
-     * 亚马逊概念的profileId
-     * <p>为了向后兼容保留此字段。如果没有设置tokenProvider,将使用此字段。
+     * Endpoint提供者 - 策略模式
+     * <p>如果设置了此字段,将优先使用EndpointProvider获取endpoint URL。
+     * <p>这提供了灵活性,允许用户自定义endpoint获取逻辑。
      */
-    private transient String profileId;
-
-
-    /**
-     * 如果没有profileId, 会使用此配置
-     * <p>为了向后兼容保留此字段。如果没有设置tokenProvider,将使用此字段。
-     */
-    private transient SpecialClientDetail specialClientDetail;
-
+    private transient EndpointProvider endpointProvider;
+    
     /**
      * 请求参数,
      * get会拼接到url上
@@ -52,17 +46,13 @@ public class AmznBaseRequest {
      */
     private transient Map<String, Object> body = Maps.newHashMap();
 
+
     private transient HttpHeaders httpHeaders;
 
     /**
      * post请求使用, 如果此值不为null 直接会忽视body属性 {@link AmznBaseRequest#body}
      */
     private transient String jsonBody = null;
-
-    /**
-     * 是否更改调用地址
-     */
-    private transient String endpointUrlPrefix = null;
 
     /**
      * 请求url
@@ -143,10 +133,6 @@ public class AmznBaseRequest {
         return this;
     }
 
-    public AmznBaseRequest profileId(String profileId) {
-        this.profileId = profileId;
-        return this;
-    }
 
     public AmznBaseRequest bodyKeyValue(String key, Object value) {
         this.body.put(key, value);
@@ -179,20 +165,11 @@ public class AmznBaseRequest {
         return this;
     }
 
-    public AmznBaseRequest endpointUrlPrefix(String endpointUrlPrefix) {
-        this.endpointUrlPrefix = endpointUrlPrefix;
-        return this;
-    }
-
     public AmznBaseRequest timeOutIoRetry(int times) {
         this.timeOutIoRetryTimes = times;
         return this;
     }
 
-    public AmznBaseRequest specialClientDetail(SpecialClientDetail specialClientDetail) {
-        this.specialClientDetail = specialClientDetail;
-        return this;
-    }
 
     public AmznBaseRequest resultLogPrintLength(Integer resultLogPrintLength) {
         this.resultLogPrintLength = resultLogPrintLength;
@@ -213,19 +190,9 @@ public class AmznBaseRequest {
     }
 
 
-    public AmznBaseRequest refreshToken(String accountType, String refreshToken) {
-        this.specialClientDetail = new SpecialClientDetail();
-        this.specialClientDetail.setRefreshToken(refreshToken);
-        this.specialClientDetail.setSpecialAccountType(accountType);
-        return this;
-    }
-
-
     public String baseDetail() {
         return "{" +
-                "profileId='" + profileId + '\'' +
-                ", endpointUrlPrefix='" + endpointUrlPrefix + '\'' +
-                ", url='" + url + '\'' +
+                " url='" + url + '\'' +
                 ", mediaType='" + mediaType + '\'' +
                 '}';
     }
@@ -255,6 +222,20 @@ public class AmznBaseRequest {
      */
     public AmznBaseRequest tokenProvider(TokenProvider tokenProvider) {
         this.tokenProvider = tokenProvider;
+        return this;
+    }
+    
+    // ==================== EndpointProvider相关方法 ====================
+    
+    /**
+     * 设置EndpointProvider
+     * <p>使用EndpointProvider可以提供灵活性来自定义endpoint获取逻辑。
+     * 
+     * @param endpointProvider endpoint提供者
+     * @return this
+     */
+    public AmznBaseRequest endpointProvider(EndpointProvider endpointProvider) {
+        this.endpointProvider = endpointProvider;
         return this;
     }
 

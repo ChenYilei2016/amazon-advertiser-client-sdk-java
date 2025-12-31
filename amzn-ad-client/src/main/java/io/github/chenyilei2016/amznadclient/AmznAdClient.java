@@ -12,14 +12,13 @@ import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.context.AmznAdClientHelper;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
-import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMeta;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.EndpointProvider;
 import io.github.chenyilei2016.amznadclient.kernel.exceptions.AmznApiException;
 import io.github.chenyilei2016.amznadclient.kernel.exceptions.AmznApiRetryMaxException;
 import io.github.chenyilei2016.amznadclient.kernel.gson.GsonFromStringDeserializer;
 import io.github.chenyilei2016.amznadclient.kernel.gson.GsonUtil;
 import io.github.chenyilei2016.amznadclient.kernel.support.MediaTypePair;
-import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
-import io.github.chenyilei2016.amznadclient.kernel.token.TokenProvider;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.TokenProvider;
 import io.github.chenyilei2016.amznadclient.kernel.utils.RestTemplateUtil;
 import io.github.chenyilei2016.amznadclient.kernel.wrapper.Amzn401UnauthorizedRetryWrapper;
 import io.github.chenyilei2016.amznadclient.kernel.wrapper.AmznIOTimeOutRetryWrapper;
@@ -89,29 +88,40 @@ public class AmznAdClient {
         return this.amznAdvConfigManager.getApiClient();
     }
 
-    private String getRequestUrl(AmznBaseRequest amznBaseRequest) {
-        String requestUrl = null;
 
-        //url主体连接
-        if (StringUtils.isNotBlank(amznBaseRequest.getEndpointUrlPrefix())) {
-            requestUrl = String.format("%s%s", amznBaseRequest.getEndpointUrlPrefix(), amznBaseRequest.getUrl());
-        } else {
-            //没有传endpoint去缓存里查询
-            ProfileDetailMeta profileDetailMeta = this.amznAdvConfigManager.getProfileDetailMeta(amznBaseRequest.getProfileId());
-            if (null == profileDetailMeta) {
-                throw AmznApiException.createBizException("不存在的店铺profileId:{}", amznBaseRequest.getProfileId());
-            }
-            String endpoint = profileDetailMeta.getEndpointUrl();
-            requestUrl = String.format("%s%s", endpoint, amznBaseRequest.getUrl());
+    /**
+     * 获取请求URL
+     *
+     * <p>优先级: ThreadLocal EndpointProvider > Request EndpointProvider > endpointUrlPrefix > profileId
+     *
+     * @param amznBaseRequest 请求对象
+     * @return 完整的请求URL
+     */
+    private String getRequestUrl(AmznBaseRequest amznBaseRequest) {
+        // 检查ThreadLocal中的EndpointProvider
+        EndpointProvider endpointProviderThreadLocal = AmznAdClientHelper.getEndpointProviderThreadLocal();
+        if (null != endpointProviderThreadLocal) {
+            amznBaseRequest.endpointProvider(endpointProviderThreadLocal);
+            AmznAdClientHelper.clearEndpointProviderThreadLocal();
         }
 
-        //追加url末尾参数
+        // 优先级1: 使用EndpointProvider (新方式)
+        EndpointProvider endpointProvider = amznBaseRequest.getEndpointProvider();
+
+        if (null == endpointProvider) {
+            throw new IllegalArgumentException("endpointProvider is null");
+        }
+        String endpointUrlPrefix = endpointProvider.getEndpointUrlPrefix();
+
+        // 拼接完整URL
+        String requestUrl = String.format("%s%s", endpointUrlPrefix, amznBaseRequest.getUrl());
+
+        // 追加url末尾参数
         if (amznBaseRequest.getAppendUrlEndParamMap() != null) {
             UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(requestUrl);
             amznBaseRequest.getAppendUrlEndParamMap().forEach(builder::queryParam);
             requestUrl = builder.build().encode().toString();
         }
-
         return requestUrl;
     }
 
@@ -243,6 +253,7 @@ public class AmznAdClient {
         TokenProvider tokenProviderThreadLocal = AmznAdClientHelper.getTokenProviderThreadLocal();
         if (null != tokenProviderThreadLocal) {
             amznBaseRequest.tokenProvider(tokenProviderThreadLocal);
+            AmznAdClientHelper.clearTokenProviderThreadLocal();
         }
 
         TokenProvider tokenProvider = amznBaseRequest.getTokenProvider();

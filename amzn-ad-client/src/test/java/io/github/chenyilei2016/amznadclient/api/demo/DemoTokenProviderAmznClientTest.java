@@ -12,6 +12,7 @@ public class DemoTokenProviderAmznClientTest {
 
     @Test
     public void list() {
+        System.err.println(System.getProperty("aaa"));
         System.err.println(System.getProperty("a"));
     }
 
