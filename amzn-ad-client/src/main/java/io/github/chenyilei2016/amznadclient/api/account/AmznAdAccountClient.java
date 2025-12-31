@@ -61,7 +61,12 @@ public class AmznAdAccountClient {
                 .crudTypeEnum(AmznClientCrudTypeEnum.QUERY);
 
         // 通过 amazonAccountType 获取 clientId 和 clientSecret
-
+        AmazonConfigProperties.AmazonAccountConfigBO accountDetail = new AmazonConfigProperties(){
+            @Override
+            public AmazonAccountConfigBO getAccountDetail(String accountType) {
+                return null;
+            }
+        }.getAccountDetail(amazonAccountType);
         SpecialClientDetail specialClientDetail = SpecialClientDetail
                 .builder()
                 .clientId(accountDetail.getAdvClientId())
