@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
 @ConditionalOnClass(Cache.class)
 @ConditionalOnProperty(name = "aman.ad.client.cache.enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(AmznAdClientCacheProperties.class)
-public class AmznCacheConfiguration {
+public class AmznAdClientCacheConfiguration {
 
 
     /**
@@ -133,7 +133,7 @@ public class AmznCacheConfiguration {
     @Primary
     @ConditionalOnProperty(name = "aman.ad.client.cache.profile.enabled", havingValue = "true", matchIfMissing = true)
     public IProfileDetailMetaProvider cachedProfileDetailMetaProvider(
-            @Qualifier("profileDetailMetaProvider") IProfileDetailMetaProvider delegate,
+            @Qualifier("amznProfileDetailMetaProvider") IProfileDetailMetaProvider delegate,
             AmznAdClientCacheProperties properties) {
 
         log.info("创建Profile详情缓存,配置: {}", properties.getProfile());
@@ -162,8 +162,7 @@ public class AmznCacheConfiguration {
     @Bean
     @Primary
     @ConditionalOnProperty(name = "aman.ad.client.cache.credentials.enabled", havingValue = "true", matchIfMissing = true)
-    public IAuthCredentialsProvider cachedAuthCredentialsProvider(
-            @Qualifier("authCredentialsProvider") IAuthCredentialsProvider delegate,
+    public IAuthCredentialsProvider cachedAuthCredentialsProvider(@Qualifier("amznAuthCredentialsProvider") IAuthCredentialsProvider delegate,
             AmznAdClientCacheProperties properties) {
 
         AmznAdClientCacheProperties.CredentialsCacheConfig config = properties.getCredentials();

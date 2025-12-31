@@ -83,8 +83,8 @@ public class AmznAdClientConfiguration {
      *
      * @return Profile详情数据提供者实例
      */
-    @Bean("profileDetailMetaProvider")
-    @ConditionalOnMissingBean(name = "profileDetailMetaProvider")
+    @Bean("amznProfileDetailMetaProvider")
+    @ConditionalOnMissingBean(name = "amznProfileDetailMetaProvider")
     public IProfileDetailMetaProvider profileDetailMetaProvider() {
         return new DefaultProfileDetailMetaProvider();
     }
@@ -99,8 +99,8 @@ public class AmznAdClientConfiguration {
      *
      * @return OAuth认证凭证提供者实例
      */
-    @Bean("authCredentialsProvider")
-    @ConditionalOnMissingBean(name = "authCredentialsProvider")
+    @Bean("amznAuthCredentialsProvider")
+    @ConditionalOnMissingBean(name = "amznAuthCredentialsProvider")
     public IAuthCredentialsProvider authCredentialsProvider() {
         return new DefaultAuthCredentialsProvider();
     }
