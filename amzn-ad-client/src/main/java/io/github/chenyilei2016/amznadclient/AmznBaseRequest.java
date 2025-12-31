@@ -217,8 +217,6 @@ public class AmznBaseRequest {
      * 设置TokenProvider
      * <p>使用TokenProvider可以提供最大的灵活性来自定义token获取逻辑。
      * 
-     * @param tokenProvider token提供者
-     * @return this
      */
     public AmznBaseRequest tokenProvider(TokenProvider tokenProvider) {
         this.tokenProvider = tokenProvider;
@@ -230,9 +228,6 @@ public class AmznBaseRequest {
     /**
      * 设置EndpointProvider
      * <p>使用EndpointProvider可以提供灵活性来自定义endpoint获取逻辑。
-     * 
-     * @param endpointProvider endpoint提供者
-     * @return this
      */
     public AmznBaseRequest endpointProvider(EndpointProvider endpointProvider) {
         this.endpointProvider = endpointProvider;

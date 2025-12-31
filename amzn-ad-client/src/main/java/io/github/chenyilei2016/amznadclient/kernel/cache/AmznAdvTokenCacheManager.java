@@ -23,7 +23,6 @@ public class AmznAdvTokenCacheManager {
                                     Cache<String, ProfileDetailMeta> profileDetailCache) {
         this.multiLevelTokenCache = multiLevelTokenCache;
         this.profileDetailCache = profileDetailCache;
-//        this.amazonAccountMap = Collections.unmodifiableMap(amznConfigProperties.getAccountMap());
     }
 
     public ProfileDetailMeta getProfileDetailMeta(String profileId) {
@@ -32,22 +31,19 @@ public class AmznAdvTokenCacheManager {
 
     /**
      * todo: cyl
-     * @param profileId
+     *
      * @return
      */
     public AmznTokenResponse getAdvTokenResponse(String profileId) {
-//        ProfileDetailMeta profileDetailMeta = getProfileDetailMeta(profileId);
-//        if (profileDetailMeta == null) {
-//            return null;
-//        }
-//        String awsAccountType = profileDetailMeta.getAmazonAdvAccountType();
-//        AmazonAccountConfigBO amazonAccountConfigBO = amazonAccountMap.get(awsAccountType);
-//        AccessTokenRequestMeta accessTokenRequestMeta = new AccessTokenRequestMeta();
+        ProfileDetailMeta profileDetailMeta = getProfileDetailMeta(profileId);
+        if (profileDetailMeta == null) {
+            return null;
+        }
+        AccessTokenRequestMeta accessTokenRequestMeta = new AccessTokenRequestMeta();
 //        accessTokenRequestMeta.setClientId(amazonAccountConfigBO.getAdvClientId());
 //        accessTokenRequestMeta.setClientSecret(amazonAccountConfigBO.getAdvClientSecret());
 //        accessTokenRequestMeta.setRefreshToken(profileDetailMeta.getAdvRefreshToken());
-//        return getAdvToken(accessTokenRequestMeta);
-        return null;
+        return getAdvToken(accessTokenRequestMeta);
     }
 
     protected AmznTokenResponse getAdvToken(AccessTokenRequestMeta key) {
