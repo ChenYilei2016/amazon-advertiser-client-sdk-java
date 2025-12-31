@@ -45,7 +45,7 @@ import org.springframework.http.HttpHeaders;
  */
 @Builder
 @Getter
-public class DirectCredentialsTokenProvider implements TokenProvider {
+public class FixedCredentialsTokenProvider implements TokenProvider {
 
     /**
      * Amazon广告配置管理器,用于调用token刷新API
@@ -67,7 +67,7 @@ public class DirectCredentialsTokenProvider implements TokenProvider {
      */
     private final String refreshToken;
 
-    public DirectCredentialsTokenProvider(IAmznAdvConfigManager configManager, String clientId, String clientSecret, String refreshToken) {
+    public FixedCredentialsTokenProvider(IAmznAdvConfigManager configManager, String clientId, String clientSecret, String refreshToken) {
         this.configManager = configManager;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

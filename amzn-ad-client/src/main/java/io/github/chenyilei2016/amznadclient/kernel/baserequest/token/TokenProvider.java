@@ -33,7 +33,7 @@ import org.springframework.http.HttpHeaders;
  * @author chenyilei
  * @date 2025/12/31
  * @see ProfileBasedTokenProvider
- * @see DirectCredentialsTokenProvider
+ * @see FixedCredentialsTokenProvider
  */
 public interface TokenProvider {
 

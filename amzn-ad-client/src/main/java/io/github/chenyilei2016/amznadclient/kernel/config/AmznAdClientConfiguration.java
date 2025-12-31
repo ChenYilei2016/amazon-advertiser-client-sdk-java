@@ -67,7 +67,7 @@ public class AmznAdClientConfiguration {
      */
     @Bean
     @ConditionalOnMissingBean
-    public IAmznTokenRequestProvider amznTokenRequestHandler() {
+    public IAmznTokenRequestProvider amznTokenRequestProvider() {
         return new DefaultAmznTokenRequestProvider();
     }
 

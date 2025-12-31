@@ -6,7 +6,7 @@ import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.AmznBaseRequest;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum;
 import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.FixedEndpointProvider;
-import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.DirectCredentialsTokenProvider;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.FixedCredentialsTokenProvider;
 import io.github.chenyilei2016.amznadclient.model.account.AdAccountBudgetBO;
 import io.github.chenyilei2016.amznadclient.model.common.AmznRegionEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +59,7 @@ public class AmznAdAccountClient {
                 .url("/v2/profiles")
                 .crudTypeEnum(AmznClientCrudTypeEnum.QUERY)
                 .endpointProvider(new FixedEndpointProvider(endpointUrlPrefix))
-                .tokenProvider(new DirectCredentialsTokenProvider(
+                .tokenProvider(new FixedCredentialsTokenProvider(
                         amznAdClient.getAmznAdvConfigManager(),
                         amazonAccountType,//accountDetail.getAdvClientId(),
                         amazonAccountType,//accountDetail.getAdvClientSecret(),
