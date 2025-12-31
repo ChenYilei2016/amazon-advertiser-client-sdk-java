@@ -6,6 +6,7 @@ import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.AmznBaseRequest;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum;
 import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
+import io.github.chenyilei2016.amznadclient.kernel.token.DirectCredentialsTokenProvider;
 import io.github.chenyilei2016.amznadclient.model.account.AdAccountBudgetBO;
 import io.github.chenyilei2016.amznadclient.model.common.AmznRegionEnum;
 import lombok.Getter;
@@ -56,24 +57,24 @@ public class AmznAdAccountClient {
             return null;
         }
 
-        AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder().endpointUrlPrefix(endpointUrlPrefix)
-                .url("/v2/profiles")
-                .crudTypeEnum(AmznClientCrudTypeEnum.QUERY);
-
         // 通过 amazonAccountType 获取 clientId 和 clientSecret
-        AmazonConfigProperties.AmazonAccountConfigBO accountDetail = new AmazonConfigProperties(){
+        AmazonConfigProperties.AmazonAccountConfigBO accountDetail = new AmazonConfigProperties() {
             @Override
             public AmazonAccountConfigBO getAccountDetail(String accountType) {
                 return null;
             }
         }.getAccountDetail(amazonAccountType);
-        SpecialClientDetail specialClientDetail = SpecialClientDetail
-                .builder()
-                .clientId(accountDetail.getAdvClientId())
-                .clientSecret(accountDetail.getAdvClientSecret())
-                .refreshToken(refreshToken)
-                .build();
-        amznBaseRequest.specialClientDetail(specialClientDetail);
+
+        AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
+                .endpointUrlPrefix(endpointUrlPrefix)
+                .url("/v2/profiles")
+                .crudTypeEnum(AmznClientCrudTypeEnum.QUERY)
+                .tokenProvider(new DirectCredentialsTokenProvider(
+                        amznAdClient.getAmznAdvConfigManager(),
+                        accountDetail.getAdvClientId(),
+                        accountDetail.getAdvClientSecret(),
+                        refreshToken
+                ));
 
         return amznAdClient.httpGetWithResponse(amznBaseRequest);
     }

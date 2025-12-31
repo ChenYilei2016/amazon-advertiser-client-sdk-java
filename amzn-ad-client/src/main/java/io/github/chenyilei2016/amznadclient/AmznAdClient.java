@@ -10,7 +10,6 @@ import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientRequestBefor
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientResponseBeforeReturn;
 import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.context.AmznAdClientHelper;
-import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenRequestMeta;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMeta;
@@ -20,6 +19,7 @@ import io.github.chenyilei2016.amznadclient.kernel.gson.GsonFromStringDeserializ
 import io.github.chenyilei2016.amznadclient.kernel.gson.GsonUtil;
 import io.github.chenyilei2016.amznadclient.kernel.support.MediaTypePair;
 import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
+import io.github.chenyilei2016.amznadclient.kernel.token.TokenProvider;
 import io.github.chenyilei2016.amznadclient.kernel.utils.RestTemplateUtil;
 import io.github.chenyilei2016.amznadclient.kernel.wrapper.Amzn401UnauthorizedRetryWrapper;
 import io.github.chenyilei2016.amznadclient.kernel.wrapper.AmznIOTimeOutRetryWrapper;
@@ -52,6 +52,7 @@ import java.util.function.Supplier;
 @Component
 public class AmznAdClient {
 
+    @Getter
     private final AmznAdvConfigManager amznAdvConfigManager;
 
     @Getter
@@ -239,31 +240,20 @@ public class AmznAdClient {
         }
 
         //目前用于测试使用, 如果一个client里有调用多个api 会导致此值只被一个api使用
-        SpecialClientDetail clientIdentity = AmznAdClientHelper.getClientIdentity();
-        if (clientIdentity != null) {
-            amznBaseRequest.specialClientDetail(clientIdentity);
-            AmznAdClientHelper.clearClientIdentity();
+        TokenProvider tokenProviderThreadLocal = AmznAdClientHelper.getTokenProviderThreadLocal();
+        if (null != tokenProviderThreadLocal) {
+            amznBaseRequest.tokenProvider(tokenProviderThreadLocal);
         }
-        //自定义账号
-        if (amznBaseRequest.getSpecialClientDetail() != null) {
-            backFillAccount(amznAdvConfigManager, amznBaseRequest.getSpecialClientDetail());
-            mergeSpecialClientDetailHeaders(amznBaseRequest, httpHeaders);
-        } else {
-            mergeProfileHeaders(amznBaseRequest, httpHeaders);
-        }
-        return httpHeaders;
-    }
 
-    private void backFillAccount(AmznAdvConfigManager amznAdvConfigManager, SpecialClientDetail specialClientDetail) {
-        if (null == specialClientDetail.getSpecialAccountType()) {
-            return;
+        TokenProvider tokenProvider = amznBaseRequest.getTokenProvider();
+
+        if (null == tokenProvider) {
+            throw new IllegalArgumentException("tokenProvider is null");
         }
-        //todo: cyl
-//        AmazonAccountConfigBO amazonAccountConfigBO = amznAdvConfigManager.getAmznAdvTokenCacheManager().getAmazonAccountMap().get(specialClientDetail.getSpecialAccountType());
-//        if (null != amazonAccountConfigBO) {
-//            specialClientDetail.setClientId(amazonAccountConfigBO.getAdvClientId());
-//            specialClientDetail.setClientSecret(amazonAccountConfigBO.getAdvClientSecret());
-//        }
+
+        // 使用新的TokenProvider方式 (优先级最高)
+        buildHeadersWithTokenProvider(tokenProvider, httpHeaders);
+        return httpHeaders;
     }
 
 
@@ -283,31 +273,34 @@ public class AmznAdClient {
         return httpHeaders;
     }
 
-    private void mergeSpecialClientDetailHeaders(AmznBaseRequest amznBaseRequest, HttpHeaders httpHeaders) {
-        SpecialClientDetail specialClientDetail = amznBaseRequest.getSpecialClientDetail();
-        AccessTokenRequestMeta accessTokenRequestMeta = new AccessTokenRequestMeta();
-        accessTokenRequestMeta.setClientId(specialClientDetail.getClientId());
-        accessTokenRequestMeta.setClientSecret(specialClientDetail.getClientSecret());
-        accessTokenRequestMeta.setRefreshToken(specialClientDetail.getRefreshToken());
-        AmznTokenResponse advTokenResponse = this.amznAdvConfigManager.getAdvToken(accessTokenRequestMeta);
-        httpHeaders.add(AmznConstants.HEADER_authorization, AmznConstants.HEADER_authorizationPrefix + advTokenResponse.getAccess_token());
-        httpHeaders.add(AmznConstants.HEADER_clientId, specialClientDetail.getClientId());
-        if (amznBaseRequest.getProfileId() != null) {
-            httpHeaders.add(AmznConstants.HEADER_advertisingApiScope, amznBaseRequest.getProfileId());
-        }
+
+    /**
+     * 使用TokenProvider构建HTTP请求头
+     *
+     * <p>这是新的token获取方式,通过策略模式提供了最大的灵活性。
+     * TokenProvider可以是:
+     * <ul>
+     *   <li>ProfileBasedTokenProvider - 基于profileId</li>
+     *   <li>DirectCredentialsTokenProvider - 直接使用credentials</li>
+     *   <li>CustomTokenProvider - 用户自定义逻辑</li>
+     * </ul>
+     *
+     * @param tokenProvider token提供者
+     * @param httpHeaders   HTTP请求头对象
+     */
+    private void buildHeadersWithTokenProvider(TokenProvider tokenProvider, HttpHeaders httpHeaders) {
+        // 获取访问令牌
+        AmznTokenResponse tokenResponse = tokenProvider.getAccessToken();
+
+        // 添加Authorization头
+        httpHeaders.add(AmznConstants.HEADER_authorization, AmznConstants.HEADER_authorizationPrefix + tokenResponse.getAccess_token());
+
+        // 添加Client-Id头
+        httpHeaders.add(AmznConstants.HEADER_clientId, tokenResponse.getClientId());
+
+        tokenProvider.customizeHttpHeaders(httpHeaders);
     }
 
-    private void mergeProfileHeaders(AmznBaseRequest amznBaseRequest, HttpHeaders httpHeaders) {
-        String profileId = amznBaseRequest.getProfileId();
-        if (profileId == null) {
-            throw new IllegalArgumentException("无profileId , requestDetail: " + amznBaseRequest.baseDetail());
-        }
-        //需要profileId的情况
-        httpHeaders.add(AmznConstants.HEADER_advertisingApiScope, profileId);
-        AmznTokenResponse advTokenResponse = this.amznAdvConfigManager.getAdvToken(profileId);
-        httpHeaders.add(AmznConstants.HEADER_authorization, AmznConstants.HEADER_authorizationPrefix + advTokenResponse.getAccess_token());
-        httpHeaders.add(AmznConstants.HEADER_clientId, advTokenResponse.getClientId());
-    }
 
     @SneakyThrows
     protected ResponseEntity<String> executeHttpCall(RestTemplate client, Supplier<String> doGetRequestUrl, HttpMethod httpMethod, Supplier<HttpHeaders> doGetHttpHeaders, Object body, int timeOutRetry, int amznRateLimitRetry) {

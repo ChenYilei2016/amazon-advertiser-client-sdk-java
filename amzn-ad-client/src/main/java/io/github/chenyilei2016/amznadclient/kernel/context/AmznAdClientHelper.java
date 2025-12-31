@@ -1,7 +1,7 @@
 package io.github.chenyilei2016.amznadclient.kernel.context;
 
 
-import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
+import io.github.chenyilei2016.amznadclient.kernel.token.TokenProvider;
 
 /**
  * @author chenyilei
@@ -9,17 +9,17 @@ import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
  */
 public class AmznAdClientHelper {
 
-    protected static final ThreadLocal<SpecialClientDetail> LOCAL_CLIENT_IDENTITY = new ThreadLocal<>();
+    protected static final ThreadLocal<TokenProvider> LOCAL_TOKEN_PROVIDER = new ThreadLocal<>();
 
-    public static SpecialClientDetail getClientIdentity() {
-        return LOCAL_CLIENT_IDENTITY.get();
+    public static TokenProvider getTokenProviderThreadLocal() {
+        return LOCAL_TOKEN_PROVIDER.get();
     }
 
-    public static void clearClientIdentity() {
-        LOCAL_CLIENT_IDENTITY.remove();
+    public static void clearTokenProviderThreadLocal() {
+        LOCAL_TOKEN_PROVIDER.remove();
     }
 
-    public static void setClientIdentity(SpecialClientDetail specialClientDetail) {
-        LOCAL_CLIENT_IDENTITY.set(specialClientDetail);
+    public static void setTokenProviderThreadLocal(TokenProvider tokenProvider) {
+        LOCAL_TOKEN_PROVIDER.set(tokenProvider);
     }
 }

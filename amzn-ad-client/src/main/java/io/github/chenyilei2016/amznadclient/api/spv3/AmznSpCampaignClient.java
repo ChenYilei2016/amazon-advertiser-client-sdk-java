@@ -4,6 +4,7 @@ import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.AmznBaseRequest;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznHeaderEnum;
+import io.github.chenyilei2016.amznadclient.kernel.token.ProfileBasedTokenProvider;
 import io.github.chenyilei2016.amznadclient.kernel.validate.ValidateBean;
 import io.github.chenyilei2016.amznadclient.model.spv3.*;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,7 @@ public class AmznSpCampaignClient {
     public AmznSpCampaignListResponse list(AmznSpCampaignListRequest amznSpCampaignListRequest) {
         ValidateBean.validateThrow(amznSpCampaignListRequest);
         AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
+                .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignListRequest.getProfileId()))
                 .profileId(amznSpCampaignListRequest.getProfileId())
                 .url("/sp/campaigns/list")
                 .mediaType("application/vnd.spCampaign.v3+json")
@@ -40,6 +42,7 @@ public class AmznSpCampaignClient {
     public AmznSpCampaignChangeResponse update(AmznSpCampaignUpdateRequest amznSpCampaignUpdateRequest) {
         ValidateBean.validateThrow(amznSpCampaignUpdateRequest);
         AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
+                .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignUpdateRequest.getProfileId()))
                 .profileId(amznSpCampaignUpdateRequest.getProfileId())
                 .url("/sp/campaigns")
                 .mediaType("application/vnd.spCampaign.v3+json")
@@ -54,6 +57,7 @@ public class AmznSpCampaignClient {
     public AmznSpCampaignChangeResponse create(AmznSpCampaignCreateRequest amznSpCampaignCreateRequest) {
         ValidateBean.validateThrow(amznSpCampaignCreateRequest);
         AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
+                .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignCreateRequest.getProfileId()))
                 .profileId(amznSpCampaignCreateRequest.getProfileId())
                 .url("/sp/campaigns")
                 .mediaType("application/vnd.spCampaign.v3+json")
@@ -70,6 +74,7 @@ public class AmznSpCampaignClient {
     public AmznSpCampaignChangeResponse delete(AmznSpCampaignDeleteRequest amznSpCampaignDeleteRequest) {
         ValidateBean.validateThrow(amznSpCampaignDeleteRequest);
         AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
+                .tokenProvider(new ProfileBasedTokenProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignDeleteRequest.getProfileId()))
                 .profileId(amznSpCampaignDeleteRequest.getProfileId())
                 .url("/sp/campaigns/delete")
                 .mediaType("application/vnd.spCampaign.v3+json")

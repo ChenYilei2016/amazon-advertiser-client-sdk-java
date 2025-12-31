@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum;
 import io.github.chenyilei2016.amznadclient.kernel.support.MediaTypePair;
 import io.github.chenyilei2016.amznadclient.kernel.support.SpecialClientDetail;
+import io.github.chenyilei2016.amznadclient.kernel.token.TokenProvider;
 import lombok.*;
 import org.springframework.http.HttpHeaders;
 
@@ -23,14 +24,24 @@ import java.util.regex.Pattern;
 public class AmznBaseRequest {
 
     private static final Pattern urlReplacePattern = Pattern.compile("\\{([^}]+)}");
+    
+    /**
+     * Token提供者 - 策略模式
+     * <p>如果设置了此字段,将优先使用TokenProvider获取token,而不是使用profileId或specialClientDetail。
+     * <p>这提供了最大的灵活性,允许用户完全自定义token获取逻辑。
+     */
+    private transient TokenProvider tokenProvider;
+    
     /**
      * 亚马逊概念的profileId
+     * <p>为了向后兼容保留此字段。如果没有设置tokenProvider,将使用此字段。
      */
     private transient String profileId;
 
 
     /**
      * 如果没有profileId, 会使用此配置
+     * <p>为了向后兼容保留此字段。如果没有设置tokenProvider,将使用此字段。
      */
     private transient SpecialClientDetail specialClientDetail;
 
@@ -232,4 +243,19 @@ public class AmznBaseRequest {
         appendUrlEndParamMap.put(key, value);
         return this;
     }
+    
+    // ==================== TokenProvider相关方法 ====================
+    
+    /**
+     * 设置TokenProvider
+     * <p>使用TokenProvider可以提供最大的灵活性来自定义token获取逻辑。
+     * 
+     * @param tokenProvider token提供者
+     * @return this
+     */
+    public AmznBaseRequest tokenProvider(TokenProvider tokenProvider) {
+        this.tokenProvider = tokenProvider;
+        return this;
+    }
+
 }

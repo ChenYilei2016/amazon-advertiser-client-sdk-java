@@ -1,6 +1,5 @@
 package io.github.chenyilei2016.amznadclient.model.account;
 
-import com.zbycorp.fenghuo.domain.common.amazonconnect.kernel.enums.AmznProfileTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
