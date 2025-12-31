@@ -1,8 +1,9 @@
-package io.github.chenyilei2016.amznadclient.kernel.amazon;
+package io.github.chenyilei2016.amznadclient.kernel.spi.impl;
 
 import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
+import io.github.chenyilei2016.amznadclient.kernel.spi.IAmznTokenRequestProvider;
 import io.github.chenyilei2016.amznadclient.kernel.utils.RestTemplateUtil;
 import io.github.chenyilei2016.amznadclient.kernel.wrapper.AmznIOTimeOutRetryWrapper;
 import lombok.Getter;
@@ -26,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2025/12/31 14:02
  */
 @Slf4j
-public class DefaultAmznTokenRequestHandler implements IAmznTokenRequestHandler, InitializingBean {
+public class DefaultAmznTokenRequestProvider implements IAmznTokenRequestProvider, InitializingBean {
 
     @Getter
     protected RestTemplate tokenClient;

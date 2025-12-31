@@ -20,6 +20,5 @@ public class AmznTokenResponse implements Serializable {
     ////////自存储额外信息
 
     private String clientId;
-    private String clientSecret;
 
 }

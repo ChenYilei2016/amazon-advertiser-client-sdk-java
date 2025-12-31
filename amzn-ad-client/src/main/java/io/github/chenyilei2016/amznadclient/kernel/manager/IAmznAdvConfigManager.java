@@ -1,4 +1,4 @@
-package io.github.chenyilei2016.amznadclient.kernel.cache;
+package io.github.chenyilei2016.amznadclient.kernel.manager;
 
 import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
@@ -16,11 +16,14 @@ public interface IAmznAdvConfigManager {
     RestTemplate getApiClient();
 
     /**
-     * 根据profileId获取token
+     * 根据profileId 获取token
+     * 实际委托给{@link IAmznAdvConfigManager#getAdvTokenByAccessTokenMetaRequest(AccessTokenMetaRequest)} 执行
      */
     AmznTokenResponse getAdvTokenByProfileId(String profileId);
 
-
+    /**
+     * 获取token
+     */
     AmznTokenResponse getAdvTokenByAccessTokenMetaRequest(AccessTokenMetaRequest accessTokenMetaRequest);
 
     /**

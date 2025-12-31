@@ -10,7 +10,7 @@ import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientRequestBefor
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientResponseBeforeReturn;
 import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.EndpointProvider;
 import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.TokenProvider;
-import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.context.AmznAdClientHelper;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;

@@ -1,7 +1,7 @@
 package io.github.chenyilei2016.amznadclient.kernel.advice;
 
 
-import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
 
 /**
  * @author chenyilei

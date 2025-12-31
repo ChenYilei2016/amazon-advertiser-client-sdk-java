@@ -1,6 +1,6 @@
 package io.github.chenyilei2016.amznadclient.kernel.baserequest.token;
 
-import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import lombok.Builder;
