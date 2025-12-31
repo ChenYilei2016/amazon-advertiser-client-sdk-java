@@ -109,6 +109,7 @@ public class AmznBaseRequest {
 
     /**
      * 创建AmznBaseRequest建造者
+     *
      * @deprecated 推荐使用 {@link io.github.chenyilei2016.amznadclient.AmznAdClient#newRequest()}
      */
     @Deprecated
@@ -186,9 +187,12 @@ public class AmznBaseRequest {
      * 设置JSON请求体(自动序列化并验证)
      * <p>如果AmznBaseRequest是通过AmznAdClient.newRequest()创建的,可以直接使用jsonBody(Object)
      */
-    public AmznBaseRequest jsonBody(io.github.chenyilei2016.amznadclient.AmznAdClient amznAdClient, Object jsonBody) {
+    public AmznBaseRequest jsonBodyObject(Object jsonBody) {
+        if (null == amznAdClient) {
+            throw new IllegalStateException("AmznAdClient未设置,请使用AmznAdClient.newRequest()创建AmznBaseRequest");
+        }
         ValidateBean.validateThrow(jsonBody);
-        this.jsonBody = amznAdClient.getRequestGson().toJson(jsonBody);
+        this.jsonBody = this.amznAdClient.getRequestGson().toJson(jsonBody);
         return this;
     }
 

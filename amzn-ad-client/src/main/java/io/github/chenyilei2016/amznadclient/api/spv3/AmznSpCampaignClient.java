@@ -34,7 +34,7 @@ public class AmznSpCampaignClient {
                 .url("/sp/campaigns/list")
                 .mediaType("application/vnd.spCampaign.v3+json")
                 .headerValue(AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getKey(), AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getValue())
-                .jsonBody(amznAdClient, amznSpCampaignListRequest)
+                .jsonBodyObject(amznSpCampaignListRequest)
                 .crudTypeEnum(AmznClientCrudTypeEnum.QUERY);
 
         return amznAdClient.getResultGson().fromJson(amznAdClient.httpPost(amznBaseRequest), AmznSpCampaignListResponse.class);
@@ -49,7 +49,7 @@ public class AmznSpCampaignClient {
                 .url("/sp/campaigns")
                 .mediaType("application/vnd.spCampaign.v3+json")
                 .headerValue(AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getKey(), AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getValue())
-                .jsonBody(amznAdClient.getRequestGson().toJson(amznSpCampaignUpdateRequest))
+                .jsonBodyObject(amznSpCampaignUpdateRequest)
                 .crudTypeEnum(AmznClientCrudTypeEnum.UPDATE);
 
         return amznAdClient.beforeReturnResult(AmznClientCrudTypeEnum.UPDATE, amznAdClient.getResultGson().fromJson(amznAdClient.httpPut(amznBaseRequest), AmznSpCampaignChangeResponse.class));
@@ -64,7 +64,7 @@ public class AmznSpCampaignClient {
                 .url("/sp/campaigns")
                 .mediaType("application/vnd.spCampaign.v3+json")
                 .headerValue(AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getKey(), AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getValue())
-                .jsonBody(amznAdClient.getRequestGson().toJson(amznSpCampaignCreateRequest))
+                .jsonBodyObject(amznSpCampaignCreateRequest)
                 .resultLogPrintLengthNoLimit()
                 .crudTypeEnum(AmznClientCrudTypeEnum.CREATE);
 
@@ -80,7 +80,7 @@ public class AmznSpCampaignClient {
                 .endpointProvider(new ProfileBasedEndpointProvider(amznAdClient.getAmznAdvConfigManager(), amznSpCampaignDeleteRequest.getProfileId()))
                 .url("/sp/campaigns/delete")
                 .mediaType("application/vnd.spCampaign.v3+json")
-                .jsonBody(amznAdClient.getRequestGson().toJson(amznSpCampaignDeleteRequest))
+                .jsonBodyObject(amznSpCampaignDeleteRequest)
                 .crudTypeEnum(AmznClientCrudTypeEnum.DELETE);
 
         AmznSpCampaignChangeResponse amznSpCampaignChangeResponse = amznAdClient.getResultGson().fromJson(amznAdClient.httpPost(amznBaseRequest), AmznSpCampaignChangeResponse.class);
