@@ -56,12 +56,16 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Configuration
 @ConditionalOnClass(Cache.class)
-@ConditionalOnProperty(name = "amazon.ad.cache.enabled", havingValue = "true", matchIfMissing = false)
+@ConditionalOnProperty(name = "aman.ad.client.cache.enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(AmznAdClientCacheProperties.class)
 public class AmznCacheConfiguration {
 
+
     /**
-     * 创建Token请求缓存
+     * 创建带缓存的Token请求提供者
+     *
+     * <p>使用装饰器模式包装原始Provider,添加缓存层
+     * <p>只有在token.enabled=true时才会创建此Bean
      *
      * <p>缓存策略:
      * <ul>
@@ -71,69 +75,83 @@ public class AmznCacheConfiguration {
      * </ul>
      */
     @Bean
-    public Cache<AccessTokenMetaRequest, AmznTokenResponse> tokenRequestProviderCache(
+    @Primary
+    @ConditionalOnProperty(name = "aman.ad.client.cache.token.enabled", havingValue = "true", matchIfMissing = true)
+    public IAmznTokenRequestProvider cachedTokenRequestProvider(
+            @Qualifier("amznTokenRequestProvider") IAmznTokenRequestProvider delegate,
             AmznAdClientCacheProperties properties,
             @Autowired(required = false) RedisConnectionFactory redisConnectionFactory) {
-
         AmznAdClientCacheProperties.TokenCacheConfig config = properties.getToken();
 
         log.info("创建tokenRequestProviderCache 详情缓存,配置: {}", config);
 
-        MultiLevelCacheBuilder.MultiLevelCacheBuilderImpl builder = MultiLevelCacheBuilder.createMultiLevelCacheBuilder();
+        MultiLevelCacheBuilder.MultiLevelCacheBuilderImpl multiLevelCacheBuilder = MultiLevelCacheBuilder.createMultiLevelCacheBuilder();
 
         // JVM缓存
-        Cache<AccessTokenMetaRequest, AmznTokenResponse> jvmCache =
+        Cache<AccessTokenMetaRequest, AmznTokenResponse> jvmAdvTokenCache =
                 CaffeineCacheBuilder.createCaffeineCacheBuilder()
                         .limit(config.getJvmSize())
                         .expireAfterWrite(config.getJvmExpireMinutes(), TimeUnit.MINUTES)
                         .buildCache();
-        builder.addCache(jvmCache);
+        multiLevelCacheBuilder.addCache(jvmAdvTokenCache);
 
         // Redis缓存(可选)
         if (redisConnectionFactory != null) {
             log.info("检测到RedisConnectionFactory,启用Redis缓存");
-            Cache<AccessTokenMetaRequest, AmznTokenResponse> redisCache = RedisSpringDataCacheBuilder.createBuilder()
+            Cache<AccessTokenMetaRequest, AmznTokenResponse> redisAdvTokenCache = RedisSpringDataCacheBuilder.createBuilder()
                     .connectionFactory(redisConnectionFactory)
                     .expireAfterWrite(config.getRedisExpireMinutes(), TimeUnit.MINUTES)
                     .keyPrefix("amzn:adv:token:")
                     .keyConvertor(Fastjson2KeyConvertor.INSTANCE)
                     .buildCache();
-            builder.addCache(redisCache);
+            multiLevelCacheBuilder.addCache(redisAdvTokenCache);
         }
 
-        return builder.refreshPolicy(RefreshPolicy.newPolicy(config.getRefreshMinutes(), TimeUnit.MINUTES)
+        Cache<AccessTokenMetaRequest, AmznTokenResponse> multiLevelCache = multiLevelCacheBuilder
+                .loader(key -> delegate.doRefreshToken((AccessTokenMetaRequest) key))
+                .refreshPolicy(RefreshPolicy.newPolicy(config.getRefreshMinutes(), TimeUnit.MINUTES)
                         .stopRefreshAfterLastAccess(config.getStopRefreshAfterHours(), TimeUnit.HOURS))
                 .expireAfterWrite(config.getRedisExpireMinutes(), TimeUnit.MINUTES)
                 .useExpireOfSubCache(true)
                 .cachePenetrateProtect(true)
                 .buildCache();
+
+        log.info("创建带缓存的Token请求提供者");
+        return new CachedTokenRequestProvider(delegate, multiLevelCache);
     }
 
     /**
-     * 创建Profile详情缓存
+     * 创建带缓存的Profile详情提供者
+     * <p>只有在profile.enabled=true时才会创建此Bean
      *
      * <p>缓存策略:
      * <ul>
-     *   <li>JVM缓存: 60秒过期,10000条</li>
-     *   <li>缓存穿透保护</li>
+     *   <li>JVM缓存: 1分钟过期,10000条</li>
      * </ul>
      */
     @Bean
-    public Cache<String, ProfileDetailMetaResponse> profileDetailMetaProviderCache(
+    @Primary
+    @ConditionalOnProperty(name = "aman.ad.client.cache.profile.enabled", havingValue = "true", matchIfMissing = true)
+    public IProfileDetailMetaProvider cachedProfileDetailMetaProvider(
+            @Qualifier("profileDetailMetaProvider") IProfileDetailMetaProvider delegate,
             AmznAdClientCacheProperties properties) {
 
         log.info("创建Profile详情缓存,配置: {}", properties.getProfile());
 
         AmznAdClientCacheProperties.ProfileCacheConfig config = properties.getProfile();
-        return CaffeineCacheBuilder.createCaffeineCacheBuilder()
+        Cache<String, ProfileDetailMetaResponse> cache = CaffeineCacheBuilder.createCaffeineCacheBuilder()
+                .loader(profileId -> delegate.getProfileDetailMetaByProfileId((String) profileId))
                 .limit(config.getJvmSize())
                 .expireAfterWrite(config.getJvmExpireSeconds(), TimeUnit.SECONDS)
                 .cachePenetrateProtect(true)
                 .buildCache();
+        log.info("创建带缓存的Profile详情提供者");
+        return new CachedProfileDetailMetaProvider(delegate, cache);
     }
 
     /**
-     * 创建认证凭证缓存
+     * 创建带缓存的认证凭证提供者
+     * <p>只有在credentials.enabled=true时才会创建此Bean
      *
      * <p>缓存策略:
      * <ul>
@@ -142,53 +160,20 @@ public class AmznCacheConfiguration {
      * </ul>
      */
     @Bean
-    public Cache<String, AmznAuthCredentialsResponse> authCredentialsProviderCache(
+    @Primary
+    @ConditionalOnProperty(name = "aman.ad.client.cache.credentials.enabled", havingValue = "true", matchIfMissing = true)
+    public IAuthCredentialsProvider cachedAuthCredentialsProvider(
+            @Qualifier("authCredentialsProvider") IAuthCredentialsProvider delegate,
             AmznAdClientCacheProperties properties) {
 
-        log.info("创建认证凭证缓存,配置: {}", properties.getCredentials());
-
         AmznAdClientCacheProperties.CredentialsCacheConfig config = properties.getCredentials();
-        return CaffeineCacheBuilder.createCaffeineCacheBuilder()
+        Cache<String, AmznAuthCredentialsResponse> authCredentialsProviderCache = CaffeineCacheBuilder.createCaffeineCacheBuilder()
+                .loader(profileId -> delegate.getAuthCredentialsByProfileId((String) profileId))
                 .limit(config.getJvmSize())
                 .expireAfterWrite(config.getJvmExpireMinutes(), TimeUnit.MINUTES)
                 .cachePenetrateProtect(true)
                 .buildCache();
-    }
 
-    /**
-     * 创建带缓存的Token请求提供者
-     *
-     * <p>使用装饰器模式包装原始Provider,添加缓存层
-     */
-    @Bean
-    @Primary
-    public IAmznTokenRequestProvider cachedTokenRequestProvider(
-            @Qualifier("amznTokenRequestProvider") IAmznTokenRequestProvider delegate,
-            Cache<AccessTokenMetaRequest, AmznTokenResponse> tokenRequestProviderCache) {
-        log.info("创建带缓存的Token请求提供者");
-        return new CachedTokenRequestProvider(delegate, tokenRequestProviderCache);
-    }
-
-    /**
-     * 创建带缓存的Profile详情提供者
-     */
-    @Bean
-    @Primary
-    public IProfileDetailMetaProvider cachedProfileDetailMetaProvider(
-            @Qualifier("profileDetailMetaProvider") IProfileDetailMetaProvider delegate,
-            Cache<String, ProfileDetailMetaResponse> profileDetailMetaProviderCache) {
-        log.info("创建带缓存的Profile详情提供者");
-        return new CachedProfileDetailMetaProvider(delegate, profileDetailMetaProviderCache);
-    }
-
-    /**
-     * 创建带缓存的认证凭证提供者
-     */
-    @Bean
-    @Primary
-    public IAuthCredentialsProvider cachedAuthCredentialsProvider(
-            @Qualifier("authCredentialsProvider") IAuthCredentialsProvider delegate,
-            Cache<String, AmznAuthCredentialsResponse> authCredentialsProviderCache) {
         log.info("创建带缓存的认证凭证提供者");
         return new CachedAuthCredentialsProvider(delegate, authCredentialsProviderCache);
     }

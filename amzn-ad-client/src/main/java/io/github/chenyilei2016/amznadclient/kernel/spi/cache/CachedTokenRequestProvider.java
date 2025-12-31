@@ -63,9 +63,6 @@ public class CachedTokenRequestProvider implements IAmznTokenRequestProvider {
      */
     @Override
     public AmznTokenResponse doRefreshToken(AccessTokenMetaRequest request) {
-        return cache.computeIfAbsent(request, key -> {
-            log.debug("Token缓存未命中,调用原始Provider获取token: {}", request.getClientId());
-            return delegate.doRefreshToken(key);
-        });
+        return cache.get(request);
     }
 }
