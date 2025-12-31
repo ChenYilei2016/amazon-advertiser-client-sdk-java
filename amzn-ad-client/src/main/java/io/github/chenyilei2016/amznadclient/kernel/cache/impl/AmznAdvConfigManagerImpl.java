@@ -47,13 +47,11 @@ public class AmznAdvConfigManagerImpl implements IAmznAdvConfigManager {
 
     @Override
     public AmznTokenResponse getAdvTokenByProfileId(String profileId) {
-        amznTokenRequestHandler.doRefreshToken()
         return null;
     }
 
     @Override
     public ProfileDetailMetaResponse getProfileDetailMetaByProfileId(String profileId) {
-        amznTokenRequestHandler.doRefreshToken()
         return null;
     }
 

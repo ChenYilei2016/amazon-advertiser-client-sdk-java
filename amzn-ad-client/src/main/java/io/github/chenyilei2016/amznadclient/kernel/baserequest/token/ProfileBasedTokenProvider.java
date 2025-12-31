@@ -1,5 +1,6 @@
 package io.github.chenyilei2016.amznadclient.kernel.baserequest.token;
 
+import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import lombok.Getter;
@@ -35,7 +36,7 @@ public class ProfileBasedTokenProvider implements TokenProvider {
     /**
      * Amazon广告配置管理器,用于查询profileId对应的配置信息
      */
-    private final AmznAdvConfigManager configManager;
+    private final IAmznAdvConfigManager configManager;
 
     /**
      * Amazon广告账户的profileId
@@ -43,7 +44,7 @@ public class ProfileBasedTokenProvider implements TokenProvider {
     private final String profileId;
 
 
-    public ProfileBasedTokenProvider(AmznAdvConfigManager configManager, String profileId) {
+    public ProfileBasedTokenProvider(IAmznAdvConfigManager configManager, String profileId) {
         this.configManager = configManager;
         this.profileId = profileId;
     }
@@ -64,7 +65,7 @@ public class ProfileBasedTokenProvider implements TokenProvider {
      */
     @Override
     public AmznTokenResponse getAccessToken() {
-        return configManager.getAdvToken(profileId);
+        return configManager.getAdvTokenByProfileId(profileId);
     }
 
     @Override
