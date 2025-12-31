@@ -137,17 +137,6 @@ public class AmznBaseRequest {
         return this;
     }
 
-    public AmznBaseRequest advertiserId(String advertiserId) {
-        this.advertiserId = advertiserId;
-        return this;
-    }
-
-    public AmznBaseRequest entityId(String entityId) {
-        this.entityId = entityId;
-        return this;
-    }
-
-
     public AmznBaseRequest bodyKeyValue(String key, Object value) {
         this.body.put(key, value);
         return this;
