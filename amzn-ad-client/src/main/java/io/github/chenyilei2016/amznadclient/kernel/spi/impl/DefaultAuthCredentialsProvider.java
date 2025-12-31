@@ -1,6 +1,6 @@
 package io.github.chenyilei2016.amznadclient.kernel.spi.impl;
 
-import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
+import io.github.chenyilei2016.amznadclient.kernel.core.AmznAuthCredentialsResponse;
 import io.github.chenyilei2016.amznadclient.kernel.exceptions.AmznApiException;
 import io.github.chenyilei2016.amznadclient.kernel.spi.IAuthCredentialsProvider;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +42,7 @@ import org.springframework.beans.factory.InitializingBean;
 public class DefaultAuthCredentialsProvider implements IAuthCredentialsProvider, InitializingBean {
 
     @Override
-    public AmznAdAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId) {
+    public AmznAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId) {
         return null;
     }
 

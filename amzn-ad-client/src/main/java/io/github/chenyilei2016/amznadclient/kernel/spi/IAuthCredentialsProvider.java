@@ -1,6 +1,6 @@
 package io.github.chenyilei2016.amznadclient.kernel.spi;
 
-import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
+import io.github.chenyilei2016.amznadclient.kernel.core.AmznAuthCredentialsResponse;
 
 /**
  * Amazon广告认证凭证提供者接口
@@ -17,7 +17,7 @@ import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsRes
  * 
  * @author chenyilei
  * @since 2025/12/31
- * @see AmznAdAuthCredentialsResponse
+ * @see AmznAuthCredentialsResponse
  */
 public interface IAuthCredentialsProvider {
     
@@ -29,5 +29,5 @@ public interface IAuthCredentialsProvider {
      * @throws io.github.chenyilei2016.amznadclient.kernel.exceptions.AmznApiException 
      *         如果profileId不存在或获取失败
      */
-    AmznAdAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId);
+    AmznAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId);
 }

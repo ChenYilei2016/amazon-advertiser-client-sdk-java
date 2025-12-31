@@ -7,7 +7,7 @@ import lombok.Data;
  * @since 2025/12/31 14:12
  */
 @Data
-public class AmznAdAuthCredentialsResponse {
+public class AmznAuthCredentialsResponse {
 
     private String grantType = AmznGrantTypeEnum.REFRESH_TOKEN.getCode();
 

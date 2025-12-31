@@ -5,7 +5,7 @@ import io.github.chenyilei2016.amznadclient.kernel.spi.IAuthCredentialsProvider;
 import io.github.chenyilei2016.amznadclient.kernel.spi.IProfileDetailMetaProvider;
 import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
-import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
+import io.github.chenyilei2016.amznadclient.kernel.core.AmznAuthCredentialsResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMetaResponse;
 import io.github.chenyilei2016.amznadclient.kernel.utils.RestTemplateUtil;
@@ -106,7 +106,7 @@ public class AmznAdvConfigManagerImpl implements IAmznAdvConfigManager {
     @Override
     public AmznTokenResponse getAdvTokenByProfileId(String profileId) {
         // 1. 获取OAuth认证凭证
-        AmznAdAuthCredentialsResponse authCredentials = this.getAuthCredentialsByProfileId(profileId);
+        AmznAuthCredentialsResponse authCredentials = this.getAuthCredentialsByProfileId(profileId);
         
         // 2. 获取Profile详情(包含refreshToken)
         ProfileDetailMetaResponse profileDetailMetaResponse = this.getProfileDetailMetaByProfileId(profileId);
@@ -157,7 +157,7 @@ public class AmznAdvConfigManagerImpl implements IAmznAdvConfigManager {
      * @return OAuth认证凭证
      */
     @Override
-    public AmznAdAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId) {
+    public AmznAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId) {
         return authCredentialsProvider.getAuthCredentialsByProfileId(profileId);
     }
 }

@@ -1,7 +1,7 @@
 package io.github.chenyilei2016.amznadclient.kernel.manager;
 
 import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
-import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
+import io.github.chenyilei2016.amznadclient.kernel.core.AmznAuthCredentialsResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMetaResponse;
 import org.springframework.web.client.RestTemplate;
@@ -34,6 +34,6 @@ public interface IAmznAdvConfigManager {
     /**
      * 根据profileId 获取clientId 和 clientSecret 等oauth信息
      */
-    AmznAdAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId);
+    AmznAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId);
 
 }

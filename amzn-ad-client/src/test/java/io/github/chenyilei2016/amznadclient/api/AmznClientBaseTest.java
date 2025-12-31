@@ -4,7 +4,7 @@ import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.SystemPropGet;
 import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.manager.impl.AmznAdvConfigManagerImpl;
-import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
+import io.github.chenyilei2016.amznadclient.kernel.core.AmznAuthCredentialsResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMetaResponse;
 import io.github.chenyilei2016.amznadclient.kernel.spi.impl.DefaultAmznTokenRequestProvider;
 import io.github.chenyilei2016.amznadclient.kernel.spi.impl.DefaultAuthCredentialsProvider;
@@ -59,11 +59,11 @@ public class AmznClientBaseTest {
 
         DefaultAuthCredentialsProvider defaultAuthCredentialsProvider = new DefaultAuthCredentialsProvider() {
             @Override
-            public AmznAdAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId) {
-                AmznAdAuthCredentialsResponse amznAdAuthCredentialsResponse = new AmznAdAuthCredentialsResponse();
-                amznAdAuthCredentialsResponse.setAdvClientId(SystemPropGet.clientId());
-                amznAdAuthCredentialsResponse.setAdvClientSecret(SystemPropGet.clientSecret());
-                return amznAdAuthCredentialsResponse;
+            public AmznAuthCredentialsResponse getAuthCredentialsByProfileId(String profileId) {
+                AmznAuthCredentialsResponse amznAuthCredentialsResponse = new AmznAuthCredentialsResponse();
+                amznAuthCredentialsResponse.setAdvClientId(SystemPropGet.clientId());
+                amznAuthCredentialsResponse.setAdvClientSecret(SystemPropGet.clientSecret());
+                return amznAuthCredentialsResponse;
             }
         };
 
