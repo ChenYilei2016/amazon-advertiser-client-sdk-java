@@ -1,4 +1,13 @@
+.flattened-pom.xml
+
+# Compiled class file
 *.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -6,16 +15,49 @@
 # Package Files #
 *.jar
 *.war
+*.nar
 *.ear
-
-# exclude jar for gradle wrapper
-!gradle/wrapper/*.jar
+*.zip
+*.tar.gz
+*.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-# build files
-**/target
-target
-.gradle
-build
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.DS_Store
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+/.cursor/
+/.arcDocs/
+
+
+/tmp_delete/
