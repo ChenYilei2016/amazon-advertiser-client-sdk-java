@@ -2,6 +2,7 @@ package io.github.chenyilei2016.amznadclient.kernel.cache.impl;
 
 import io.github.chenyilei2016.amznadclient.kernel.amazon.IAmznTokenRequestHandler;
 import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMetaResponse;
@@ -47,6 +48,18 @@ public class AmznAdvConfigManagerImpl implements IAmznAdvConfigManager {
 
     @Override
     public AmznTokenResponse getAdvTokenByProfileId(String profileId) {
+        AmznAdAuthCredentialsResponse authCredentials = this.getAuthCredentialsByProfileId(profileId);
+        ProfileDetailMetaResponse profileDetailMetaResponse = this.getProfileDetailMetaByProfileId(profileId);
+        AccessTokenMetaRequest accessTokenMetaRequest = new AccessTokenMetaRequest();
+        accessTokenMetaRequest.setGrantType(authCredentials.getGrantType()); // 默认refresh模式
+        accessTokenMetaRequest.setClientId(authCredentials.getAdvClientId());
+        accessTokenMetaRequest.setClientSecret(authCredentials.getAdvClientSecret());
+        accessTokenMetaRequest.setRefreshToken(profileDetailMetaResponse.getAdvRefreshToken());
+        return this.getAdvTokenByAccessTokenMetaRequest(accessTokenMetaRequest);
+    }
+
+    @Override
+    public AmznTokenResponse getAdvTokenByAccessTokenMetaRequest(AccessTokenMetaRequest accessTokenMetaRequest) {
         return null;
     }
 

@@ -1,5 +1,6 @@
 package io.github.chenyilei2016.amznadclient.kernel.cache;
 
+import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznAdAuthCredentialsResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMetaResponse;
@@ -18,6 +19,9 @@ public interface IAmznAdvConfigManager {
      * 根据profileId获取token
      */
     AmznTokenResponse getAdvTokenByProfileId(String profileId);
+
+
+    AmznTokenResponse getAdvTokenByAccessTokenMetaRequest(AccessTokenMetaRequest accessTokenMetaRequest);
 
     /**
      * 根据profileId 获取profile信息

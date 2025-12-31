@@ -94,7 +94,7 @@ public class DirectCredentialsTokenProvider implements TokenProvider {
                 .clientSecret(clientSecret)
                 .refreshToken(refreshToken)
                 .build();
-        return configManager.getAdvToken(meta);
+        return configManager.getAdvTokenByAccessTokenMetaRequest(meta);
     }
 
     @Override

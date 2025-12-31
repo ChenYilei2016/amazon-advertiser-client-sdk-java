@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class AmznAdAuthCredentialsResponse {
 
+    private String grantType = AmznGrantTypeEnum.REFRESH_TOKEN.getCode();
+
     private String advClientId;
 
     private String advClientSecret;
