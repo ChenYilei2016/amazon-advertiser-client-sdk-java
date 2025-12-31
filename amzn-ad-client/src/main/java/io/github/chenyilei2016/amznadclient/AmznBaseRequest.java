@@ -28,16 +28,6 @@ public class AmznBaseRequest {
      */
     private transient String profileId;
 
-    /**
-     * AMC的账号id，AMC的实例和报告请求需要
-     **/
-    private transient String advertiserId;
-
-    /**
-     * AMC的账号id或者是广告主id，AMC的实例和报告请求需要
-     **/
-    private transient String entityId;
-
 
     /**
      * 如果没有profileId, 会使用此配置

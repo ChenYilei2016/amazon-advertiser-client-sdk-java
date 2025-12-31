@@ -299,23 +299,11 @@ public class AmznAdClient {
 
     private void mergeProfileHeaders(AmznBaseRequest amznBaseRequest, HttpHeaders httpHeaders) {
         String profileId = amznBaseRequest.getProfileId();
-        String advertiserId = amznBaseRequest.getAdvertiserId();
-        String entityId = amznBaseRequest.getEntityId();
-        if (profileId == null && advertiserId == null && entityId == null) {
+        if (profileId == null) {
             throw new IllegalArgumentException("无profileId , requestDetail: " + amznBaseRequest.baseDetail());
         }
-        if (profileId != null) {
-            //需要profileId的情况
-            httpHeaders.add(AmznConstants.HEADER_advertisingApiScope, profileId);
-        }
-        // amc 的实例和报告请求
-        if (advertiserId != null) {
-            httpHeaders.add(AmznConstants.HEADER_advertiserId, advertiserId);
-        }
-        //amc 的受众规则请求
-        if (entityId != null) {
-            httpHeaders.add(AmznConstants.HEADER_entityId, entityId);
-        }
+        //需要profileId的情况
+        httpHeaders.add(AmznConstants.HEADER_advertisingApiScope, profileId);
         AmznTokenResponse advTokenResponse = this.amznAdvConfigManager.getAdvToken(profileId);
         httpHeaders.add(AmznConstants.HEADER_authorization, AmznConstants.HEADER_authorizationPrefix + advTokenResponse.getAccess_token());
         httpHeaders.add(AmznConstants.HEADER_clientId, advTokenResponse.getClientId());
