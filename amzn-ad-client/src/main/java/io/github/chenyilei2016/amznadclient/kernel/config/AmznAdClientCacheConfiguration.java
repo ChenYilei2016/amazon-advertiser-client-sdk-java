@@ -114,6 +114,7 @@ public class AmznAdClientCacheConfiguration {
                 .expireAfterWrite(config.getRedisExpireMinutes(), TimeUnit.MINUTES)
                 .useExpireOfSubCache(true)
                 .cachePenetrateProtect(true)
+                .cacheNullValue(true)
                 .buildCache();
 
         log.info("创建带缓存的Token请求提供者");
@@ -144,6 +145,7 @@ public class AmznAdClientCacheConfiguration {
                 .limit(config.getJvmSize())
                 .expireAfterWrite(config.getJvmExpireSeconds(), TimeUnit.SECONDS)
                 .cachePenetrateProtect(true)
+                .cacheNullValue(true)
                 .buildCache();
         log.info("创建带缓存的Profile详情提供者");
         return new CachedProfileDetailMetaProvider(delegate, cache);
@@ -171,6 +173,7 @@ public class AmznAdClientCacheConfiguration {
                 .limit(config.getJvmSize())
                 .expireAfterWrite(config.getJvmExpireMinutes(), TimeUnit.MINUTES)
                 .cachePenetrateProtect(true)
+                .cacheNullValue(true)
                 .buildCache();
 
         log.info("创建带缓存的认证凭证提供者");

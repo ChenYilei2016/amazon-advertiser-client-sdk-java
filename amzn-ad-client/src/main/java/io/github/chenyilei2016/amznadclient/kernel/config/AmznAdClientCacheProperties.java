@@ -73,7 +73,7 @@ public class AmznAdClientCacheProperties {
         /**
          * JVM缓存大小
          */
-        private int jvmSize = 10000;
+        private int jvmSize = 15000;
         
         /**
          * JVM缓存过期时间(分钟)
@@ -110,7 +110,7 @@ public class AmznAdClientCacheProperties {
         /**
          * JVM缓存大小
          */
-        private int jvmSize = 10000;
+        private int jvmSize = 15000;
         
         /**
          * JVM缓存过期时间(秒)
@@ -132,7 +132,7 @@ public class AmznAdClientCacheProperties {
         /**
          * JVM缓存大小
          */
-        private int jvmSize = 1000;
+        private int jvmSize = 15000;
         
         /**
          * JVM缓存过期时间(分钟)
