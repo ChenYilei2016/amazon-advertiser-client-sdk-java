@@ -1,8 +1,6 @@
 package io.github.chenyilei2016.amznadclient.api.spv3;
 
-import com.google.common.collect.Lists;
-import io.github.chenyilei2016.amznadclient.api.AmznClientBaseTest;
-import io.github.chenyilei2016.amznadclient.model.spv3.AmznCommonQueryTermMatchTypeFilter;
+import io.github.chenyilei2016.amznadclient.api.AmznClientLocalTest;
 import io.github.chenyilei2016.amznadclient.model.spv3.AmznSpCampaignListRequest;
 import io.github.chenyilei2016.amznadclient.model.spv3.AmznSpCampaignListResponse;
 import org.junit.Test;
@@ -11,7 +9,7 @@ import org.junit.Test;
  * @author chenyilei
  * @since 2025/12/25 14:51
  */
-public class AmznSpCampaignClientTest extends AmznClientBaseTest {
+public class AmznSpCampaignClientTest extends AmznClientLocalTest {
     AmznSpCampaignClient amznSpCampaignClient = newAmznClient(AmznSpCampaignClient.class);
 
 
