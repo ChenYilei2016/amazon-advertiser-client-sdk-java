@@ -1,7 +1,7 @@
 package io.github.chenyilei2016.amznadclient.kernel.baserequest.token;
 
-import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvConfigManager;
-import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenRequestMeta;
+import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,7 +41,7 @@ import org.springframework.http.HttpHeaders;
  * @author chenyilei
  * @date 2025/12/31
  * @see TokenProvider
- * @see AccessTokenRequestMeta
+ * @see AccessTokenMetaRequest
  */
 @Builder
 @Getter
@@ -50,7 +50,7 @@ public class DirectCredentialsTokenProvider implements TokenProvider {
     /**
      * Amazon广告配置管理器,用于调用token刷新API
      */
-    private final AmznAdvConfigManager configManager;
+    private final IAmznAdvConfigManager configManager;
 
     /**
      * Amazon广告应用的Client ID
@@ -67,7 +67,7 @@ public class DirectCredentialsTokenProvider implements TokenProvider {
      */
     private final String refreshToken;
 
-    public DirectCredentialsTokenProvider(AmznAdvConfigManager configManager, String clientId, String clientSecret, String refreshToken) {
+    public DirectCredentialsTokenProvider(IAmznAdvConfigManager configManager, String clientId, String clientSecret, String refreshToken) {
         this.configManager = configManager;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
@@ -89,7 +89,7 @@ public class DirectCredentialsTokenProvider implements TokenProvider {
      */
     @Override
     public AmznTokenResponse getAccessToken() {
-        AccessTokenRequestMeta meta = AccessTokenRequestMeta.builder()
+        AccessTokenMetaRequest meta = AccessTokenMetaRequest.builder()
                 .clientId(clientId)
                 .clientSecret(clientSecret)
                 .refreshToken(refreshToken)

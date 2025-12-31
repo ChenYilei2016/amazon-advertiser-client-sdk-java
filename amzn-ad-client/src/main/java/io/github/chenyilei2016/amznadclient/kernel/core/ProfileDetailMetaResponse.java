@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @date 2023/09/11 15:57
  */
 @Data
-public class ProfileDetailMeta implements Serializable {
+public class ProfileDetailMetaResponse implements Serializable {
 
 
     private String profileId;
@@ -22,7 +22,6 @@ public class ProfileDetailMeta implements Serializable {
     private String countryCode;
 
     private String endpointUrl;
-
     /**
      * SC VC
      */

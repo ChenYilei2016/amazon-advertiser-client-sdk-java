@@ -4,11 +4,9 @@ import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.embedded.CaffeineCacheBuilder;
 import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.SystemPropGet;
-import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvConfigManager;
-import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvTokenCacheManager;
-import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenRequestMeta;
+import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
-import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMeta;
+import io.github.chenyilei2016.amznadclient.kernel.core.ProfileDetailMetaResponse;
 import io.github.chenyilei2016.amznadclient.model.account.AmznProfileTypeEnum;
 import io.github.chenyilei2016.amznadclient.model.common.AmznRegionEnum;
 import org.springframework.cglib.core.ReflectUtils;
@@ -51,18 +49,18 @@ public class AmznClientBaseTest {
         /**
          * mock
          */
-        Cache<AccessTokenRequestMeta, AmznTokenResponse> tokenCache = CaffeineCacheBuilder.createCaffeineCacheBuilder()
+        Cache<AccessTokenMetaRequest, AmznTokenResponse> tokenCache = CaffeineCacheBuilder.createCaffeineCacheBuilder()
                 .limit(100)
                 .expireAfterWrite(1000, TimeUnit.SECONDS) //此值在multi下是会被覆盖的
-                .loader(key -> amznAdvConfigManager.doRefreshToken((AccessTokenRequestMeta) key))
+                .loader(key -> amznAdvConfigManager.doRefreshToken((AccessTokenMetaRequest) key))
                 .buildCache();
 
-        Cache<String, ProfileDetailMeta> profileCache = CaffeineCacheBuilder.createCaffeineCacheBuilder()
+        Cache<String, ProfileDetailMetaResponse> profileCache = CaffeineCacheBuilder.createCaffeineCacheBuilder()
                 .limit(100)
                 .expireAfterWrite(1000, TimeUnit.SECONDS) //此值在multi下是会被覆盖的
                 .loader(profileId -> {
                     final String profileIdStr = (String) profileId;
-                    ProfileDetailMeta config = new ProfileDetailMeta();
+                    ProfileDetailMetaResponse config = new ProfileDetailMetaResponse();
                     //默认的配置 , 要加入properties !!!
                     config.setProfileId(profileIdStr);
                     config.setCountryCode("US");
@@ -73,10 +71,10 @@ public class AmznClientBaseTest {
                 })
                 .buildCache();
 
-        AmznAdvTokenCacheManager amznAdvTokenCacheManager = new AmznAdvTokenCacheManager(tokenCache, profileCache);
-        amznAdvConfigManager.setAmznAdvTokenCacheManager(amznAdvTokenCacheManager);
-        amznAdvConfigManager.afterPropertiesSet();
-        AmznClientBaseTest.amznAdClient = new AmznAdClient(amznAdvConfigManager);
+//        AmznAdvTokenCacheManager amznAdvTokenCacheManager = new AmznAdvTokenCacheManager(tokenCache, profileCache);
+//        amznAdvConfigManager.setAmznAdvTokenCacheManager(amznAdvTokenCacheManager);
+//        amznAdvConfigManager.afterPropertiesSet();
+//        AmznClientBaseTest.amznAdClient = new AmznAdClient(amznAdvConfigManager);
     }
 
     protected static <T> T newAmznClient(Class<T> tClass) {

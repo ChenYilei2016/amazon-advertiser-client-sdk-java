@@ -54,13 +54,6 @@ public class AmznAdAccountClient {
             return null;
         }
 
-        // 通过 amazonAccountType 获取 clientId 和 clientSecret
-        AmazonConfigProperties.AmazonAccountConfigBO accountDetail = new AmazonConfigProperties() {
-            @Override
-            public AmazonAccountConfigBO getAccountDetail(String accountType) {
-                return null;
-            }
-        }.getAccountDetail(amazonAccountType);
 
         AmznBaseRequest amznBaseRequest = AmznBaseRequest.builder()
                 .url("/v2/profiles")
@@ -68,8 +61,8 @@ public class AmznAdAccountClient {
                 .endpointProvider(new FixedEndpointProvider(endpointUrlPrefix))
                 .tokenProvider(new DirectCredentialsTokenProvider(
                         amznAdClient.getAmznAdvConfigManager(),
-                        accountDetail.getAdvClientId(),
-                        accountDetail.getAdvClientSecret(),
+                        amazonAccountType,//accountDetail.getAdvClientId(),
+                        amazonAccountType,//accountDetail.getAdvClientSecret(),
                         refreshToken
                 ));
 

@@ -1,7 +1,7 @@
 package io.github.chenyilei2016.amznadclient.kernel.advice;
 
 
-import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
 
 /**
  * @author chenyilei
@@ -9,5 +9,5 @@ import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvConfigManager;
  */
 public interface AmznClientRequestBeforeInvoke {
 
-    public void beforeInvoke(AmznAdvConfigManager amznAdvConfigManager);
+    public void beforeInvoke(IAmznAdvConfigManager amznAdvConfigManager);
 }

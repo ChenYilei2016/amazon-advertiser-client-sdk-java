@@ -8,17 +8,17 @@ import com.google.gson.reflect.TypeToken;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientRequestBeforeInvoke;
 import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientResponseBeforeReturn;
-import io.github.chenyilei2016.amznadclient.kernel.cache.AmznAdvConfigManager;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.EndpointProvider;
+import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.TokenProvider;
+import io.github.chenyilei2016.amznadclient.kernel.cache.IAmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.context.AmznAdClientHelper;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
-import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.EndpointProvider;
 import io.github.chenyilei2016.amznadclient.kernel.exceptions.AmznApiException;
 import io.github.chenyilei2016.amznadclient.kernel.exceptions.AmznApiRetryMaxException;
 import io.github.chenyilei2016.amznadclient.kernel.gson.GsonFromStringDeserializer;
 import io.github.chenyilei2016.amznadclient.kernel.gson.GsonUtil;
 import io.github.chenyilei2016.amznadclient.kernel.support.MediaTypePair;
-import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.TokenProvider;
 import io.github.chenyilei2016.amznadclient.kernel.utils.RestTemplateUtil;
 import io.github.chenyilei2016.amznadclient.kernel.wrapper.Amzn401UnauthorizedRetryWrapper;
 import io.github.chenyilei2016.amznadclient.kernel.wrapper.AmznIOTimeOutRetryWrapper;
@@ -52,7 +52,7 @@ import java.util.function.Supplier;
 public class AmznAdClient {
 
     @Getter
-    private final AmznAdvConfigManager amznAdvConfigManager;
+    private final IAmznAdvConfigManager amznAdvConfigManager;
 
     @Getter
     private final Gson requestGson;
@@ -68,7 +68,7 @@ public class AmznAdClient {
     /**
      * @param amznAdvConfigManager 配置管理
      */
-    public AmznAdClient(AmznAdvConfigManager amznAdvConfigManager) {
+    public AmznAdClient(IAmznAdvConfigManager amznAdvConfigManager) {
         this.amznAdvConfigManager = amznAdvConfigManager;
         requestGson = new GsonBuilder()
                 //只有标注了@Expose的注解才会序列化和反序列化
@@ -361,7 +361,7 @@ public class AmznAdClient {
         return res;
     }
 
-    public void beforeInvokeRequest(AmznBaseRequest amznBaseRequest, AmznAdvConfigManager amznAdvConfigManager) {
+    public void beforeInvokeRequest(AmznBaseRequest amznBaseRequest, IAmznAdvConfigManager amznAdvConfigManager) {
         Object sourceRequest = amznBaseRequest.getSourceRequest();
         if (sourceRequest instanceof AmznClientRequestBeforeInvoke) {
             ((AmznClientRequestBeforeInvoke) sourceRequest).beforeInvoke(amznAdvConfigManager);
