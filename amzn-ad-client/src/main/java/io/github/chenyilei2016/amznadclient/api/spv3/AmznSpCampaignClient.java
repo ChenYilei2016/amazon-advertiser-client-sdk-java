@@ -33,7 +33,7 @@ public class AmznSpCampaignClient {
                 .url("/sp/campaigns/list")
                 .mediaType("application/vnd.spCampaign.v3+json")
                 .headerValue(AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getKey(), AmznHeaderEnum.PREFER_RETURN_REPRESENTATION.getValue())
-                .jsonBody(amznAdClient.getRequestGson().toJson(amznSpCampaignListRequest))
+                .jsonBody(amznAdClient, amznSpCampaignListRequest)
                 .crudTypeEnum(AmznClientCrudTypeEnum.QUERY);
 
         return amznAdClient.getResultGson().fromJson(amznAdClient.httpPost(amznBaseRequest), AmznSpCampaignListResponse.class);

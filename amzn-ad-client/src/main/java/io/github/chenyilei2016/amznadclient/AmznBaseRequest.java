@@ -5,6 +5,7 @@ import io.github.chenyilei2016.amznadclient.kernel.advice.AmznClientCrudTypeEnum
 import io.github.chenyilei2016.amznadclient.kernel.baserequest.endpoint.EndpointProvider;
 import io.github.chenyilei2016.amznadclient.kernel.support.MediaTypePair;
 import io.github.chenyilei2016.amznadclient.kernel.baserequest.token.TokenProvider;
+import io.github.chenyilei2016.amznadclient.kernel.validate.ValidateBean;
 import lombok.*;
 import org.springframework.http.HttpHeaders;
 
@@ -24,21 +25,21 @@ import java.util.regex.Pattern;
 public class AmznBaseRequest {
 
     private static final Pattern urlReplacePattern = Pattern.compile("\\{([^}]+)}");
-    
+
     /**
      * Token提供者 - 策略模式
      * <p>如果设置了此字段,将优先使用TokenProvider获取token,而不是使用profileId或specialClientDetail。
      * <p>这提供了最大的灵活性,允许用户完全自定义token获取逻辑。
      */
     private transient TokenProvider tokenProvider;
-    
+
     /**
      * Endpoint提供者 - 策略模式
      * <p>如果设置了此字段,将优先使用EndpointProvider获取endpoint URL。
      * <p>这提供了灵活性,允许用户自定义endpoint获取逻辑。
      */
     private transient EndpointProvider endpointProvider;
-    
+
     /**
      * 请求参数,
      * get会拼接到url上
@@ -160,6 +161,12 @@ public class AmznBaseRequest {
         return this;
     }
 
+    public AmznBaseRequest jsonBody(AmznAdClient amznAdClient, Object jsonBody) {
+        ValidateBean.validateThrow(jsonBody);
+        this.jsonBody = amznAdClient.getRequestGson().toJson(jsonBody);
+        return this;
+    }
+
     public AmznBaseRequest crudTypeEnum(AmznClientCrudTypeEnum crudTypeEnum) {
         this.crudTypeEnum = crudTypeEnum;
         return this;
@@ -210,21 +217,21 @@ public class AmznBaseRequest {
         appendUrlEndParamMap.put(key, value);
         return this;
     }
-    
+
     // ==================== TokenProvider相关方法 ====================
-    
+
     /**
      * 设置TokenProvider
      * <p>使用TokenProvider可以提供最大的灵活性来自定义token获取逻辑。
-     * 
+     *
      */
     public AmznBaseRequest tokenProvider(TokenProvider tokenProvider) {
         this.tokenProvider = tokenProvider;
         return this;
     }
-    
+
     // ==================== EndpointProvider相关方法 ====================
-    
+
     /**
      * 设置EndpointProvider
      * <p>使用EndpointProvider可以提供灵活性来自定义endpoint获取逻辑。
