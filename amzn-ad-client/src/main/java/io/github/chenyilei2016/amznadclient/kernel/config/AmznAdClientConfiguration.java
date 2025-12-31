@@ -62,11 +62,13 @@ public class AmznAdClientConfiguration {
      * 创建Token请求处理器Bean
      *
      * <p>默认使用{@link DefaultAmznTokenRequestProvider},负责调用Amazon API刷新token。
+     * <p>注意: 如果启用了缓存({@code amazon.ad.cache.enabled=true}),
+     * 此Bean会被{@link io.github.chenyilei2016.amznadclient.kernel.spi.cache.CachedTokenRequestProvider}装饰。
      *
      * @return Token请求处理器实例
      */
-    @Bean
-    @ConditionalOnMissingBean
+    @Bean("amznTokenRequestProvider")
+    @ConditionalOnMissingBean(name = "amznTokenRequestProvider")
     public IAmznTokenRequestProvider amznTokenRequestProvider() {
         return new DefaultAmznTokenRequestProvider();
     }
@@ -76,11 +78,13 @@ public class AmznAdClientConfiguration {
      *
      * <p>默认使用{@link DefaultProfileDetailMetaProvider},会抛出异常提示用户提供自己的实现。
      * <p><strong>外部系统必须提供自己的实现!</strong>
+     * <p>注意: 如果启用了缓存({@code amazon.ad.cache.enabled=true}),
+     * 此Bean会被{@link io.github.chenyilei2016.amznadclient.kernel.spi.cache.CachedProfileDetailMetaProvider}装饰。
      *
      * @return Profile详情数据提供者实例
      */
-    @Bean
-    @ConditionalOnMissingBean
+    @Bean("profileDetailMetaProvider")
+    @ConditionalOnMissingBean(name = "profileDetailMetaProvider")
     public IProfileDetailMetaProvider profileDetailMetaProvider() {
         return new DefaultProfileDetailMetaProvider();
     }
@@ -90,11 +94,13 @@ public class AmznAdClientConfiguration {
      *
      * <p>默认使用{@link DefaultAuthCredentialsProvider},会抛出异常提示用户提供自己的实现。
      * <p><strong>外部系统必须提供自己的实现!</strong>
+     * <p>注意: 如果启用了缓存({@code amazon.ad.cache.enabled=true}),
+     * 此Bean会被{@link io.github.chenyilei2016.amznadclient.kernel.spi.cache.CachedAuthCredentialsProvider}装饰。
      *
      * @return OAuth认证凭证提供者实例
      */
-    @Bean
-    @ConditionalOnMissingBean
+    @Bean("authCredentialsProvider")
+    @ConditionalOnMissingBean(name = "authCredentialsProvider")
     public IAuthCredentialsProvider authCredentialsProvider() {
         return new DefaultAuthCredentialsProvider();
     }

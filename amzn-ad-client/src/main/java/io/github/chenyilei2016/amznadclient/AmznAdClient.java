@@ -108,7 +108,7 @@ public class AmznAdClient {
      * @param amznBaseRequest 请求对象
      * @return 完整的请求URL
      */
-    private String getRequestUrl(AmznBaseRequest amznBaseRequest) {
+    private String buildRequestUrl(AmznBaseRequest amznBaseRequest) {
         // 检查ThreadLocal中的EndpointProvider
         EndpointProvider endpointProviderThreadLocal = AmznAdClientHelper.getEndpointProviderThreadLocal();
         if (null != endpointProviderThreadLocal) {
@@ -151,7 +151,7 @@ public class AmznAdClient {
                 copyBodyMap.putAll(map);
             }
 
-            String requestUrl = getRequestUrl(amznBaseRequest);
+            String requestUrl = buildRequestUrl(amznBaseRequest);
             if (!CollectionUtils.isEmpty(copyBodyMap)) {
                 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(requestUrl);
                 copyBodyMap.forEach(builder::queryParam);
@@ -185,7 +185,7 @@ public class AmznAdClient {
                 copyBodyMap.putAll(map);
             }
 
-            String requestUrl = getRequestUrl(amznBaseRequest);
+            String requestUrl = buildRequestUrl(amznBaseRequest);
             if (!CollectionUtils.isEmpty(copyBodyMap)) {
                 UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(requestUrl);
                 copyBodyMap.forEach(builder::queryParam);
@@ -236,7 +236,7 @@ public class AmznAdClient {
 
     private ResponseEntity<String> httpPostEx(AmznBaseRequest amznBaseRequest, HttpMethod httpMethod) {
 
-        Supplier<String> doGetRequestUrl = () -> getRequestUrl(amznBaseRequest);
+        Supplier<String> doGetRequestUrl = () -> buildRequestUrl(amznBaseRequest);
 
         Supplier<HttpHeaders> doGetHttpHeaders = () -> buildHttpHeaders(amznBaseRequest);
 
