@@ -92,7 +92,7 @@ public class AmznAdClient {
      * 创建新的AmznBaseRequest
      * <p>推荐使用此方法创建请求,AmznBaseRequest会自动持有AmznAdClient引用,
      * 可以使用更简洁的API,例如直接调用jsonBody(Object)而不需要传入AmznAdClient
-     * 
+     *
      * @return 新的AmznBaseRequest实例
      */
     public AmznBaseRequest newRequest() {
@@ -141,8 +141,6 @@ public class AmznAdClient {
      * http get方法
      */
     public String httpGet(AmznBaseRequest amznBaseRequest) {
-        log.info("AmznBaseRequest httpGet baseDetail:{} ,body:{} , jsonBody:{}", amznBaseRequest.baseDetail(), amznBaseRequest.getBody(), amznBaseRequest.getJsonBody());
-
         Supplier<String> doGetRequestUrl = () -> {
             Map<String, Object> copyBodyMap = Maps.newHashMap(amznBaseRequest.getBody());
             if (StringUtils.isNotBlank(amznBaseRequest.getJsonBody())) {
@@ -163,7 +161,7 @@ public class AmznAdClient {
         Supplier<HttpHeaders> doGetHttpHeaders = () -> buildHttpHeaders(amznBaseRequest);
 
         try {
-            ResponseEntity<String> responseEntity = this.executeHttpCall(amznAdvConfigManager.getApiClient(), doGetRequestUrl, HttpMethod.GET, doGetHttpHeaders, null, amznBaseRequest.getTimeOutIoRetryTimes(), amznBaseRequest.getAmznRateLimitRetryTimes());
+            ResponseEntity<String> responseEntity = this.executeHttpCall(amznAdvConfigManager.getApiClient(), doGetRequestUrl, HttpMethod.GET, doGetHttpHeaders, null, amznBaseRequest);
             log.info("AmznBaseRequest get end respHeader:{}, result:{}", responseEntity.getHeaders(), resultLogBody(amznBaseRequest, responseEntity.getBody()));
             return responseEntity.getBody();
         } finally {
@@ -175,8 +173,6 @@ public class AmznAdClient {
      * http get方法
      */
     public ResponseEntity<String> httpGetWithResponse(AmznBaseRequest amznBaseRequest) {
-        log.info("AmznBaseRequest httpGet baseDetail:{} ,body:{} , jsonBody:{}", amznBaseRequest.baseDetail(), amznBaseRequest.getBody(), amznBaseRequest.getJsonBody());
-
         Supplier<String> doGetRequestUrl = () -> {
             Map<String, Object> copyBodyMap = Maps.newHashMap(amznBaseRequest.getBody());
             if (StringUtils.isNotBlank(amznBaseRequest.getJsonBody())) {
@@ -197,7 +193,7 @@ public class AmznAdClient {
         Supplier<HttpHeaders> doGetHttpHeaders = () -> buildHttpHeaders(amznBaseRequest);
 
         try {
-            ResponseEntity<String> responseEntity = this.executeHttpCall(amznAdvConfigManager.getApiClient(), doGetRequestUrl, HttpMethod.GET, doGetHttpHeaders, null, amznBaseRequest.getTimeOutIoRetryTimes(), amznBaseRequest.getAmznRateLimitRetryTimes());
+            ResponseEntity<String> responseEntity = this.executeHttpCall(amznAdvConfigManager.getApiClient(), doGetRequestUrl, HttpMethod.GET, doGetHttpHeaders, null, amznBaseRequest);
             log.info("AmznBaseRequest get end respHeader:{}, result:{}", responseEntity.getHeaders(), resultLogBody(amznBaseRequest, responseEntity.getBody()));
             return responseEntity;
         } finally {
@@ -206,21 +202,18 @@ public class AmznAdClient {
     }
 
     public String httpPost(AmznBaseRequest baseRequest) {
-        log.info("AmznBaseRequest httpPost baseDetail:{} ,body:{} , jsonBody:{}", baseRequest.baseDetail(), baseRequest.getBody(), baseRequest.getJsonBody());
         ResponseEntity<String> responseEntity = this.httpPostEx(baseRequest, HttpMethod.POST);
         log.info("AmznBaseRequest httpPost respHeader:{}, result :{}", responseEntity.getHeaders(), resultLogBody(baseRequest, responseEntity.getBody()));
         return responseEntity.getBody();
     }
 
     public String httpPut(AmznBaseRequest baseRequest) {
-        log.info("AmznBaseRequest httpPut baseDetail:{},body:{} , jsonBody:{}", baseRequest.baseDetail(), baseRequest.getBody(), baseRequest.getJsonBody());
         ResponseEntity<String> responseEntity = this.httpPostEx(baseRequest, HttpMethod.PUT);
         log.info("AmznBaseRequest httpPut respHeader:{}, result :{}", responseEntity.getHeaders(), resultLogBody(baseRequest, responseEntity.getBody()));
         return responseEntity.getBody();
     }
 
     public String httpDelete(AmznBaseRequest baseRequest) {
-        log.info("AmznBaseRequest httpDelete baseDetail:{} ,body:{} , jsonBody:{}", baseRequest.baseDetail(), baseRequest.getBody(), baseRequest.getJsonBody());
         ResponseEntity<String> responseEntity = this.httpPostEx(baseRequest, HttpMethod.DELETE);
         log.info("AmznBaseRequest httpDelete respHeader:{}, result :{}", responseEntity.getHeaders(), resultLogBody(baseRequest, responseEntity.getBody()));
         return responseEntity.getBody();
@@ -243,7 +236,7 @@ public class AmznAdClient {
         String body = StringUtils.isBlank(amznBaseRequest.getJsonBody()) ? requestGson.toJson(amznBaseRequest.getBody()) : amznBaseRequest.getJsonBody();
 
         try {
-            return this.executeHttpCall(amznAdvConfigManager.getApiClient(), doGetRequestUrl, httpMethod, doGetHttpHeaders, body, amznBaseRequest.getTimeOutIoRetryTimes(), amznBaseRequest.getAmznRateLimitRetryTimes());
+            return this.executeHttpCall(amznAdvConfigManager.getApiClient(), doGetRequestUrl, httpMethod, doGetHttpHeaders, body, amznBaseRequest);
         } finally {
             amznBaseRequest.jsonBody(null);
         }
@@ -325,7 +318,9 @@ public class AmznAdClient {
 
 
     @SneakyThrows
-    protected ResponseEntity<String> executeHttpCall(RestTemplate client, Supplier<String> doGetRequestUrl, HttpMethod httpMethod, Supplier<HttpHeaders> doGetHttpHeaders, Object body, int timeOutRetry, int amznRateLimitRetry) {
+    protected ResponseEntity<String> executeHttpCall(RestTemplate client, Supplier<String> doGetRequestUrl, HttpMethod httpMethod,
+                                                     Supplier<HttpHeaders> doGetHttpHeaders,
+                                                     Object body, AmznBaseRequest amznBaseRequest) {
         if (isMockInvoke) {
             return ResponseEntity.ok("");
         }
@@ -334,12 +329,15 @@ public class AmznAdClient {
         HttpHeaders httpHeaders = doGetHttpHeaders.get();
         Callable<ResponseEntity<String>> callable = () -> client.exchange(requestUrl, httpMethod, new HttpEntity<>(body, httpHeaders), String.class);
 
+        //请求日志输出
+        log.info("AmznBaseRequest [{}] , media: {} ,body:{}", httpMethod, amznBaseRequest.getMediaType(), body);
+
         //亚马逊偶尔会抽风说401
         callable = Amzn401UnauthorizedRetryWrapper.wrap(callable, 1);
         //亚马逊偶尔会抽风连接不上
-        callable = AmznIOTimeOutRetryWrapper.wrap(callable, timeOutRetry);
+        callable = AmznIOTimeOutRetryWrapper.wrap(callable, amznBaseRequest.getTimeOutIoRetryTimes());
         //接口被限流
-        callable = AmznRateLimitRetryWrapper.wrap(callable, amznRateLimitRetry, requestUrl, httpMethod);
+        callable = AmznRateLimitRetryWrapper.wrap(callable, amznBaseRequest.getAmznRateLimitRetryTimes(), requestUrl, httpMethod);
 
         ResponseEntity<String> responseEntity = null;
         try {
