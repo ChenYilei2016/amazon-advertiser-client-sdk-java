@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  io.github.chenyilei2016.amznadclient.kernel.config.AmznAdClientAutoConfiguration \
+  io.github.chenyilei2016.amznadclient.kernel.config.AmznAdClientCacheAutoConfiguration

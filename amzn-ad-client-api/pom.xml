@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.chenyilei2016</groupId>
-            <artifactId>amzn-ad-client</artifactId>
+            <artifactId>amzn-ad-client-boot-starter</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>

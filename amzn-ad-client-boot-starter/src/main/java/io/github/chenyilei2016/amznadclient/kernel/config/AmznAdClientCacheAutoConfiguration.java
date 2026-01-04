@@ -58,7 +58,7 @@ import java.util.concurrent.TimeUnit;
 @ConditionalOnClass(Cache.class)
 @ConditionalOnProperty(name = "aman.ad.client.cache.enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(AmznAdClientCacheProperties.class)
-public class AmznAdClientCacheConfiguration {
+public class AmznAdClientCacheAutoConfiguration {
 
 
     /**
