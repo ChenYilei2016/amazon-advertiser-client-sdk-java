@@ -16,7 +16,7 @@ public class AmznSpCampaignClientTest extends AmznClientLocalTest {
     @Test
     public void list() {
         AmznSpCampaignListRequest amznSpCampaignListRequest = new AmznSpCampaignListRequest();
-        amznSpCampaignListRequest.setProfileId("1864675625344235");
+        amznSpCampaignListRequest.setProfileId("2796488790235394");
 //        amznSpCampaignListRequest.setNameFilter(new AmznCommonQueryTermMatchTypeFilter("EXACT_MATCH", Lists.newArrayList("")));
         amznSpCampaignListRequest.setMaxResults(10);
         AmznSpCampaignListResponse list = amznSpCampaignClient.list(amznSpCampaignListRequest);

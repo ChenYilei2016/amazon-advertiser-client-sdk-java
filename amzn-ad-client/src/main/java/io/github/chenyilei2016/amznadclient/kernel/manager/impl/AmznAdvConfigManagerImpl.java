@@ -110,7 +110,7 @@ public class AmznAdvConfigManagerImpl implements IAmznAdvConfigManager {
         
         // 2. 获取Profile详情(包含refreshToken)
         ProfileDetailMetaResponse profileDetailMetaResponse = this.getProfileDetailMetaByProfileId(profileId);
-        
+
         // 3. 构建AccessTokenMetaRequest
         AccessTokenMetaRequest accessTokenMetaRequest = new AccessTokenMetaRequest();
         accessTokenMetaRequest.setGrantType(authCredentials.getGrantType());
