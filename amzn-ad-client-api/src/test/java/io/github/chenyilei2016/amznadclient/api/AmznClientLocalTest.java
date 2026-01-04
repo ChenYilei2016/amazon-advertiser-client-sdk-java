@@ -1,7 +1,6 @@
 package io.github.chenyilei2016.amznadclient.api;
 
 import com.alicp.jetcache.Cache;
-import com.alicp.jetcache.RefreshPolicy;
 import com.alicp.jetcache.embedded.CaffeineCacheBuilder;
 import io.github.chenyilei2016.amznadclient.AmznAdClient;
 import io.github.chenyilei2016.amznadclient.SystemPropGet;

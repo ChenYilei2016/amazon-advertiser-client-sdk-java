@@ -8,6 +8,7 @@
     <modules>
         <module>openapi-client</module>
         <module>amzn-ad-client</module>
+        <module>amzn-ad-client-api</module>
     </modules>
     <version>1.0.0-SNAPSHOT</version>
 
