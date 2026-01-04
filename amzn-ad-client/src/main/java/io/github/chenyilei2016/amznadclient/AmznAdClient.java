@@ -266,8 +266,9 @@ public class AmznAdClient {
             throw new IllegalArgumentException("tokenProvider is null");
         }
 
-        // 使用新的TokenProvider方式 (优先级最高)
-        buildHeadersWithTokenProvider(tokenProvider, httpHeaders);
+        // 获取访问令牌
+        AmznTokenResponse tokenResponse = tokenProvider.getAccessToken();
+        tokenProvider.customizeHttpHeaders(httpHeaders, tokenResponse);
         return httpHeaders;
     }
 
@@ -288,33 +289,6 @@ public class AmznAdClient {
         return httpHeaders;
     }
 
-
-    /**
-     * 使用TokenProvider构建HTTP请求头
-     *
-     * <p>这是新的token获取方式,通过策略模式提供了最大的灵活性。
-     * TokenProvider可以是:
-     * <ul>
-     *   <li>ProfileBasedTokenProvider - 基于profileId</li>
-     *   <li>DirectCredentialsTokenProvider - 直接使用credentials</li>
-     *   <li>CustomTokenProvider - 用户自定义逻辑</li>
-     * </ul>
-     *
-     * @param tokenProvider token提供者
-     * @param httpHeaders   HTTP请求头对象
-     */
-    private void buildHeadersWithTokenProvider(TokenProvider tokenProvider, HttpHeaders httpHeaders) {
-        // 获取访问令牌
-        AmznTokenResponse tokenResponse = tokenProvider.getAccessToken();
-
-        // 添加Authorization头
-        httpHeaders.add(AmznConstants.HEADER_authorization, AmznConstants.HEADER_authorizationPrefix + tokenResponse.getAccess_token());
-
-        // 添加Client-Id头
-        httpHeaders.add(AmznConstants.HEADER_clientId, tokenResponse.getClientId());
-
-        tokenProvider.customizeHttpHeaders(httpHeaders);
-    }
 
 
     @SneakyThrows

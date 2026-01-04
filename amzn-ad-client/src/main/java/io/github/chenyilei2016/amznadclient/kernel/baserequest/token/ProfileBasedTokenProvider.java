@@ -97,7 +97,12 @@ public class ProfileBasedTokenProvider implements TokenProvider, AmznAdClientAwa
     }
 
     @Override
-    public void customizeHttpHeaders(HttpHeaders httpHeaders) {
+    public void customizeHttpHeaders(HttpHeaders httpHeaders, AmznTokenResponse amznTokenResponse) {
+        // 添加Authorization头
+        httpHeaders.add(AmznConstants.HEADER_authorization, AmznConstants.HEADER_authorizationPrefix + amznTokenResponse.getAccess_token());
+        // 添加Client-Id头
+        httpHeaders.add(AmznConstants.HEADER_clientId, amznTokenResponse.getClientId());
+
         if (profileId != null) {
             httpHeaders.add(AmznConstants.HEADER_advertisingApiScope, this.profileId);
         }

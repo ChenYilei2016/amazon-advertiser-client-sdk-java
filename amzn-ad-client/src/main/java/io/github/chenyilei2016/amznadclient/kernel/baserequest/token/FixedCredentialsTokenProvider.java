@@ -1,5 +1,6 @@
 package io.github.chenyilei2016.amznadclient.kernel.baserequest.token;
 
+import io.github.chenyilei2016.amznadclient.kernel.core.AmznConstants;
 import io.github.chenyilei2016.amznadclient.kernel.manager.IAmznAdvConfigManager;
 import io.github.chenyilei2016.amznadclient.kernel.core.AccessTokenMetaRequest;
 import io.github.chenyilei2016.amznadclient.kernel.core.AmznTokenResponse;
@@ -98,7 +99,11 @@ public class FixedCredentialsTokenProvider implements TokenProvider {
     }
 
     @Override
-    public void customizeHttpHeaders(HttpHeaders httpHeaders) {
+    public void customizeHttpHeaders(HttpHeaders httpHeaders, AmznTokenResponse amznTokenResponse) {
+        // 添加Authorization头
+        httpHeaders.add(AmznConstants.HEADER_authorization, AmznConstants.HEADER_authorizationPrefix + amznTokenResponse.getAccess_token());
+        // 添加Client-Id头
+        httpHeaders.add(AmznConstants.HEADER_clientId, amznTokenResponse.getClientId());
 //        if (profileId != null) {
 //            httpHeaders.add(AmznConstants.HEADER_advertisingApiScope, this.profileId);
 //        }

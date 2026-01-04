@@ -47,5 +47,5 @@ public interface TokenProvider {
     AmznTokenResponse getAccessToken();
 
 
-    void customizeHttpHeaders(HttpHeaders httpHeaders);
+    void customizeHttpHeaders(HttpHeaders httpHeaders, AmznTokenResponse amznTokenResponse);
 }
