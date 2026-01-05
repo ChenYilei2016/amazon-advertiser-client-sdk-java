@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccessTokenMetaRequest {
+    @Builder.Default
     private String grantType = AmznGrantTypeEnum.REFRESH_TOKEN.getCode();
 
     private String clientId;
