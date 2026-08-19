@@ -6,6 +6,7 @@ generate jdk 17+
 api 使用jdk 8+  
 生成by  openapi-generator-cli-7.12.0.jar  
 
+java options docs :https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/java.md
 
 # 生成路径
 
