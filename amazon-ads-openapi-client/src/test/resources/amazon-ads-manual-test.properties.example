@@ -1,0 +1,12 @@
+# 复制为 amazon-ads-manual-test.local.properties 后填写真实值。
+amazon.ads.manual-test=true
+amazon.ads.manual.timeout-seconds=30
+amazon.ads.manual.ad-product=SPONSORED_PRODUCTS
+amazon.ads.manual.max-results=10
+
+AMAZON_ADS_CLIENT_ID=
+AMAZON_ADS_ACCESS_TOKEN=
+AMAZON_ADS_PROFILE_ID=
+AMAZON_ADS_ACCOUNT_ID=
+# 北美默认地址可留空；其他区域按需填写。
+AMAZON_ADS_API_BASE_URL=

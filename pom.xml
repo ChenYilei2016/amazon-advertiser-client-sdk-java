@@ -9,6 +9,7 @@
         <module>openapi-client</module>
         <module>amzn-ad-client-boot-starter</module>
         <module>amzn-ad-client-api</module>
+        <module>amazon-ads-openapi-client</module>
     </modules>
     <version>1.0.0-SNAPSHOT</version>
 

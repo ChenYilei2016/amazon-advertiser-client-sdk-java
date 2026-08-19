@@ -61,3 +61,6 @@ build/
 
 
 /tmp_delete/
+
+# Local Amazon Ads manual test credentials
+amazon-ads-openapi-client/src/test/resources/amazon-ads-manual-test.local.properties
