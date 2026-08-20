@@ -1,6 +1,6 @@
 package io.github.chenyilei2016.amazonads.adsv1.targets.model;
 
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
+import io.github.chenyilei2016.amazonads.client.ApiClient;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

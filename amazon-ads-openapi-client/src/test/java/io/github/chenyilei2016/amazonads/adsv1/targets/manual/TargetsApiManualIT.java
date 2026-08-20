@@ -2,7 +2,7 @@ package io.github.chenyilei2016.amazonads.adsv1.targets.manual;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONWriter;
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiException;
+import io.github.chenyilei2016.amazonads.client.ApiException;
 import io.github.chenyilei2016.amazonads.adsv1.manual.AmazonAdsManualTestSupport;
 import io.github.chenyilei2016.amazonads.adsv1.manual.AmazonAdsManualTestSupport.Context;
 import io.github.chenyilei2016.amazonads.adsv1.targets.api.TargetsApi;

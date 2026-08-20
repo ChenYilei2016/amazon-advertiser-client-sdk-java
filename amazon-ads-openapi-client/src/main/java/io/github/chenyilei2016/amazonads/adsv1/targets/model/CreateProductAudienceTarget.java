@@ -33,7 +33,7 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
+import io.github.chenyilei2016.amazonads.client.ApiClient;
 /**
  * Target customers who have viewed or purchased a certain product within a specified lookback window.
  */

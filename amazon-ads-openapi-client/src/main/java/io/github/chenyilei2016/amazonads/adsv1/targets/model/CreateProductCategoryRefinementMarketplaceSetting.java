@@ -31,7 +31,7 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
+import io.github.chenyilei2016.amazonads.client.ApiClient;
 /**
  * CreateProductCategoryRefinementMarketplaceSetting
  */

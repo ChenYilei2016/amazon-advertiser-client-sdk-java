@@ -1,6 +1,6 @@
 package io.github.chenyilei2016.amazonads.adsv1.manual;
 
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
+import io.github.chenyilei2016.amazonads.client.ApiClient;
 import org.junit.jupiter.api.Assumptions;
 
 import java.io.IOException;

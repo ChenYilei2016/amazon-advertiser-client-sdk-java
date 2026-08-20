@@ -12,11 +12,11 @@
 
 package io.github.chenyilei2016.amazonads.adsv1.campaigns.api;
 
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiException;
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiResponse;
-import io.github.chenyilei2016.amazonads.adsv1.client.Configuration;
-import io.github.chenyilei2016.amazonads.adsv1.client.Pair;
+import io.github.chenyilei2016.amazonads.client.ApiClient;
+import io.github.chenyilei2016.amazonads.client.ApiException;
+import io.github.chenyilei2016.amazonads.client.ApiResponse;
+import io.github.chenyilei2016.amazonads.client.Configuration;
+import io.github.chenyilei2016.amazonads.client.Pair;
 
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.BadGatewayResponseContent;
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.BadRequestResponseContent;

@@ -87,7 +87,7 @@
                             <output>${project.basedir}/src/main</output>
                             <apiPackage>io.github.chenyilei2016.amazonads.adsv1.campaigns.api</apiPackage>
                             <modelPackage>io.github.chenyilei2016.amazonads.adsv1.campaigns.model</modelPackage>
-                            <invokerPackage>io.github.chenyilei2016.amazonads.adsv1.client</invokerPackage>
+                            <invokerPackage>io.github.chenyilei2016.amazonads.client</invokerPackage>
                             <artifactId>${project.artifactId}</artifactId>
                             <artifactVersion>${project.version}</artifactVersion>
                             <addCompileSourceRoot>false</addCompileSourceRoot>
@@ -124,7 +124,7 @@
                             <output>${project.basedir}/src/main</output>
                             <apiPackage>io.github.chenyilei2016.amazonads.adsv1.targets.api</apiPackage>
                             <modelPackage>io.github.chenyilei2016.amazonads.adsv1.targets.model</modelPackage>
-                            <invokerPackage>io.github.chenyilei2016.amazonads.adsv1.client</invokerPackage>
+                            <invokerPackage>io.github.chenyilei2016.amazonads.client</invokerPackage>
                             <artifactId>${project.artifactId}</artifactId>
                             <artifactVersion>${project.version}</artifactVersion>
                             <addCompileSourceRoot>false</addCompileSourceRoot>

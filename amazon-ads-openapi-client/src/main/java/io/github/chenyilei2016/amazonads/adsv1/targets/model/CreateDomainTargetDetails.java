@@ -60,8 +60,8 @@ import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonSerialize;
 import tools.jackson.databind.deser.std.StdDeserializer;
 import tools.jackson.databind.ser.std.StdSerializer;
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
-import io.github.chenyilei2016.amazonads.adsv1.client.JSON;
+import io.github.chenyilei2016.amazonads.client.ApiClient;
+import io.github.chenyilei2016.amazonads.client.JSON;
 
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 @JsonDeserialize(using = CreateDomainTargetDetails.CreateDomainTargetDetailsDeserializer.class)

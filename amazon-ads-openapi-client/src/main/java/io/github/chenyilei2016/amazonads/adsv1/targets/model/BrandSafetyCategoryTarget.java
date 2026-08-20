@@ -30,7 +30,7 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 
-import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
+import io.github.chenyilei2016.amazonads.client.ApiClient;
 /**
  * Target based on, if any, the classifications of unsuitable contexts that may pose a risk to a brand&#39;s reputation of content being viewed.
  */
