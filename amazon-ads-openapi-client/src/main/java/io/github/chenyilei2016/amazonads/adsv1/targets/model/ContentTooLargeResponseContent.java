@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ErrorCode;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -59,6 +61,9 @@ public class ContentTooLargeResponseContent {
    * @return code
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ErrorCode getCode() {
@@ -83,6 +88,8 @@ public class ContentTooLargeResponseContent {
    * @return message
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getMessage() {

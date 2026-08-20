@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -53,7 +55,7 @@ public class Status {
 
   public static final String JSON_PROPERTY_MARKETPLACE_SETTINGS = "marketplaceSettings";
   @jakarta.annotation.Nullable
-  private List<StatusMarketplaceSetting> marketplaceSettings = new ArrayList<>();
+  private List<@Valid StatusMarketplaceSetting> marketplaceSettings = new ArrayList<>();
 
   public Status() {
   }
@@ -76,6 +78,8 @@ public class Status {
    * @return deliveryReasons
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_REASONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<DeliveryReason> getDeliveryReasons() {
@@ -100,6 +104,9 @@ public class Status {
    * @return deliveryStatus
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DeliveryStatus getDeliveryStatus() {
@@ -114,7 +121,7 @@ public class Status {
   }
 
 
-  public Status marketplaceSettings(@jakarta.annotation.Nullable List<StatusMarketplaceSetting> marketplaceSettings) {
+  public Status marketplaceSettings(@jakarta.annotation.Nullable List<@Valid StatusMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
     return this;
   }
@@ -132,16 +139,18 @@ public class Status {
    * @return marketplaceSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<StatusMarketplaceSetting> getMarketplaceSettings() {
+  public List<@Valid StatusMarketplaceSetting> getMarketplaceSettings() {
     return marketplaceSettings;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<StatusMarketplaceSetting> marketplaceSettings) {
+  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<@Valid StatusMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
   }
 

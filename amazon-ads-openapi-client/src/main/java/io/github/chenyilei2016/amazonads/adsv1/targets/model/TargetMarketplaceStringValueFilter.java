@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -41,12 +43,12 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class TargetMarketplaceStringValueFilter {
   public static final String JSON_PROPERTY_INCLUDE = "include";
   @jakarta.annotation.Nonnull
-  private List<MarketplaceStringValue> include = new ArrayList<>();
+  private List<@Valid MarketplaceStringValue> include = new ArrayList<>();
 
   public TargetMarketplaceStringValueFilter() {
   }
 
-  public TargetMarketplaceStringValueFilter include(@jakarta.annotation.Nonnull List<MarketplaceStringValue> include) {
+  public TargetMarketplaceStringValueFilter include(@jakarta.annotation.Nonnull List<@Valid MarketplaceStringValue> include) {
     this.include = include;
     return this;
   }
@@ -64,16 +66,19 @@ public class TargetMarketplaceStringValueFilter {
    * @return include
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+  @Size(min=1,max=10)
   @JsonProperty(value = JSON_PROPERTY_INCLUDE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<MarketplaceStringValue> getInclude() {
+  public List<@Valid MarketplaceStringValue> getInclude() {
     return include;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_INCLUDE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInclude(@jakarta.annotation.Nonnull List<MarketplaceStringValue> include) {
+  public void setInclude(@jakarta.annotation.Nonnull List<@Valid MarketplaceStringValue> include) {
     this.include = include;
   }
 

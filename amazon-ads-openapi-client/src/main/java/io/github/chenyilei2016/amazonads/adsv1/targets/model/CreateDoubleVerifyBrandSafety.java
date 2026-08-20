@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -61,7 +63,7 @@ public class CreateDoubleVerifyBrandSafety {
 
   public static final String JSON_PROPERTY_CONTENT_CATEGORIES_WITH_RISK = "contentCategoriesWithRisk";
   @jakarta.annotation.Nullable
-  private List<CreateDVBrandSafetyContentCategoriesWithRiskMap> contentCategoriesWithRisk = new ArrayList<>();
+  private List<@Valid CreateDVBrandSafetyContentCategoriesWithRiskMap> contentCategoriesWithRisk = new ArrayList<>();
 
   public static final String JSON_PROPERTY_EXCLUDE_APPS_WITH_INSUFFICIENT_RATING = "excludeAppsWithInsufficientRating";
   @jakarta.annotation.Nullable
@@ -92,6 +94,8 @@ public class CreateDoubleVerifyBrandSafety {
    * @return appAgeRating
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_APP_AGE_RATING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<DVBrandSafetyAppAgeRatingType> getAppAgeRating() {
@@ -116,6 +120,8 @@ public class CreateDoubleVerifyBrandSafety {
    * @return appStarRating
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_APP_STAR_RATING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DVBrandSafetyAppStarRatingType getAppStarRating() {
@@ -148,6 +154,8 @@ public class CreateDoubleVerifyBrandSafety {
    * @return contentCategories
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<DVBrandSafetyContentCategoryType> getContentCategories() {
@@ -162,7 +170,7 @@ public class CreateDoubleVerifyBrandSafety {
   }
 
 
-  public CreateDoubleVerifyBrandSafety contentCategoriesWithRisk(@jakarta.annotation.Nullable List<CreateDVBrandSafetyContentCategoriesWithRiskMap> contentCategoriesWithRisk) {
+  public CreateDoubleVerifyBrandSafety contentCategoriesWithRisk(@jakarta.annotation.Nullable List<@Valid CreateDVBrandSafetyContentCategoriesWithRiskMap> contentCategoriesWithRisk) {
     this.contentCategoriesWithRisk = contentCategoriesWithRisk;
     return this;
   }
@@ -180,16 +188,18 @@ public class CreateDoubleVerifyBrandSafety {
    * @return contentCategoriesWithRisk
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORIES_WITH_RISK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateDVBrandSafetyContentCategoriesWithRiskMap> getContentCategoriesWithRisk() {
+  public List<@Valid CreateDVBrandSafetyContentCategoriesWithRiskMap> getContentCategoriesWithRisk() {
     return contentCategoriesWithRisk;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORIES_WITH_RISK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContentCategoriesWithRisk(@jakarta.annotation.Nullable List<CreateDVBrandSafetyContentCategoriesWithRiskMap> contentCategoriesWithRisk) {
+  public void setContentCategoriesWithRisk(@jakarta.annotation.Nullable List<@Valid CreateDVBrandSafetyContentCategoriesWithRiskMap> contentCategoriesWithRisk) {
     this.contentCategoriesWithRisk = contentCategoriesWithRisk;
   }
 
@@ -204,6 +214,7 @@ public class CreateDoubleVerifyBrandSafety {
    * @return excludeAppsWithInsufficientRating
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_APPS_WITH_INSUFFICIENT_RATING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExcludeAppsWithInsufficientRating() {
@@ -228,6 +239,7 @@ public class CreateDoubleVerifyBrandSafety {
    * @return unknownContent
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_UNKNOWN_CONTENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUnknownContent() {

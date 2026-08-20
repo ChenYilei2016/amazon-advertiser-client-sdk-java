@@ -29,6 +29,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductAudienceMatc
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.TargetEvent;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -72,6 +74,9 @@ public class CreateProductAudienceTarget {
    * @return asin
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_ASIN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateMarketplaceStringValue getAsin() {
@@ -96,6 +101,9 @@ public class CreateProductAudienceTarget {
    * @return event
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_EVENT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TargetEvent getEvent() {
@@ -120,6 +128,9 @@ public class CreateProductAudienceTarget {
    * @return lookback
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_LOOKBACK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Lookback getLookback() {
@@ -144,6 +155,9 @@ public class CreateProductAudienceTarget {
    * @return matchType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ProductAudienceMatchType getMatchType() {

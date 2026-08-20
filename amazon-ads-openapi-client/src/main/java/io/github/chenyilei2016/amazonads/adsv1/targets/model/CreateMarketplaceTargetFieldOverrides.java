@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -49,7 +51,7 @@ public class CreateMarketplaceTargetFieldOverrides {
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   @jakarta.annotation.Nullable
-  private List<CreateTag> tags = new ArrayList<>();
+  private List<@Valid CreateTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TARGET_DETAILS = "targetDetails";
   @jakarta.annotation.Nullable
@@ -68,6 +70,8 @@ public class CreateMarketplaceTargetFieldOverrides {
    * @return state
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public State getState() {
@@ -82,7 +86,7 @@ public class CreateMarketplaceTargetFieldOverrides {
   }
 
 
-  public CreateMarketplaceTargetFieldOverrides tags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public CreateMarketplaceTargetFieldOverrides tags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
     return this;
   }
@@ -100,16 +104,18 @@ public class CreateMarketplaceTargetFieldOverrides {
    * @return tags
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateTag> getTags() {
+  public List<@Valid CreateTag> getTags() {
     return tags;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public void setTags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
   }
 
@@ -124,6 +130,8 @@ public class CreateMarketplaceTargetFieldOverrides {
    * @return targetDetails
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateOverridableTargets getTargetDetails() {

@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.CampaignFeeType;
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.CampaignFeeValueType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -65,6 +67,9 @@ public class CampaignFee {
    * @return feeType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_FEE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CampaignFeeType getFeeType() {
@@ -85,10 +90,12 @@ public class CampaignFee {
   }
 
   /**
-   * A service fee that is subtracted from the campaign budget as a percent of budget. This setting can’t be changed after an ad group has been added to a campaign.
+   * A service fee that is subtracted from the campaign budget as a percent of budget. This setting can???t be changed after an ad group has been added to a campaign.
    * @return feeValue
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_FEE_VALUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Double getFeeValue() {
@@ -113,6 +120,9 @@ public class CampaignFee {
    * @return feeValueType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_FEE_VALUE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CampaignFeeValueType getFeeValueType() {

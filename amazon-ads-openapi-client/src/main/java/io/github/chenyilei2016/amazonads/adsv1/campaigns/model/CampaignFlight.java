@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.FlightBudget;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -75,6 +77,9 @@ public class CampaignFlight {
    * @return budget
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BUDGET, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public FlightBudget getBudget() {
@@ -99,6 +104,9 @@ public class CampaignFlight {
    * @return endDateTime
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_END_DATE_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OffsetDateTime getEndDateTime() {
@@ -123,6 +131,7 @@ public class CampaignFlight {
    * @return flightId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_FLIGHT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFlightId() {
@@ -147,6 +156,7 @@ public class CampaignFlight {
    * @return name
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -171,6 +181,9 @@ public class CampaignFlight {
    * @return startDateTime
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_START_DATE_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OffsetDateTime getStartDateTime() {

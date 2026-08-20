@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateDomainTargetD
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.DomainTargetTypes;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -60,6 +62,9 @@ public class CreateDomainTarget {
    * @return domainTargetDetails
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET_DETAILS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateDomainTargetDetails getDomainTargetDetails() {
@@ -84,6 +89,9 @@ public class CreateDomainTarget {
    * @return domainTargetType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DomainTargetTypes getDomainTargetType() {

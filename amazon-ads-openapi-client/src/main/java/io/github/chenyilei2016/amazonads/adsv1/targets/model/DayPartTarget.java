@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.DayOfWeek;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.TimeOfDay;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -60,6 +62,9 @@ public class DayPartTarget {
    * @return dayOfWeek
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DayOfWeek getDayOfWeek() {
@@ -84,6 +89,9 @@ public class DayPartTarget {
    * @return timeOfDay
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TIME_OF_DAY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TimeOfDay getTimeOfDay() {

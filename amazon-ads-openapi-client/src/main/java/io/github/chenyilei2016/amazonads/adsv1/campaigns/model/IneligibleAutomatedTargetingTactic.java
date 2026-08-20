@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -43,7 +45,7 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class IneligibleAutomatedTargetingTactic {
   public static final String JSON_PROPERTY_REASONS = "reasons";
   @jakarta.annotation.Nullable
-  private List<IneligibleAutomatedTargetingTacticReason> reasons = new ArrayList<>();
+  private List<@Valid IneligibleAutomatedTargetingTacticReason> reasons = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TACTIC_KEY = "tacticKey";
   @jakarta.annotation.Nonnull
@@ -52,7 +54,7 @@ public class IneligibleAutomatedTargetingTactic {
   public IneligibleAutomatedTargetingTactic() {
   }
 
-  public IneligibleAutomatedTargetingTactic reasons(@jakarta.annotation.Nullable List<IneligibleAutomatedTargetingTacticReason> reasons) {
+  public IneligibleAutomatedTargetingTactic reasons(@jakarta.annotation.Nullable List<@Valid IneligibleAutomatedTargetingTacticReason> reasons) {
     this.reasons = reasons;
     return this;
   }
@@ -70,16 +72,18 @@ public class IneligibleAutomatedTargetingTactic {
    * @return reasons
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=10)
   @JsonProperty(value = JSON_PROPERTY_REASONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<IneligibleAutomatedTargetingTacticReason> getReasons() {
+  public List<@Valid IneligibleAutomatedTargetingTacticReason> getReasons() {
     return reasons;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_REASONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReasons(@jakarta.annotation.Nullable List<IneligibleAutomatedTargetingTacticReason> reasons) {
+  public void setReasons(@jakarta.annotation.Nullable List<@Valid IneligibleAutomatedTargetingTacticReason> reasons) {
     this.reasons = reasons;
   }
 
@@ -94,6 +98,9 @@ public class IneligibleAutomatedTargetingTactic {
    * @return tacticKey
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TACTIC_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TacticKey getTacticKey() {

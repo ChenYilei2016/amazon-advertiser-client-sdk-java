@@ -44,6 +44,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -97,7 +99,7 @@ public class CampaignCreate {
 
   public static final String JSON_PROPERTY_BUDGETS = "budgets";
   @jakarta.annotation.Nullable
-  private List<CreateBudget> budgets = new ArrayList<>();
+  private List<@Valid CreateBudget> budgets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_COST_TYPE = "costType";
   @jakarta.annotation.Nullable
@@ -113,19 +115,19 @@ public class CampaignCreate {
 
   public static final String JSON_PROPERTY_FEES = "fees";
   @jakarta.annotation.Nullable
-  private List<CreateCampaignFee> fees = new ArrayList<>();
+  private List<@Valid CreateCampaignFee> fees = new ArrayList<>();
 
   public static final String JSON_PROPERTY_FLIGHTS = "flights";
   @jakarta.annotation.Nullable
-  private List<CreateCampaignFlight> flights = new ArrayList<>();
+  private List<@Valid CreateCampaignFlight> flights = new ArrayList<>();
 
   public static final String JSON_PROPERTY_FREQUENCIES = "frequencies";
   @jakarta.annotation.Nullable
-  private List<CreateFrequency> frequencies = new ArrayList<>();
+  private List<@Valid CreateFrequency> frequencies = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MARKETPLACE_CONFIGURATIONS = "marketplaceConfigurations";
   @jakarta.annotation.Nullable
-  private List<CreateMarketplaceCampaignConfigurations> marketplaceConfigurations = new ArrayList<>();
+  private List<@Valid CreateMarketplaceCampaignConfigurations> marketplaceConfigurations = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MARKETPLACE_SCOPE = "marketplaceScope";
   @jakarta.annotation.Nullable
@@ -173,7 +175,7 @@ public class CampaignCreate {
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   @jakarta.annotation.Nullable
-  private List<CreateTag> tags = new ArrayList<>();
+  private List<@Valid CreateTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TARGETED_P_G_DEAL_ID = "targetedPGDealId";
   @jakarta.annotation.Nullable
@@ -192,6 +194,9 @@ public class CampaignCreate {
    * @return adProduct
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_PRODUCT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AdProduct getAdProduct() {
@@ -224,6 +229,7 @@ public class CampaignCreate {
    * @return adomains
    */
   @jakarta.annotation.Nullable
+  @Size(min=0,max=2)
   @JsonProperty(value = JSON_PROPERTY_ADOMAINS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getAdomains() {
@@ -248,6 +254,8 @@ public class CampaignCreate {
    * @return autoCreationSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AUTO_CREATION_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateAutoCreationSettings getAutoCreationSettings() {
@@ -272,6 +280,7 @@ public class CampaignCreate {
    * @return brandId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_BRAND_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBrandId() {
@@ -286,7 +295,7 @@ public class CampaignCreate {
   }
 
 
-  public CampaignCreate budgets(@jakarta.annotation.Nullable List<CreateBudget> budgets) {
+  public CampaignCreate budgets(@jakarta.annotation.Nullable List<@Valid CreateBudget> budgets) {
     this.budgets = budgets;
     return this;
   }
@@ -304,16 +313,18 @@ public class CampaignCreate {
    * @return budgets
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=2)
   @JsonProperty(value = JSON_PROPERTY_BUDGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateBudget> getBudgets() {
+  public List<@Valid CreateBudget> getBudgets() {
     return budgets;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_BUDGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBudgets(@jakarta.annotation.Nullable List<CreateBudget> budgets) {
+  public void setBudgets(@jakarta.annotation.Nullable List<@Valid CreateBudget> budgets) {
     this.budgets = budgets;
   }
 
@@ -328,6 +339,8 @@ public class CampaignCreate {
    * @return costType
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_COST_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CostType getCostType() {
@@ -360,6 +373,8 @@ public class CampaignCreate {
    * @return countries
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=249)
   @JsonProperty(value = JSON_PROPERTY_COUNTRIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<CountryCode> getCountries() {
@@ -384,6 +399,8 @@ public class CampaignCreate {
    * @return endDateTime
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_END_DATE_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OffsetDateTime getEndDateTime() {
@@ -398,7 +415,7 @@ public class CampaignCreate {
   }
 
 
-  public CampaignCreate fees(@jakarta.annotation.Nullable List<CreateCampaignFee> fees) {
+  public CampaignCreate fees(@jakarta.annotation.Nullable List<@Valid CreateCampaignFee> fees) {
     this.fees = fees;
     return this;
   }
@@ -416,21 +433,23 @@ public class CampaignCreate {
    * @return fees
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=1)
   @JsonProperty(value = JSON_PROPERTY_FEES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateCampaignFee> getFees() {
+  public List<@Valid CreateCampaignFee> getFees() {
     return fees;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_FEES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFees(@jakarta.annotation.Nullable List<CreateCampaignFee> fees) {
+  public void setFees(@jakarta.annotation.Nullable List<@Valid CreateCampaignFee> fees) {
     this.fees = fees;
   }
 
 
-  public CampaignCreate flights(@jakarta.annotation.Nullable List<CreateCampaignFlight> flights) {
+  public CampaignCreate flights(@jakarta.annotation.Nullable List<@Valid CreateCampaignFlight> flights) {
     this.flights = flights;
     return this;
   }
@@ -448,21 +467,23 @@ public class CampaignCreate {
    * @return flights
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=150)
   @JsonProperty(value = JSON_PROPERTY_FLIGHTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateCampaignFlight> getFlights() {
+  public List<@Valid CreateCampaignFlight> getFlights() {
     return flights;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_FLIGHTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFlights(@jakarta.annotation.Nullable List<CreateCampaignFlight> flights) {
+  public void setFlights(@jakarta.annotation.Nullable List<@Valid CreateCampaignFlight> flights) {
     this.flights = flights;
   }
 
 
-  public CampaignCreate frequencies(@jakarta.annotation.Nullable List<CreateFrequency> frequencies) {
+  public CampaignCreate frequencies(@jakarta.annotation.Nullable List<@Valid CreateFrequency> frequencies) {
     this.frequencies = frequencies;
     return this;
   }
@@ -480,21 +501,23 @@ public class CampaignCreate {
    * @return frequencies
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=3)
   @JsonProperty(value = JSON_PROPERTY_FREQUENCIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateFrequency> getFrequencies() {
+  public List<@Valid CreateFrequency> getFrequencies() {
     return frequencies;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_FREQUENCIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrequencies(@jakarta.annotation.Nullable List<CreateFrequency> frequencies) {
+  public void setFrequencies(@jakarta.annotation.Nullable List<@Valid CreateFrequency> frequencies) {
     this.frequencies = frequencies;
   }
 
 
-  public CampaignCreate marketplaceConfigurations(@jakarta.annotation.Nullable List<CreateMarketplaceCampaignConfigurations> marketplaceConfigurations) {
+  public CampaignCreate marketplaceConfigurations(@jakarta.annotation.Nullable List<@Valid CreateMarketplaceCampaignConfigurations> marketplaceConfigurations) {
     this.marketplaceConfigurations = marketplaceConfigurations;
     return this;
   }
@@ -512,16 +535,18 @@ public class CampaignCreate {
    * @return marketplaceConfigurations
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_CONFIGURATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateMarketplaceCampaignConfigurations> getMarketplaceConfigurations() {
+  public List<@Valid CreateMarketplaceCampaignConfigurations> getMarketplaceConfigurations() {
     return marketplaceConfigurations;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_CONFIGURATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMarketplaceConfigurations(@jakarta.annotation.Nullable List<CreateMarketplaceCampaignConfigurations> marketplaceConfigurations) {
+  public void setMarketplaceConfigurations(@jakarta.annotation.Nullable List<@Valid CreateMarketplaceCampaignConfigurations> marketplaceConfigurations) {
     this.marketplaceConfigurations = marketplaceConfigurations;
   }
 
@@ -536,6 +561,8 @@ public class CampaignCreate {
    * @return marketplaceScope
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MarketplaceScope getMarketplaceScope() {
@@ -568,6 +595,8 @@ public class CampaignCreate {
    * @return marketplaces
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Marketplace> getMarketplaces() {
@@ -592,6 +621,8 @@ public class CampaignCreate {
    * @return name
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -616,6 +647,8 @@ public class CampaignCreate {
    * @return optimizations
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_OPTIMIZATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateCampaignOptimizations getOptimizations() {
@@ -640,6 +673,7 @@ public class CampaignCreate {
    * @return portfolioId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PORTFOLIO_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPortfolioId() {
@@ -664,6 +698,7 @@ public class CampaignCreate {
    * @return purchaseOrderNumber
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PURCHASE_ORDER_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPurchaseOrderNumber() {
@@ -688,6 +723,8 @@ public class CampaignCreate {
    * @return salesChannel
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_SALES_CHANNEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SalesChannel getSalesChannel() {
@@ -720,6 +757,8 @@ public class CampaignCreate {
    * @return siteRestrictions
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=1)
   @JsonProperty(value = JSON_PROPERTY_SITE_RESTRICTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<SiteRestriction> getSiteRestrictions() {
@@ -744,6 +783,7 @@ public class CampaignCreate {
    * @return skanAppId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_SKAN_APP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSkanAppId() {
@@ -768,6 +808,8 @@ public class CampaignCreate {
    * @return startDateTime
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_START_DATE_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OffsetDateTime getStartDateTime() {
@@ -792,6 +834,9 @@ public class CampaignCreate {
    * @return state
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateState getState() {
@@ -806,7 +851,7 @@ public class CampaignCreate {
   }
 
 
-  public CampaignCreate tags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public CampaignCreate tags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
     return this;
   }
@@ -824,16 +869,18 @@ public class CampaignCreate {
    * @return tags
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateTag> getTags() {
+  public List<@Valid CreateTag> getTags() {
     return tags;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public void setTags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
   }
 
@@ -848,6 +895,7 @@ public class CampaignCreate {
    * @return targetedPGDealId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_TARGETED_P_G_DEAL_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTargetedPGDealId() {

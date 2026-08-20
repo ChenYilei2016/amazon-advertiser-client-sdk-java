@@ -56,6 +56,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoAdFormatTarget
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoContentDurationTarget;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -214,6 +216,8 @@ public class TargetDetails {
    * @return adInitiationTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_INITIATION_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AdInitiationTarget getAdInitiationTarget() {
@@ -238,6 +242,8 @@ public class TargetDetails {
    * @return adPlayerSizeTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AdPlayerSizeTarget getAdPlayerSizeTarget() {
@@ -262,6 +268,8 @@ public class TargetDetails {
    * @return appTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_APP_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AppTarget getAppTarget() {
@@ -286,6 +294,8 @@ public class TargetDetails {
    * @return audienceTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AUDIENCE_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AudienceTarget getAudienceTarget() {
@@ -310,6 +320,8 @@ public class TargetDetails {
    * @return brandSafetyCategoryTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BrandSafetyCategoryTarget getBrandSafetyCategoryTarget() {
@@ -334,6 +346,8 @@ public class TargetDetails {
    * @return brandSafetyTierTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BrandSafetyTierTarget getBrandSafetyTierTarget() {
@@ -358,6 +372,8 @@ public class TargetDetails {
    * @return contentCategoryTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ContentCategoryTarget getContentCategoryTarget() {
@@ -382,6 +398,8 @@ public class TargetDetails {
    * @return contentGenreTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CONTENT_GENRE_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ContentGenreTarget getContentGenreTarget() {
@@ -406,6 +424,8 @@ public class TargetDetails {
    * @return contentInstreamPositionTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CONTENT_INSTREAM_POSITION_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ContentInstreamPositionTarget getContentInstreamPositionTarget() {
@@ -430,6 +450,8 @@ public class TargetDetails {
    * @return contentOutstreamPositionTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ContentOutstreamPositionTarget getContentOutstreamPositionTarget() {
@@ -454,6 +476,8 @@ public class TargetDetails {
    * @return contentRatingTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ContentRatingTarget getContentRatingTarget() {
@@ -478,6 +502,8 @@ public class TargetDetails {
    * @return dayPartTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DAY_PART_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DayPartTarget getDayPartTarget() {
@@ -502,6 +528,8 @@ public class TargetDetails {
    * @return deviceTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DEVICE_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceTarget getDeviceTarget() {
@@ -526,6 +554,8 @@ public class TargetDetails {
    * @return domainTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DomainTarget getDomainTarget() {
@@ -550,6 +580,8 @@ public class TargetDetails {
    * @return foldPositionTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_FOLD_POSITION_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public FoldPositionTarget getFoldPositionTarget() {
@@ -574,6 +606,8 @@ public class TargetDetails {
    * @return inventorySourceTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public InventorySourceTarget getInventorySourceTarget() {
@@ -598,6 +632,8 @@ public class TargetDetails {
    * @return keywordTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_KEYWORD_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public KeywordTarget getKeywordTarget() {
@@ -622,6 +658,8 @@ public class TargetDetails {
    * @return locationTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_LOCATION_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LocationTarget getLocationTarget() {
@@ -646,6 +684,8 @@ public class TargetDetails {
    * @return nativeContentPositionTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NativeContentPositionTarget getNativeContentPositionTarget() {
@@ -670,6 +710,8 @@ public class TargetDetails {
    * @return placementTypeTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PLACEMENT_TYPE_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public PlacementTypeTarget getPlacementTypeTarget() {
@@ -694,6 +736,8 @@ public class TargetDetails {
    * @return productAudienceTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProductAudienceTarget getProductAudienceTarget() {
@@ -718,6 +762,8 @@ public class TargetDetails {
    * @return productCategoryTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProductCategoryTarget getProductCategoryTarget() {
@@ -742,6 +788,8 @@ public class TargetDetails {
    * @return productTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProductTarget getProductTarget() {
@@ -766,6 +814,8 @@ public class TargetDetails {
    * @return themeTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_THEME_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ThemeTarget getThemeTarget() {
@@ -790,6 +840,8 @@ public class TargetDetails {
    * @return thirdPartyTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ThirdPartyTarget getThirdPartyTarget() {
@@ -814,6 +866,8 @@ public class TargetDetails {
    * @return videoAdFormatTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public VideoAdFormatTarget getVideoAdFormatTarget() {
@@ -838,6 +892,8 @@ public class TargetDetails {
    * @return videoContentDurationTarget
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public VideoContentDurationTarget getVideoContentDurationTarget() {

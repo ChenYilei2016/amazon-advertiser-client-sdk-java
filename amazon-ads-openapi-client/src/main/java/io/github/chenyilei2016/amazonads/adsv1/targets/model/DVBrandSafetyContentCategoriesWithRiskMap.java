@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandSuitabilityRiskLevelType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -59,6 +61,8 @@ public class DVBrandSafetyContentCategoriesWithRiskMap {
    * @return key
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getKey() {
@@ -83,6 +87,9 @@ public class DVBrandSafetyContentCategoriesWithRiskMap {
    * @return value
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public BrandSuitabilityRiskLevelType getValue() {

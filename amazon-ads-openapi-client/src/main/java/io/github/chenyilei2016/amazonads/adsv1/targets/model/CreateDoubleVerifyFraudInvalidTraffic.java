@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ExcludeAppsAndSitesType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -64,6 +66,7 @@ public class CreateDoubleVerifyFraudInvalidTraffic {
    * @return blockAppAndSites
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_BLOCK_APP_AND_SITES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getBlockAppAndSites() {
@@ -88,6 +91,8 @@ public class CreateDoubleVerifyFraudInvalidTraffic {
    * @return excludeAppsAndSites
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_APPS_AND_SITES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ExcludeAppsAndSitesType getExcludeAppsAndSites() {
@@ -112,6 +117,7 @@ public class CreateDoubleVerifyFraudInvalidTraffic {
    * @return excludeImpressions
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_IMPRESSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExcludeImpressions() {

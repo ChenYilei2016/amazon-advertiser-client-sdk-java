@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.Marketplace;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.MarketplaceTargetFieldOverrides;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -65,6 +67,9 @@ public class MarketplaceTargetConfigurations {
    * @return marketplace
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Marketplace getMarketplace() {
@@ -89,6 +94,9 @@ public class MarketplaceTargetConfigurations {
    * @return overrides
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_OVERRIDES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public MarketplaceTargetFieldOverrides getOverrides() {
@@ -113,6 +121,8 @@ public class MarketplaceTargetConfigurations {
    * @return targetId
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getTargetId() {

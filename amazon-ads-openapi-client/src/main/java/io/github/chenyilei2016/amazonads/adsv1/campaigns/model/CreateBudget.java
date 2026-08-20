@@ -28,6 +28,8 @@ import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.CreateBudgetValue
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.Recurrence;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -66,6 +68,9 @@ public class CreateBudget {
    * @return budgetType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BUDGET_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public BudgetType getBudgetType() {
@@ -90,6 +95,9 @@ public class CreateBudget {
    * @return budgetValue
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BUDGET_VALUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateBudgetValue getBudgetValue() {
@@ -114,6 +122,9 @@ public class CreateBudget {
    * @return recurrenceTimePeriod
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_RECURRENCE_TIME_PERIOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Recurrence getRecurrenceTimePeriod() {

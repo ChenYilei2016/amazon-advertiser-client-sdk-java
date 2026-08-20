@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.IASViewabilityStand
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ViewabilityTierType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -60,6 +62,9 @@ public class CreateIntegralAdScienceViewability {
    * @return standard
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STANDARD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public IASViewabilityStandardType getStandard() {
@@ -84,6 +89,8 @@ public class CreateIntegralAdScienceViewability {
    * @return viewabilityTargeting
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_VIEWABILITY_TARGETING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ViewabilityTierType getViewabilityTargeting() {

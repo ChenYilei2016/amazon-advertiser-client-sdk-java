@@ -28,6 +28,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductCategoryRefi
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductGenreRefinement;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -66,6 +68,8 @@ public class ProductCategoryTarget {
    * @return matchType
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProductCategoryMatchType getMatchType() {
@@ -90,6 +94,9 @@ public class ProductCategoryTarget {
    * @return productCategoryRefinement
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_REFINEMENT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ProductCategoryRefinementValue getProductCategoryRefinement() {
@@ -114,6 +121,8 @@ public class ProductCategoryTarget {
    * @return productGenreRefinement
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_GENRE_REFINEMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProductGenreRefinement getProductGenreRefinement() {

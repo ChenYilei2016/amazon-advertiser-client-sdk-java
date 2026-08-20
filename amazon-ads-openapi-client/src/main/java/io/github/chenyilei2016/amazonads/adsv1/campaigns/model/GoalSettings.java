@@ -28,6 +28,8 @@ import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.Goal;
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.KPI;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -71,6 +73,8 @@ public class GoalSettings {
    * @return currencyCode
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CURRENCY_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CurrencyCode getCurrencyCode() {
@@ -95,6 +99,8 @@ public class GoalSettings {
    * @return goal
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_GOAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Goal getGoal() {
@@ -119,6 +125,8 @@ public class GoalSettings {
    * @return kpi
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_KPI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public KPI getKpi() {
@@ -143,6 +151,7 @@ public class GoalSettings {
    * @return kpiValue
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_KPI_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getKpiValue() {

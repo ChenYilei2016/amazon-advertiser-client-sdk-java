@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -42,7 +44,7 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class ErrorsIndex {
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @jakarta.annotation.Nonnull
-  private List<Error> errors = new ArrayList<>();
+  private List<@Valid Error> errors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INDEX = "index";
   @jakarta.annotation.Nonnull
@@ -51,7 +53,7 @@ public class ErrorsIndex {
   public ErrorsIndex() {
   }
 
-  public ErrorsIndex errors(@jakarta.annotation.Nonnull List<Error> errors) {
+  public ErrorsIndex errors(@jakarta.annotation.Nonnull List<@Valid Error> errors) {
     this.errors = errors;
     return this;
   }
@@ -69,16 +71,19 @@ public class ErrorsIndex {
    * @return errors
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+  @Size(min=1,max=20)
   @JsonProperty(value = JSON_PROPERTY_ERRORS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<Error> getErrors() {
+  public List<@Valid Error> getErrors() {
     return errors;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_ERRORS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrors(@jakarta.annotation.Nonnull List<Error> errors) {
+  public void setErrors(@jakarta.annotation.Nonnull List<@Valid Error> errors) {
     this.errors = errors;
   }
 
@@ -95,6 +100,8 @@ public class ErrorsIndex {
    * @return index
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Min(0) @Max(19)
   @JsonProperty(value = JSON_PROPERTY_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getIndex() {

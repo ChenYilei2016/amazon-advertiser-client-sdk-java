@@ -28,6 +28,8 @@ import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.OffAmazonBudgetCo
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.RolloverStrategy;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -66,6 +68,8 @@ public class CreateBudgetSettings {
    * @return budgetAllocation
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BUDGET_ALLOCATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BudgetAllocation getBudgetAllocation() {
@@ -90,6 +94,8 @@ public class CreateBudgetSettings {
    * @return flightBudgetRolloverStrategy
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_FLIGHT_BUDGET_ROLLOVER_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RolloverStrategy getFlightBudgetRolloverStrategy() {
@@ -114,6 +120,8 @@ public class CreateBudgetSettings {
    * @return offAmazonBudgetControlStrategy
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_OFF_AMAZON_BUDGET_CONTROL_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OffAmazonBudgetControlStrategy getOffAmazonBudgetControlStrategy() {

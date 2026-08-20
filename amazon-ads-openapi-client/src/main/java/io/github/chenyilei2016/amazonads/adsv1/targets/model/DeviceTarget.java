@@ -30,6 +30,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.MobileEnvironment;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.MobileOs;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -78,6 +80,8 @@ public class DeviceTarget {
    * @return deviceOrientation
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DEVICE_ORIENTATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceOrientation getDeviceOrientation() {
@@ -102,6 +106,9 @@ public class DeviceTarget {
    * @return deviceType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DEVICE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DeviceType getDeviceType() {
@@ -126,6 +133,8 @@ public class DeviceTarget {
    * @return mobileDevice
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MOBILE_DEVICE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileDevice getMobileDevice() {
@@ -150,6 +159,8 @@ public class DeviceTarget {
    * @return mobileEnvironment
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MOBILE_ENVIRONMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileEnvironment getMobileEnvironment() {
@@ -174,6 +185,8 @@ public class DeviceTarget {
    * @return mobileOs
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MOBILE_OS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileOs getMobileOs() {

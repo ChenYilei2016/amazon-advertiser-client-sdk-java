@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.ShopperSegment;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -59,6 +61,8 @@ public class ShopperSegmentBidAdjustment {
    * @return percentage
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_PERCENTAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getPercentage() {
@@ -83,6 +87,9 @@ public class ShopperSegmentBidAdjustment {
    * @return shopperSegment
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_SHOPPER_SEGMENT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ShopperSegment getShopperSegment() {

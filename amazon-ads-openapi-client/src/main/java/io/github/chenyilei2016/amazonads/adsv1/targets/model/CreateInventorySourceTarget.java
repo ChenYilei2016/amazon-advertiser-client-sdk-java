@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateMarketplaceSt
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.InventorySourceType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -60,6 +62,9 @@ public class CreateInventorySourceTarget {
    * @return inventorySourceId
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateMarketplaceStringValue getInventorySourceId() {
@@ -84,6 +89,9 @@ public class CreateInventorySourceTarget {
    * @return inventorySourceType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public InventorySourceType getInventorySourceType() {

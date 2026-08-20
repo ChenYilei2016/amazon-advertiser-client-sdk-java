@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -43,7 +45,7 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class CreateProductCategoryRefinementValue {
   public static final String JSON_PROPERTY_MARKETPLACE_SETTINGS = "marketplaceSettings";
   @jakarta.annotation.Nullable
-  private List<CreateProductCategoryRefinementMarketplaceSetting> marketplaceSettings = new ArrayList<>();
+  private List<@Valid CreateProductCategoryRefinementMarketplaceSetting> marketplaceSettings = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PRODUCT_CATEGORY_REFINEMENT = "productCategoryRefinement";
   @jakarta.annotation.Nullable
@@ -52,7 +54,7 @@ public class CreateProductCategoryRefinementValue {
   public CreateProductCategoryRefinementValue() {
   }
 
-  public CreateProductCategoryRefinementValue marketplaceSettings(@jakarta.annotation.Nullable List<CreateProductCategoryRefinementMarketplaceSetting> marketplaceSettings) {
+  public CreateProductCategoryRefinementValue marketplaceSettings(@jakarta.annotation.Nullable List<@Valid CreateProductCategoryRefinementMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
     return this;
   }
@@ -70,16 +72,18 @@ public class CreateProductCategoryRefinementValue {
    * @return marketplaceSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateProductCategoryRefinementMarketplaceSetting> getMarketplaceSettings() {
+  public List<@Valid CreateProductCategoryRefinementMarketplaceSetting> getMarketplaceSettings() {
     return marketplaceSettings;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<CreateProductCategoryRefinementMarketplaceSetting> marketplaceSettings) {
+  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<@Valid CreateProductCategoryRefinementMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
   }
 
@@ -94,6 +98,8 @@ public class CreateProductCategoryRefinementValue {
    * @return productCategoryRefinement
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_REFINEMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateProductCategoryRefinement getProductCategoryRefinement() {

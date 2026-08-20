@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -47,7 +49,7 @@ public class TargetSuccessResponse {
 
   public static final String JSON_PROPERTY_TARGETS = "targets";
   @jakarta.annotation.Nullable
-  private List<Target> targets = new ArrayList<>();
+  private List<@Valid Target> targets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTAL_RESULTS = "totalResults";
   @jakarta.annotation.Nullable
@@ -66,6 +68,7 @@ public class TargetSuccessResponse {
    * @return nextToken
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_NEXT_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNextToken() {
@@ -80,7 +83,7 @@ public class TargetSuccessResponse {
   }
 
 
-  public TargetSuccessResponse targets(@jakarta.annotation.Nullable List<Target> targets) {
+  public TargetSuccessResponse targets(@jakarta.annotation.Nullable List<@Valid Target> targets) {
     this.targets = targets;
     return this;
   }
@@ -98,16 +101,18 @@ public class TargetSuccessResponse {
    * @return targets
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=5000)
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Target> getTargets() {
+  public List<@Valid Target> getTargets() {
     return targets;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTargets(@jakarta.annotation.Nullable List<Target> targets) {
+  public void setTargets(@jakarta.annotation.Nullable List<@Valid Target> targets) {
     this.targets = targets;
   }
 
@@ -122,6 +127,7 @@ public class TargetSuccessResponse {
    * @return totalResults
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_TOTAL_RESULTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTotalResults() {

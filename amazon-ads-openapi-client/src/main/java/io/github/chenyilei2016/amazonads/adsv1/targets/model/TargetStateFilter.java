@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -64,6 +66,9 @@ public class TargetStateFilter {
    * @return include
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+  @Size(min=1,max=3)
   @JsonProperty(value = JSON_PROPERTY_INCLUDE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<State> getInclude() {

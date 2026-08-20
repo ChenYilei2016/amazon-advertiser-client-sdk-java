@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -63,6 +65,8 @@ public class DeleteTargetRequest {
    * @return targetIds
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Size(min=1,max=1000)
   @JsonProperty(value = JSON_PROPERTY_TARGET_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<String> getTargetIds() {

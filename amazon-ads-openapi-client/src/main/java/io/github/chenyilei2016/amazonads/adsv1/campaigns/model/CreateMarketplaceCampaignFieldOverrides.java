@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -69,7 +71,7 @@ public class CreateMarketplaceCampaignFieldOverrides {
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   @jakarta.annotation.Nullable
-  private List<CreateTag> tags = new ArrayList<>();
+  private List<@Valid CreateTag> tags = new ArrayList<>();
 
   public CreateMarketplaceCampaignFieldOverrides() {
   }
@@ -84,6 +86,8 @@ public class CreateMarketplaceCampaignFieldOverrides {
    * @return endDateTime
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_END_DATE_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OffsetDateTime getEndDateTime() {
@@ -108,6 +112,7 @@ public class CreateMarketplaceCampaignFieldOverrides {
    * @return name
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -132,6 +137,8 @@ public class CreateMarketplaceCampaignFieldOverrides {
    * @return optimizations
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_OPTIMIZATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateCampaignOptimizations getOptimizations() {
@@ -156,6 +163,8 @@ public class CreateMarketplaceCampaignFieldOverrides {
    * @return startDateTime
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_START_DATE_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OffsetDateTime getStartDateTime() {
@@ -180,6 +189,8 @@ public class CreateMarketplaceCampaignFieldOverrides {
    * @return state
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public State getState() {
@@ -194,7 +205,7 @@ public class CreateMarketplaceCampaignFieldOverrides {
   }
 
 
-  public CreateMarketplaceCampaignFieldOverrides tags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public CreateMarketplaceCampaignFieldOverrides tags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
     return this;
   }
@@ -212,16 +223,18 @@ public class CreateMarketplaceCampaignFieldOverrides {
    * @return tags
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateTag> getTags() {
+  public List<@Valid CreateTag> getTags() {
     return tags;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public void setTags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
   }
 

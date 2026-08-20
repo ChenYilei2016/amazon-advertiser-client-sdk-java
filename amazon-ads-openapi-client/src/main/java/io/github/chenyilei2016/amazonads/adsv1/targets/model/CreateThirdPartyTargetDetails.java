@@ -61,6 +61,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.NewsGuardBrandGuard
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.PixalateFraudInvalidTraffic;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import tools.jackson.core.type.TypeReference;
 

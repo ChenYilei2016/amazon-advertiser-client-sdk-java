@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -41,12 +43,12 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class UpdateTargetRequest {
   public static final String JSON_PROPERTY_TARGETS = "targets";
   @jakarta.annotation.Nonnull
-  private List<TargetUpdate> targets = new ArrayList<>();
+  private List<@Valid TargetUpdate> targets = new ArrayList<>();
 
   public UpdateTargetRequest() {
   }
 
-  public UpdateTargetRequest targets(@jakarta.annotation.Nonnull List<TargetUpdate> targets) {
+  public UpdateTargetRequest targets(@jakarta.annotation.Nonnull List<@Valid TargetUpdate> targets) {
     this.targets = targets;
     return this;
   }
@@ -64,16 +66,19 @@ public class UpdateTargetRequest {
    * @return targets
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+  @Size(min=1,max=1000)
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<TargetUpdate> getTargets() {
+  public List<@Valid TargetUpdate> getTargets() {
     return targets;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTargets(@jakarta.annotation.Nonnull List<TargetUpdate> targets) {
+  public void setTargets(@jakarta.annotation.Nonnull List<@Valid TargetUpdate> targets) {
     this.targets = targets;
   }
 

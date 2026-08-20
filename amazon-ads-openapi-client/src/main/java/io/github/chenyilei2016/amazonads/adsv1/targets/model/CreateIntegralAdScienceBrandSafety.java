@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.IASBrandSafetyLevelType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -94,6 +96,7 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return excludeContent
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_CONTENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExcludeContent() {
@@ -118,6 +121,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyAdult
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_ADULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyAdult() {
@@ -142,6 +147,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyAlcohol
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_ALCOHOL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyAlcohol() {
@@ -166,6 +173,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyGambling
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_GAMBLING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyGambling() {
@@ -190,6 +199,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyHateSpeech
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_HATE_SPEECH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyHateSpeech() {
@@ -214,6 +225,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyIllegalDownloads
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_ILLEGAL_DOWNLOADS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyIllegalDownloads() {
@@ -238,6 +251,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyIllegalDrugs
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_ILLEGAL_DRUGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyIllegalDrugs() {
@@ -262,6 +277,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyOffensiveLanguage
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_OFFENSIVE_LANGUAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyOffensiveLanguage() {
@@ -286,6 +303,8 @@ public class CreateIntegralAdScienceBrandSafety {
    * @return iasBrandSafetyViolence
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IAS_BRAND_SAFETY_VIOLENCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASBrandSafetyLevelType getIasBrandSafetyViolence() {

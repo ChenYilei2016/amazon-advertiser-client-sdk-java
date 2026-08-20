@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -42,7 +44,7 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class ProductValue {
   public static final String JSON_PROPERTY_MARKETPLACE_SETTINGS = "marketplaceSettings";
   @jakarta.annotation.Nullable
-  private List<ProductMarketplaceSetting> marketplaceSettings = new ArrayList<>();
+  private List<@Valid ProductMarketplaceSetting> marketplaceSettings = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PRODUCT_ID = "productId";
   @jakarta.annotation.Nullable
@@ -51,7 +53,7 @@ public class ProductValue {
   public ProductValue() {
   }
 
-  public ProductValue marketplaceSettings(@jakarta.annotation.Nullable List<ProductMarketplaceSetting> marketplaceSettings) {
+  public ProductValue marketplaceSettings(@jakarta.annotation.Nullable List<@Valid ProductMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
     return this;
   }
@@ -69,16 +71,18 @@ public class ProductValue {
    * @return marketplaceSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<ProductMarketplaceSetting> getMarketplaceSettings() {
+  public List<@Valid ProductMarketplaceSetting> getMarketplaceSettings() {
     return marketplaceSettings;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<ProductMarketplaceSetting> marketplaceSettings) {
+  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<@Valid ProductMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
   }
 
@@ -93,6 +97,7 @@ public class ProductValue {
    * @return productId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductId() {

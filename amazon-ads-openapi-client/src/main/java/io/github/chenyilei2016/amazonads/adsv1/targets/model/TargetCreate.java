@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -76,7 +78,7 @@ public class TargetCreate {
 
   public static final String JSON_PROPERTY_MARKETPLACE_CONFIGURATIONS = "marketplaceConfigurations";
   @jakarta.annotation.Nullable
-  private List<CreateMarketplaceTargetConfigurations> marketplaceConfigurations = new ArrayList<>();
+  private List<@Valid CreateMarketplaceTargetConfigurations> marketplaceConfigurations = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MARKETPLACE_SCOPE = "marketplaceScope";
   @jakarta.annotation.Nullable
@@ -96,7 +98,7 @@ public class TargetCreate {
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   @jakarta.annotation.Nullable
-  private List<CreateTag> tags = new ArrayList<>();
+  private List<@Valid CreateTag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TARGET_DETAILS = "targetDetails";
   @jakarta.annotation.Nonnull
@@ -119,6 +121,7 @@ public class TargetCreate {
    * @return adGroupId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_AD_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAdGroupId() {
@@ -143,6 +146,9 @@ public class TargetCreate {
    * @return adProduct
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_PRODUCT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AdProduct getAdProduct() {
@@ -167,6 +173,8 @@ public class TargetCreate {
    * @return bid
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateTargetBid getBid() {
@@ -191,6 +199,7 @@ public class TargetCreate {
    * @return campaignId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCampaignId() {
@@ -205,7 +214,7 @@ public class TargetCreate {
   }
 
 
-  public TargetCreate marketplaceConfigurations(@jakarta.annotation.Nullable List<CreateMarketplaceTargetConfigurations> marketplaceConfigurations) {
+  public TargetCreate marketplaceConfigurations(@jakarta.annotation.Nullable List<@Valid CreateMarketplaceTargetConfigurations> marketplaceConfigurations) {
     this.marketplaceConfigurations = marketplaceConfigurations;
     return this;
   }
@@ -223,16 +232,18 @@ public class TargetCreate {
    * @return marketplaceConfigurations
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_CONFIGURATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateMarketplaceTargetConfigurations> getMarketplaceConfigurations() {
+  public List<@Valid CreateMarketplaceTargetConfigurations> getMarketplaceConfigurations() {
     return marketplaceConfigurations;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_CONFIGURATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMarketplaceConfigurations(@jakarta.annotation.Nullable List<CreateMarketplaceTargetConfigurations> marketplaceConfigurations) {
+  public void setMarketplaceConfigurations(@jakarta.annotation.Nullable List<@Valid CreateMarketplaceTargetConfigurations> marketplaceConfigurations) {
     this.marketplaceConfigurations = marketplaceConfigurations;
   }
 
@@ -247,6 +258,8 @@ public class TargetCreate {
    * @return marketplaceScope
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MarketplaceScope getMarketplaceScope() {
@@ -279,6 +292,8 @@ public class TargetCreate {
    * @return marketplaces
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Marketplace> getMarketplaces() {
@@ -303,6 +318,8 @@ public class TargetCreate {
    * @return negative
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_NEGATIVE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Boolean getNegative() {
@@ -327,6 +344,9 @@ public class TargetCreate {
    * @return state
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateState getState() {
@@ -341,7 +361,7 @@ public class TargetCreate {
   }
 
 
-  public TargetCreate tags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public TargetCreate tags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
     return this;
   }
@@ -359,16 +379,18 @@ public class TargetCreate {
    * @return tags
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreateTag> getTags() {
+  public List<@Valid CreateTag> getTags() {
     return tags;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(@jakarta.annotation.Nullable List<CreateTag> tags) {
+  public void setTags(@jakarta.annotation.Nullable List<@Valid CreateTag> tags) {
     this.tags = tags;
   }
 
@@ -383,6 +405,9 @@ public class TargetCreate {
    * @return targetDetails
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_DETAILS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateTargetDetails getTargetDetails() {
@@ -407,6 +432,9 @@ public class TargetCreate {
    * @return targetType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TargetType getTargetType() {

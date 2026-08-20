@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -53,6 +55,8 @@ public class CreateAdvertiserDomainList {
    * @return inheritFromAdvertiser
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_INHERIT_FROM_ADVERTISER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Boolean getInheritFromAdvertiser() {

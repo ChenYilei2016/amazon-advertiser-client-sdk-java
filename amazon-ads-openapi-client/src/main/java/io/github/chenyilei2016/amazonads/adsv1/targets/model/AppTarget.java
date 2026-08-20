@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.AppType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -59,6 +61,8 @@ public class AppTarget {
    * @return appId
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_APP_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getAppId() {
@@ -83,6 +87,9 @@ public class AppTarget {
    * @return appType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_APP_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AppType getAppType() {

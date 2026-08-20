@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -64,6 +66,8 @@ public class CreateNewsGuardBrandGuardMisinformationSafety {
    * @return avoidanceList
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=20)
   @JsonProperty(value = JSON_PROPERTY_AVOIDANCE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<NewsGuardBrandGuardMisinformationSafetyType> getAvoidanceList() {

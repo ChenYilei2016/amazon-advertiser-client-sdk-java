@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -58,6 +60,8 @@ public class AudienceBidAdjustment {
    * @return audienceId
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_AUDIENCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getAudienceId() {
@@ -82,6 +86,8 @@ public class AudienceBidAdjustment {
    * @return percentage
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_PERCENTAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getPercentage() {

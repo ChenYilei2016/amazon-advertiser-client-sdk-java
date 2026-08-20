@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.CurrencyCode;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.Marketplace;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -65,6 +67,7 @@ public class CreateTargetBidMarketplaceSetting {
    * @return bid
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_BID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getBid() {
@@ -89,6 +92,9 @@ public class CreateTargetBidMarketplaceSetting {
    * @return currencyCode
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CURRENCY_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CurrencyCode getCurrencyCode() {
@@ -113,6 +119,9 @@ public class CreateTargetBidMarketplaceSetting {
    * @return marketplace
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Marketplace getMarketplace() {

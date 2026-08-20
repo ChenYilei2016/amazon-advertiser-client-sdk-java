@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.AdPlayerSize;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -54,6 +56,9 @@ public class AdPlayerSizeTarget {
    * @return adPlayerSize
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AdPlayerSize getAdPlayerSize() {

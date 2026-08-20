@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -68,6 +70,7 @@ public class CreatePixalateFraudInvalidTraffic {
    * @return excludeAppsAndDomains
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_APPS_AND_DOMAINS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExcludeAppsAndDomains() {
@@ -92,6 +95,7 @@ public class CreatePixalateFraudInvalidTraffic {
    * @return excludeIpAddressAndUserAgents
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_IP_ADDRESS_AND_USER_AGENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExcludeIpAddressAndUserAgents() {
@@ -116,6 +120,7 @@ public class CreatePixalateFraudInvalidTraffic {
    * @return excludeOttAndMobileDevices
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_OTT_AND_MOBILE_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExcludeOttAndMobileDevices() {
@@ -140,6 +145,7 @@ public class CreatePixalateFraudInvalidTraffic {
    * @return excludeRemovedAppsFromAppStores
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_EXCLUDE_REMOVED_APPS_FROM_APP_STORES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExcludeRemovedAppsFromAppStores() {

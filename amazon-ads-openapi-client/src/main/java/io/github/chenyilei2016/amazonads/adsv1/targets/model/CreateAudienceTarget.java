@@ -28,6 +28,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateMarketplaceSt
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.InGroupOperator;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -71,6 +73,8 @@ public class CreateAudienceTarget {
    * @return acrossGroupOperator
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_ACROSS_GROUP_OPERATOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AcrossGroupOperator getAcrossGroupOperator() {
@@ -95,6 +99,9 @@ public class CreateAudienceTarget {
    * @return audienceId
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AUDIENCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateMarketplaceStringValue getAudienceId() {
@@ -119,6 +126,7 @@ public class CreateAudienceTarget {
    * @return groupId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getGroupId() {
@@ -143,6 +151,8 @@ public class CreateAudienceTarget {
    * @return inGroupOperator
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_IN_GROUP_OPERATOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public InGroupOperator getInGroupOperator() {

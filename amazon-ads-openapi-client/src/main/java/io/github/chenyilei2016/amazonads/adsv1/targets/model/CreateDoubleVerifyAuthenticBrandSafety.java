@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -53,6 +55,7 @@ public class CreateDoubleVerifyAuthenticBrandSafety {
    * @return doubleVerifySegmentId
    */
   @jakarta.annotation.Nullable
+  @Pattern(regexp="^51[0-9]{6}$")
   @JsonProperty(value = JSON_PROPERTY_DOUBLE_VERIFY_SEGMENT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDoubleVerifySegmentId() {

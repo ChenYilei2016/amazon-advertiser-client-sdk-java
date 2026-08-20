@@ -27,6 +27,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.DoubleVerifyFraudInvalidTraffic;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -55,6 +57,9 @@ public class DoubleVerifyFraudInvalidTraffic1 {
    * @return doubleVerifyFraudInvalidTraffic
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DOUBLE_VERIFY_FRAUD_INVALID_TRAFFIC, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DoubleVerifyFraudInvalidTraffic getDoubleVerifyFraudInvalidTraffic() {

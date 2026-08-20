@@ -28,6 +28,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductIdType;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductMatchType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -66,6 +68,9 @@ public class CreateProductTarget {
    * @return matchType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ProductMatchType getMatchType() {
@@ -90,6 +95,9 @@ public class CreateProductTarget {
    * @return product
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateProductValue getProduct() {
@@ -114,6 +122,9 @@ public class CreateProductTarget {
    * @return productIdType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_ID_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ProductIdType getProductIdType() {

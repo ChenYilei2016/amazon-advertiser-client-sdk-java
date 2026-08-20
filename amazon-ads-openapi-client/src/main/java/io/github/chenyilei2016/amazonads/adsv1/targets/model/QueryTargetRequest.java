@@ -39,6 +39,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.TargetTargetIdFilte
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.TargetTargetTypeFilter;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -142,6 +144,8 @@ public class QueryTargetRequest {
    * @return adGroupIdFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_GROUP_ID_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetAdGroupIdFilter getAdGroupIdFilter() {
@@ -166,6 +170,9 @@ public class QueryTargetRequest {
    * @return adProductFilter
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_PRODUCT_FILTER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TargetAdProductFilter getAdProductFilter() {
@@ -190,6 +197,8 @@ public class QueryTargetRequest {
    * @return campaignIdFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGN_ID_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetCampaignIdFilter getCampaignIdFilter() {
@@ -214,6 +223,8 @@ public class QueryTargetRequest {
    * @return inventorySourceIdFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_ID_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetMarketplaceStringValueFilter getInventorySourceIdFilter() {
@@ -238,6 +249,8 @@ public class QueryTargetRequest {
    * @return inventorySourceTypeFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TYPE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetInventorySourceTypeFilter getInventorySourceTypeFilter() {
@@ -262,6 +275,8 @@ public class QueryTargetRequest {
    * @return keywordFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_KEYWORD_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetKeywordFilter getKeywordFilter() {
@@ -286,6 +301,8 @@ public class QueryTargetRequest {
    * @return marketplaceScopeFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SCOPE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetMarketplaceScopeFilter getMarketplaceScopeFilter() {
@@ -310,6 +327,8 @@ public class QueryTargetRequest {
    * @return matchTypeFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetMatchTypeFilter getMatchTypeFilter() {
@@ -336,6 +355,7 @@ public class QueryTargetRequest {
    * @return maxResults
    */
   @jakarta.annotation.Nullable
+  @Min(1) @Max(5000)
   @JsonProperty(value = JSON_PROPERTY_MAX_RESULTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaxResults() {
@@ -360,6 +380,8 @@ public class QueryTargetRequest {
    * @return nativeLanguageLocaleFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_NATIVE_LANGUAGE_LOCALE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetLanguageLocaleFilter getNativeLanguageLocaleFilter() {
@@ -384,6 +406,8 @@ public class QueryTargetRequest {
    * @return negativeFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_NEGATIVE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetNegativeFilter getNegativeFilter() {
@@ -408,6 +432,7 @@ public class QueryTargetRequest {
    * @return nextToken
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_NEXT_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNextToken() {
@@ -432,6 +457,8 @@ public class QueryTargetRequest {
    * @return productIdFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_ID_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetProductIdFilter getProductIdFilter() {
@@ -456,6 +483,8 @@ public class QueryTargetRequest {
    * @return stateFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STATE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetStateFilter getStateFilter() {
@@ -480,6 +509,8 @@ public class QueryTargetRequest {
    * @return targetIdFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_ID_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetTargetIdFilter getTargetIdFilter() {
@@ -504,6 +535,8 @@ public class QueryTargetRequest {
    * @return targetTypeFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_TYPE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TargetTargetTypeFilter getTargetTypeFilter() {

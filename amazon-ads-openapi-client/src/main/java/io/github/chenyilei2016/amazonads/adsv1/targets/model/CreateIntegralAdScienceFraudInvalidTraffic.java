@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.IASFraudInvalidTrafficType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -54,6 +56,8 @@ public class CreateIntegralAdScienceFraudInvalidTraffic {
    * @return targetSetting
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_SETTING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IASFraudInvalidTrafficType getTargetSetting() {

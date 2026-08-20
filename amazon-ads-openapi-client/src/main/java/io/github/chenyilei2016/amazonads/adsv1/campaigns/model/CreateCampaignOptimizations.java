@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -74,6 +76,8 @@ public class CreateCampaignOptimizations {
    * @return bidSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BID_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateBidSettings getBidSettings() {
@@ -98,6 +102,8 @@ public class CreateCampaignOptimizations {
    * @return budgetSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BUDGET_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateBudgetSettings getBudgetSettings() {
@@ -122,6 +128,8 @@ public class CreateCampaignOptimizations {
    * @return goalSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_GOAL_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CreateGoalSettings getGoalSettings() {
@@ -154,6 +162,8 @@ public class CreateCampaignOptimizations {
    * @return primaryInventoryTypes
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=10)
   @JsonProperty(value = JSON_PROPERTY_PRIMARY_INVENTORY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<PrimaryInventoryType> getPrimaryInventoryTypes() {

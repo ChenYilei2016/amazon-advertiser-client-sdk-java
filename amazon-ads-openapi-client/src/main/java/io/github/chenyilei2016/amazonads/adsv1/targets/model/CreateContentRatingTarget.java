@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentRatingTypes;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateContentRating;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -60,6 +62,9 @@ public class CreateContentRatingTarget {
    * @return contentRatingType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ContentRatingTypes getContentRatingType() {
@@ -84,6 +89,9 @@ public class CreateContentRatingTarget {
    * @return contentRatingTypeDetails
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TYPE_DETAILS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CreateContentRating getContentRatingTypeDetails() {

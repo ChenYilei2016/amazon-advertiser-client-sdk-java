@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -41,12 +43,12 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class UpdateCampaignRequest {
   public static final String JSON_PROPERTY_CAMPAIGNS = "campaigns";
   @jakarta.annotation.Nonnull
-  private List<CampaignUpdate> campaigns = new ArrayList<>();
+  private List<@Valid CampaignUpdate> campaigns = new ArrayList<>();
 
   public UpdateCampaignRequest() {
   }
 
-  public UpdateCampaignRequest campaigns(@jakarta.annotation.Nonnull List<CampaignUpdate> campaigns) {
+  public UpdateCampaignRequest campaigns(@jakarta.annotation.Nonnull List<@Valid CampaignUpdate> campaigns) {
     this.campaigns = campaigns;
     return this;
   }
@@ -64,16 +66,19 @@ public class UpdateCampaignRequest {
    * @return campaigns
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+  @Size(min=1,max=1000)
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGNS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<CampaignUpdate> getCampaigns() {
+  public List<@Valid CampaignUpdate> getCampaigns() {
     return campaigns;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGNS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCampaigns(@jakarta.annotation.Nonnull List<CampaignUpdate> campaigns) {
+  public void setCampaigns(@jakarta.annotation.Nonnull List<@Valid CampaignUpdate> campaigns) {
     this.campaigns = campaigns;
   }
 

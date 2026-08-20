@@ -15,9 +15,11 @@
         <openapi-generator.version>7.24.0</openapi-generator.version>
         <amazon.ads.openapi.cleanup-output>true</amazon.ads.openapi.cleanup-output>
         <amazon.ads.openapi.skip-generation>false</amazon.ads.openapi.skip-generation>
+        <amazon.ads.openapi.use-bean-validation>true</amazon.ads.openapi.use-bean-validation>
         <jackson3.version>3.1.1</jackson3.version>
         <jackson-annotations.version>2.21</jackson-annotations.version>
         <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
+        <jakarta.validation.version>3.1.1</jakarta.validation.version>
         <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -48,6 +50,11 @@
             <artifactId>jakarta.annotation-api</artifactId>
             <version>${jakarta-annotation.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -97,7 +104,7 @@
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                 <openApiNullable>false</openApiNullable>
                                 <sourceFolder>java</sourceFolder>
-                                <useBeanValidation>false</useBeanValidation>
+                                <useBeanValidation>${amazon.ads.openapi.use-bean-validation}</useBeanValidation>
                                 <useJackson3>true</useJackson3>
                                 <useJakartaEe>true</useJakartaEe>
                                 <useSingleRequestParameter>static</useSingleRequestParameter>
@@ -134,7 +141,7 @@
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                 <openApiNullable>false</openApiNullable>
                                 <sourceFolder>java</sourceFolder>
-                                <useBeanValidation>false</useBeanValidation>
+                                <useBeanValidation>${amazon.ads.openapi.use-bean-validation}</useBeanValidation>
                                 <useJackson3>true</useJackson3>
                                 <useJakartaEe>true</useJakartaEe>
                                 <useSingleRequestParameter>static</useSingleRequestParameter>
@@ -187,6 +194,9 @@
                         <configuration>
                             <target>
                                 <replaceregexp match="[ \t]+$" replace="" byline="true">
+                                    <fileset dir="${project.basedir}/src/main/java" includes="**/*.java"/>
+                                </replaceregexp>
+                                <replaceregexp match="^ (?=@(?:Email|Pattern|Size|Min|Max|DecimalMin|DecimalMax)\b)" replace="  " byline="true">
                                     <fileset dir="${project.basedir}/src/main/java" includes="**/*.java"/>
                                 </replaceregexp>
                             </target>

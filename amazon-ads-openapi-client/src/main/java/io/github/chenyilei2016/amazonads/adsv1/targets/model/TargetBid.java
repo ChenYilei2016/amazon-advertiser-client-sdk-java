@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -52,7 +54,7 @@ public class TargetBid {
 
   public static final String JSON_PROPERTY_MARKETPLACE_SETTINGS = "marketplaceSettings";
   @jakarta.annotation.Nullable
-  private List<TargetBidMarketplaceSetting> marketplaceSettings = new ArrayList<>();
+  private List<@Valid TargetBidMarketplaceSetting> marketplaceSettings = new ArrayList<>();
 
   public TargetBid() {
   }
@@ -67,6 +69,7 @@ public class TargetBid {
    * @return bid
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_BID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getBid() {
@@ -91,6 +94,8 @@ public class TargetBid {
    * @return currencyCode
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CURRENCY_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CurrencyCode getCurrencyCode() {
@@ -105,7 +110,7 @@ public class TargetBid {
   }
 
 
-  public TargetBid marketplaceSettings(@jakarta.annotation.Nullable List<TargetBidMarketplaceSetting> marketplaceSettings) {
+  public TargetBid marketplaceSettings(@jakarta.annotation.Nullable List<@Valid TargetBidMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
     return this;
   }
@@ -123,16 +128,18 @@ public class TargetBid {
    * @return marketplaceSettings
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=30)
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<TargetBidMarketplaceSetting> getMarketplaceSettings() {
+  public List<@Valid TargetBidMarketplaceSetting> getMarketplaceSettings() {
     return marketplaceSettings;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<TargetBidMarketplaceSetting> marketplaceSettings) {
+  public void setMarketplaceSettings(@jakarta.annotation.Nullable List<@Valid TargetBidMarketplaceSetting> marketplaceSettings) {
     this.marketplaceSettings = marketplaceSettings;
   }
 

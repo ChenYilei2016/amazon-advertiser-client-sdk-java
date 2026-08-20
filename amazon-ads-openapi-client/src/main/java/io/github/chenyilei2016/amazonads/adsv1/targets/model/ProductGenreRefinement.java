@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -58,6 +60,8 @@ public class ProductGenreRefinement {
    * @return productGenreId
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_GENRE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getProductGenreId() {
@@ -82,6 +86,7 @@ public class ProductGenreRefinement {
    * @return productGenreIdResolved
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_GENRE_ID_RESOLVED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductGenreIdResolved() {

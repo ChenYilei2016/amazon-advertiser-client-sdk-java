@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -45,20 +47,20 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class CampaignMultiStatusResponseWithPartialErrors {
   public static final String JSON_PROPERTY_ERROR = "error";
   @jakarta.annotation.Nullable
-  private List<ErrorsIndex> error = new ArrayList<>();
+  private List<@Valid ErrorsIndex> error = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PARTIAL_SUCCESS = "partialSuccess";
   @jakarta.annotation.Nullable
-  private List<CampaignPartialIndex> partialSuccess = new ArrayList<>();
+  private List<@Valid CampaignPartialIndex> partialSuccess = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SUCCESS = "success";
   @jakarta.annotation.Nullable
-  private List<CampaignMultiStatusSuccess> success = new ArrayList<>();
+  private List<@Valid CampaignMultiStatusSuccess> success = new ArrayList<>();
 
   public CampaignMultiStatusResponseWithPartialErrors() {
   }
 
-  public CampaignMultiStatusResponseWithPartialErrors error(@jakarta.annotation.Nullable List<ErrorsIndex> error) {
+  public CampaignMultiStatusResponseWithPartialErrors error(@jakarta.annotation.Nullable List<@Valid ErrorsIndex> error) {
     this.error = error;
     return this;
   }
@@ -76,21 +78,23 @@ public class CampaignMultiStatusResponseWithPartialErrors {
    * @return error
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=1000)
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<ErrorsIndex> getError() {
+  public List<@Valid ErrorsIndex> getError() {
     return error;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@jakarta.annotation.Nullable List<ErrorsIndex> error) {
+  public void setError(@jakarta.annotation.Nullable List<@Valid ErrorsIndex> error) {
     this.error = error;
   }
 
 
-  public CampaignMultiStatusResponseWithPartialErrors partialSuccess(@jakarta.annotation.Nullable List<CampaignPartialIndex> partialSuccess) {
+  public CampaignMultiStatusResponseWithPartialErrors partialSuccess(@jakarta.annotation.Nullable List<@Valid CampaignPartialIndex> partialSuccess) {
     this.partialSuccess = partialSuccess;
     return this;
   }
@@ -108,21 +112,23 @@ public class CampaignMultiStatusResponseWithPartialErrors {
    * @return partialSuccess
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=1000)
   @JsonProperty(value = JSON_PROPERTY_PARTIAL_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CampaignPartialIndex> getPartialSuccess() {
+  public List<@Valid CampaignPartialIndex> getPartialSuccess() {
     return partialSuccess;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_PARTIAL_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPartialSuccess(@jakarta.annotation.Nullable List<CampaignPartialIndex> partialSuccess) {
+  public void setPartialSuccess(@jakarta.annotation.Nullable List<@Valid CampaignPartialIndex> partialSuccess) {
     this.partialSuccess = partialSuccess;
   }
 
 
-  public CampaignMultiStatusResponseWithPartialErrors success(@jakarta.annotation.Nullable List<CampaignMultiStatusSuccess> success) {
+  public CampaignMultiStatusResponseWithPartialErrors success(@jakarta.annotation.Nullable List<@Valid CampaignMultiStatusSuccess> success) {
     this.success = success;
     return this;
   }
@@ -140,16 +146,18 @@ public class CampaignMultiStatusResponseWithPartialErrors {
    * @return success
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=1000)
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CampaignMultiStatusSuccess> getSuccess() {
+  public List<@Valid CampaignMultiStatusSuccess> getSuccess() {
     return success;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuccess(@jakarta.annotation.Nullable List<CampaignMultiStatusSuccess> success) {
+  public void setSuccess(@jakarta.annotation.Nullable List<@Valid CampaignMultiStatusSuccess> success) {
     this.success = success;
   }
 

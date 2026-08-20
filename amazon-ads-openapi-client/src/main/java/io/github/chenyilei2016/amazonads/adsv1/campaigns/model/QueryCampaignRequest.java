@@ -32,6 +32,8 @@ import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.CampaignPortfolio
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.CampaignStateFilter;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -100,6 +102,9 @@ public class QueryCampaignRequest {
    * @return adProductFilter
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AD_PRODUCT_FILTER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CampaignAdProductFilter getAdProductFilter() {
@@ -124,6 +129,8 @@ public class QueryCampaignRequest {
    * @return campaignIdFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGN_ID_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CampaignCampaignIdFilter getCampaignIdFilter() {
@@ -148,6 +155,8 @@ public class QueryCampaignRequest {
    * @return goalFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_GOAL_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CampaignGoalFilter getGoalFilter() {
@@ -172,6 +181,8 @@ public class QueryCampaignRequest {
    * @return marketplaceScopeFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE_SCOPE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CampaignMarketplaceScopeFilter getMarketplaceScopeFilter() {
@@ -198,6 +209,7 @@ public class QueryCampaignRequest {
    * @return maxResults
    */
   @jakarta.annotation.Nullable
+  @Min(1) @Max(5000)
   @JsonProperty(value = JSON_PROPERTY_MAX_RESULTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaxResults() {
@@ -222,6 +234,8 @@ public class QueryCampaignRequest {
    * @return nameFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_NAME_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CampaignNameFilter getNameFilter() {
@@ -246,6 +260,7 @@ public class QueryCampaignRequest {
    * @return nextToken
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_NEXT_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNextToken() {
@@ -270,6 +285,8 @@ public class QueryCampaignRequest {
    * @return portfolioIdFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PORTFOLIO_ID_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CampaignPortfolioIdFilter getPortfolioIdFilter() {
@@ -294,6 +311,8 @@ public class QueryCampaignRequest {
    * @return stateFilter
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STATE_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CampaignStateFilter getStateFilter() {

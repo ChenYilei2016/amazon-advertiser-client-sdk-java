@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -108,6 +110,7 @@ public class CreateProductCategoryRefinement {
    * @return productAgeRangeId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_AGE_RANGE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductAgeRangeId() {
@@ -132,6 +135,7 @@ public class CreateProductCategoryRefinement {
    * @return productAgeRangeIdResolved
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_AGE_RANGE_ID_RESOLVED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductAgeRangeIdResolved() {
@@ -156,6 +160,7 @@ public class CreateProductCategoryRefinement {
    * @return productBrandId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_BRAND_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductBrandId() {
@@ -180,6 +185,7 @@ public class CreateProductCategoryRefinement {
    * @return productBrandIdResolved
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_BRAND_ID_RESOLVED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductBrandIdResolved() {
@@ -204,6 +210,7 @@ public class CreateProductCategoryRefinement {
    * @return productCategoryId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductCategoryId() {
@@ -228,6 +235,7 @@ public class CreateProductCategoryRefinement {
    * @return productCategoryIdResolved
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_ID_RESOLVED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductCategoryIdResolved() {
@@ -252,6 +260,7 @@ public class CreateProductCategoryRefinement {
    * @return productGenreId
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_GENRE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProductGenreId() {
@@ -276,6 +285,7 @@ public class CreateProductCategoryRefinement {
    * @return productPriceGreaterThan
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_PRICE_GREATER_THAN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getProductPriceGreaterThan() {
@@ -300,6 +310,7 @@ public class CreateProductCategoryRefinement {
    * @return productPriceLessThan
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_PRICE_LESS_THAN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getProductPriceLessThan() {
@@ -324,6 +335,7 @@ public class CreateProductCategoryRefinement {
    * @return productPrimeShippingEligible
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_PRIME_SHIPPING_ELIGIBLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getProductPrimeShippingEligible() {
@@ -348,6 +360,7 @@ public class CreateProductCategoryRefinement {
    * @return productRatingGreaterThan
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_RATING_GREATER_THAN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getProductRatingGreaterThan() {
@@ -372,6 +385,7 @@ public class CreateProductCategoryRefinement {
    * @return productRatingLessThan
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_RATING_LESS_THAN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getProductRatingLessThan() {

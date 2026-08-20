@@ -25,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -58,6 +60,8 @@ public class TimeOfDay {
    * @return endTime
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Pattern(regexp="^([01][0-9]|2[0-3]):[0-5][0-9]Z$")
   @JsonProperty(value = JSON_PROPERTY_END_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getEndTime() {
@@ -82,6 +86,8 @@ public class TimeOfDay {
    * @return startTime
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Pattern(regexp="^([01][0-9]|2[0-3]):[0-5][0-9]Z$")
   @JsonProperty(value = JSON_PROPERTY_START_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getStartTime() {

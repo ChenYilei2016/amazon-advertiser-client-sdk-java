@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -49,7 +51,7 @@ public class MarketplaceTargetFieldOverrides {
 
   public static final String JSON_PROPERTY_TAGS = "tags";
   @jakarta.annotation.Nullable
-  private List<Tag> tags = new ArrayList<>();
+  private List<@Valid Tag> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TARGET_DETAILS = "targetDetails";
   @jakarta.annotation.Nullable
@@ -68,6 +70,8 @@ public class MarketplaceTargetFieldOverrides {
    * @return state
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public State getState() {
@@ -82,7 +86,7 @@ public class MarketplaceTargetFieldOverrides {
   }
 
 
-  public MarketplaceTargetFieldOverrides tags(@jakarta.annotation.Nullable List<Tag> tags) {
+  public MarketplaceTargetFieldOverrides tags(@jakarta.annotation.Nullable List<@Valid Tag> tags) {
     this.tags = tags;
     return this;
   }
@@ -100,16 +104,18 @@ public class MarketplaceTargetFieldOverrides {
    * @return tags
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Tag> getTags() {
+  public List<@Valid Tag> getTags() {
     return tags;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(@jakarta.annotation.Nullable List<Tag> tags) {
+  public void setTags(@jakarta.annotation.Nullable List<@Valid Tag> tags) {
     this.tags = tags;
   }
 
@@ -124,6 +130,8 @@ public class MarketplaceTargetFieldOverrides {
    * @return targetDetails
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TARGET_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OverridableTargets getTargetDetails() {

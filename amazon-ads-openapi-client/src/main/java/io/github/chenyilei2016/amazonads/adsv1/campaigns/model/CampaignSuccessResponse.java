@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -42,7 +44,7 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class CampaignSuccessResponse {
   public static final String JSON_PROPERTY_CAMPAIGNS = "campaigns";
   @jakarta.annotation.Nullable
-  private List<Campaign> campaigns = new ArrayList<>();
+  private List<@Valid Campaign> campaigns = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NEXT_TOKEN = "nextToken";
   @jakarta.annotation.Nullable
@@ -51,7 +53,7 @@ public class CampaignSuccessResponse {
   public CampaignSuccessResponse() {
   }
 
-  public CampaignSuccessResponse campaigns(@jakarta.annotation.Nullable List<Campaign> campaigns) {
+  public CampaignSuccessResponse campaigns(@jakarta.annotation.Nullable List<@Valid Campaign> campaigns) {
     this.campaigns = campaigns;
     return this;
   }
@@ -69,16 +71,18 @@ public class CampaignSuccessResponse {
    * @return campaigns
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=5000)
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGNS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Campaign> getCampaigns() {
+  public List<@Valid Campaign> getCampaigns() {
     return campaigns;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGNS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCampaigns(@jakarta.annotation.Nullable List<Campaign> campaigns) {
+  public void setCampaigns(@jakarta.annotation.Nullable List<@Valid Campaign> campaigns) {
     this.campaigns = campaigns;
   }
 
@@ -93,6 +97,7 @@ public class CampaignSuccessResponse {
    * @return nextToken
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_NEXT_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNextToken() {

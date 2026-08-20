@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -68,6 +70,7 @@ public class CreateIntegralAdScienceContextualTargeting {
    * @return topicalSegments
    */
   @jakarta.annotation.Nullable
+  @Size(min=0,max=200)
   @JsonProperty(value = JSON_PROPERTY_TOPICAL_SEGMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTopicalSegments() {
@@ -100,6 +103,7 @@ public class CreateIntegralAdScienceContextualTargeting {
    * @return verticalSegments
    */
   @jakarta.annotation.Nullable
+  @Size(min=0,max=200)
   @JsonProperty(value = JSON_PROPERTY_VERTICAL_SEGMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getVerticalSegments() {

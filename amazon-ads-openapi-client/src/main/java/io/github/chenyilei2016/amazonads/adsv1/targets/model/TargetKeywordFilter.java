@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -69,6 +71,8 @@ public class TargetKeywordFilter {
    * @return include
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Size(min=1,max=100)
   @JsonProperty(value = JSON_PROPERTY_INCLUDE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<String> getInclude() {
@@ -93,6 +97,9 @@ public class TargetKeywordFilter {
    * @return queryTermMatchType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_QUERY_TERM_MATCH_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TargetKeywordFilterType getQueryTermMatchType() {

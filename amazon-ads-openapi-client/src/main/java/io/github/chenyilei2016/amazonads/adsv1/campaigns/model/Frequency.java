@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -91,6 +93,7 @@ public class Frequency {
    * @return eventCount
    */
   @jakarta.annotation.Nullable
+  @Min(1) @Max(500)
   @JsonProperty(value = JSON_PROPERTY_EVENT_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getEventCount() {
@@ -117,6 +120,8 @@ public class Frequency {
    * @return eventMaxCount
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Min(1) @Max(99000)
   @JsonProperty(value = JSON_PROPERTY_EVENT_MAX_COUNT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getEventMaxCount() {
@@ -141,6 +146,8 @@ public class Frequency {
    * @return eventType
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_EVENT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EventType getEventType() {
@@ -173,6 +180,8 @@ public class Frequency {
    * @return extraFrequencyCapImpressionTypes
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=10)
   @JsonProperty(value = JSON_PROPERTY_EXTRA_FREQUENCY_CAP_IMPRESSION_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ExtraFrequencyCapImpressionType> getExtraFrequencyCapImpressionTypes() {
@@ -197,6 +206,9 @@ public class Frequency {
    * @return frequencyTargetingSetting
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_FREQUENCY_TARGETING_SETTING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public FrequencyTargetingSetting getFrequencyTargetingSetting() {
@@ -223,6 +235,8 @@ public class Frequency {
    * @return timeCount
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Min(1) @Max(60)
   @JsonProperty(value = JSON_PROPERTY_TIME_COUNT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getTimeCount() {
@@ -247,6 +261,9 @@ public class Frequency {
    * @return timeUnit
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TIME_UNIT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TimeUnit getTimeUnit() {

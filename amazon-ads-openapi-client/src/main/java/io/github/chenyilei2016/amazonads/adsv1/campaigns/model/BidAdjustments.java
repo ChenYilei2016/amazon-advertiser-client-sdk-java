@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -47,24 +49,24 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 public class BidAdjustments {
   public static final String JSON_PROPERTY_AUDIENCE_BID_ADJUSTMENTS = "audienceBidAdjustments";
   @jakarta.annotation.Nullable
-  private List<AudienceBidAdjustment> audienceBidAdjustments = new ArrayList<>();
+  private List<@Valid AudienceBidAdjustment> audienceBidAdjustments = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATIVE_BID_ADJUSTMENTS = "creativeBidAdjustments";
   @jakarta.annotation.Nullable
-  private List<CreativeBidAdjustment> creativeBidAdjustments = new ArrayList<>();
+  private List<@Valid CreativeBidAdjustment> creativeBidAdjustments = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PLACEMENT_BID_ADJUSTMENTS = "placementBidAdjustments";
   @jakarta.annotation.Nullable
-  private List<PlacementBidAdjustment> placementBidAdjustments = new ArrayList<>();
+  private List<@Valid PlacementBidAdjustment> placementBidAdjustments = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHOPPER_SEGMENT_BID_ADJUSTMENTS = "shopperSegmentBidAdjustments";
   @jakarta.annotation.Nullable
-  private List<ShopperSegmentBidAdjustment> shopperSegmentBidAdjustments = new ArrayList<>();
+  private List<@Valid ShopperSegmentBidAdjustment> shopperSegmentBidAdjustments = new ArrayList<>();
 
   public BidAdjustments() {
   }
 
-  public BidAdjustments audienceBidAdjustments(@jakarta.annotation.Nullable List<AudienceBidAdjustment> audienceBidAdjustments) {
+  public BidAdjustments audienceBidAdjustments(@jakarta.annotation.Nullable List<@Valid AudienceBidAdjustment> audienceBidAdjustments) {
     this.audienceBidAdjustments = audienceBidAdjustments;
     return this;
   }
@@ -82,21 +84,23 @@ public class BidAdjustments {
    * @return audienceBidAdjustments
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=1)
   @JsonProperty(value = JSON_PROPERTY_AUDIENCE_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<AudienceBidAdjustment> getAudienceBidAdjustments() {
+  public List<@Valid AudienceBidAdjustment> getAudienceBidAdjustments() {
     return audienceBidAdjustments;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_AUDIENCE_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAudienceBidAdjustments(@jakarta.annotation.Nullable List<AudienceBidAdjustment> audienceBidAdjustments) {
+  public void setAudienceBidAdjustments(@jakarta.annotation.Nullable List<@Valid AudienceBidAdjustment> audienceBidAdjustments) {
     this.audienceBidAdjustments = audienceBidAdjustments;
   }
 
 
-  public BidAdjustments creativeBidAdjustments(@jakarta.annotation.Nullable List<CreativeBidAdjustment> creativeBidAdjustments) {
+  public BidAdjustments creativeBidAdjustments(@jakarta.annotation.Nullable List<@Valid CreativeBidAdjustment> creativeBidAdjustments) {
     this.creativeBidAdjustments = creativeBidAdjustments;
     return this;
   }
@@ -114,21 +118,23 @@ public class BidAdjustments {
    * @return creativeBidAdjustments
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=2)
   @JsonProperty(value = JSON_PROPERTY_CREATIVE_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<CreativeBidAdjustment> getCreativeBidAdjustments() {
+  public List<@Valid CreativeBidAdjustment> getCreativeBidAdjustments() {
     return creativeBidAdjustments;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_CREATIVE_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreativeBidAdjustments(@jakarta.annotation.Nullable List<CreativeBidAdjustment> creativeBidAdjustments) {
+  public void setCreativeBidAdjustments(@jakarta.annotation.Nullable List<@Valid CreativeBidAdjustment> creativeBidAdjustments) {
     this.creativeBidAdjustments = creativeBidAdjustments;
   }
 
 
-  public BidAdjustments placementBidAdjustments(@jakarta.annotation.Nullable List<PlacementBidAdjustment> placementBidAdjustments) {
+  public BidAdjustments placementBidAdjustments(@jakarta.annotation.Nullable List<@Valid PlacementBidAdjustment> placementBidAdjustments) {
     this.placementBidAdjustments = placementBidAdjustments;
     return this;
   }
@@ -146,21 +152,23 @@ public class BidAdjustments {
    * @return placementBidAdjustments
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=4)
   @JsonProperty(value = JSON_PROPERTY_PLACEMENT_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<PlacementBidAdjustment> getPlacementBidAdjustments() {
+  public List<@Valid PlacementBidAdjustment> getPlacementBidAdjustments() {
     return placementBidAdjustments;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_PLACEMENT_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPlacementBidAdjustments(@jakarta.annotation.Nullable List<PlacementBidAdjustment> placementBidAdjustments) {
+  public void setPlacementBidAdjustments(@jakarta.annotation.Nullable List<@Valid PlacementBidAdjustment> placementBidAdjustments) {
     this.placementBidAdjustments = placementBidAdjustments;
   }
 
 
-  public BidAdjustments shopperSegmentBidAdjustments(@jakarta.annotation.Nullable List<ShopperSegmentBidAdjustment> shopperSegmentBidAdjustments) {
+  public BidAdjustments shopperSegmentBidAdjustments(@jakarta.annotation.Nullable List<@Valid ShopperSegmentBidAdjustment> shopperSegmentBidAdjustments) {
     this.shopperSegmentBidAdjustments = shopperSegmentBidAdjustments;
     return this;
   }
@@ -178,16 +186,18 @@ public class BidAdjustments {
    * @return shopperSegmentBidAdjustments
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=2)
   @JsonProperty(value = JSON_PROPERTY_SHOPPER_SEGMENT_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<ShopperSegmentBidAdjustment> getShopperSegmentBidAdjustments() {
+  public List<@Valid ShopperSegmentBidAdjustment> getShopperSegmentBidAdjustments() {
     return shopperSegmentBidAdjustments;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_SHOPPER_SEGMENT_BID_ADJUSTMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShopperSegmentBidAdjustments(@jakarta.annotation.Nullable List<ShopperSegmentBidAdjustment> shopperSegmentBidAdjustments) {
+  public void setShopperSegmentBidAdjustments(@jakarta.annotation.Nullable List<@Valid ShopperSegmentBidAdjustment> shopperSegmentBidAdjustments) {
     this.shopperSegmentBidAdjustments = shopperSegmentBidAdjustments;
   }
 

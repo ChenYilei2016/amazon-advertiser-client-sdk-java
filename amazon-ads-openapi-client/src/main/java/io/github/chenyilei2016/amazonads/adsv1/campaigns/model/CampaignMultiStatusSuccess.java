@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.Campaign;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -59,6 +61,9 @@ public class CampaignMultiStatusSuccess {
    * @return campaign
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Campaign getCampaign() {
@@ -85,6 +90,8 @@ public class CampaignMultiStatusSuccess {
    * @return index
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Min(0) @Max(999)
   @JsonProperty(value = JSON_PROPERTY_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getIndex() {

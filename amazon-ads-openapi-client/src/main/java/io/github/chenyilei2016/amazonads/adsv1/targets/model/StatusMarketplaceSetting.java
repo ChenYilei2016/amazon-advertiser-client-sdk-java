@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -76,6 +78,8 @@ public class StatusMarketplaceSetting {
    * @return deliveryReasons
    */
   @jakarta.annotation.Nullable
+  @Valid
+  @Size(min=0,max=50)
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_REASONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<DeliveryReason> getDeliveryReasons() {
@@ -100,6 +104,9 @@ public class StatusMarketplaceSetting {
    * @return deliveryStatus
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DeliveryStatus getDeliveryStatus() {
@@ -124,6 +131,9 @@ public class StatusMarketplaceSetting {
    * @return marketplace
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Marketplace getMarketplace() {

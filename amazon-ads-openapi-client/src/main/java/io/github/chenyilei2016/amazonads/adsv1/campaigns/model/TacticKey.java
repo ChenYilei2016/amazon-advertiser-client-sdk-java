@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.AutomatedTargetin
 import io.github.chenyilei2016.amazonads.adsv1.campaigns.model.PrimaryInventoryType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -60,6 +62,9 @@ public class TacticKey {
    * @return primaryInventoryType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_PRIMARY_INVENTORY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public PrimaryInventoryType getPrimaryInventoryType() {
@@ -84,6 +89,9 @@ public class TacticKey {
    * @return tacticType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_TACTIC_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AutomatedTargetingTactic getTacticType() {

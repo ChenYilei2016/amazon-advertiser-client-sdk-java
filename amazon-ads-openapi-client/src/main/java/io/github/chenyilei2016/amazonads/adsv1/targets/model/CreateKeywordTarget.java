@@ -27,6 +27,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.KeywordMatchType;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.LanguageLocale;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -70,6 +72,8 @@ public class CreateKeywordTarget {
    * @return keyword
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_KEYWORD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getKeyword() {
@@ -94,6 +98,9 @@ public class CreateKeywordTarget {
    * @return matchType
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public KeywordMatchType getMatchType() {
@@ -118,6 +125,7 @@ public class CreateKeywordTarget {
    * @return nativeLanguageKeyword
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_NATIVE_LANGUAGE_KEYWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNativeLanguageKeyword() {
@@ -142,6 +150,8 @@ public class CreateKeywordTarget {
    * @return nativeLanguageLocale
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_NATIVE_LANGUAGE_LOCALE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LanguageLocale getNativeLanguageLocale() {

@@ -27,6 +27,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.NewsGuardBrandGuardTrustedNewsTargeting;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -55,6 +57,9 @@ public class NewsGuardBrandGuardTrustedNewsTargeting1 {
    * @return newsGuardBrandGuardTrustedNewsTargeting
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_NEWS_GUARD_BRAND_GUARD_TRUSTED_NEWS_TARGETING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public NewsGuardBrandGuardTrustedNewsTargeting getNewsGuardBrandGuardTrustedNewsTargeting() {

@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.Marketplace;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -59,6 +61,9 @@ public class CreateProductMarketplaceSetting {
    * @return marketplace
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MARKETPLACE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Marketplace getMarketplace() {
@@ -83,6 +88,8 @@ public class CreateProductMarketplaceSetting {
    * @return productId
    */
   @jakarta.annotation.Nonnull
+  @NotNull
+
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getProductId() {

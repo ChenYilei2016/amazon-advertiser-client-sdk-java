@@ -28,6 +28,8 @@ import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandExposureViewab
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.MrcViewabilityTargetingType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
@@ -71,6 +73,8 @@ public class CreateDoubleVerifyViewability {
    * @return averageCompletionAndFullyViewableRateTargeting
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_AVERAGE_COMPLETION_AND_FULLY_VIEWABLE_RATE_TARGETING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AverageCompletionAndFullyViewableRateTargetingType getAverageCompletionAndFullyViewableRateTargeting() {
@@ -95,6 +99,8 @@ public class CreateDoubleVerifyViewability {
    * @return brandExposureViewabilityTargeting
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_BRAND_EXPOSURE_VIEWABILITY_TARGETING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BrandExposureViewabilityTargetingType getBrandExposureViewabilityTargeting() {
@@ -119,6 +125,7 @@ public class CreateDoubleVerifyViewability {
    * @return includeUnmeasurableImpressions
    */
   @jakarta.annotation.Nullable
+
   @JsonProperty(value = JSON_PROPERTY_INCLUDE_UNMEASURABLE_IMPRESSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getIncludeUnmeasurableImpressions() {
@@ -143,6 +150,8 @@ public class CreateDoubleVerifyViewability {
    * @return mrcViewabilityTargeting
    */
   @jakarta.annotation.Nullable
+  @Valid
+
   @JsonProperty(value = JSON_PROPERTY_MRC_VIEWABILITY_TARGETING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MrcViewabilityTargetingType getMrcViewabilityTargeting() {
