@@ -12,7 +12,7 @@
 - 裁剪规格与校验信息：`spec/campaigns.openapi.json`、`spec/targets.openapi.json`、`spec/*.source.properties`
 - 生成器：OpenAPI Generator 7.24.0
 
-生成代码位于标准 Maven 主源码目录 `src/main/java` 并提交到 Git，以便规格和生成器升级时直接审阅差异。该模块不放人工实现；执行 Maven `generate-sources` 时会完整重建 `src/main`，不允许手工修改。
+生成代码位于标准 Maven 主源码目录 `src/main/java` 并提交到 Git，以便规格和生成器升级时直接审阅差异。`.openapi-generator` 仅是生成器状态，不纳入 Git。该模块不放人工实现；执行 Maven `generate-sources` 时会完整重建 `src/main`，不允许手工修改。
 
 `Target.targetDetails` 在该 SDK 中保持为强类型 `TargetDetails`。`TargetDetails` 与 `CreateTargetDetails` 的 27 个 oneOf 分支被规范化为可空的强类型字段，以避免生成器为同名的请求/响应分支产生额外包装类；未知字段仍会保留。调用方应依据 `targetType` 读取对应字段，例如 `PRODUCT` 对应 `getProductTarget()`。
 
@@ -25,15 +25,27 @@ curl --fail --location --output spec/AmazonAdsAPIALLTargetsContract_prod_3p.json
   https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALLTargetsContract_prod_3p.json
 node scripts/prepare-spec.mjs
 node scripts/verify-spec.mjs
+mvn test
 ```
 
 ## 验证
 
+模块以 Java 17 作为编译基线；应在 JDK 17 与 JDK 25 环境分别执行上述命令。
+
+## 按组更新与生成
+
+新增或更新单个 API 组时，可只处理该组；例如 Targets：
+
 ```bash
-mvn -pl amazon-ads-openapi-client test
+node scripts/prepare-spec.mjs --groups=targets
+node scripts/verify-spec.mjs --groups=targets
+node scripts/generate-groups.mjs --groups=targets
+mvn -Damazon.ads.openapi.skip-generation=true test
 ```
 
-模块以 Java 17 作为编译基线；应在 JDK 17 与 JDK 25 环境分别执行上述命令。
+`--groups` 支持逗号分隔，例如 `--groups=campaigns,targets`。省略该参数时，所有已登记 API 组都会完整重建。单组生成只改动该组的 API 与模型代码，保留其他组；Campaigns 还负责生成共享 `ApiClient`。当升级 OpenAPI Generator、调整共享 Client 配置，或官方契约删除模型/操作时，必须省略 `--groups` 执行全量重建。
+
+新增 API 组时，在 `scripts/openapi-groups.mjs` 登记其来源、Tag、操作和 Maven execution，并在 `pom.xml` 增加对应的生成 execution；随后使用该组的 `--groups` 参数生成即可。
 
 ## 手动 API 测试
 

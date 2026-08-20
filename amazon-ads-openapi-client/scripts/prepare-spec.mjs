@@ -2,35 +2,11 @@ import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { selectOpenApiGroups } from './openapi-groups.mjs';
 
 const workspaceDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const httpMethods = new Set(['get', 'put', 'post', 'delete', 'patch', 'head', 'options', 'trace']);
 const componentRefPattern = /^#\/components\/([^/]+)\/(.+)$/;
-const specifications = [
-    {
-        label: 'Campaigns',
-        tag: 'Campaigns',
-        sourceFile: 'AmazonAdsAPIALLMerged_prod_3p.json',
-        outputFile: 'campaigns.openapi.json',
-        metadataFile: 'campaigns.source.properties',
-        sourceUrl: 'https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALLMerged_prod_3p.json',
-        title: 'Amazon Ads Campaign Management API',
-        description: 'Focused Java SDK specification containing only Campaigns operations.',
-        expectedOperationIds: ['CreateCampaign', 'DeleteCampaign', 'QueryCampaign', 'UpdateCampaign'],
-    },
-    {
-        label: 'Targets',
-        tag: 'Targets',
-        sourceFile: 'AmazonAdsAPIALLTargetsContract_prod_3p.json',
-        outputFile: 'targets.openapi.json',
-        metadataFile: 'targets.source.properties',
-        sourceUrl: 'https://d1y2lf8k3vrkfu.cloudfront.net/openapi/en-us/dest/AmazonAdsAPIALLTargetsContract_prod_3p.json',
-        title: 'Amazon Ads Targets API',
-        description: 'Focused Java SDK specification containing only Targets operations.',
-        expectedOperationIds: ['CreateTarget', 'DeleteTarget', 'QueryTarget', 'UpdateTarget'],
-        typedOneOfObjectSchemas: ['TargetDetails', 'CreateTargetDetails'],
-    },
-];
 
 function decodeJsonPointerPart(value) {
     return value.replaceAll('~1', '/').replaceAll('~0', '~');
@@ -141,7 +117,7 @@ function normalizeSourceComponents(sourceComponents, specification) {
     return normalizedComponents;
 }
 
-for (const specification of specifications) {
+for (const specification of selectOpenApiGroups(process.argv.slice(2))) {
     const sourcePath = path.join(workspaceDir, 'spec', specification.sourceFile);
     const outputPath = path.join(workspaceDir, 'spec', specification.outputFile);
     const metadataPath = path.join(workspaceDir, 'spec', specification.metadataFile);

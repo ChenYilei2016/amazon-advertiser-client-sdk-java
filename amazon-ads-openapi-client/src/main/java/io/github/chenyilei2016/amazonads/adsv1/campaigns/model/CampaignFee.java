@@ -85,7 +85,7 @@ public class CampaignFee {
   }
 
   /**
-   * A service fee that is subtracted from the campaign budget as a percent of budget. This setting can???t be changed after an ad group has been added to a campaign.
+   * A service fee that is subtracted from the campaign budget as a percent of budget. This setting can’t be changed after an ad group has been added to a campaign.
    * @return feeValue
    */
   @jakarta.annotation.Nonnull
