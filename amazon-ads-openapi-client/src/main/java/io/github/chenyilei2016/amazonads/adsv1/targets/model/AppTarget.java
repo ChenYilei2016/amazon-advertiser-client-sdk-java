@@ -22,55 +22,83 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateAppTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.AppType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * AppTarget
+ * Target based on user application.
  */
 @JsonPropertyOrder({
-  AppTarget.JSON_PROPERTY_APP_TARGET
+  AppTarget.JSON_PROPERTY_APP_ID,
+  AppTarget.JSON_PROPERTY_APP_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class AppTarget {
-  public static final String JSON_PROPERTY_APP_TARGET = "appTarget";
+  public static final String JSON_PROPERTY_APP_ID = "appId";
   @jakarta.annotation.Nonnull
-  private CreateAppTarget appTarget;
+  private String appId;
+
+  public static final String JSON_PROPERTY_APP_TYPE = "appType";
+  @jakarta.annotation.Nonnull
+  private AppType appType;
 
   public AppTarget() {
   }
 
-  public AppTarget appTarget(@jakarta.annotation.Nonnull CreateAppTarget appTarget) {
-    this.appTarget = appTarget;
+  public AppTarget appId(@jakarta.annotation.Nonnull String appId) {
+    this.appId = appId;
     return this;
   }
 
   /**
-   * Get appTarget
-   * @return appTarget
+   * The app identifier being targeted.
+   * @return appId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_APP_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_APP_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateAppTarget getAppTarget() {
-    return appTarget;
+  public String getAppId() {
+    return appId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_APP_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_APP_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAppTarget(@jakarta.annotation.Nonnull CreateAppTarget appTarget) {
-    this.appTarget = appTarget;
+  public void setAppId(@jakarta.annotation.Nonnull String appId) {
+    this.appId = appId;
+  }
+
+
+  public AppTarget appType(@jakarta.annotation.Nonnull AppType appType) {
+    this.appType = appType;
+    return this;
+  }
+
+  /**
+   * Get appType
+   * @return appType
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_APP_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AppType getAppType() {
+    return appType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_APP_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAppType(@jakarta.annotation.Nonnull AppType appType) {
+    this.appType = appType;
   }
 
 
   /**
-   * Return true if this appTarget object is equal to o.
+   * Return true if this AppTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +109,21 @@ public class AppTarget {
       return false;
     }
     AppTarget appTarget = (AppTarget) o;
-    return Objects.equals(this.appTarget, appTarget.appTarget);
+    return Objects.equals(this.appId, appTarget.appId) &&
+        Objects.equals(this.appType, appTarget.appType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appTarget);
+    return Objects.hash(appId, appType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AppTarget {\n");
-    sb.append("    appTarget: ").append(toIndentedString(appTarget)).append("\n");
+    sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
+    sb.append("    appType: ").append(toIndentedString(appType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +168,14 @@ public class AppTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `appTarget` to the URL query string
-    if (getAppTarget() != null) {
-      joiner.add(getAppTarget().toUrlQueryString(prefix + "appTarget" + suffix));
+    // add `appId` to the URL query string
+    if (getAppId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sappId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAppId()))));
+    }
+
+    // add `appType` to the URL query string
+    if (getAppType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sappType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAppType()))));
     }
 
     return joiner.toString();

@@ -22,9 +22,9 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateThirdPartyTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ThirdPartyTargetDetails;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ThirdPartyTargetType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -34,43 +34,72 @@ import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
  * ThirdPartyTarget
  */
 @JsonPropertyOrder({
-  ThirdPartyTarget.JSON_PROPERTY_THIRD_PARTY_TARGET
+  ThirdPartyTarget.JSON_PROPERTY_THIRD_PARTY_TARGET_DETAILS,
+  ThirdPartyTarget.JSON_PROPERTY_THIRD_PARTY_TARGET_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ThirdPartyTarget {
-  public static final String JSON_PROPERTY_THIRD_PARTY_TARGET = "thirdPartyTarget";
+  public static final String JSON_PROPERTY_THIRD_PARTY_TARGET_DETAILS = "thirdPartyTargetDetails";
   @jakarta.annotation.Nonnull
-  private CreateThirdPartyTarget thirdPartyTarget;
+  private ThirdPartyTargetDetails thirdPartyTargetDetails;
+
+  public static final String JSON_PROPERTY_THIRD_PARTY_TARGET_TYPE = "thirdPartyTargetType";
+  @jakarta.annotation.Nonnull
+  private ThirdPartyTargetType thirdPartyTargetType;
 
   public ThirdPartyTarget() {
   }
 
-  public ThirdPartyTarget thirdPartyTarget(@jakarta.annotation.Nonnull CreateThirdPartyTarget thirdPartyTarget) {
-    this.thirdPartyTarget = thirdPartyTarget;
+  public ThirdPartyTarget thirdPartyTargetDetails(@jakarta.annotation.Nonnull ThirdPartyTargetDetails thirdPartyTargetDetails) {
+    this.thirdPartyTargetDetails = thirdPartyTargetDetails;
     return this;
   }
 
   /**
-   * Get thirdPartyTarget
-   * @return thirdPartyTarget
+   * Get thirdPartyTargetDetails
+   * @return thirdPartyTargetDetails
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET_DETAILS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateThirdPartyTarget getThirdPartyTarget() {
-    return thirdPartyTarget;
+  public ThirdPartyTargetDetails getThirdPartyTargetDetails() {
+    return thirdPartyTargetDetails;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET_DETAILS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setThirdPartyTarget(@jakarta.annotation.Nonnull CreateThirdPartyTarget thirdPartyTarget) {
-    this.thirdPartyTarget = thirdPartyTarget;
+  public void setThirdPartyTargetDetails(@jakarta.annotation.Nonnull ThirdPartyTargetDetails thirdPartyTargetDetails) {
+    this.thirdPartyTargetDetails = thirdPartyTargetDetails;
+  }
+
+
+  public ThirdPartyTarget thirdPartyTargetType(@jakarta.annotation.Nonnull ThirdPartyTargetType thirdPartyTargetType) {
+    this.thirdPartyTargetType = thirdPartyTargetType;
+    return this;
+  }
+
+  /**
+   * Get thirdPartyTargetType
+   * @return thirdPartyTargetType
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public ThirdPartyTargetType getThirdPartyTargetType() {
+    return thirdPartyTargetType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setThirdPartyTargetType(@jakarta.annotation.Nonnull ThirdPartyTargetType thirdPartyTargetType) {
+    this.thirdPartyTargetType = thirdPartyTargetType;
   }
 
 
   /**
-   * Return true if this thirdPartyTarget object is equal to o.
+   * Return true if this ThirdPartyTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +110,21 @@ public class ThirdPartyTarget {
       return false;
     }
     ThirdPartyTarget thirdPartyTarget = (ThirdPartyTarget) o;
-    return Objects.equals(this.thirdPartyTarget, thirdPartyTarget.thirdPartyTarget);
+    return Objects.equals(this.thirdPartyTargetDetails, thirdPartyTarget.thirdPartyTargetDetails) &&
+        Objects.equals(this.thirdPartyTargetType, thirdPartyTarget.thirdPartyTargetType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(thirdPartyTarget);
+    return Objects.hash(thirdPartyTargetDetails, thirdPartyTargetType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ThirdPartyTarget {\n");
-    sb.append("    thirdPartyTarget: ").append(toIndentedString(thirdPartyTarget)).append("\n");
+    sb.append("    thirdPartyTargetDetails: ").append(toIndentedString(thirdPartyTargetDetails)).append("\n");
+    sb.append("    thirdPartyTargetType: ").append(toIndentedString(thirdPartyTargetType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +169,14 @@ public class ThirdPartyTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `thirdPartyTarget` to the URL query string
-    if (getThirdPartyTarget() != null) {
-      joiner.add(getThirdPartyTarget().toUrlQueryString(prefix + "thirdPartyTarget" + suffix));
+    // add `thirdPartyTargetDetails` to the URL query string
+    if (getThirdPartyTargetDetails() != null) {
+      joiner.add(getThirdPartyTargetDetails().toUrlQueryString(prefix + "thirdPartyTargetDetails" + suffix));
+    }
+
+    // add `thirdPartyTargetType` to the URL query string
+    if (getThirdPartyTargetType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sthirdPartyTargetType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getThirdPartyTargetType()))));
     }
 
     return joiner.toString();

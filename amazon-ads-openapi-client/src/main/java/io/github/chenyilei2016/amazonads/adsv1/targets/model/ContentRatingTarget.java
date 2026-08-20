@@ -22,55 +22,84 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateContentRatingTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentRating;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentRatingTypes;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * ContentRatingTarget
+ * Target based on the rating of content being viewed.
  */
 @JsonPropertyOrder({
-  ContentRatingTarget.JSON_PROPERTY_CONTENT_RATING_TARGET
+  ContentRatingTarget.JSON_PROPERTY_CONTENT_RATING_TYPE,
+  ContentRatingTarget.JSON_PROPERTY_CONTENT_RATING_TYPE_DETAILS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ContentRatingTarget {
-  public static final String JSON_PROPERTY_CONTENT_RATING_TARGET = "contentRatingTarget";
+  public static final String JSON_PROPERTY_CONTENT_RATING_TYPE = "contentRatingType";
   @jakarta.annotation.Nonnull
-  private CreateContentRatingTarget contentRatingTarget;
+  private ContentRatingTypes contentRatingType;
+
+  public static final String JSON_PROPERTY_CONTENT_RATING_TYPE_DETAILS = "contentRatingTypeDetails";
+  @jakarta.annotation.Nonnull
+  private ContentRating contentRatingTypeDetails;
 
   public ContentRatingTarget() {
   }
 
-  public ContentRatingTarget contentRatingTarget(@jakarta.annotation.Nonnull CreateContentRatingTarget contentRatingTarget) {
-    this.contentRatingTarget = contentRatingTarget;
+  public ContentRatingTarget contentRatingType(@jakarta.annotation.Nonnull ContentRatingTypes contentRatingType) {
+    this.contentRatingType = contentRatingType;
     return this;
   }
 
   /**
-   * Get contentRatingTarget
-   * @return contentRatingTarget
+   * Get contentRatingType
+   * @return contentRatingType
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateContentRatingTarget getContentRatingTarget() {
-    return contentRatingTarget;
+  public ContentRatingTypes getContentRatingType() {
+    return contentRatingType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContentRatingTarget(@jakarta.annotation.Nonnull CreateContentRatingTarget contentRatingTarget) {
-    this.contentRatingTarget = contentRatingTarget;
+  public void setContentRatingType(@jakarta.annotation.Nonnull ContentRatingTypes contentRatingType) {
+    this.contentRatingType = contentRatingType;
+  }
+
+
+  public ContentRatingTarget contentRatingTypeDetails(@jakarta.annotation.Nonnull ContentRating contentRatingTypeDetails) {
+    this.contentRatingTypeDetails = contentRatingTypeDetails;
+    return this;
+  }
+
+  /**
+   * Get contentRatingTypeDetails
+   * @return contentRatingTypeDetails
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TYPE_DETAILS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public ContentRating getContentRatingTypeDetails() {
+    return contentRatingTypeDetails;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TYPE_DETAILS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setContentRatingTypeDetails(@jakarta.annotation.Nonnull ContentRating contentRatingTypeDetails) {
+    this.contentRatingTypeDetails = contentRatingTypeDetails;
   }
 
 
   /**
-   * Return true if this contentRatingTarget object is equal to o.
+   * Return true if this ContentRatingTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +110,21 @@ public class ContentRatingTarget {
       return false;
     }
     ContentRatingTarget contentRatingTarget = (ContentRatingTarget) o;
-    return Objects.equals(this.contentRatingTarget, contentRatingTarget.contentRatingTarget);
+    return Objects.equals(this.contentRatingType, contentRatingTarget.contentRatingType) &&
+        Objects.equals(this.contentRatingTypeDetails, contentRatingTarget.contentRatingTypeDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contentRatingTarget);
+    return Objects.hash(contentRatingType, contentRatingTypeDetails);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ContentRatingTarget {\n");
-    sb.append("    contentRatingTarget: ").append(toIndentedString(contentRatingTarget)).append("\n");
+    sb.append("    contentRatingType: ").append(toIndentedString(contentRatingType)).append("\n");
+    sb.append("    contentRatingTypeDetails: ").append(toIndentedString(contentRatingTypeDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +169,14 @@ public class ContentRatingTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `contentRatingTarget` to the URL query string
-    if (getContentRatingTarget() != null) {
-      joiner.add(getContentRatingTarget().toUrlQueryString(prefix + "contentRatingTarget" + suffix));
+    // add `contentRatingType` to the URL query string
+    if (getContentRatingType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scontentRatingType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getContentRatingType()))));
+    }
+
+    // add `contentRatingTypeDetails` to the URL query string
+    if (getContentRatingTypeDetails() != null) {
+      joiner.add(getContentRatingTypeDetails().toUrlQueryString(prefix + "contentRatingTypeDetails" + suffix));
     }
 
     return joiner.toString();

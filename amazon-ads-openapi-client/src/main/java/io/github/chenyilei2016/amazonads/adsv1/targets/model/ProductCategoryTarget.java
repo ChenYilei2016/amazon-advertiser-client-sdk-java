@@ -22,55 +22,114 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateProductCategoryTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductCategoryMatchType;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductCategoryRefinementValue;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductGenreRefinement;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * ProductCategoryTarget
+ * Targets a specific customer search term.
  */
 @JsonPropertyOrder({
-  ProductCategoryTarget.JSON_PROPERTY_PRODUCT_CATEGORY_TARGET
+  ProductCategoryTarget.JSON_PROPERTY_MATCH_TYPE,
+  ProductCategoryTarget.JSON_PROPERTY_PRODUCT_CATEGORY_REFINEMENT,
+  ProductCategoryTarget.JSON_PROPERTY_PRODUCT_GENRE_REFINEMENT
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ProductCategoryTarget {
-  public static final String JSON_PROPERTY_PRODUCT_CATEGORY_TARGET = "productCategoryTarget";
+  public static final String JSON_PROPERTY_MATCH_TYPE = "matchType";
+  @jakarta.annotation.Nullable
+  private ProductCategoryMatchType matchType;
+
+  public static final String JSON_PROPERTY_PRODUCT_CATEGORY_REFINEMENT = "productCategoryRefinement";
   @jakarta.annotation.Nonnull
-  private CreateProductCategoryTarget productCategoryTarget;
+  private ProductCategoryRefinementValue productCategoryRefinement;
+
+  public static final String JSON_PROPERTY_PRODUCT_GENRE_REFINEMENT = "productGenreRefinement";
+  @jakarta.annotation.Nullable
+  private ProductGenreRefinement productGenreRefinement;
 
   public ProductCategoryTarget() {
   }
 
-  public ProductCategoryTarget productCategoryTarget(@jakarta.annotation.Nonnull CreateProductCategoryTarget productCategoryTarget) {
-    this.productCategoryTarget = productCategoryTarget;
+  public ProductCategoryTarget matchType(@jakarta.annotation.Nullable ProductCategoryMatchType matchType) {
+    this.matchType = matchType;
     return this;
   }
 
   /**
-   * Get productCategoryTarget
-   * @return productCategoryTarget
+   * Get matchType
+   * @return matchType
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_TARGET, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateProductCategoryTarget getProductCategoryTarget() {
-    return productCategoryTarget;
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ProductCategoryMatchType getMatchType() {
+    return matchType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMatchType(@jakarta.annotation.Nullable ProductCategoryMatchType matchType) {
+    this.matchType = matchType;
+  }
+
+
+  public ProductCategoryTarget productCategoryRefinement(@jakarta.annotation.Nonnull ProductCategoryRefinementValue productCategoryRefinement) {
+    this.productCategoryRefinement = productCategoryRefinement;
+    return this;
+  }
+
+  /**
+   * Get productCategoryRefinement
+   * @return productCategoryRefinement
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_REFINEMENT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProductCategoryTarget(@jakarta.annotation.Nonnull CreateProductCategoryTarget productCategoryTarget) {
-    this.productCategoryTarget = productCategoryTarget;
+  public ProductCategoryRefinementValue getProductCategoryRefinement() {
+    return productCategoryRefinement;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_REFINEMENT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProductCategoryRefinement(@jakarta.annotation.Nonnull ProductCategoryRefinementValue productCategoryRefinement) {
+    this.productCategoryRefinement = productCategoryRefinement;
+  }
+
+
+  public ProductCategoryTarget productGenreRefinement(@jakarta.annotation.Nullable ProductGenreRefinement productGenreRefinement) {
+    this.productGenreRefinement = productGenreRefinement;
+    return this;
+  }
+
+  /**
+   * Get productGenreRefinement
+   * @return productGenreRefinement
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_GENRE_REFINEMENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ProductGenreRefinement getProductGenreRefinement() {
+    return productGenreRefinement;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_GENRE_REFINEMENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProductGenreRefinement(@jakarta.annotation.Nullable ProductGenreRefinement productGenreRefinement) {
+    this.productGenreRefinement = productGenreRefinement;
   }
 
 
   /**
-   * Return true if this productCategoryTarget object is equal to o.
+   * Return true if this ProductCategoryTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +140,23 @@ public class ProductCategoryTarget {
       return false;
     }
     ProductCategoryTarget productCategoryTarget = (ProductCategoryTarget) o;
-    return Objects.equals(this.productCategoryTarget, productCategoryTarget.productCategoryTarget);
+    return Objects.equals(this.matchType, productCategoryTarget.matchType) &&
+        Objects.equals(this.productCategoryRefinement, productCategoryTarget.productCategoryRefinement) &&
+        Objects.equals(this.productGenreRefinement, productCategoryTarget.productGenreRefinement);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productCategoryTarget);
+    return Objects.hash(matchType, productCategoryRefinement, productGenreRefinement);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductCategoryTarget {\n");
-    sb.append("    productCategoryTarget: ").append(toIndentedString(productCategoryTarget)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    productCategoryRefinement: ").append(toIndentedString(productCategoryRefinement)).append("\n");
+    sb.append("    productGenreRefinement: ").append(toIndentedString(productGenreRefinement)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +201,19 @@ public class ProductCategoryTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `productCategoryTarget` to the URL query string
-    if (getProductCategoryTarget() != null) {
-      joiner.add(getProductCategoryTarget().toUrlQueryString(prefix + "productCategoryTarget" + suffix));
+    // add `matchType` to the URL query string
+    if (getMatchType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smatchType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMatchType()))));
+    }
+
+    // add `productCategoryRefinement` to the URL query string
+    if (getProductCategoryRefinement() != null) {
+      joiner.add(getProductCategoryRefinement().toUrlQueryString(prefix + "productCategoryRefinement" + suffix));
+    }
+
+    // add `productGenreRefinement` to the URL query string
+    if (getProductGenreRefinement() != null) {
+      joiner.add(getProductGenreRefinement().toUrlQueryString(prefix + "productGenreRefinement" + suffix));
     }
 
     return joiner.toString();

@@ -22,55 +22,144 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateProductAudienceTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.Lookback;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.MarketplaceStringValue;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductAudienceMatchType;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.TargetEvent;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * ProductAudienceTarget
+ * Target customers who have viewed or purchased a certain product within a specified lookback window.
  */
 @JsonPropertyOrder({
-  ProductAudienceTarget.JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET
+  ProductAudienceTarget.JSON_PROPERTY_ASIN,
+  ProductAudienceTarget.JSON_PROPERTY_EVENT,
+  ProductAudienceTarget.JSON_PROPERTY_LOOKBACK,
+  ProductAudienceTarget.JSON_PROPERTY_MATCH_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ProductAudienceTarget {
-  public static final String JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET = "productAudienceTarget";
+  public static final String JSON_PROPERTY_ASIN = "asin";
   @jakarta.annotation.Nonnull
-  private CreateProductAudienceTarget productAudienceTarget;
+  private MarketplaceStringValue asin;
+
+  public static final String JSON_PROPERTY_EVENT = "event";
+  @jakarta.annotation.Nonnull
+  private TargetEvent event;
+
+  public static final String JSON_PROPERTY_LOOKBACK = "lookback";
+  @jakarta.annotation.Nonnull
+  private Lookback lookback;
+
+  public static final String JSON_PROPERTY_MATCH_TYPE = "matchType";
+  @jakarta.annotation.Nonnull
+  private ProductAudienceMatchType matchType;
 
   public ProductAudienceTarget() {
   }
 
-  public ProductAudienceTarget productAudienceTarget(@jakarta.annotation.Nonnull CreateProductAudienceTarget productAudienceTarget) {
-    this.productAudienceTarget = productAudienceTarget;
+  public ProductAudienceTarget asin(@jakarta.annotation.Nonnull MarketplaceStringValue asin) {
+    this.asin = asin;
     return this;
   }
 
   /**
-   * Get productAudienceTarget
-   * @return productAudienceTarget
+   * Get asin
+   * @return asin
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ASIN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateProductAudienceTarget getProductAudienceTarget() {
-    return productAudienceTarget;
+  public MarketplaceStringValue getAsin() {
+    return asin;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ASIN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProductAudienceTarget(@jakarta.annotation.Nonnull CreateProductAudienceTarget productAudienceTarget) {
-    this.productAudienceTarget = productAudienceTarget;
+  public void setAsin(@jakarta.annotation.Nonnull MarketplaceStringValue asin) {
+    this.asin = asin;
+  }
+
+
+  public ProductAudienceTarget event(@jakarta.annotation.Nonnull TargetEvent event) {
+    this.event = event;
+    return this;
+  }
+
+  /**
+   * Get event
+   * @return event
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_EVENT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public TargetEvent getEvent() {
+    return event;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EVENT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEvent(@jakarta.annotation.Nonnull TargetEvent event) {
+    this.event = event;
+  }
+
+
+  public ProductAudienceTarget lookback(@jakarta.annotation.Nonnull Lookback lookback) {
+    this.lookback = lookback;
+    return this;
+  }
+
+  /**
+   * Get lookback
+   * @return lookback
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_LOOKBACK, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Lookback getLookback() {
+    return lookback;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LOOKBACK, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLookback(@jakarta.annotation.Nonnull Lookback lookback) {
+    this.lookback = lookback;
+  }
+
+
+  public ProductAudienceTarget matchType(@jakarta.annotation.Nonnull ProductAudienceMatchType matchType) {
+    this.matchType = matchType;
+    return this;
+  }
+
+  /**
+   * Get matchType
+   * @return matchType
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public ProductAudienceMatchType getMatchType() {
+    return matchType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMatchType(@jakarta.annotation.Nonnull ProductAudienceMatchType matchType) {
+    this.matchType = matchType;
   }
 
 
   /**
-   * Return true if this productAudienceTarget object is equal to o.
+   * Return true if this ProductAudienceTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +170,25 @@ public class ProductAudienceTarget {
       return false;
     }
     ProductAudienceTarget productAudienceTarget = (ProductAudienceTarget) o;
-    return Objects.equals(this.productAudienceTarget, productAudienceTarget.productAudienceTarget);
+    return Objects.equals(this.asin, productAudienceTarget.asin) &&
+        Objects.equals(this.event, productAudienceTarget.event) &&
+        Objects.equals(this.lookback, productAudienceTarget.lookback) &&
+        Objects.equals(this.matchType, productAudienceTarget.matchType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productAudienceTarget);
+    return Objects.hash(asin, event, lookback, matchType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductAudienceTarget {\n");
-    sb.append("    productAudienceTarget: ").append(toIndentedString(productAudienceTarget)).append("\n");
+    sb.append("    asin: ").append(toIndentedString(asin)).append("\n");
+    sb.append("    event: ").append(toIndentedString(event)).append("\n");
+    sb.append("    lookback: ").append(toIndentedString(lookback)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +233,24 @@ public class ProductAudienceTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `productAudienceTarget` to the URL query string
-    if (getProductAudienceTarget() != null) {
-      joiner.add(getProductAudienceTarget().toUrlQueryString(prefix + "productAudienceTarget" + suffix));
+    // add `asin` to the URL query string
+    if (getAsin() != null) {
+      joiner.add(getAsin().toUrlQueryString(prefix + "asin" + suffix));
+    }
+
+    // add `event` to the URL query string
+    if (getEvent() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sevent%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEvent()))));
+    }
+
+    // add `lookback` to the URL query string
+    if (getLookback() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slookback%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLookback()))));
+    }
+
+    // add `matchType` to the URL query string
+    if (getMatchType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smatchType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMatchType()))));
     }
 
     return joiner.toString();

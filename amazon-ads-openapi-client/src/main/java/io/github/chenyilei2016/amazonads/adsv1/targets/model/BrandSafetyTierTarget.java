@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateBrandSafetyTierTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandSafetyTier;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * BrandSafetyTierTarget
+ * Target based on the brand suitability risk levels of content being viewed.
  */
 @JsonPropertyOrder({
-  BrandSafetyTierTarget.JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET
+  BrandSafetyTierTarget.JSON_PROPERTY_BRAND_SAFETY_TIER
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class BrandSafetyTierTarget {
-  public static final String JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET = "brandSafetyTierTarget";
+  public static final String JSON_PROPERTY_BRAND_SAFETY_TIER = "brandSafetyTier";
   @jakarta.annotation.Nonnull
-  private CreateBrandSafetyTierTarget brandSafetyTierTarget;
+  private BrandSafetyTier brandSafetyTier;
 
   public BrandSafetyTierTarget() {
   }
 
-  public BrandSafetyTierTarget brandSafetyTierTarget(@jakarta.annotation.Nonnull CreateBrandSafetyTierTarget brandSafetyTierTarget) {
-    this.brandSafetyTierTarget = brandSafetyTierTarget;
+  public BrandSafetyTierTarget brandSafetyTier(@jakarta.annotation.Nonnull BrandSafetyTier brandSafetyTier) {
+    this.brandSafetyTier = brandSafetyTier;
     return this;
   }
 
   /**
-   * Get brandSafetyTierTarget
-   * @return brandSafetyTierTarget
+   * Get brandSafetyTier
+   * @return brandSafetyTier
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_TIER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateBrandSafetyTierTarget getBrandSafetyTierTarget() {
-    return brandSafetyTierTarget;
+  public BrandSafetyTier getBrandSafetyTier() {
+    return brandSafetyTier;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_TIER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBrandSafetyTierTarget(@jakarta.annotation.Nonnull CreateBrandSafetyTierTarget brandSafetyTierTarget) {
-    this.brandSafetyTierTarget = brandSafetyTierTarget;
+  public void setBrandSafetyTier(@jakarta.annotation.Nonnull BrandSafetyTier brandSafetyTier) {
+    this.brandSafetyTier = brandSafetyTier;
   }
 
 
   /**
-   * Return true if this brandSafetyTierTarget object is equal to o.
+   * Return true if this BrandSafetyTierTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class BrandSafetyTierTarget {
       return false;
     }
     BrandSafetyTierTarget brandSafetyTierTarget = (BrandSafetyTierTarget) o;
-    return Objects.equals(this.brandSafetyTierTarget, brandSafetyTierTarget.brandSafetyTierTarget);
+    return Objects.equals(this.brandSafetyTier, brandSafetyTierTarget.brandSafetyTier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(brandSafetyTierTarget);
+    return Objects.hash(brandSafetyTier);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BrandSafetyTierTarget {\n");
-    sb.append("    brandSafetyTierTarget: ").append(toIndentedString(brandSafetyTierTarget)).append("\n");
+    sb.append("    brandSafetyTier: ").append(toIndentedString(brandSafetyTier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class BrandSafetyTierTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `brandSafetyTierTarget` to the URL query string
-    if (getBrandSafetyTierTarget() != null) {
-      joiner.add(getBrandSafetyTierTarget().toUrlQueryString(prefix + "brandSafetyTierTarget" + suffix));
+    // add `brandSafetyTier` to the URL query string
+    if (getBrandSafetyTier() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sbrandSafetyTier%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getBrandSafetyTier()))));
     }
 
     return joiner.toString();

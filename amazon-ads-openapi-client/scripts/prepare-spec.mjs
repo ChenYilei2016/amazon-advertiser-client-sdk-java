@@ -28,6 +28,7 @@ const specifications = [
         title: 'Amazon Ads Targets API',
         description: 'Focused Java SDK specification containing only Targets operations.',
         expectedOperationIds: ['CreateTarget', 'DeleteTarget', 'QueryTarget', 'UpdateTarget'],
+        typedOneOfObjectSchemas: ['TargetDetails', 'CreateTargetDetails'],
     },
 ];
 
@@ -107,12 +108,46 @@ function selectReachableComponents(sourceComponents, selectedPaths) {
     return selectedComponents;
 }
 
+function normalizeSourceComponents(sourceComponents, specification) {
+    if (!specification.typedOneOfObjectSchemas) {
+        return sourceComponents;
+    }
+
+    const normalizedComponents = structuredClone(sourceComponents);
+    specification.typedOneOfObjectSchemas.forEach(schemaName => {
+        const sourceSchema = normalizedComponents.schemas?.[schemaName];
+        if (!Array.isArray(sourceSchema?.oneOf) || sourceSchema.oneOf.length === 0) {
+            throw new Error(`Targets: expected ${schemaName} to define oneOf alternatives.`);
+        }
+        const properties = {};
+        sourceSchema.oneOf.forEach(alternative => {
+            const entries = Object.entries(alternative.properties ?? {});
+            if (entries.length !== 1) {
+                throw new Error(`Targets: every ${schemaName} oneOf alternative must define exactly one property.`);
+            }
+            const [name, schema] = entries[0];
+            if (properties[name]) {
+                throw new Error(`Targets: duplicate ${schemaName} property ${name}.`);
+            }
+            properties[name] = schema;
+        });
+        normalizedComponents.schemas[schemaName] = {
+            type: 'object',
+            properties,
+            additionalProperties: true,
+            description: `Typed ${schemaName}. The source contract uses one property per alternative.`,
+        };
+    });
+    return normalizedComponents;
+}
+
 for (const specification of specifications) {
     const sourcePath = path.join(workspaceDir, 'spec', specification.sourceFile);
     const outputPath = path.join(workspaceDir, 'spec', specification.outputFile);
     const metadataPath = path.join(workspaceDir, 'spec', specification.metadataFile);
     const sourceBuffer = await readFile(sourcePath);
     const sourceSpec = JSON.parse(sourceBuffer.toString('utf8'));
+    const sourceComponents = normalizeSourceComponents(sourceSpec.components, specification);
     const selectedPaths = selectTaggedPaths(sourceSpec.paths, specification.tag);
     const operationIds = Object.values(selectedPaths).flatMap(pathItem => Object.entries(pathItem)
         .filter(([method]) => httpMethods.has(method))
@@ -132,7 +167,7 @@ for (const specification of specifications) {
         servers: sourceSpec.servers,
         tags: sourceSpec.tags?.filter(tag => tag.name === specification.tag),
         paths: selectedPaths,
-        components: selectReachableComponents(sourceSpec.components, selectedPaths),
+        components: selectReachableComponents(sourceComponents, selectedPaths),
         'x-amazon-source-spec': specification.sourceUrl,
     };
     const sourceSha256 = createHash('sha256').update(sourceBuffer).digest('hex');

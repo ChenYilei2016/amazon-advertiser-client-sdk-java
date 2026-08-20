@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateContentGenreTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentGenre;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * ContentGenreTarget
+ * Target based on the genre of content being viewed.
  */
 @JsonPropertyOrder({
-  ContentGenreTarget.JSON_PROPERTY_CONTENT_GENRE_TARGET
+  ContentGenreTarget.JSON_PROPERTY_CONTENT_GENRE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ContentGenreTarget {
-  public static final String JSON_PROPERTY_CONTENT_GENRE_TARGET = "contentGenreTarget";
+  public static final String JSON_PROPERTY_CONTENT_GENRE = "contentGenre";
   @jakarta.annotation.Nonnull
-  private CreateContentGenreTarget contentGenreTarget;
+  private ContentGenre contentGenre;
 
   public ContentGenreTarget() {
   }
 
-  public ContentGenreTarget contentGenreTarget(@jakarta.annotation.Nonnull CreateContentGenreTarget contentGenreTarget) {
-    this.contentGenreTarget = contentGenreTarget;
+  public ContentGenreTarget contentGenre(@jakarta.annotation.Nonnull ContentGenre contentGenre) {
+    this.contentGenre = contentGenre;
     return this;
   }
 
   /**
-   * Get contentGenreTarget
-   * @return contentGenreTarget
+   * Get contentGenre
+   * @return contentGenre
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_GENRE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_GENRE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateContentGenreTarget getContentGenreTarget() {
-    return contentGenreTarget;
+  public ContentGenre getContentGenre() {
+    return contentGenre;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_GENRE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_GENRE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContentGenreTarget(@jakarta.annotation.Nonnull CreateContentGenreTarget contentGenreTarget) {
-    this.contentGenreTarget = contentGenreTarget;
+  public void setContentGenre(@jakarta.annotation.Nonnull ContentGenre contentGenre) {
+    this.contentGenre = contentGenre;
   }
 
 
   /**
-   * Return true if this contentGenreTarget object is equal to o.
+   * Return true if this ContentGenreTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class ContentGenreTarget {
       return false;
     }
     ContentGenreTarget contentGenreTarget = (ContentGenreTarget) o;
-    return Objects.equals(this.contentGenreTarget, contentGenreTarget.contentGenreTarget);
+    return Objects.equals(this.contentGenre, contentGenreTarget.contentGenre);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contentGenreTarget);
+    return Objects.hash(contentGenre);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ContentGenreTarget {\n");
-    sb.append("    contentGenreTarget: ").append(toIndentedString(contentGenreTarget)).append("\n");
+    sb.append("    contentGenre: ").append(toIndentedString(contentGenre)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class ContentGenreTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `contentGenreTarget` to the URL query string
-    if (getContentGenreTarget() != null) {
-      joiner.add(getContentGenreTarget().toUrlQueryString(prefix + "contentGenreTarget" + suffix));
+    // add `contentGenre` to the URL query string
+    if (getContentGenre() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scontentGenre%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getContentGenre()))));
     }
 
     return joiner.toString();

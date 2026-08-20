@@ -14,6 +14,8 @@
 
 生成代码位于标准 Maven 主源码目录 `src/main/java` 并提交到 Git，以便规格和生成器升级时直接审阅差异。该模块不放人工实现；执行 Maven `generate-sources` 时会完整重建 `src/main`，不允许手工修改。
 
+`Target.targetDetails` 在该 SDK 中保持为强类型 `TargetDetails`。`TargetDetails` 与 `CreateTargetDetails` 的 27 个 oneOf 分支被规范化为可空的强类型字段，以避免生成器为同名的请求/响应分支产生额外包装类；未知字段仍会保留。调用方应依据 `targetType` 读取对应字段，例如 `PRODUCT` 对应 `getProductTarget()`。
+
 ## 更新规格
 
 ```bash

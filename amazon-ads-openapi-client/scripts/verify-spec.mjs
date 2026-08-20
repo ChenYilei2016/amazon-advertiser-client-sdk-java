@@ -7,7 +7,12 @@ const workspaceDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 
 const httpMethods = new Set(['get', 'put', 'post', 'delete', 'patch', 'head', 'options', 'trace']);
 const specifications = [
     { label: 'Campaigns', file: 'campaigns.openapi.json', expectedOperationIds: ['CreateCampaign', 'DeleteCampaign', 'QueryCampaign', 'UpdateCampaign'] },
-    { label: 'Targets', file: 'targets.openapi.json', expectedOperationIds: ['CreateTarget', 'DeleteTarget', 'QueryTarget', 'UpdateTarget'] },
+    {
+        label: 'Targets',
+        file: 'targets.openapi.json',
+        expectedOperationIds: ['CreateTarget', 'DeleteTarget', 'QueryTarget', 'UpdateTarget'],
+        typedOneOfObjectSchemas: ['TargetDetails', 'CreateTargetDetails'],
+    },
 ];
 
 for (const specification of specifications) {
@@ -18,6 +23,16 @@ for (const specification of specifications) {
         .map(([, operation]) => operation.operationId))
         .sort();
     assert.deepEqual(operationIds, specification.expectedOperationIds);
+
+    if (specification.typedOneOfObjectSchemas) {
+        specification.typedOneOfObjectSchemas.forEach(schemaName => {
+            const schema = spec.components.schemas?.[schemaName];
+            assert.equal(schema?.type, 'object');
+            assert.equal(schema?.additionalProperties, true);
+            assert.equal(schema?.oneOf, undefined);
+            assert.equal(Object.keys(schema?.properties ?? {}).length, spec.components.schemas.TargetType.enum.length);
+        });
+    }
 
     const unresolvedRefs = [];
     function verifyRefs(node) {

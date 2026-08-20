@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateNativeContentPositionTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.NativeContentPosition;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * NativeContentPositionTarget
+ * Targets ads to a specific native content position
  */
 @JsonPropertyOrder({
-  NativeContentPositionTarget.JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET
+  NativeContentPositionTarget.JSON_PROPERTY_NATIVE_POSITION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class NativeContentPositionTarget {
-  public static final String JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET = "nativeContentPositionTarget";
+  public static final String JSON_PROPERTY_NATIVE_POSITION = "nativePosition";
   @jakarta.annotation.Nonnull
-  private CreateNativeContentPositionTarget nativeContentPositionTarget;
+  private NativeContentPosition nativePosition;
 
   public NativeContentPositionTarget() {
   }
 
-  public NativeContentPositionTarget nativeContentPositionTarget(@jakarta.annotation.Nonnull CreateNativeContentPositionTarget nativeContentPositionTarget) {
-    this.nativeContentPositionTarget = nativeContentPositionTarget;
+  public NativeContentPositionTarget nativePosition(@jakarta.annotation.Nonnull NativeContentPosition nativePosition) {
+    this.nativePosition = nativePosition;
     return this;
   }
 
   /**
-   * Get nativeContentPositionTarget
-   * @return nativeContentPositionTarget
+   * Get nativePosition
+   * @return nativePosition
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_NATIVE_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateNativeContentPositionTarget getNativeContentPositionTarget() {
-    return nativeContentPositionTarget;
+  public NativeContentPosition getNativePosition() {
+    return nativePosition;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_NATIVE_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNativeContentPositionTarget(@jakarta.annotation.Nonnull CreateNativeContentPositionTarget nativeContentPositionTarget) {
-    this.nativeContentPositionTarget = nativeContentPositionTarget;
+  public void setNativePosition(@jakarta.annotation.Nonnull NativeContentPosition nativePosition) {
+    this.nativePosition = nativePosition;
   }
 
 
   /**
-   * Return true if this nativeContentPositionTarget object is equal to o.
+   * Return true if this NativeContentPositionTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class NativeContentPositionTarget {
       return false;
     }
     NativeContentPositionTarget nativeContentPositionTarget = (NativeContentPositionTarget) o;
-    return Objects.equals(this.nativeContentPositionTarget, nativeContentPositionTarget.nativeContentPositionTarget);
+    return Objects.equals(this.nativePosition, nativeContentPositionTarget.nativePosition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nativeContentPositionTarget);
+    return Objects.hash(nativePosition);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NativeContentPositionTarget {\n");
-    sb.append("    nativeContentPositionTarget: ").append(toIndentedString(nativeContentPositionTarget)).append("\n");
+    sb.append("    nativePosition: ").append(toIndentedString(nativePosition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class NativeContentPositionTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `nativeContentPositionTarget` to the URL query string
-    if (getNativeContentPositionTarget() != null) {
-      joiner.add(getNativeContentPositionTarget().toUrlQueryString(prefix + "nativeContentPositionTarget" + suffix));
+    // add `nativePosition` to the URL query string
+    if (getNativePosition() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%snativePosition%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNativePosition()))));
     }
 
     return joiner.toString();

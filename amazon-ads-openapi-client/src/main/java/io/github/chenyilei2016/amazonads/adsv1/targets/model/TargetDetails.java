@@ -28,847 +28,829 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.AdInitiationTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.AdInitiationTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.AdPlayerSizeTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.AdPlayerSizeTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.AppTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.AppTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.AudienceTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.AudienceTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandSafetyCategoryTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandSafetyCategoryTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandSafetyTierTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandSafetyTierTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentCategoryTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentCategoryTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentGenreTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentGenreTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentInstreamPositionTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentInstreamPositionTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentOutstreamPositionTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentOutstreamPositionTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentRatingTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentRatingTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.DayPartTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.DayPartTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.DeviceTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.DeviceTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.DomainTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.DomainTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.FoldPositionTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.FoldPositionTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.InventorySourceTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.InventorySourceTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.KeywordTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.KeywordTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.LocationTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.LocationTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.NativeContentPositionTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.NativeContentPositionTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.PlacementTypeTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.PlacementTypeTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductAudienceTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductAudienceTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductCategoryTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductCategoryTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ThemeTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ThemeTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.ThirdPartyTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.ThirdPartyTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoAdFormatTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoAdFormatTarget1;
 import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoContentDurationTarget;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoContentDurationTarget1;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import tools.jackson.core.type.TypeReference;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-
-import tools.jackson.core.JacksonException;
-import tools.jackson.databind.DatabindException;
-import tools.jackson.databind.SerializationContext;
-import tools.jackson.core.JsonGenerator;
-import tools.jackson.core.JsonParser;
-import tools.jackson.core.JsonToken;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.annotation.JsonDeserialize;
-import tools.jackson.databind.annotation.JsonSerialize;
-import tools.jackson.databind.deser.std.StdDeserializer;
-import tools.jackson.databind.ser.std.StdSerializer;
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
-import io.github.chenyilei2016.amazonads.adsv1.client.JSON;
-
+/**
+ * Typed TargetDetails. The source contract uses one property per alternative.
+ */
+@JsonPropertyOrder({
+  TargetDetails.JSON_PROPERTY_AD_INITIATION_TARGET,
+  TargetDetails.JSON_PROPERTY_AD_PLAYER_SIZE_TARGET,
+  TargetDetails.JSON_PROPERTY_APP_TARGET,
+  TargetDetails.JSON_PROPERTY_AUDIENCE_TARGET,
+  TargetDetails.JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET,
+  TargetDetails.JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET,
+  TargetDetails.JSON_PROPERTY_CONTENT_CATEGORY_TARGET,
+  TargetDetails.JSON_PROPERTY_CONTENT_GENRE_TARGET,
+  TargetDetails.JSON_PROPERTY_CONTENT_INSTREAM_POSITION_TARGET,
+  TargetDetails.JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET,
+  TargetDetails.JSON_PROPERTY_CONTENT_RATING_TARGET,
+  TargetDetails.JSON_PROPERTY_DAY_PART_TARGET,
+  TargetDetails.JSON_PROPERTY_DEVICE_TARGET,
+  TargetDetails.JSON_PROPERTY_DOMAIN_TARGET,
+  TargetDetails.JSON_PROPERTY_FOLD_POSITION_TARGET,
+  TargetDetails.JSON_PROPERTY_INVENTORY_SOURCE_TARGET,
+  TargetDetails.JSON_PROPERTY_KEYWORD_TARGET,
+  TargetDetails.JSON_PROPERTY_LOCATION_TARGET,
+  TargetDetails.JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET,
+  TargetDetails.JSON_PROPERTY_PLACEMENT_TYPE_TARGET,
+  TargetDetails.JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET,
+  TargetDetails.JSON_PROPERTY_PRODUCT_CATEGORY_TARGET,
+  TargetDetails.JSON_PROPERTY_PRODUCT_TARGET,
+  TargetDetails.JSON_PROPERTY_THEME_TARGET,
+  TargetDetails.JSON_PROPERTY_THIRD_PARTY_TARGET,
+  TargetDetails.JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET,
+  TargetDetails.JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET
+})
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
-@JsonDeserialize(using = TargetDetails.TargetDetailsDeserializer.class)
-@JsonSerialize(using = TargetDetails.TargetDetailsSerializer.class)
-public class TargetDetails extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(TargetDetails.class.getName());
+public class TargetDetails {
+  public static final String JSON_PROPERTY_AD_INITIATION_TARGET = "adInitiationTarget";
+  @jakarta.annotation.Nullable
+  private AdInitiationTarget adInitiationTarget;
 
-    public static class TargetDetailsSerializer extends StdSerializer<TargetDetails> {
-        public TargetDetailsSerializer(Class<TargetDetails> t) {
-            super(t);
-        }
+  public static final String JSON_PROPERTY_AD_PLAYER_SIZE_TARGET = "adPlayerSizeTarget";
+  @jakarta.annotation.Nullable
+  private AdPlayerSizeTarget adPlayerSizeTarget;
 
-        public TargetDetailsSerializer() {
-            this(null);
-        }
+  public static final String JSON_PROPERTY_APP_TARGET = "appTarget";
+  @jakarta.annotation.Nullable
+  private AppTarget appTarget;
 
-        @Override
-        public void serialize(TargetDetails value, JsonGenerator jgen, SerializationContext serializationContext) throws JacksonException {
-            serializationContext.writeValue(jgen, value.getActualInstance());
-        }
-    }
+  public static final String JSON_PROPERTY_AUDIENCE_TARGET = "audienceTarget";
+  @jakarta.annotation.Nullable
+  private AudienceTarget audienceTarget;
 
-    public static class TargetDetailsDeserializer extends StdDeserializer<TargetDetails> {
-        public TargetDetailsDeserializer() {
-            this(TargetDetails.class);
-        }
+  public static final String JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET = "brandSafetyCategoryTarget";
+  @jakarta.annotation.Nullable
+  private BrandSafetyCategoryTarget brandSafetyCategoryTarget;
 
-        public TargetDetailsDeserializer(Class<?> vc) {
-            super(vc);
-        }
+  public static final String JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET = "brandSafetyTierTarget";
+  @jakarta.annotation.Nullable
+  private BrandSafetyTierTarget brandSafetyTierTarget;
 
-        @Override
-        public TargetDetails deserialize(JsonParser jp, DeserializationContext ctxt) throws JacksonException {
-            JsonNode tree = ctxt.readTree(jp);
-            Object deserialized = null;
-            boolean typeCoercion = false; // MapperFeature.ALLOW_COERCION_OF_SCALARS was removed in Jackson 3
-            int match = 0;
-            JsonToken token = tree.asToken();
-            // deserialize AdInitiationTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (AdInitiationTarget1.class.equals(Integer.class) || AdInitiationTarget1.class.equals(Long.class) || AdInitiationTarget1.class.equals(Float.class) || AdInitiationTarget1.class.equals(Double.class) || AdInitiationTarget1.class.equals(Boolean.class) || AdInitiationTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((AdInitiationTarget1.class.equals(Integer.class) || AdInitiationTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((AdInitiationTarget1.class.equals(Float.class) || AdInitiationTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (AdInitiationTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (AdInitiationTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, AdInitiationTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'AdInitiationTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'AdInitiationTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_CONTENT_CATEGORY_TARGET = "contentCategoryTarget";
+  @jakarta.annotation.Nullable
+  private ContentCategoryTarget contentCategoryTarget;
 
-            // deserialize AdPlayerSizeTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (AdPlayerSizeTarget1.class.equals(Integer.class) || AdPlayerSizeTarget1.class.equals(Long.class) || AdPlayerSizeTarget1.class.equals(Float.class) || AdPlayerSizeTarget1.class.equals(Double.class) || AdPlayerSizeTarget1.class.equals(Boolean.class) || AdPlayerSizeTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((AdPlayerSizeTarget1.class.equals(Integer.class) || AdPlayerSizeTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((AdPlayerSizeTarget1.class.equals(Float.class) || AdPlayerSizeTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (AdPlayerSizeTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (AdPlayerSizeTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, AdPlayerSizeTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'AdPlayerSizeTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'AdPlayerSizeTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_CONTENT_GENRE_TARGET = "contentGenreTarget";
+  @jakarta.annotation.Nullable
+  private ContentGenreTarget contentGenreTarget;
 
-            // deserialize AppTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (AppTarget1.class.equals(Integer.class) || AppTarget1.class.equals(Long.class) || AppTarget1.class.equals(Float.class) || AppTarget1.class.equals(Double.class) || AppTarget1.class.equals(Boolean.class) || AppTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((AppTarget1.class.equals(Integer.class) || AppTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((AppTarget1.class.equals(Float.class) || AppTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (AppTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (AppTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, AppTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'AppTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'AppTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_CONTENT_INSTREAM_POSITION_TARGET = "contentInstreamPositionTarget";
+  @jakarta.annotation.Nullable
+  private ContentInstreamPositionTarget contentInstreamPositionTarget;
 
-            // deserialize AudienceTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (AudienceTarget1.class.equals(Integer.class) || AudienceTarget1.class.equals(Long.class) || AudienceTarget1.class.equals(Float.class) || AudienceTarget1.class.equals(Double.class) || AudienceTarget1.class.equals(Boolean.class) || AudienceTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((AudienceTarget1.class.equals(Integer.class) || AudienceTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((AudienceTarget1.class.equals(Float.class) || AudienceTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (AudienceTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (AudienceTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, AudienceTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'AudienceTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'AudienceTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET = "contentOutstreamPositionTarget";
+  @jakarta.annotation.Nullable
+  private ContentOutstreamPositionTarget contentOutstreamPositionTarget;
 
-            // deserialize BrandSafetyCategoryTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (BrandSafetyCategoryTarget1.class.equals(Integer.class) || BrandSafetyCategoryTarget1.class.equals(Long.class) || BrandSafetyCategoryTarget1.class.equals(Float.class) || BrandSafetyCategoryTarget1.class.equals(Double.class) || BrandSafetyCategoryTarget1.class.equals(Boolean.class) || BrandSafetyCategoryTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((BrandSafetyCategoryTarget1.class.equals(Integer.class) || BrandSafetyCategoryTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((BrandSafetyCategoryTarget1.class.equals(Float.class) || BrandSafetyCategoryTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (BrandSafetyCategoryTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (BrandSafetyCategoryTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, BrandSafetyCategoryTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'BrandSafetyCategoryTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'BrandSafetyCategoryTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_CONTENT_RATING_TARGET = "contentRatingTarget";
+  @jakarta.annotation.Nullable
+  private ContentRatingTarget contentRatingTarget;
 
-            // deserialize BrandSafetyTierTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (BrandSafetyTierTarget1.class.equals(Integer.class) || BrandSafetyTierTarget1.class.equals(Long.class) || BrandSafetyTierTarget1.class.equals(Float.class) || BrandSafetyTierTarget1.class.equals(Double.class) || BrandSafetyTierTarget1.class.equals(Boolean.class) || BrandSafetyTierTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((BrandSafetyTierTarget1.class.equals(Integer.class) || BrandSafetyTierTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((BrandSafetyTierTarget1.class.equals(Float.class) || BrandSafetyTierTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (BrandSafetyTierTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (BrandSafetyTierTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, BrandSafetyTierTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'BrandSafetyTierTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'BrandSafetyTierTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_DAY_PART_TARGET = "dayPartTarget";
+  @jakarta.annotation.Nullable
+  private DayPartTarget dayPartTarget;
 
-            // deserialize ContentCategoryTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ContentCategoryTarget1.class.equals(Integer.class) || ContentCategoryTarget1.class.equals(Long.class) || ContentCategoryTarget1.class.equals(Float.class) || ContentCategoryTarget1.class.equals(Double.class) || ContentCategoryTarget1.class.equals(Boolean.class) || ContentCategoryTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ContentCategoryTarget1.class.equals(Integer.class) || ContentCategoryTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ContentCategoryTarget1.class.equals(Float.class) || ContentCategoryTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ContentCategoryTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ContentCategoryTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ContentCategoryTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ContentCategoryTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ContentCategoryTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_DEVICE_TARGET = "deviceTarget";
+  @jakarta.annotation.Nullable
+  private DeviceTarget deviceTarget;
 
-            // deserialize ContentGenreTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ContentGenreTarget1.class.equals(Integer.class) || ContentGenreTarget1.class.equals(Long.class) || ContentGenreTarget1.class.equals(Float.class) || ContentGenreTarget1.class.equals(Double.class) || ContentGenreTarget1.class.equals(Boolean.class) || ContentGenreTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ContentGenreTarget1.class.equals(Integer.class) || ContentGenreTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ContentGenreTarget1.class.equals(Float.class) || ContentGenreTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ContentGenreTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ContentGenreTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ContentGenreTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ContentGenreTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ContentGenreTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_DOMAIN_TARGET = "domainTarget";
+  @jakarta.annotation.Nullable
+  private DomainTarget domainTarget;
 
-            // deserialize ContentInstreamPositionTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ContentInstreamPositionTarget1.class.equals(Integer.class) || ContentInstreamPositionTarget1.class.equals(Long.class) || ContentInstreamPositionTarget1.class.equals(Float.class) || ContentInstreamPositionTarget1.class.equals(Double.class) || ContentInstreamPositionTarget1.class.equals(Boolean.class) || ContentInstreamPositionTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ContentInstreamPositionTarget1.class.equals(Integer.class) || ContentInstreamPositionTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ContentInstreamPositionTarget1.class.equals(Float.class) || ContentInstreamPositionTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ContentInstreamPositionTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ContentInstreamPositionTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ContentInstreamPositionTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ContentInstreamPositionTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ContentInstreamPositionTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_FOLD_POSITION_TARGET = "foldPositionTarget";
+  @jakarta.annotation.Nullable
+  private FoldPositionTarget foldPositionTarget;
 
-            // deserialize ContentOutstreamPositionTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ContentOutstreamPositionTarget1.class.equals(Integer.class) || ContentOutstreamPositionTarget1.class.equals(Long.class) || ContentOutstreamPositionTarget1.class.equals(Float.class) || ContentOutstreamPositionTarget1.class.equals(Double.class) || ContentOutstreamPositionTarget1.class.equals(Boolean.class) || ContentOutstreamPositionTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ContentOutstreamPositionTarget1.class.equals(Integer.class) || ContentOutstreamPositionTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ContentOutstreamPositionTarget1.class.equals(Float.class) || ContentOutstreamPositionTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ContentOutstreamPositionTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ContentOutstreamPositionTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ContentOutstreamPositionTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ContentOutstreamPositionTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ContentOutstreamPositionTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_INVENTORY_SOURCE_TARGET = "inventorySourceTarget";
+  @jakarta.annotation.Nullable
+  private InventorySourceTarget inventorySourceTarget;
 
-            // deserialize ContentRatingTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ContentRatingTarget1.class.equals(Integer.class) || ContentRatingTarget1.class.equals(Long.class) || ContentRatingTarget1.class.equals(Float.class) || ContentRatingTarget1.class.equals(Double.class) || ContentRatingTarget1.class.equals(Boolean.class) || ContentRatingTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ContentRatingTarget1.class.equals(Integer.class) || ContentRatingTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ContentRatingTarget1.class.equals(Float.class) || ContentRatingTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ContentRatingTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ContentRatingTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ContentRatingTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ContentRatingTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ContentRatingTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_KEYWORD_TARGET = "keywordTarget";
+  @jakarta.annotation.Nullable
+  private KeywordTarget keywordTarget;
 
-            // deserialize DayPartTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (DayPartTarget1.class.equals(Integer.class) || DayPartTarget1.class.equals(Long.class) || DayPartTarget1.class.equals(Float.class) || DayPartTarget1.class.equals(Double.class) || DayPartTarget1.class.equals(Boolean.class) || DayPartTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((DayPartTarget1.class.equals(Integer.class) || DayPartTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((DayPartTarget1.class.equals(Float.class) || DayPartTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (DayPartTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (DayPartTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, DayPartTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'DayPartTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'DayPartTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_LOCATION_TARGET = "locationTarget";
+  @jakarta.annotation.Nullable
+  private LocationTarget locationTarget;
 
-            // deserialize DeviceTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (DeviceTarget1.class.equals(Integer.class) || DeviceTarget1.class.equals(Long.class) || DeviceTarget1.class.equals(Float.class) || DeviceTarget1.class.equals(Double.class) || DeviceTarget1.class.equals(Boolean.class) || DeviceTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((DeviceTarget1.class.equals(Integer.class) || DeviceTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((DeviceTarget1.class.equals(Float.class) || DeviceTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (DeviceTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (DeviceTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, DeviceTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'DeviceTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'DeviceTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET = "nativeContentPositionTarget";
+  @jakarta.annotation.Nullable
+  private NativeContentPositionTarget nativeContentPositionTarget;
 
-            // deserialize DomainTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (DomainTarget1.class.equals(Integer.class) || DomainTarget1.class.equals(Long.class) || DomainTarget1.class.equals(Float.class) || DomainTarget1.class.equals(Double.class) || DomainTarget1.class.equals(Boolean.class) || DomainTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((DomainTarget1.class.equals(Integer.class) || DomainTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((DomainTarget1.class.equals(Float.class) || DomainTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (DomainTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (DomainTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, DomainTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'DomainTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'DomainTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_PLACEMENT_TYPE_TARGET = "placementTypeTarget";
+  @jakarta.annotation.Nullable
+  private PlacementTypeTarget placementTypeTarget;
 
-            // deserialize FoldPositionTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (FoldPositionTarget1.class.equals(Integer.class) || FoldPositionTarget1.class.equals(Long.class) || FoldPositionTarget1.class.equals(Float.class) || FoldPositionTarget1.class.equals(Double.class) || FoldPositionTarget1.class.equals(Boolean.class) || FoldPositionTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((FoldPositionTarget1.class.equals(Integer.class) || FoldPositionTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((FoldPositionTarget1.class.equals(Float.class) || FoldPositionTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (FoldPositionTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (FoldPositionTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, FoldPositionTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'FoldPositionTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'FoldPositionTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET = "productAudienceTarget";
+  @jakarta.annotation.Nullable
+  private ProductAudienceTarget productAudienceTarget;
 
-            // deserialize InventorySourceTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (InventorySourceTarget1.class.equals(Integer.class) || InventorySourceTarget1.class.equals(Long.class) || InventorySourceTarget1.class.equals(Float.class) || InventorySourceTarget1.class.equals(Double.class) || InventorySourceTarget1.class.equals(Boolean.class) || InventorySourceTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((InventorySourceTarget1.class.equals(Integer.class) || InventorySourceTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((InventorySourceTarget1.class.equals(Float.class) || InventorySourceTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (InventorySourceTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (InventorySourceTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, InventorySourceTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'InventorySourceTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'InventorySourceTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_PRODUCT_CATEGORY_TARGET = "productCategoryTarget";
+  @jakarta.annotation.Nullable
+  private ProductCategoryTarget productCategoryTarget;
 
-            // deserialize KeywordTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (KeywordTarget1.class.equals(Integer.class) || KeywordTarget1.class.equals(Long.class) || KeywordTarget1.class.equals(Float.class) || KeywordTarget1.class.equals(Double.class) || KeywordTarget1.class.equals(Boolean.class) || KeywordTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((KeywordTarget1.class.equals(Integer.class) || KeywordTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((KeywordTarget1.class.equals(Float.class) || KeywordTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (KeywordTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (KeywordTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, KeywordTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'KeywordTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'KeywordTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_PRODUCT_TARGET = "productTarget";
+  @jakarta.annotation.Nullable
+  private ProductTarget productTarget;
 
-            // deserialize LocationTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (LocationTarget1.class.equals(Integer.class) || LocationTarget1.class.equals(Long.class) || LocationTarget1.class.equals(Float.class) || LocationTarget1.class.equals(Double.class) || LocationTarget1.class.equals(Boolean.class) || LocationTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((LocationTarget1.class.equals(Integer.class) || LocationTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((LocationTarget1.class.equals(Float.class) || LocationTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (LocationTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (LocationTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, LocationTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'LocationTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'LocationTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_THEME_TARGET = "themeTarget";
+  @jakarta.annotation.Nullable
+  private ThemeTarget themeTarget;
 
-            // deserialize NativeContentPositionTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (NativeContentPositionTarget1.class.equals(Integer.class) || NativeContentPositionTarget1.class.equals(Long.class) || NativeContentPositionTarget1.class.equals(Float.class) || NativeContentPositionTarget1.class.equals(Double.class) || NativeContentPositionTarget1.class.equals(Boolean.class) || NativeContentPositionTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((NativeContentPositionTarget1.class.equals(Integer.class) || NativeContentPositionTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((NativeContentPositionTarget1.class.equals(Float.class) || NativeContentPositionTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (NativeContentPositionTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (NativeContentPositionTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, NativeContentPositionTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'NativeContentPositionTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'NativeContentPositionTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_THIRD_PARTY_TARGET = "thirdPartyTarget";
+  @jakarta.annotation.Nullable
+  private ThirdPartyTarget thirdPartyTarget;
 
-            // deserialize PlacementTypeTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (PlacementTypeTarget1.class.equals(Integer.class) || PlacementTypeTarget1.class.equals(Long.class) || PlacementTypeTarget1.class.equals(Float.class) || PlacementTypeTarget1.class.equals(Double.class) || PlacementTypeTarget1.class.equals(Boolean.class) || PlacementTypeTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((PlacementTypeTarget1.class.equals(Integer.class) || PlacementTypeTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((PlacementTypeTarget1.class.equals(Float.class) || PlacementTypeTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (PlacementTypeTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (PlacementTypeTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, PlacementTypeTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'PlacementTypeTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'PlacementTypeTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET = "videoAdFormatTarget";
+  @jakarta.annotation.Nullable
+  private VideoAdFormatTarget videoAdFormatTarget;
 
-            // deserialize ProductAudienceTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ProductAudienceTarget1.class.equals(Integer.class) || ProductAudienceTarget1.class.equals(Long.class) || ProductAudienceTarget1.class.equals(Float.class) || ProductAudienceTarget1.class.equals(Double.class) || ProductAudienceTarget1.class.equals(Boolean.class) || ProductAudienceTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ProductAudienceTarget1.class.equals(Integer.class) || ProductAudienceTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ProductAudienceTarget1.class.equals(Float.class) || ProductAudienceTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ProductAudienceTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ProductAudienceTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ProductAudienceTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ProductAudienceTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ProductAudienceTarget1'", e);
-            }
+  public static final String JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET = "videoContentDurationTarget";
+  @jakarta.annotation.Nullable
+  private VideoContentDurationTarget videoContentDurationTarget;
 
-            // deserialize ProductCategoryTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ProductCategoryTarget1.class.equals(Integer.class) || ProductCategoryTarget1.class.equals(Long.class) || ProductCategoryTarget1.class.equals(Float.class) || ProductCategoryTarget1.class.equals(Double.class) || ProductCategoryTarget1.class.equals(Boolean.class) || ProductCategoryTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ProductCategoryTarget1.class.equals(Integer.class) || ProductCategoryTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ProductCategoryTarget1.class.equals(Float.class) || ProductCategoryTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ProductCategoryTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ProductCategoryTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ProductCategoryTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ProductCategoryTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ProductCategoryTarget1'", e);
-            }
+  public TargetDetails() {
+  }
 
-            // deserialize ProductTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ProductTarget1.class.equals(Integer.class) || ProductTarget1.class.equals(Long.class) || ProductTarget1.class.equals(Float.class) || ProductTarget1.class.equals(Double.class) || ProductTarget1.class.equals(Boolean.class) || ProductTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ProductTarget1.class.equals(Integer.class) || ProductTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ProductTarget1.class.equals(Float.class) || ProductTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ProductTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ProductTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ProductTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ProductTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ProductTarget1'", e);
-            }
+  public TargetDetails adInitiationTarget(@jakarta.annotation.Nullable AdInitiationTarget adInitiationTarget) {
+    this.adInitiationTarget = adInitiationTarget;
+    return this;
+  }
 
-            // deserialize ThemeTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ThemeTarget1.class.equals(Integer.class) || ThemeTarget1.class.equals(Long.class) || ThemeTarget1.class.equals(Float.class) || ThemeTarget1.class.equals(Double.class) || ThemeTarget1.class.equals(Boolean.class) || ThemeTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ThemeTarget1.class.equals(Integer.class) || ThemeTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ThemeTarget1.class.equals(Float.class) || ThemeTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ThemeTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ThemeTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ThemeTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ThemeTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ThemeTarget1'", e);
-            }
+  /**
+   * Get adInitiationTarget
+   * @return adInitiationTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_AD_INITIATION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AdInitiationTarget getAdInitiationTarget() {
+    return adInitiationTarget;
+  }
 
-            // deserialize ThirdPartyTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (ThirdPartyTarget1.class.equals(Integer.class) || ThirdPartyTarget1.class.equals(Long.class) || ThirdPartyTarget1.class.equals(Float.class) || ThirdPartyTarget1.class.equals(Double.class) || ThirdPartyTarget1.class.equals(Boolean.class) || ThirdPartyTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((ThirdPartyTarget1.class.equals(Integer.class) || ThirdPartyTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((ThirdPartyTarget1.class.equals(Float.class) || ThirdPartyTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (ThirdPartyTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (ThirdPartyTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, ThirdPartyTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'ThirdPartyTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'ThirdPartyTarget1'", e);
-            }
 
-            // deserialize VideoAdFormatTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (VideoAdFormatTarget1.class.equals(Integer.class) || VideoAdFormatTarget1.class.equals(Long.class) || VideoAdFormatTarget1.class.equals(Float.class) || VideoAdFormatTarget1.class.equals(Double.class) || VideoAdFormatTarget1.class.equals(Boolean.class) || VideoAdFormatTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((VideoAdFormatTarget1.class.equals(Integer.class) || VideoAdFormatTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((VideoAdFormatTarget1.class.equals(Float.class) || VideoAdFormatTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (VideoAdFormatTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (VideoAdFormatTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, VideoAdFormatTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'VideoAdFormatTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'VideoAdFormatTarget1'", e);
-            }
+  @JsonProperty(value = JSON_PROPERTY_AD_INITIATION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdInitiationTarget(@jakarta.annotation.Nullable AdInitiationTarget adInitiationTarget) {
+    this.adInitiationTarget = adInitiationTarget;
+  }
 
-            // deserialize VideoContentDurationTarget1
-            try {
-                boolean attemptParsing = true;
-                // ensure that we respect type coercion as set on the client ObjectMapper
-                if (VideoContentDurationTarget1.class.equals(Integer.class) || VideoContentDurationTarget1.class.equals(Long.class) || VideoContentDurationTarget1.class.equals(Float.class) || VideoContentDurationTarget1.class.equals(Double.class) || VideoContentDurationTarget1.class.equals(Boolean.class) || VideoContentDurationTarget1.class.equals(String.class)) {
-                    attemptParsing = typeCoercion;
-                    if (!attemptParsing) {
-                        attemptParsing |= ((VideoContentDurationTarget1.class.equals(Integer.class) || VideoContentDurationTarget1.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
-                        attemptParsing |= ((VideoContentDurationTarget1.class.equals(Float.class) || VideoContentDurationTarget1.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
-                        attemptParsing |= (VideoContentDurationTarget1.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
-                        attemptParsing |= (VideoContentDurationTarget1.class.equals(String.class) && token == JsonToken.VALUE_STRING);
-                    }
-                }
-                if (attemptParsing) {
-                    deserialized = ctxt.readTreeAsValue(tree, VideoContentDurationTarget1.class);
-                    // TODO: there is no validation against JSON schema constraints
-                    // (min, max, enum, pattern...), this does not perform a strict JSON
-                    // validation, which means the 'match' count may be higher than it should be.
-                    match++;
-                    log.log(Level.FINER, "Input data matches schema 'VideoContentDurationTarget1'");
-                }
-            } catch (Exception e) {
-                // deserialization failed, continue
-                log.log(Level.FINER, "Input data does not match schema 'VideoContentDurationTarget1'", e);
-            }
 
-            if (match == 1) {
-                TargetDetails ret = new TargetDetails();
-                ret.setActualInstance(deserialized);
-                return ret;
-            }
-            throw DatabindException.from(jp, String.format(java.util.Locale.ROOT, "Failed deserialization for TargetDetails: %d classes match result, expected 1", match));
-        }
+  public TargetDetails adPlayerSizeTarget(@jakarta.annotation.Nullable AdPlayerSizeTarget adPlayerSizeTarget) {
+    this.adPlayerSizeTarget = adPlayerSizeTarget;
+    return this;
+  }
 
-        /**
-         * Handle deserialization of the 'null' value.
-         */
-        @Override
-        public TargetDetails getNullValue(DeserializationContext ctxt) {
-            throw DatabindException.from(ctxt.getParser(), "TargetDetails cannot be null");
-        }
-    }
+  /**
+   * Get adPlayerSizeTarget
+   * @return adPlayerSizeTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AdPlayerSizeTarget getAdPlayerSizeTarget() {
+    return adPlayerSizeTarget;
+  }
 
-    // store a list of schema names defined in oneOf
-    public static final Map<String, Class<?>> schemas = new HashMap<>();
 
-    public TargetDetails() {
-        super("oneOf", Boolean.FALSE);
-    }
+  @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdPlayerSizeTarget(@jakarta.annotation.Nullable AdPlayerSizeTarget adPlayerSizeTarget) {
+    this.adPlayerSizeTarget = adPlayerSizeTarget;
+  }
+
+
+  public TargetDetails appTarget(@jakarta.annotation.Nullable AppTarget appTarget) {
+    this.appTarget = appTarget;
+    return this;
+  }
+
+  /**
+   * Get appTarget
+   * @return appTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_APP_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AppTarget getAppTarget() {
+    return appTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_APP_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAppTarget(@jakarta.annotation.Nullable AppTarget appTarget) {
+    this.appTarget = appTarget;
+  }
+
+
+  public TargetDetails audienceTarget(@jakarta.annotation.Nullable AudienceTarget audienceTarget) {
+    this.audienceTarget = audienceTarget;
+    return this;
+  }
+
+  /**
+   * Get audienceTarget
+   * @return audienceTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_AUDIENCE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AudienceTarget getAudienceTarget() {
+    return audienceTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AUDIENCE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAudienceTarget(@jakarta.annotation.Nullable AudienceTarget audienceTarget) {
+    this.audienceTarget = audienceTarget;
+  }
+
+
+  public TargetDetails brandSafetyCategoryTarget(@jakarta.annotation.Nullable BrandSafetyCategoryTarget brandSafetyCategoryTarget) {
+    this.brandSafetyCategoryTarget = brandSafetyCategoryTarget;
+    return this;
+  }
+
+  /**
+   * Get brandSafetyCategoryTarget
+   * @return brandSafetyCategoryTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public BrandSafetyCategoryTarget getBrandSafetyCategoryTarget() {
+    return brandSafetyCategoryTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBrandSafetyCategoryTarget(@jakarta.annotation.Nullable BrandSafetyCategoryTarget brandSafetyCategoryTarget) {
+    this.brandSafetyCategoryTarget = brandSafetyCategoryTarget;
+  }
+
+
+  public TargetDetails brandSafetyTierTarget(@jakarta.annotation.Nullable BrandSafetyTierTarget brandSafetyTierTarget) {
+    this.brandSafetyTierTarget = brandSafetyTierTarget;
+    return this;
+  }
+
+  /**
+   * Get brandSafetyTierTarget
+   * @return brandSafetyTierTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public BrandSafetyTierTarget getBrandSafetyTierTarget() {
+    return brandSafetyTierTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_TIER_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBrandSafetyTierTarget(@jakarta.annotation.Nullable BrandSafetyTierTarget brandSafetyTierTarget) {
+    this.brandSafetyTierTarget = brandSafetyTierTarget;
+  }
+
+
+  public TargetDetails contentCategoryTarget(@jakarta.annotation.Nullable ContentCategoryTarget contentCategoryTarget) {
+    this.contentCategoryTarget = contentCategoryTarget;
+    return this;
+  }
+
+  /**
+   * Get contentCategoryTarget
+   * @return contentCategoryTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ContentCategoryTarget getContentCategoryTarget() {
+    return contentCategoryTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContentCategoryTarget(@jakarta.annotation.Nullable ContentCategoryTarget contentCategoryTarget) {
+    this.contentCategoryTarget = contentCategoryTarget;
+  }
+
+
+  public TargetDetails contentGenreTarget(@jakarta.annotation.Nullable ContentGenreTarget contentGenreTarget) {
+    this.contentGenreTarget = contentGenreTarget;
+    return this;
+  }
+
+  /**
+   * Get contentGenreTarget
+   * @return contentGenreTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_GENRE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ContentGenreTarget getContentGenreTarget() {
+    return contentGenreTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_GENRE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContentGenreTarget(@jakarta.annotation.Nullable ContentGenreTarget contentGenreTarget) {
+    this.contentGenreTarget = contentGenreTarget;
+  }
+
+
+  public TargetDetails contentInstreamPositionTarget(@jakarta.annotation.Nullable ContentInstreamPositionTarget contentInstreamPositionTarget) {
+    this.contentInstreamPositionTarget = contentInstreamPositionTarget;
+    return this;
+  }
+
+  /**
+   * Get contentInstreamPositionTarget
+   * @return contentInstreamPositionTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_INSTREAM_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ContentInstreamPositionTarget getContentInstreamPositionTarget() {
+    return contentInstreamPositionTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_INSTREAM_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContentInstreamPositionTarget(@jakarta.annotation.Nullable ContentInstreamPositionTarget contentInstreamPositionTarget) {
+    this.contentInstreamPositionTarget = contentInstreamPositionTarget;
+  }
+
+
+  public TargetDetails contentOutstreamPositionTarget(@jakarta.annotation.Nullable ContentOutstreamPositionTarget contentOutstreamPositionTarget) {
+    this.contentOutstreamPositionTarget = contentOutstreamPositionTarget;
+    return this;
+  }
+
+  /**
+   * Get contentOutstreamPositionTarget
+   * @return contentOutstreamPositionTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ContentOutstreamPositionTarget getContentOutstreamPositionTarget() {
+    return contentOutstreamPositionTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContentOutstreamPositionTarget(@jakarta.annotation.Nullable ContentOutstreamPositionTarget contentOutstreamPositionTarget) {
+    this.contentOutstreamPositionTarget = contentOutstreamPositionTarget;
+  }
+
+
+  public TargetDetails contentRatingTarget(@jakarta.annotation.Nullable ContentRatingTarget contentRatingTarget) {
+    this.contentRatingTarget = contentRatingTarget;
+    return this;
+  }
+
+  /**
+   * Get contentRatingTarget
+   * @return contentRatingTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ContentRatingTarget getContentRatingTarget() {
+    return contentRatingTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_RATING_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setContentRatingTarget(@jakarta.annotation.Nullable ContentRatingTarget contentRatingTarget) {
+    this.contentRatingTarget = contentRatingTarget;
+  }
+
+
+  public TargetDetails dayPartTarget(@jakarta.annotation.Nullable DayPartTarget dayPartTarget) {
+    this.dayPartTarget = dayPartTarget;
+    return this;
+  }
+
+  /**
+   * Get dayPartTarget
+   * @return dayPartTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DAY_PART_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DayPartTarget getDayPartTarget() {
+    return dayPartTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DAY_PART_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDayPartTarget(@jakarta.annotation.Nullable DayPartTarget dayPartTarget) {
+    this.dayPartTarget = dayPartTarget;
+  }
+
+
+  public TargetDetails deviceTarget(@jakarta.annotation.Nullable DeviceTarget deviceTarget) {
+    this.deviceTarget = deviceTarget;
+    return this;
+  }
+
+  /**
+   * Get deviceTarget
+   * @return deviceTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DeviceTarget getDeviceTarget() {
+    return deviceTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeviceTarget(@jakarta.annotation.Nullable DeviceTarget deviceTarget) {
+    this.deviceTarget = deviceTarget;
+  }
+
+
+  public TargetDetails domainTarget(@jakarta.annotation.Nullable DomainTarget domainTarget) {
+    this.domainTarget = domainTarget;
+    return this;
+  }
+
+  /**
+   * Get domainTarget
+   * @return domainTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DomainTarget getDomainTarget() {
+    return domainTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDomainTarget(@jakarta.annotation.Nullable DomainTarget domainTarget) {
+    this.domainTarget = domainTarget;
+  }
+
+
+  public TargetDetails foldPositionTarget(@jakarta.annotation.Nullable FoldPositionTarget foldPositionTarget) {
+    this.foldPositionTarget = foldPositionTarget;
+    return this;
+  }
+
+  /**
+   * Get foldPositionTarget
+   * @return foldPositionTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_FOLD_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public FoldPositionTarget getFoldPositionTarget() {
+    return foldPositionTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_FOLD_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFoldPositionTarget(@jakarta.annotation.Nullable FoldPositionTarget foldPositionTarget) {
+    this.foldPositionTarget = foldPositionTarget;
+  }
+
+
+  public TargetDetails inventorySourceTarget(@jakarta.annotation.Nullable InventorySourceTarget inventorySourceTarget) {
+    this.inventorySourceTarget = inventorySourceTarget;
+    return this;
+  }
+
+  /**
+   * Get inventorySourceTarget
+   * @return inventorySourceTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public InventorySourceTarget getInventorySourceTarget() {
+    return inventorySourceTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInventorySourceTarget(@jakarta.annotation.Nullable InventorySourceTarget inventorySourceTarget) {
+    this.inventorySourceTarget = inventorySourceTarget;
+  }
+
+
+  public TargetDetails keywordTarget(@jakarta.annotation.Nullable KeywordTarget keywordTarget) {
+    this.keywordTarget = keywordTarget;
+    return this;
+  }
+
+  /**
+   * Get keywordTarget
+   * @return keywordTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEYWORD_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public KeywordTarget getKeywordTarget() {
+    return keywordTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEYWORD_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeywordTarget(@jakarta.annotation.Nullable KeywordTarget keywordTarget) {
+    this.keywordTarget = keywordTarget;
+  }
+
+
+  public TargetDetails locationTarget(@jakarta.annotation.Nullable LocationTarget locationTarget) {
+    this.locationTarget = locationTarget;
+    return this;
+  }
+
+  /**
+   * Get locationTarget
+   * @return locationTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LOCATION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public LocationTarget getLocationTarget() {
+    return locationTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LOCATION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLocationTarget(@jakarta.annotation.Nullable LocationTarget locationTarget) {
+    this.locationTarget = locationTarget;
+  }
+
+
+  public TargetDetails nativeContentPositionTarget(@jakarta.annotation.Nullable NativeContentPositionTarget nativeContentPositionTarget) {
+    this.nativeContentPositionTarget = nativeContentPositionTarget;
+    return this;
+  }
+
+  /**
+   * Get nativeContentPositionTarget
+   * @return nativeContentPositionTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public NativeContentPositionTarget getNativeContentPositionTarget() {
+    return nativeContentPositionTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NATIVE_CONTENT_POSITION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNativeContentPositionTarget(@jakarta.annotation.Nullable NativeContentPositionTarget nativeContentPositionTarget) {
+    this.nativeContentPositionTarget = nativeContentPositionTarget;
+  }
+
+
+  public TargetDetails placementTypeTarget(@jakarta.annotation.Nullable PlacementTypeTarget placementTypeTarget) {
+    this.placementTypeTarget = placementTypeTarget;
+    return this;
+  }
+
+  /**
+   * Get placementTypeTarget
+   * @return placementTypeTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PLACEMENT_TYPE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public PlacementTypeTarget getPlacementTypeTarget() {
+    return placementTypeTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PLACEMENT_TYPE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPlacementTypeTarget(@jakarta.annotation.Nullable PlacementTypeTarget placementTypeTarget) {
+    this.placementTypeTarget = placementTypeTarget;
+  }
+
+
+  public TargetDetails productAudienceTarget(@jakarta.annotation.Nullable ProductAudienceTarget productAudienceTarget) {
+    this.productAudienceTarget = productAudienceTarget;
+    return this;
+  }
+
+  /**
+   * Get productAudienceTarget
+   * @return productAudienceTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ProductAudienceTarget getProductAudienceTarget() {
+    return productAudienceTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_AUDIENCE_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProductAudienceTarget(@jakarta.annotation.Nullable ProductAudienceTarget productAudienceTarget) {
+    this.productAudienceTarget = productAudienceTarget;
+  }
+
+
+  public TargetDetails productCategoryTarget(@jakarta.annotation.Nullable ProductCategoryTarget productCategoryTarget) {
+    this.productCategoryTarget = productCategoryTarget;
+    return this;
+  }
+
+  /**
+   * Get productCategoryTarget
+   * @return productCategoryTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ProductCategoryTarget getProductCategoryTarget() {
+    return productCategoryTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CATEGORY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProductCategoryTarget(@jakarta.annotation.Nullable ProductCategoryTarget productCategoryTarget) {
+    this.productCategoryTarget = productCategoryTarget;
+  }
+
+
+  public TargetDetails productTarget(@jakarta.annotation.Nullable ProductTarget productTarget) {
+    this.productTarget = productTarget;
+    return this;
+  }
+
+  /**
+   * Get productTarget
+   * @return productTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ProductTarget getProductTarget() {
+    return productTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProductTarget(@jakarta.annotation.Nullable ProductTarget productTarget) {
+    this.productTarget = productTarget;
+  }
+
+
+  public TargetDetails themeTarget(@jakarta.annotation.Nullable ThemeTarget themeTarget) {
+    this.themeTarget = themeTarget;
+    return this;
+  }
+
+  /**
+   * Get themeTarget
+   * @return themeTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_THEME_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ThemeTarget getThemeTarget() {
+    return themeTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_THEME_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setThemeTarget(@jakarta.annotation.Nullable ThemeTarget themeTarget) {
+    this.themeTarget = themeTarget;
+  }
+
+
+  public TargetDetails thirdPartyTarget(@jakarta.annotation.Nullable ThirdPartyTarget thirdPartyTarget) {
+    this.thirdPartyTarget = thirdPartyTarget;
+    return this;
+  }
+
+  /**
+   * Get thirdPartyTarget
+   * @return thirdPartyTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ThirdPartyTarget getThirdPartyTarget() {
+    return thirdPartyTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_THIRD_PARTY_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setThirdPartyTarget(@jakarta.annotation.Nullable ThirdPartyTarget thirdPartyTarget) {
+    this.thirdPartyTarget = thirdPartyTarget;
+  }
+
+
+  public TargetDetails videoAdFormatTarget(@jakarta.annotation.Nullable VideoAdFormatTarget videoAdFormatTarget) {
+    this.videoAdFormatTarget = videoAdFormatTarget;
+    return this;
+  }
+
+  /**
+   * Get videoAdFormatTarget
+   * @return videoAdFormatTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public VideoAdFormatTarget getVideoAdFormatTarget() {
+    return videoAdFormatTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVideoAdFormatTarget(@jakarta.annotation.Nullable VideoAdFormatTarget videoAdFormatTarget) {
+    this.videoAdFormatTarget = videoAdFormatTarget;
+  }
+
+
+  public TargetDetails videoContentDurationTarget(@jakarta.annotation.Nullable VideoContentDurationTarget videoContentDurationTarget) {
+    this.videoContentDurationTarget = videoContentDurationTarget;
+    return this;
+  }
+
+  /**
+   * Get videoContentDurationTarget
+   * @return videoContentDurationTarget
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public VideoContentDurationTarget getVideoContentDurationTarget() {
+    return videoContentDurationTarget;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVideoContentDurationTarget(@jakarta.annotation.Nullable VideoContentDurationTarget videoContentDurationTarget) {
+    this.videoContentDurationTarget = videoContentDurationTarget;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -913,646 +895,96 @@ public class TargetDetails extends AbstractOpenApiSchema {
     return this.additionalProperties.get(key);
   }
 
-    /**
-     * Return true if this TargetDetails object is equal to o.
-     */
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o) && Objects.equals(this.additionalProperties, ((TargetDetails)o).additionalProperties);
+  /**
+   * Return true if this TargetDetails object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getActualInstance(), isNullable(), getSchemaType(), additionalProperties);
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    public TargetDetails(AdInitiationTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(AdPlayerSizeTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(AppTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(AudienceTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(BrandSafetyCategoryTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(BrandSafetyTierTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ContentCategoryTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ContentGenreTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ContentInstreamPositionTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ContentOutstreamPositionTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ContentRatingTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(DayPartTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(DeviceTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(DomainTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(FoldPositionTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(InventorySourceTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(KeywordTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(LocationTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(NativeContentPositionTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(PlacementTypeTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ProductAudienceTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ProductCategoryTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ProductTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ThemeTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(ThirdPartyTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(VideoAdFormatTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    public TargetDetails(VideoContentDurationTarget1 o) {
-        super("oneOf", Boolean.FALSE);
-        setActualInstance(o);
-    }
-
-    static {
-        schemas.put("AdInitiationTarget1", AdInitiationTarget1.class);
-        schemas.put("AdPlayerSizeTarget1", AdPlayerSizeTarget1.class);
-        schemas.put("AppTarget1", AppTarget1.class);
-        schemas.put("AudienceTarget1", AudienceTarget1.class);
-        schemas.put("BrandSafetyCategoryTarget1", BrandSafetyCategoryTarget1.class);
-        schemas.put("BrandSafetyTierTarget1", BrandSafetyTierTarget1.class);
-        schemas.put("ContentCategoryTarget1", ContentCategoryTarget1.class);
-        schemas.put("ContentGenreTarget1", ContentGenreTarget1.class);
-        schemas.put("ContentInstreamPositionTarget1", ContentInstreamPositionTarget1.class);
-        schemas.put("ContentOutstreamPositionTarget1", ContentOutstreamPositionTarget1.class);
-        schemas.put("ContentRatingTarget1", ContentRatingTarget1.class);
-        schemas.put("DayPartTarget1", DayPartTarget1.class);
-        schemas.put("DeviceTarget1", DeviceTarget1.class);
-        schemas.put("DomainTarget1", DomainTarget1.class);
-        schemas.put("FoldPositionTarget1", FoldPositionTarget1.class);
-        schemas.put("InventorySourceTarget1", InventorySourceTarget1.class);
-        schemas.put("KeywordTarget1", KeywordTarget1.class);
-        schemas.put("LocationTarget1", LocationTarget1.class);
-        schemas.put("NativeContentPositionTarget1", NativeContentPositionTarget1.class);
-        schemas.put("PlacementTypeTarget1", PlacementTypeTarget1.class);
-        schemas.put("ProductAudienceTarget1", ProductAudienceTarget1.class);
-        schemas.put("ProductCategoryTarget1", ProductCategoryTarget1.class);
-        schemas.put("ProductTarget1", ProductTarget1.class);
-        schemas.put("ThemeTarget1", ThemeTarget1.class);
-        schemas.put("ThirdPartyTarget1", ThirdPartyTarget1.class);
-        schemas.put("VideoAdFormatTarget1", VideoAdFormatTarget1.class);
-        schemas.put("VideoContentDurationTarget1", VideoContentDurationTarget1.class);
-        JSON.registerDescendants(TargetDetails.class, Collections.unmodifiableMap(schemas));
-    }
-
-    @Override
-    public Map<String, Class<?>> getSchemas() {
-        return TargetDetails.schemas;
-    }
-
-    /**
-     * Set the instance that matches the oneOf child schema, check
-     * the instance parameter is valid against the oneOf child schemas:
-     * AdInitiationTarget1, AdPlayerSizeTarget1, AppTarget1, AudienceTarget1, BrandSafetyCategoryTarget1, BrandSafetyTierTarget1, ContentCategoryTarget1, ContentGenreTarget1, ContentInstreamPositionTarget1, ContentOutstreamPositionTarget1, ContentRatingTarget1, DayPartTarget1, DeviceTarget1, DomainTarget1, FoldPositionTarget1, InventorySourceTarget1, KeywordTarget1, LocationTarget1, NativeContentPositionTarget1, PlacementTypeTarget1, ProductAudienceTarget1, ProductCategoryTarget1, ProductTarget1, ThemeTarget1, ThirdPartyTarget1, VideoAdFormatTarget1, VideoContentDurationTarget1
-     *
-     * It could be an instance of the 'oneOf' schemas.
-     * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
-     */
-    @Override
-    public void setActualInstance(Object instance) {
-        if (JSON.isInstanceOf(AdInitiationTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(AdPlayerSizeTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(AppTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(AudienceTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(BrandSafetyCategoryTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(BrandSafetyTierTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ContentCategoryTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ContentGenreTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ContentInstreamPositionTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ContentOutstreamPositionTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ContentRatingTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(DayPartTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(DeviceTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(DomainTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(FoldPositionTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(InventorySourceTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(KeywordTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(LocationTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(NativeContentPositionTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(PlacementTypeTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ProductAudienceTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ProductCategoryTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ProductTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ThemeTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(ThirdPartyTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(VideoAdFormatTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        if (JSON.isInstanceOf(VideoContentDurationTarget1.class, instance, new HashSet<Class<?>>())) {
-            super.setActualInstance(instance);
-            return;
-        }
-
-        throw new RuntimeException("Invalid instance type. Must be AdInitiationTarget1, AdPlayerSizeTarget1, AppTarget1, AudienceTarget1, BrandSafetyCategoryTarget1, BrandSafetyTierTarget1, ContentCategoryTarget1, ContentGenreTarget1, ContentInstreamPositionTarget1, ContentOutstreamPositionTarget1, ContentRatingTarget1, DayPartTarget1, DeviceTarget1, DomainTarget1, FoldPositionTarget1, InventorySourceTarget1, KeywordTarget1, LocationTarget1, NativeContentPositionTarget1, PlacementTypeTarget1, ProductAudienceTarget1, ProductCategoryTarget1, ProductTarget1, ThemeTarget1, ThirdPartyTarget1, VideoAdFormatTarget1, VideoContentDurationTarget1");
-    }
-
-    /**
-     * Get the actual instance, which can be the following:
-     * AdInitiationTarget1, AdPlayerSizeTarget1, AppTarget1, AudienceTarget1, BrandSafetyCategoryTarget1, BrandSafetyTierTarget1, ContentCategoryTarget1, ContentGenreTarget1, ContentInstreamPositionTarget1, ContentOutstreamPositionTarget1, ContentRatingTarget1, DayPartTarget1, DeviceTarget1, DomainTarget1, FoldPositionTarget1, InventorySourceTarget1, KeywordTarget1, LocationTarget1, NativeContentPositionTarget1, PlacementTypeTarget1, ProductAudienceTarget1, ProductCategoryTarget1, ProductTarget1, ThemeTarget1, ThirdPartyTarget1, VideoAdFormatTarget1, VideoContentDurationTarget1
-     *
-     * @return The actual instance (AdInitiationTarget1, AdPlayerSizeTarget1, AppTarget1, AudienceTarget1, BrandSafetyCategoryTarget1, BrandSafetyTierTarget1, ContentCategoryTarget1, ContentGenreTarget1, ContentInstreamPositionTarget1, ContentOutstreamPositionTarget1, ContentRatingTarget1, DayPartTarget1, DeviceTarget1, DomainTarget1, FoldPositionTarget1, InventorySourceTarget1, KeywordTarget1, LocationTarget1, NativeContentPositionTarget1, PlacementTypeTarget1, ProductAudienceTarget1, ProductCategoryTarget1, ProductTarget1, ThemeTarget1, ThirdPartyTarget1, VideoAdFormatTarget1, VideoContentDurationTarget1)
-     */
-    @Override
-    public Object getActualInstance() {
-        return super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `AdInitiationTarget1`. If the actual instance is not `AdInitiationTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `AdInitiationTarget1`
-     * @throws ClassCastException if the instance is not `AdInitiationTarget1`
-     */
-    public AdInitiationTarget1 getAdInitiationTarget1() throws ClassCastException {
-        return (AdInitiationTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `AdPlayerSizeTarget1`. If the actual instance is not `AdPlayerSizeTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `AdPlayerSizeTarget1`
-     * @throws ClassCastException if the instance is not `AdPlayerSizeTarget1`
-     */
-    public AdPlayerSizeTarget1 getAdPlayerSizeTarget1() throws ClassCastException {
-        return (AdPlayerSizeTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `AppTarget1`. If the actual instance is not `AppTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `AppTarget1`
-     * @throws ClassCastException if the instance is not `AppTarget1`
-     */
-    public AppTarget1 getAppTarget1() throws ClassCastException {
-        return (AppTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `AudienceTarget1`. If the actual instance is not `AudienceTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `AudienceTarget1`
-     * @throws ClassCastException if the instance is not `AudienceTarget1`
-     */
-    public AudienceTarget1 getAudienceTarget1() throws ClassCastException {
-        return (AudienceTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `BrandSafetyCategoryTarget1`. If the actual instance is not `BrandSafetyCategoryTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `BrandSafetyCategoryTarget1`
-     * @throws ClassCastException if the instance is not `BrandSafetyCategoryTarget1`
-     */
-    public BrandSafetyCategoryTarget1 getBrandSafetyCategoryTarget1() throws ClassCastException {
-        return (BrandSafetyCategoryTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `BrandSafetyTierTarget1`. If the actual instance is not `BrandSafetyTierTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `BrandSafetyTierTarget1`
-     * @throws ClassCastException if the instance is not `BrandSafetyTierTarget1`
-     */
-    public BrandSafetyTierTarget1 getBrandSafetyTierTarget1() throws ClassCastException {
-        return (BrandSafetyTierTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ContentCategoryTarget1`. If the actual instance is not `ContentCategoryTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ContentCategoryTarget1`
-     * @throws ClassCastException if the instance is not `ContentCategoryTarget1`
-     */
-    public ContentCategoryTarget1 getContentCategoryTarget1() throws ClassCastException {
-        return (ContentCategoryTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ContentGenreTarget1`. If the actual instance is not `ContentGenreTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ContentGenreTarget1`
-     * @throws ClassCastException if the instance is not `ContentGenreTarget1`
-     */
-    public ContentGenreTarget1 getContentGenreTarget1() throws ClassCastException {
-        return (ContentGenreTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ContentInstreamPositionTarget1`. If the actual instance is not `ContentInstreamPositionTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ContentInstreamPositionTarget1`
-     * @throws ClassCastException if the instance is not `ContentInstreamPositionTarget1`
-     */
-    public ContentInstreamPositionTarget1 getContentInstreamPositionTarget1() throws ClassCastException {
-        return (ContentInstreamPositionTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ContentOutstreamPositionTarget1`. If the actual instance is not `ContentOutstreamPositionTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ContentOutstreamPositionTarget1`
-     * @throws ClassCastException if the instance is not `ContentOutstreamPositionTarget1`
-     */
-    public ContentOutstreamPositionTarget1 getContentOutstreamPositionTarget1() throws ClassCastException {
-        return (ContentOutstreamPositionTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ContentRatingTarget1`. If the actual instance is not `ContentRatingTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ContentRatingTarget1`
-     * @throws ClassCastException if the instance is not `ContentRatingTarget1`
-     */
-    public ContentRatingTarget1 getContentRatingTarget1() throws ClassCastException {
-        return (ContentRatingTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `DayPartTarget1`. If the actual instance is not `DayPartTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DayPartTarget1`
-     * @throws ClassCastException if the instance is not `DayPartTarget1`
-     */
-    public DayPartTarget1 getDayPartTarget1() throws ClassCastException {
-        return (DayPartTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `DeviceTarget1`. If the actual instance is not `DeviceTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DeviceTarget1`
-     * @throws ClassCastException if the instance is not `DeviceTarget1`
-     */
-    public DeviceTarget1 getDeviceTarget1() throws ClassCastException {
-        return (DeviceTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `DomainTarget1`. If the actual instance is not `DomainTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `DomainTarget1`
-     * @throws ClassCastException if the instance is not `DomainTarget1`
-     */
-    public DomainTarget1 getDomainTarget1() throws ClassCastException {
-        return (DomainTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `FoldPositionTarget1`. If the actual instance is not `FoldPositionTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `FoldPositionTarget1`
-     * @throws ClassCastException if the instance is not `FoldPositionTarget1`
-     */
-    public FoldPositionTarget1 getFoldPositionTarget1() throws ClassCastException {
-        return (FoldPositionTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `InventorySourceTarget1`. If the actual instance is not `InventorySourceTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `InventorySourceTarget1`
-     * @throws ClassCastException if the instance is not `InventorySourceTarget1`
-     */
-    public InventorySourceTarget1 getInventorySourceTarget1() throws ClassCastException {
-        return (InventorySourceTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `KeywordTarget1`. If the actual instance is not `KeywordTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `KeywordTarget1`
-     * @throws ClassCastException if the instance is not `KeywordTarget1`
-     */
-    public KeywordTarget1 getKeywordTarget1() throws ClassCastException {
-        return (KeywordTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `LocationTarget1`. If the actual instance is not `LocationTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `LocationTarget1`
-     * @throws ClassCastException if the instance is not `LocationTarget1`
-     */
-    public LocationTarget1 getLocationTarget1() throws ClassCastException {
-        return (LocationTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `NativeContentPositionTarget1`. If the actual instance is not `NativeContentPositionTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `NativeContentPositionTarget1`
-     * @throws ClassCastException if the instance is not `NativeContentPositionTarget1`
-     */
-    public NativeContentPositionTarget1 getNativeContentPositionTarget1() throws ClassCastException {
-        return (NativeContentPositionTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `PlacementTypeTarget1`. If the actual instance is not `PlacementTypeTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `PlacementTypeTarget1`
-     * @throws ClassCastException if the instance is not `PlacementTypeTarget1`
-     */
-    public PlacementTypeTarget1 getPlacementTypeTarget1() throws ClassCastException {
-        return (PlacementTypeTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ProductAudienceTarget1`. If the actual instance is not `ProductAudienceTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ProductAudienceTarget1`
-     * @throws ClassCastException if the instance is not `ProductAudienceTarget1`
-     */
-    public ProductAudienceTarget1 getProductAudienceTarget1() throws ClassCastException {
-        return (ProductAudienceTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ProductCategoryTarget1`. If the actual instance is not `ProductCategoryTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ProductCategoryTarget1`
-     * @throws ClassCastException if the instance is not `ProductCategoryTarget1`
-     */
-    public ProductCategoryTarget1 getProductCategoryTarget1() throws ClassCastException {
-        return (ProductCategoryTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ProductTarget1`. If the actual instance is not `ProductTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ProductTarget1`
-     * @throws ClassCastException if the instance is not `ProductTarget1`
-     */
-    public ProductTarget1 getProductTarget1() throws ClassCastException {
-        return (ProductTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ThemeTarget1`. If the actual instance is not `ThemeTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ThemeTarget1`
-     * @throws ClassCastException if the instance is not `ThemeTarget1`
-     */
-    public ThemeTarget1 getThemeTarget1() throws ClassCastException {
-        return (ThemeTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `ThirdPartyTarget1`. If the actual instance is not `ThirdPartyTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `ThirdPartyTarget1`
-     * @throws ClassCastException if the instance is not `ThirdPartyTarget1`
-     */
-    public ThirdPartyTarget1 getThirdPartyTarget1() throws ClassCastException {
-        return (ThirdPartyTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `VideoAdFormatTarget1`. If the actual instance is not `VideoAdFormatTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `VideoAdFormatTarget1`
-     * @throws ClassCastException if the instance is not `VideoAdFormatTarget1`
-     */
-    public VideoAdFormatTarget1 getVideoAdFormatTarget1() throws ClassCastException {
-        return (VideoAdFormatTarget1)super.getActualInstance();
-    }
-
-    /**
-     * Get the actual instance of `VideoContentDurationTarget1`. If the actual instance is not `VideoContentDurationTarget1`,
-     * the ClassCastException will be thrown.
-     *
-     * @return The actual instance of `VideoContentDurationTarget1`
-     * @throws ClassCastException if the instance is not `VideoContentDurationTarget1`
-     */
-    public VideoContentDurationTarget1 getVideoContentDurationTarget1() throws ClassCastException {
-        return (VideoContentDurationTarget1)super.getActualInstance();
-    }
-
-
+    TargetDetails targetDetails = (TargetDetails) o;
+    return Objects.equals(this.adInitiationTarget, targetDetails.adInitiationTarget) &&
+        Objects.equals(this.adPlayerSizeTarget, targetDetails.adPlayerSizeTarget) &&
+        Objects.equals(this.appTarget, targetDetails.appTarget) &&
+        Objects.equals(this.audienceTarget, targetDetails.audienceTarget) &&
+        Objects.equals(this.brandSafetyCategoryTarget, targetDetails.brandSafetyCategoryTarget) &&
+        Objects.equals(this.brandSafetyTierTarget, targetDetails.brandSafetyTierTarget) &&
+        Objects.equals(this.contentCategoryTarget, targetDetails.contentCategoryTarget) &&
+        Objects.equals(this.contentGenreTarget, targetDetails.contentGenreTarget) &&
+        Objects.equals(this.contentInstreamPositionTarget, targetDetails.contentInstreamPositionTarget) &&
+        Objects.equals(this.contentOutstreamPositionTarget, targetDetails.contentOutstreamPositionTarget) &&
+        Objects.equals(this.contentRatingTarget, targetDetails.contentRatingTarget) &&
+        Objects.equals(this.dayPartTarget, targetDetails.dayPartTarget) &&
+        Objects.equals(this.deviceTarget, targetDetails.deviceTarget) &&
+        Objects.equals(this.domainTarget, targetDetails.domainTarget) &&
+        Objects.equals(this.foldPositionTarget, targetDetails.foldPositionTarget) &&
+        Objects.equals(this.inventorySourceTarget, targetDetails.inventorySourceTarget) &&
+        Objects.equals(this.keywordTarget, targetDetails.keywordTarget) &&
+        Objects.equals(this.locationTarget, targetDetails.locationTarget) &&
+        Objects.equals(this.nativeContentPositionTarget, targetDetails.nativeContentPositionTarget) &&
+        Objects.equals(this.placementTypeTarget, targetDetails.placementTypeTarget) &&
+        Objects.equals(this.productAudienceTarget, targetDetails.productAudienceTarget) &&
+        Objects.equals(this.productCategoryTarget, targetDetails.productCategoryTarget) &&
+        Objects.equals(this.productTarget, targetDetails.productTarget) &&
+        Objects.equals(this.themeTarget, targetDetails.themeTarget) &&
+        Objects.equals(this.thirdPartyTarget, targetDetails.thirdPartyTarget) &&
+        Objects.equals(this.videoAdFormatTarget, targetDetails.videoAdFormatTarget) &&
+        Objects.equals(this.videoContentDurationTarget, targetDetails.videoContentDurationTarget)&&
+        Objects.equals(this.additionalProperties, targetDetails.additionalProperties);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(adInitiationTarget, adPlayerSizeTarget, appTarget, audienceTarget, brandSafetyCategoryTarget, brandSafetyTierTarget, contentCategoryTarget, contentGenreTarget, contentInstreamPositionTarget, contentOutstreamPositionTarget, contentRatingTarget, dayPartTarget, deviceTarget, domainTarget, foldPositionTarget, inventorySourceTarget, keywordTarget, locationTarget, nativeContentPositionTarget, placementTypeTarget, productAudienceTarget, productCategoryTarget, productTarget, themeTarget, thirdPartyTarget, videoAdFormatTarget, videoContentDurationTarget, additionalProperties);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class TargetDetails {\n");
+    sb.append("    adInitiationTarget: ").append(toIndentedString(adInitiationTarget)).append("\n");
+    sb.append("    adPlayerSizeTarget: ").append(toIndentedString(adPlayerSizeTarget)).append("\n");
+    sb.append("    appTarget: ").append(toIndentedString(appTarget)).append("\n");
+    sb.append("    audienceTarget: ").append(toIndentedString(audienceTarget)).append("\n");
+    sb.append("    brandSafetyCategoryTarget: ").append(toIndentedString(brandSafetyCategoryTarget)).append("\n");
+    sb.append("    brandSafetyTierTarget: ").append(toIndentedString(brandSafetyTierTarget)).append("\n");
+    sb.append("    contentCategoryTarget: ").append(toIndentedString(contentCategoryTarget)).append("\n");
+    sb.append("    contentGenreTarget: ").append(toIndentedString(contentGenreTarget)).append("\n");
+    sb.append("    contentInstreamPositionTarget: ").append(toIndentedString(contentInstreamPositionTarget)).append("\n");
+    sb.append("    contentOutstreamPositionTarget: ").append(toIndentedString(contentOutstreamPositionTarget)).append("\n");
+    sb.append("    contentRatingTarget: ").append(toIndentedString(contentRatingTarget)).append("\n");
+    sb.append("    dayPartTarget: ").append(toIndentedString(dayPartTarget)).append("\n");
+    sb.append("    deviceTarget: ").append(toIndentedString(deviceTarget)).append("\n");
+    sb.append("    domainTarget: ").append(toIndentedString(domainTarget)).append("\n");
+    sb.append("    foldPositionTarget: ").append(toIndentedString(foldPositionTarget)).append("\n");
+    sb.append("    inventorySourceTarget: ").append(toIndentedString(inventorySourceTarget)).append("\n");
+    sb.append("    keywordTarget: ").append(toIndentedString(keywordTarget)).append("\n");
+    sb.append("    locationTarget: ").append(toIndentedString(locationTarget)).append("\n");
+    sb.append("    nativeContentPositionTarget: ").append(toIndentedString(nativeContentPositionTarget)).append("\n");
+    sb.append("    placementTypeTarget: ").append(toIndentedString(placementTypeTarget)).append("\n");
+    sb.append("    productAudienceTarget: ").append(toIndentedString(productAudienceTarget)).append("\n");
+    sb.append("    productCategoryTarget: ").append(toIndentedString(productCategoryTarget)).append("\n");
+    sb.append("    productTarget: ").append(toIndentedString(productTarget)).append("\n");
+    sb.append("    themeTarget: ").append(toIndentedString(themeTarget)).append("\n");
+    sb.append("    thirdPartyTarget: ").append(toIndentedString(thirdPartyTarget)).append("\n");
+    sb.append("    videoAdFormatTarget: ").append(toIndentedString(videoAdFormatTarget)).append("\n");
+    sb.append("    videoContentDurationTarget: ").append(toIndentedString(videoContentDurationTarget)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
+  }
 
   /**
    * Convert the instance into URL query string.
@@ -1586,170 +1018,142 @@ public class TargetDetails extends AbstractOpenApiSchema {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    if (getActualInstance() instanceof AdInitiationTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((AdInitiationTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_0" + suffix));
-        }
-        return joiner.toString();
+    // add `adInitiationTarget` to the URL query string
+    if (getAdInitiationTarget() != null) {
+      joiner.add(getAdInitiationTarget().toUrlQueryString(prefix + "adInitiationTarget" + suffix));
     }
-    if (getActualInstance() instanceof AdPlayerSizeTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((AdPlayerSizeTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_1" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof AppTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((AppTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_2" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof AudienceTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((AudienceTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_3" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof BrandSafetyCategoryTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((BrandSafetyCategoryTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_4" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof BrandSafetyTierTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((BrandSafetyTierTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_5" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ContentCategoryTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ContentCategoryTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_6" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ContentGenreTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ContentGenreTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_7" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ContentInstreamPositionTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ContentInstreamPositionTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_8" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ContentOutstreamPositionTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ContentOutstreamPositionTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_9" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ContentRatingTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ContentRatingTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_10" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof DayPartTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((DayPartTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_11" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof DeviceTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((DeviceTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_12" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof DomainTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((DomainTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_13" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof FoldPositionTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((FoldPositionTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_14" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof InventorySourceTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((InventorySourceTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_15" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof KeywordTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((KeywordTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_16" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof LocationTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((LocationTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_17" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof NativeContentPositionTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((NativeContentPositionTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_18" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof PlacementTypeTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((PlacementTypeTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_19" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ProductAudienceTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ProductAudienceTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_20" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ProductCategoryTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ProductCategoryTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_21" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ProductTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ProductTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_22" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ThemeTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ThemeTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_23" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof ThirdPartyTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((ThirdPartyTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_24" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof VideoAdFormatTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((VideoAdFormatTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_25" + suffix));
-        }
-        return joiner.toString();
-    }
-    if (getActualInstance() instanceof VideoContentDurationTarget1) {
-        if (getActualInstance() != null) {
-          joiner.add(((VideoContentDurationTarget1)getActualInstance()).toUrlQueryString(prefix + "one_of_26" + suffix));
-        }
-        return joiner.toString();
-    }
-    return null;
-  }
 
+    // add `adPlayerSizeTarget` to the URL query string
+    if (getAdPlayerSizeTarget() != null) {
+      joiner.add(getAdPlayerSizeTarget().toUrlQueryString(prefix + "adPlayerSizeTarget" + suffix));
+    }
+
+    // add `appTarget` to the URL query string
+    if (getAppTarget() != null) {
+      joiner.add(getAppTarget().toUrlQueryString(prefix + "appTarget" + suffix));
+    }
+
+    // add `audienceTarget` to the URL query string
+    if (getAudienceTarget() != null) {
+      joiner.add(getAudienceTarget().toUrlQueryString(prefix + "audienceTarget" + suffix));
+    }
+
+    // add `brandSafetyCategoryTarget` to the URL query string
+    if (getBrandSafetyCategoryTarget() != null) {
+      joiner.add(getBrandSafetyCategoryTarget().toUrlQueryString(prefix + "brandSafetyCategoryTarget" + suffix));
+    }
+
+    // add `brandSafetyTierTarget` to the URL query string
+    if (getBrandSafetyTierTarget() != null) {
+      joiner.add(getBrandSafetyTierTarget().toUrlQueryString(prefix + "brandSafetyTierTarget" + suffix));
+    }
+
+    // add `contentCategoryTarget` to the URL query string
+    if (getContentCategoryTarget() != null) {
+      joiner.add(getContentCategoryTarget().toUrlQueryString(prefix + "contentCategoryTarget" + suffix));
+    }
+
+    // add `contentGenreTarget` to the URL query string
+    if (getContentGenreTarget() != null) {
+      joiner.add(getContentGenreTarget().toUrlQueryString(prefix + "contentGenreTarget" + suffix));
+    }
+
+    // add `contentInstreamPositionTarget` to the URL query string
+    if (getContentInstreamPositionTarget() != null) {
+      joiner.add(getContentInstreamPositionTarget().toUrlQueryString(prefix + "contentInstreamPositionTarget" + suffix));
+    }
+
+    // add `contentOutstreamPositionTarget` to the URL query string
+    if (getContentOutstreamPositionTarget() != null) {
+      joiner.add(getContentOutstreamPositionTarget().toUrlQueryString(prefix + "contentOutstreamPositionTarget" + suffix));
+    }
+
+    // add `contentRatingTarget` to the URL query string
+    if (getContentRatingTarget() != null) {
+      joiner.add(getContentRatingTarget().toUrlQueryString(prefix + "contentRatingTarget" + suffix));
+    }
+
+    // add `dayPartTarget` to the URL query string
+    if (getDayPartTarget() != null) {
+      joiner.add(getDayPartTarget().toUrlQueryString(prefix + "dayPartTarget" + suffix));
+    }
+
+    // add `deviceTarget` to the URL query string
+    if (getDeviceTarget() != null) {
+      joiner.add(getDeviceTarget().toUrlQueryString(prefix + "deviceTarget" + suffix));
+    }
+
+    // add `domainTarget` to the URL query string
+    if (getDomainTarget() != null) {
+      joiner.add(getDomainTarget().toUrlQueryString(prefix + "domainTarget" + suffix));
+    }
+
+    // add `foldPositionTarget` to the URL query string
+    if (getFoldPositionTarget() != null) {
+      joiner.add(getFoldPositionTarget().toUrlQueryString(prefix + "foldPositionTarget" + suffix));
+    }
+
+    // add `inventorySourceTarget` to the URL query string
+    if (getInventorySourceTarget() != null) {
+      joiner.add(getInventorySourceTarget().toUrlQueryString(prefix + "inventorySourceTarget" + suffix));
+    }
+
+    // add `keywordTarget` to the URL query string
+    if (getKeywordTarget() != null) {
+      joiner.add(getKeywordTarget().toUrlQueryString(prefix + "keywordTarget" + suffix));
+    }
+
+    // add `locationTarget` to the URL query string
+    if (getLocationTarget() != null) {
+      joiner.add(getLocationTarget().toUrlQueryString(prefix + "locationTarget" + suffix));
+    }
+
+    // add `nativeContentPositionTarget` to the URL query string
+    if (getNativeContentPositionTarget() != null) {
+      joiner.add(getNativeContentPositionTarget().toUrlQueryString(prefix + "nativeContentPositionTarget" + suffix));
+    }
+
+    // add `placementTypeTarget` to the URL query string
+    if (getPlacementTypeTarget() != null) {
+      joiner.add(getPlacementTypeTarget().toUrlQueryString(prefix + "placementTypeTarget" + suffix));
+    }
+
+    // add `productAudienceTarget` to the URL query string
+    if (getProductAudienceTarget() != null) {
+      joiner.add(getProductAudienceTarget().toUrlQueryString(prefix + "productAudienceTarget" + suffix));
+    }
+
+    // add `productCategoryTarget` to the URL query string
+    if (getProductCategoryTarget() != null) {
+      joiner.add(getProductCategoryTarget().toUrlQueryString(prefix + "productCategoryTarget" + suffix));
+    }
+
+    // add `productTarget` to the URL query string
+    if (getProductTarget() != null) {
+      joiner.add(getProductTarget().toUrlQueryString(prefix + "productTarget" + suffix));
+    }
+
+    // add `themeTarget` to the URL query string
+    if (getThemeTarget() != null) {
+      joiner.add(getThemeTarget().toUrlQueryString(prefix + "themeTarget" + suffix));
+    }
+
+    // add `thirdPartyTarget` to the URL query string
+    if (getThirdPartyTarget() != null) {
+      joiner.add(getThirdPartyTarget().toUrlQueryString(prefix + "thirdPartyTarget" + suffix));
+    }
+
+    // add `videoAdFormatTarget` to the URL query string
+    if (getVideoAdFormatTarget() != null) {
+      joiner.add(getVideoAdFormatTarget().toUrlQueryString(prefix + "videoAdFormatTarget" + suffix));
+    }
+
+    // add `videoContentDurationTarget` to the URL query string
+    if (getVideoContentDurationTarget() != null) {
+      joiner.add(getVideoContentDurationTarget().toUrlQueryString(prefix + "videoContentDurationTarget" + suffix));
+    }
+
+    return joiner.toString();
+  }
 }
 

@@ -22,55 +22,174 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateDeviceTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.DeviceOrientation;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.DeviceType;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.MobileDevice;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.MobileEnvironment;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.MobileOs;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * DeviceTarget
+ * Target based on user device.
  */
 @JsonPropertyOrder({
-  DeviceTarget.JSON_PROPERTY_DEVICE_TARGET
+  DeviceTarget.JSON_PROPERTY_DEVICE_ORIENTATION,
+  DeviceTarget.JSON_PROPERTY_DEVICE_TYPE,
+  DeviceTarget.JSON_PROPERTY_MOBILE_DEVICE,
+  DeviceTarget.JSON_PROPERTY_MOBILE_ENVIRONMENT,
+  DeviceTarget.JSON_PROPERTY_MOBILE_OS
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class DeviceTarget {
-  public static final String JSON_PROPERTY_DEVICE_TARGET = "deviceTarget";
+  public static final String JSON_PROPERTY_DEVICE_ORIENTATION = "deviceOrientation";
+  @jakarta.annotation.Nullable
+  private DeviceOrientation deviceOrientation;
+
+  public static final String JSON_PROPERTY_DEVICE_TYPE = "deviceType";
   @jakarta.annotation.Nonnull
-  private CreateDeviceTarget deviceTarget;
+  private DeviceType deviceType;
+
+  public static final String JSON_PROPERTY_MOBILE_DEVICE = "mobileDevice";
+  @jakarta.annotation.Nullable
+  private MobileDevice mobileDevice;
+
+  public static final String JSON_PROPERTY_MOBILE_ENVIRONMENT = "mobileEnvironment";
+  @jakarta.annotation.Nullable
+  private MobileEnvironment mobileEnvironment;
+
+  public static final String JSON_PROPERTY_MOBILE_OS = "mobileOs";
+  @jakarta.annotation.Nullable
+  private MobileOs mobileOs;
 
   public DeviceTarget() {
   }
 
-  public DeviceTarget deviceTarget(@jakarta.annotation.Nonnull CreateDeviceTarget deviceTarget) {
-    this.deviceTarget = deviceTarget;
+  public DeviceTarget deviceOrientation(@jakarta.annotation.Nullable DeviceOrientation deviceOrientation) {
+    this.deviceOrientation = deviceOrientation;
     return this;
   }
 
   /**
-   * Get deviceTarget
-   * @return deviceTarget
+   * Get deviceOrientation
+   * @return deviceOrientation
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_TARGET, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateDeviceTarget getDeviceTarget() {
-    return deviceTarget;
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_ORIENTATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DeviceOrientation getDeviceOrientation() {
+    return deviceOrientation;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_ORIENTATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeviceOrientation(@jakarta.annotation.Nullable DeviceOrientation deviceOrientation) {
+    this.deviceOrientation = deviceOrientation;
+  }
+
+
+  public DeviceTarget deviceType(@jakarta.annotation.Nonnull DeviceType deviceType) {
+    this.deviceType = deviceType;
+    return this;
+  }
+
+  /**
+   * Get deviceType
+   * @return deviceType
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDeviceTarget(@jakarta.annotation.Nonnull CreateDeviceTarget deviceTarget) {
-    this.deviceTarget = deviceTarget;
+  public DeviceType getDeviceType() {
+    return deviceType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDeviceType(@jakarta.annotation.Nonnull DeviceType deviceType) {
+    this.deviceType = deviceType;
+  }
+
+
+  public DeviceTarget mobileDevice(@jakarta.annotation.Nullable MobileDevice mobileDevice) {
+    this.mobileDevice = mobileDevice;
+    return this;
+  }
+
+  /**
+   * Get mobileDevice
+   * @return mobileDevice
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_DEVICE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public MobileDevice getMobileDevice() {
+    return mobileDevice;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_DEVICE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMobileDevice(@jakarta.annotation.Nullable MobileDevice mobileDevice) {
+    this.mobileDevice = mobileDevice;
+  }
+
+
+  public DeviceTarget mobileEnvironment(@jakarta.annotation.Nullable MobileEnvironment mobileEnvironment) {
+    this.mobileEnvironment = mobileEnvironment;
+    return this;
+  }
+
+  /**
+   * Get mobileEnvironment
+   * @return mobileEnvironment
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_ENVIRONMENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public MobileEnvironment getMobileEnvironment() {
+    return mobileEnvironment;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_ENVIRONMENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMobileEnvironment(@jakarta.annotation.Nullable MobileEnvironment mobileEnvironment) {
+    this.mobileEnvironment = mobileEnvironment;
+  }
+
+
+  public DeviceTarget mobileOs(@jakarta.annotation.Nullable MobileOs mobileOs) {
+    this.mobileOs = mobileOs;
+    return this;
+  }
+
+  /**
+   * Get mobileOs
+   * @return mobileOs
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_OS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public MobileOs getMobileOs() {
+    return mobileOs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_OS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMobileOs(@jakarta.annotation.Nullable MobileOs mobileOs) {
+    this.mobileOs = mobileOs;
   }
 
 
   /**
-   * Return true if this deviceTarget object is equal to o.
+   * Return true if this DeviceTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +200,27 @@ public class DeviceTarget {
       return false;
     }
     DeviceTarget deviceTarget = (DeviceTarget) o;
-    return Objects.equals(this.deviceTarget, deviceTarget.deviceTarget);
+    return Objects.equals(this.deviceOrientation, deviceTarget.deviceOrientation) &&
+        Objects.equals(this.deviceType, deviceTarget.deviceType) &&
+        Objects.equals(this.mobileDevice, deviceTarget.mobileDevice) &&
+        Objects.equals(this.mobileEnvironment, deviceTarget.mobileEnvironment) &&
+        Objects.equals(this.mobileOs, deviceTarget.mobileOs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deviceTarget);
+    return Objects.hash(deviceOrientation, deviceType, mobileDevice, mobileEnvironment, mobileOs);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeviceTarget {\n");
-    sb.append("    deviceTarget: ").append(toIndentedString(deviceTarget)).append("\n");
+    sb.append("    deviceOrientation: ").append(toIndentedString(deviceOrientation)).append("\n");
+    sb.append("    deviceType: ").append(toIndentedString(deviceType)).append("\n");
+    sb.append("    mobileDevice: ").append(toIndentedString(mobileDevice)).append("\n");
+    sb.append("    mobileEnvironment: ").append(toIndentedString(mobileEnvironment)).append("\n");
+    sb.append("    mobileOs: ").append(toIndentedString(mobileOs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +265,29 @@ public class DeviceTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `deviceTarget` to the URL query string
-    if (getDeviceTarget() != null) {
-      joiner.add(getDeviceTarget().toUrlQueryString(prefix + "deviceTarget" + suffix));
+    // add `deviceOrientation` to the URL query string
+    if (getDeviceOrientation() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdeviceOrientation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDeviceOrientation()))));
+    }
+
+    // add `deviceType` to the URL query string
+    if (getDeviceType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdeviceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDeviceType()))));
+    }
+
+    // add `mobileDevice` to the URL query string
+    if (getMobileDevice() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smobileDevice%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileDevice()))));
+    }
+
+    // add `mobileEnvironment` to the URL query string
+    if (getMobileEnvironment() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smobileEnvironment%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileEnvironment()))));
+    }
+
+    // add `mobileOs` to the URL query string
+    if (getMobileOs() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smobileOs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileOs()))));
     }
 
     return joiner.toString();

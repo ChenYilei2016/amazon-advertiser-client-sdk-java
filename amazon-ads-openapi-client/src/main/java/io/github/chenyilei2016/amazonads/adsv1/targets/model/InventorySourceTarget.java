@@ -22,55 +22,84 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateInventorySourceTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.InventorySourceType;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.MarketplaceStringValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * InventorySourceTarget
+ * Target based on the source of the inventory.
  */
 @JsonPropertyOrder({
-  InventorySourceTarget.JSON_PROPERTY_INVENTORY_SOURCE_TARGET
+  InventorySourceTarget.JSON_PROPERTY_INVENTORY_SOURCE_ID,
+  InventorySourceTarget.JSON_PROPERTY_INVENTORY_SOURCE_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class InventorySourceTarget {
-  public static final String JSON_PROPERTY_INVENTORY_SOURCE_TARGET = "inventorySourceTarget";
+  public static final String JSON_PROPERTY_INVENTORY_SOURCE_ID = "inventorySourceId";
   @jakarta.annotation.Nonnull
-  private CreateInventorySourceTarget inventorySourceTarget;
+  private MarketplaceStringValue inventorySourceId;
+
+  public static final String JSON_PROPERTY_INVENTORY_SOURCE_TYPE = "inventorySourceType";
+  @jakarta.annotation.Nonnull
+  private InventorySourceType inventorySourceType;
 
   public InventorySourceTarget() {
   }
 
-  public InventorySourceTarget inventorySourceTarget(@jakarta.annotation.Nonnull CreateInventorySourceTarget inventorySourceTarget) {
-    this.inventorySourceTarget = inventorySourceTarget;
+  public InventorySourceTarget inventorySourceId(@jakarta.annotation.Nonnull MarketplaceStringValue inventorySourceId) {
+    this.inventorySourceId = inventorySourceId;
     return this;
   }
 
   /**
-   * Get inventorySourceTarget
-   * @return inventorySourceTarget
+   * Get inventorySourceId
+   * @return inventorySourceId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateInventorySourceTarget getInventorySourceTarget() {
-    return inventorySourceTarget;
+  public MarketplaceStringValue getInventorySourceId() {
+    return inventorySourceId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInventorySourceTarget(@jakarta.annotation.Nonnull CreateInventorySourceTarget inventorySourceTarget) {
-    this.inventorySourceTarget = inventorySourceTarget;
+  public void setInventorySourceId(@jakarta.annotation.Nonnull MarketplaceStringValue inventorySourceId) {
+    this.inventorySourceId = inventorySourceId;
+  }
+
+
+  public InventorySourceTarget inventorySourceType(@jakarta.annotation.Nonnull InventorySourceType inventorySourceType) {
+    this.inventorySourceType = inventorySourceType;
+    return this;
+  }
+
+  /**
+   * Get inventorySourceType
+   * @return inventorySourceType
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public InventorySourceType getInventorySourceType() {
+    return inventorySourceType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_INVENTORY_SOURCE_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInventorySourceType(@jakarta.annotation.Nonnull InventorySourceType inventorySourceType) {
+    this.inventorySourceType = inventorySourceType;
   }
 
 
   /**
-   * Return true if this inventorySourceTarget object is equal to o.
+   * Return true if this InventorySourceTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +110,21 @@ public class InventorySourceTarget {
       return false;
     }
     InventorySourceTarget inventorySourceTarget = (InventorySourceTarget) o;
-    return Objects.equals(this.inventorySourceTarget, inventorySourceTarget.inventorySourceTarget);
+    return Objects.equals(this.inventorySourceId, inventorySourceTarget.inventorySourceId) &&
+        Objects.equals(this.inventorySourceType, inventorySourceTarget.inventorySourceType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inventorySourceTarget);
+    return Objects.hash(inventorySourceId, inventorySourceType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InventorySourceTarget {\n");
-    sb.append("    inventorySourceTarget: ").append(toIndentedString(inventorySourceTarget)).append("\n");
+    sb.append("    inventorySourceId: ").append(toIndentedString(inventorySourceId)).append("\n");
+    sb.append("    inventorySourceType: ").append(toIndentedString(inventorySourceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +169,14 @@ public class InventorySourceTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `inventorySourceTarget` to the URL query string
-    if (getInventorySourceTarget() != null) {
-      joiner.add(getInventorySourceTarget().toUrlQueryString(prefix + "inventorySourceTarget" + suffix));
+    // add `inventorySourceId` to the URL query string
+    if (getInventorySourceId() != null) {
+      joiner.add(getInventorySourceId().toUrlQueryString(prefix + "inventorySourceId" + suffix));
+    }
+
+    // add `inventorySourceType` to the URL query string
+    if (getInventorySourceType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sinventorySourceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getInventorySourceType()))));
     }
 
     return joiner.toString();

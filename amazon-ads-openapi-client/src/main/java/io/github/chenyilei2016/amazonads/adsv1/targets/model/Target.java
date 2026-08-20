@@ -789,7 +789,7 @@ public class Target {
 
     // add `targetDetails` to the URL query string
     if (getTargetDetails() != null) {
-      joiner.add(getTargetDetails().toUrlQueryString(prefix + "targetDetails" + suffix));
+      joiner.add(String.format(java.util.Locale.ROOT, "%stargetDetails%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTargetDetails()))));
     }
 
     // add `targetId` to the URL query string

@@ -22,55 +22,84 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateDomainTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.DomainTargetDetails;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.DomainTargetTypes;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * DomainTarget
+ * Target based on a specified domain.
  */
 @JsonPropertyOrder({
-  DomainTarget.JSON_PROPERTY_DOMAIN_TARGET
+  DomainTarget.JSON_PROPERTY_DOMAIN_TARGET_DETAILS,
+  DomainTarget.JSON_PROPERTY_DOMAIN_TARGET_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class DomainTarget {
-  public static final String JSON_PROPERTY_DOMAIN_TARGET = "domainTarget";
+  public static final String JSON_PROPERTY_DOMAIN_TARGET_DETAILS = "domainTargetDetails";
   @jakarta.annotation.Nonnull
-  private CreateDomainTarget domainTarget;
+  private DomainTargetDetails domainTargetDetails;
+
+  public static final String JSON_PROPERTY_DOMAIN_TARGET_TYPE = "domainTargetType";
+  @jakarta.annotation.Nonnull
+  private DomainTargetTypes domainTargetType;
 
   public DomainTarget() {
   }
 
-  public DomainTarget domainTarget(@jakarta.annotation.Nonnull CreateDomainTarget domainTarget) {
-    this.domainTarget = domainTarget;
+  public DomainTarget domainTargetDetails(@jakarta.annotation.Nonnull DomainTargetDetails domainTargetDetails) {
+    this.domainTargetDetails = domainTargetDetails;
     return this;
   }
 
   /**
-   * Get domainTarget
-   * @return domainTarget
+   * Get domainTargetDetails
+   * @return domainTargetDetails
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET_DETAILS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateDomainTarget getDomainTarget() {
-    return domainTarget;
+  public DomainTargetDetails getDomainTargetDetails() {
+    return domainTargetDetails;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET_DETAILS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDomainTarget(@jakarta.annotation.Nonnull CreateDomainTarget domainTarget) {
-    this.domainTarget = domainTarget;
+  public void setDomainTargetDetails(@jakarta.annotation.Nonnull DomainTargetDetails domainTargetDetails) {
+    this.domainTargetDetails = domainTargetDetails;
+  }
+
+
+  public DomainTarget domainTargetType(@jakarta.annotation.Nonnull DomainTargetTypes domainTargetType) {
+    this.domainTargetType = domainTargetType;
+    return this;
+  }
+
+  /**
+   * Get domainTargetType
+   * @return domainTargetType
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public DomainTargetTypes getDomainTargetType() {
+    return domainTargetType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_TARGET_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDomainTargetType(@jakarta.annotation.Nonnull DomainTargetTypes domainTargetType) {
+    this.domainTargetType = domainTargetType;
   }
 
 
   /**
-   * Return true if this domainTarget object is equal to o.
+   * Return true if this DomainTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +110,21 @@ public class DomainTarget {
       return false;
     }
     DomainTarget domainTarget = (DomainTarget) o;
-    return Objects.equals(this.domainTarget, domainTarget.domainTarget);
+    return Objects.equals(this.domainTargetDetails, domainTarget.domainTargetDetails) &&
+        Objects.equals(this.domainTargetType, domainTarget.domainTargetType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(domainTarget);
+    return Objects.hash(domainTargetDetails, domainTargetType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DomainTarget {\n");
-    sb.append("    domainTarget: ").append(toIndentedString(domainTarget)).append("\n");
+    sb.append("    domainTargetDetails: ").append(toIndentedString(domainTargetDetails)).append("\n");
+    sb.append("    domainTargetType: ").append(toIndentedString(domainTargetType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +169,14 @@ public class DomainTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `domainTarget` to the URL query string
-    if (getDomainTarget() != null) {
-      joiner.add(getDomainTarget().toUrlQueryString(prefix + "domainTarget" + suffix));
+    // add `domainTargetDetails` to the URL query string
+    if (getDomainTargetDetails() != null) {
+      joiner.add(getDomainTargetDetails().toUrlQueryString(prefix + "domainTargetDetails" + suffix));
+    }
+
+    // add `domainTargetType` to the URL query string
+    if (getDomainTargetType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdomainTargetType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDomainTargetType()))));
     }
 
     return joiner.toString();

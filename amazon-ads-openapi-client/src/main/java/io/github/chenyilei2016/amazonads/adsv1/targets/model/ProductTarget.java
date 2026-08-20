@@ -22,55 +22,114 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateProductTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductIdType;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductMatchType;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ProductValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * ProductTarget
+ * Targets a specific product.
  */
 @JsonPropertyOrder({
-  ProductTarget.JSON_PROPERTY_PRODUCT_TARGET
+  ProductTarget.JSON_PROPERTY_MATCH_TYPE,
+  ProductTarget.JSON_PROPERTY_PRODUCT,
+  ProductTarget.JSON_PROPERTY_PRODUCT_ID_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ProductTarget {
-  public static final String JSON_PROPERTY_PRODUCT_TARGET = "productTarget";
+  public static final String JSON_PROPERTY_MATCH_TYPE = "matchType";
   @jakarta.annotation.Nonnull
-  private CreateProductTarget productTarget;
+  private ProductMatchType matchType;
+
+  public static final String JSON_PROPERTY_PRODUCT = "product";
+  @jakarta.annotation.Nonnull
+  private ProductValue product;
+
+  public static final String JSON_PROPERTY_PRODUCT_ID_TYPE = "productIdType";
+  @jakarta.annotation.Nonnull
+  private ProductIdType productIdType;
 
   public ProductTarget() {
   }
 
-  public ProductTarget productTarget(@jakarta.annotation.Nonnull CreateProductTarget productTarget) {
-    this.productTarget = productTarget;
+  public ProductTarget matchType(@jakarta.annotation.Nonnull ProductMatchType matchType) {
+    this.matchType = matchType;
     return this;
   }
 
   /**
-   * Get productTarget
-   * @return productTarget
+   * Get matchType
+   * @return matchType
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PRODUCT_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateProductTarget getProductTarget() {
-    return productTarget;
+  public ProductMatchType getMatchType() {
+    return matchType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PRODUCT_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_MATCH_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProductTarget(@jakarta.annotation.Nonnull CreateProductTarget productTarget) {
-    this.productTarget = productTarget;
+  public void setMatchType(@jakarta.annotation.Nonnull ProductMatchType matchType) {
+    this.matchType = matchType;
+  }
+
+
+  public ProductTarget product(@jakarta.annotation.Nonnull ProductValue product) {
+    this.product = product;
+    return this;
+  }
+
+  /**
+   * Get product
+   * @return product
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public ProductValue getProduct() {
+    return product;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProduct(@jakarta.annotation.Nonnull ProductValue product) {
+    this.product = product;
+  }
+
+
+  public ProductTarget productIdType(@jakarta.annotation.Nonnull ProductIdType productIdType) {
+    this.productIdType = productIdType;
+    return this;
+  }
+
+  /**
+   * Get productIdType
+   * @return productIdType
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_ID_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public ProductIdType getProductIdType() {
+    return productIdType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_ID_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProductIdType(@jakarta.annotation.Nonnull ProductIdType productIdType) {
+    this.productIdType = productIdType;
   }
 
 
   /**
-   * Return true if this productTarget object is equal to o.
+   * Return true if this ProductTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +140,23 @@ public class ProductTarget {
       return false;
     }
     ProductTarget productTarget = (ProductTarget) o;
-    return Objects.equals(this.productTarget, productTarget.productTarget);
+    return Objects.equals(this.matchType, productTarget.matchType) &&
+        Objects.equals(this.product, productTarget.product) &&
+        Objects.equals(this.productIdType, productTarget.productIdType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(productTarget);
+    return Objects.hash(matchType, product, productIdType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductTarget {\n");
-    sb.append("    productTarget: ").append(toIndentedString(productTarget)).append("\n");
+    sb.append("    matchType: ").append(toIndentedString(matchType)).append("\n");
+    sb.append("    product: ").append(toIndentedString(product)).append("\n");
+    sb.append("    productIdType: ").append(toIndentedString(productIdType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +201,19 @@ public class ProductTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `productTarget` to the URL query string
-    if (getProductTarget() != null) {
-      joiner.add(getProductTarget().toUrlQueryString(prefix + "productTarget" + suffix));
+    // add `matchType` to the URL query string
+    if (getMatchType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smatchType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMatchType()))));
+    }
+
+    // add `product` to the URL query string
+    if (getProduct() != null) {
+      joiner.add(getProduct().toUrlQueryString(prefix + "product" + suffix));
+    }
+
+    // add `productIdType` to the URL query string
+    if (getProductIdType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sproductIdType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getProductIdType()))));
     }
 
     return joiner.toString();

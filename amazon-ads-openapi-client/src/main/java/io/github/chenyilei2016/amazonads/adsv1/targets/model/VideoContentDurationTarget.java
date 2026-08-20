@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateVideoContentDurationTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoContentDuration;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * VideoContentDurationTarget
+ * Targets ads to a specific video content duration
  */
 @JsonPropertyOrder({
-  VideoContentDurationTarget.JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET
+  VideoContentDurationTarget.JSON_PROPERTY_DURATION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class VideoContentDurationTarget {
-  public static final String JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET = "videoContentDurationTarget";
+  public static final String JSON_PROPERTY_DURATION = "duration";
   @jakarta.annotation.Nonnull
-  private CreateVideoContentDurationTarget videoContentDurationTarget;
+  private VideoContentDuration duration;
 
   public VideoContentDurationTarget() {
   }
 
-  public VideoContentDurationTarget videoContentDurationTarget(@jakarta.annotation.Nonnull CreateVideoContentDurationTarget videoContentDurationTarget) {
-    this.videoContentDurationTarget = videoContentDurationTarget;
+  public VideoContentDurationTarget duration(@jakarta.annotation.Nonnull VideoContentDuration duration) {
+    this.duration = duration;
     return this;
   }
 
   /**
-   * Get videoContentDurationTarget
-   * @return videoContentDurationTarget
+   * Get duration
+   * @return duration
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateVideoContentDurationTarget getVideoContentDurationTarget() {
-    return videoContentDurationTarget;
+  public VideoContentDuration getDuration() {
+    return duration;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_VIDEO_CONTENT_DURATION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVideoContentDurationTarget(@jakarta.annotation.Nonnull CreateVideoContentDurationTarget videoContentDurationTarget) {
-    this.videoContentDurationTarget = videoContentDurationTarget;
+  public void setDuration(@jakarta.annotation.Nonnull VideoContentDuration duration) {
+    this.duration = duration;
   }
 
 
   /**
-   * Return true if this videoContentDurationTarget object is equal to o.
+   * Return true if this VideoContentDurationTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class VideoContentDurationTarget {
       return false;
     }
     VideoContentDurationTarget videoContentDurationTarget = (VideoContentDurationTarget) o;
-    return Objects.equals(this.videoContentDurationTarget, videoContentDurationTarget.videoContentDurationTarget);
+    return Objects.equals(this.duration, videoContentDurationTarget.duration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(videoContentDurationTarget);
+    return Objects.hash(duration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VideoContentDurationTarget {\n");
-    sb.append("    videoContentDurationTarget: ").append(toIndentedString(videoContentDurationTarget)).append("\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class VideoContentDurationTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `videoContentDurationTarget` to the URL query string
-    if (getVideoContentDurationTarget() != null) {
-      joiner.add(getVideoContentDurationTarget().toUrlQueryString(prefix + "videoContentDurationTarget" + suffix));
+    // add `duration` to the URL query string
+    if (getDuration() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sduration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDuration()))));
     }
 
     return joiner.toString();

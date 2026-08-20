@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateFoldPositionTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.FoldPosition;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * FoldPositionTarget
+ * Targets ads in the specified fold position
  */
 @JsonPropertyOrder({
-  FoldPositionTarget.JSON_PROPERTY_FOLD_POSITION_TARGET
+  FoldPositionTarget.JSON_PROPERTY_FOLD_POSITION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class FoldPositionTarget {
-  public static final String JSON_PROPERTY_FOLD_POSITION_TARGET = "foldPositionTarget";
+  public static final String JSON_PROPERTY_FOLD_POSITION = "foldPosition";
   @jakarta.annotation.Nonnull
-  private CreateFoldPositionTarget foldPositionTarget;
+  private FoldPosition foldPosition;
 
   public FoldPositionTarget() {
   }
 
-  public FoldPositionTarget foldPositionTarget(@jakarta.annotation.Nonnull CreateFoldPositionTarget foldPositionTarget) {
-    this.foldPositionTarget = foldPositionTarget;
+  public FoldPositionTarget foldPosition(@jakarta.annotation.Nonnull FoldPosition foldPosition) {
+    this.foldPosition = foldPosition;
     return this;
   }
 
   /**
-   * Get foldPositionTarget
-   * @return foldPositionTarget
+   * Get foldPosition
+   * @return foldPosition
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_FOLD_POSITION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_FOLD_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateFoldPositionTarget getFoldPositionTarget() {
-    return foldPositionTarget;
+  public FoldPosition getFoldPosition() {
+    return foldPosition;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_FOLD_POSITION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_FOLD_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFoldPositionTarget(@jakarta.annotation.Nonnull CreateFoldPositionTarget foldPositionTarget) {
-    this.foldPositionTarget = foldPositionTarget;
+  public void setFoldPosition(@jakarta.annotation.Nonnull FoldPosition foldPosition) {
+    this.foldPosition = foldPosition;
   }
 
 
   /**
-   * Return true if this foldPositionTarget object is equal to o.
+   * Return true if this FoldPositionTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class FoldPositionTarget {
       return false;
     }
     FoldPositionTarget foldPositionTarget = (FoldPositionTarget) o;
-    return Objects.equals(this.foldPositionTarget, foldPositionTarget.foldPositionTarget);
+    return Objects.equals(this.foldPosition, foldPositionTarget.foldPosition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(foldPositionTarget);
+    return Objects.hash(foldPosition);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FoldPositionTarget {\n");
-    sb.append("    foldPositionTarget: ").append(toIndentedString(foldPositionTarget)).append("\n");
+    sb.append("    foldPosition: ").append(toIndentedString(foldPosition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class FoldPositionTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `foldPositionTarget` to the URL query string
-    if (getFoldPositionTarget() != null) {
-      joiner.add(getFoldPositionTarget().toUrlQueryString(prefix + "foldPositionTarget" + suffix));
+    // add `foldPosition` to the URL query string
+    if (getFoldPosition() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sfoldPosition%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFoldPosition()))));
     }
 
     return joiner.toString();

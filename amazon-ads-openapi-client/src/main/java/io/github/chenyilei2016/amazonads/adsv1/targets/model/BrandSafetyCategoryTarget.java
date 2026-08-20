@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateBrandSafetyCategoryTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.BrandSafetyCategory;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * BrandSafetyCategoryTarget
+ * Target based on, if any, the classifications of unsuitable contexts that may pose a risk to a brand&#39;s reputation of content being viewed.
  */
 @JsonPropertyOrder({
-  BrandSafetyCategoryTarget.JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET
+  BrandSafetyCategoryTarget.JSON_PROPERTY_BRAND_SAFETY_CATEGORY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class BrandSafetyCategoryTarget {
-  public static final String JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET = "brandSafetyCategoryTarget";
+  public static final String JSON_PROPERTY_BRAND_SAFETY_CATEGORY = "brandSafetyCategory";
   @jakarta.annotation.Nonnull
-  private CreateBrandSafetyCategoryTarget brandSafetyCategoryTarget;
+  private BrandSafetyCategory brandSafetyCategory;
 
   public BrandSafetyCategoryTarget() {
   }
 
-  public BrandSafetyCategoryTarget brandSafetyCategoryTarget(@jakarta.annotation.Nonnull CreateBrandSafetyCategoryTarget brandSafetyCategoryTarget) {
-    this.brandSafetyCategoryTarget = brandSafetyCategoryTarget;
+  public BrandSafetyCategoryTarget brandSafetyCategory(@jakarta.annotation.Nonnull BrandSafetyCategory brandSafetyCategory) {
+    this.brandSafetyCategory = brandSafetyCategory;
     return this;
   }
 
   /**
-   * Get brandSafetyCategoryTarget
-   * @return brandSafetyCategoryTarget
+   * Get brandSafetyCategory
+   * @return brandSafetyCategory
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_CATEGORY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateBrandSafetyCategoryTarget getBrandSafetyCategoryTarget() {
-    return brandSafetyCategoryTarget;
+  public BrandSafetyCategory getBrandSafetyCategory() {
+    return brandSafetyCategory;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_CATEGORY_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_BRAND_SAFETY_CATEGORY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBrandSafetyCategoryTarget(@jakarta.annotation.Nonnull CreateBrandSafetyCategoryTarget brandSafetyCategoryTarget) {
-    this.brandSafetyCategoryTarget = brandSafetyCategoryTarget;
+  public void setBrandSafetyCategory(@jakarta.annotation.Nonnull BrandSafetyCategory brandSafetyCategory) {
+    this.brandSafetyCategory = brandSafetyCategory;
   }
 
 
   /**
-   * Return true if this brandSafetyCategoryTarget object is equal to o.
+   * Return true if this BrandSafetyCategoryTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class BrandSafetyCategoryTarget {
       return false;
     }
     BrandSafetyCategoryTarget brandSafetyCategoryTarget = (BrandSafetyCategoryTarget) o;
-    return Objects.equals(this.brandSafetyCategoryTarget, brandSafetyCategoryTarget.brandSafetyCategoryTarget);
+    return Objects.equals(this.brandSafetyCategory, brandSafetyCategoryTarget.brandSafetyCategory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(brandSafetyCategoryTarget);
+    return Objects.hash(brandSafetyCategory);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BrandSafetyCategoryTarget {\n");
-    sb.append("    brandSafetyCategoryTarget: ").append(toIndentedString(brandSafetyCategoryTarget)).append("\n");
+    sb.append("    brandSafetyCategory: ").append(toIndentedString(brandSafetyCategory)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class BrandSafetyCategoryTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `brandSafetyCategoryTarget` to the URL query string
-    if (getBrandSafetyCategoryTarget() != null) {
-      joiner.add(getBrandSafetyCategoryTarget().toUrlQueryString(prefix + "brandSafetyCategoryTarget" + suffix));
+    // add `brandSafetyCategory` to the URL query string
+    if (getBrandSafetyCategory() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sbrandSafetyCategory%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getBrandSafetyCategory()))));
     }
 
     return joiner.toString();

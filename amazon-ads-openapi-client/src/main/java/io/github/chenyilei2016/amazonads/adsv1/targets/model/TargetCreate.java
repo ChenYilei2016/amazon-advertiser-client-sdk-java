@@ -580,7 +580,7 @@ public class TargetCreate {
 
     // add `targetDetails` to the URL query string
     if (getTargetDetails() != null) {
-      joiner.add(getTargetDetails().toUrlQueryString(prefix + "targetDetails" + suffix));
+      joiner.add(String.format(java.util.Locale.ROOT, "%stargetDetails%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTargetDetails()))));
     }
 
     // add `targetType` to the URL query string

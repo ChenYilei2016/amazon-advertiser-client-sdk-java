@@ -22,55 +22,84 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateDayPartTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.DayOfWeek;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.TimeOfDay;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * DayPartTarget
+ * Target based on time of day.
  */
 @JsonPropertyOrder({
-  DayPartTarget.JSON_PROPERTY_DAY_PART_TARGET
+  DayPartTarget.JSON_PROPERTY_DAY_OF_WEEK,
+  DayPartTarget.JSON_PROPERTY_TIME_OF_DAY
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class DayPartTarget {
-  public static final String JSON_PROPERTY_DAY_PART_TARGET = "dayPartTarget";
+  public static final String JSON_PROPERTY_DAY_OF_WEEK = "dayOfWeek";
   @jakarta.annotation.Nonnull
-  private CreateDayPartTarget dayPartTarget;
+  private DayOfWeek dayOfWeek;
+
+  public static final String JSON_PROPERTY_TIME_OF_DAY = "timeOfDay";
+  @jakarta.annotation.Nonnull
+  private TimeOfDay timeOfDay;
 
   public DayPartTarget() {
   }
 
-  public DayPartTarget dayPartTarget(@jakarta.annotation.Nonnull CreateDayPartTarget dayPartTarget) {
-    this.dayPartTarget = dayPartTarget;
+  public DayPartTarget dayOfWeek(@jakarta.annotation.Nonnull DayOfWeek dayOfWeek) {
+    this.dayOfWeek = dayOfWeek;
     return this;
   }
 
   /**
-   * Get dayPartTarget
-   * @return dayPartTarget
+   * Get dayOfWeek
+   * @return dayOfWeek
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DAY_PART_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateDayPartTarget getDayPartTarget() {
-    return dayPartTarget;
+  public DayOfWeek getDayOfWeek() {
+    return dayOfWeek;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DAY_PART_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDayPartTarget(@jakarta.annotation.Nonnull CreateDayPartTarget dayPartTarget) {
-    this.dayPartTarget = dayPartTarget;
+  public void setDayOfWeek(@jakarta.annotation.Nonnull DayOfWeek dayOfWeek) {
+    this.dayOfWeek = dayOfWeek;
+  }
+
+
+  public DayPartTarget timeOfDay(@jakarta.annotation.Nonnull TimeOfDay timeOfDay) {
+    this.timeOfDay = timeOfDay;
+    return this;
+  }
+
+  /**
+   * Get timeOfDay
+   * @return timeOfDay
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TIME_OF_DAY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public TimeOfDay getTimeOfDay() {
+    return timeOfDay;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TIME_OF_DAY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTimeOfDay(@jakarta.annotation.Nonnull TimeOfDay timeOfDay) {
+    this.timeOfDay = timeOfDay;
   }
 
 
   /**
-   * Return true if this dayPartTarget object is equal to o.
+   * Return true if this DayPartTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +110,21 @@ public class DayPartTarget {
       return false;
     }
     DayPartTarget dayPartTarget = (DayPartTarget) o;
-    return Objects.equals(this.dayPartTarget, dayPartTarget.dayPartTarget);
+    return Objects.equals(this.dayOfWeek, dayPartTarget.dayOfWeek) &&
+        Objects.equals(this.timeOfDay, dayPartTarget.timeOfDay);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dayPartTarget);
+    return Objects.hash(dayOfWeek, timeOfDay);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DayPartTarget {\n");
-    sb.append("    dayPartTarget: ").append(toIndentedString(dayPartTarget)).append("\n");
+    sb.append("    dayOfWeek: ").append(toIndentedString(dayOfWeek)).append("\n");
+    sb.append("    timeOfDay: ").append(toIndentedString(timeOfDay)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +169,14 @@ public class DayPartTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `dayPartTarget` to the URL query string
-    if (getDayPartTarget() != null) {
-      joiner.add(getDayPartTarget().toUrlQueryString(prefix + "dayPartTarget" + suffix));
+    // add `dayOfWeek` to the URL query string
+    if (getDayOfWeek() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdayOfWeek%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDayOfWeek()))));
+    }
+
+    // add `timeOfDay` to the URL query string
+    if (getTimeOfDay() != null) {
+      joiner.add(getTimeOfDay().toUrlQueryString(prefix + "timeOfDay" + suffix));
     }
 
     return joiner.toString();

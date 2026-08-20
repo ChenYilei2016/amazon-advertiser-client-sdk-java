@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreatePlacementTypeTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.PlacementType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * PlacementTypeTarget
+ * Target based on the placement type.
  */
 @JsonPropertyOrder({
-  PlacementTypeTarget.JSON_PROPERTY_PLACEMENT_TYPE_TARGET
+  PlacementTypeTarget.JSON_PROPERTY_PLACEMENT_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class PlacementTypeTarget {
-  public static final String JSON_PROPERTY_PLACEMENT_TYPE_TARGET = "placementTypeTarget";
+  public static final String JSON_PROPERTY_PLACEMENT_TYPE = "placementType";
   @jakarta.annotation.Nonnull
-  private CreatePlacementTypeTarget placementTypeTarget;
+  private PlacementType placementType;
 
   public PlacementTypeTarget() {
   }
 
-  public PlacementTypeTarget placementTypeTarget(@jakarta.annotation.Nonnull CreatePlacementTypeTarget placementTypeTarget) {
-    this.placementTypeTarget = placementTypeTarget;
+  public PlacementTypeTarget placementType(@jakarta.annotation.Nonnull PlacementType placementType) {
+    this.placementType = placementType;
     return this;
   }
 
   /**
-   * Get placementTypeTarget
-   * @return placementTypeTarget
+   * Get placementType
+   * @return placementType
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PLACEMENT_TYPE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_PLACEMENT_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreatePlacementTypeTarget getPlacementTypeTarget() {
-    return placementTypeTarget;
+  public PlacementType getPlacementType() {
+    return placementType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PLACEMENT_TYPE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_PLACEMENT_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPlacementTypeTarget(@jakarta.annotation.Nonnull CreatePlacementTypeTarget placementTypeTarget) {
-    this.placementTypeTarget = placementTypeTarget;
+  public void setPlacementType(@jakarta.annotation.Nonnull PlacementType placementType) {
+    this.placementType = placementType;
   }
 
 
   /**
-   * Return true if this placementTypeTarget object is equal to o.
+   * Return true if this PlacementTypeTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class PlacementTypeTarget {
       return false;
     }
     PlacementTypeTarget placementTypeTarget = (PlacementTypeTarget) o;
-    return Objects.equals(this.placementTypeTarget, placementTypeTarget.placementTypeTarget);
+    return Objects.equals(this.placementType, placementTypeTarget.placementType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(placementTypeTarget);
+    return Objects.hash(placementType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PlacementTypeTarget {\n");
-    sb.append("    placementTypeTarget: ").append(toIndentedString(placementTypeTarget)).append("\n");
+    sb.append("    placementType: ").append(toIndentedString(placementType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class PlacementTypeTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `placementTypeTarget` to the URL query string
-    if (getPlacementTypeTarget() != null) {
-      joiner.add(getPlacementTypeTarget().toUrlQueryString(prefix + "placementTypeTarget" + suffix));
+    // add `placementType` to the URL query string
+    if (getPlacementType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%splacementType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPlacementType()))));
     }
 
     return joiner.toString();

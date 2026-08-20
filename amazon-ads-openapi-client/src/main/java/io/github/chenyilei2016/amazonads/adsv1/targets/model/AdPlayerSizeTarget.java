@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateAdPlayerSizeTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.AdPlayerSize;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * AdPlayerSizeTarget
+ * Target based on the size of the ad player.
  */
 @JsonPropertyOrder({
-  AdPlayerSizeTarget.JSON_PROPERTY_AD_PLAYER_SIZE_TARGET
+  AdPlayerSizeTarget.JSON_PROPERTY_AD_PLAYER_SIZE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class AdPlayerSizeTarget {
-  public static final String JSON_PROPERTY_AD_PLAYER_SIZE_TARGET = "adPlayerSizeTarget";
+  public static final String JSON_PROPERTY_AD_PLAYER_SIZE = "adPlayerSize";
   @jakarta.annotation.Nonnull
-  private CreateAdPlayerSizeTarget adPlayerSizeTarget;
+  private AdPlayerSize adPlayerSize;
 
   public AdPlayerSizeTarget() {
   }
 
-  public AdPlayerSizeTarget adPlayerSizeTarget(@jakarta.annotation.Nonnull CreateAdPlayerSizeTarget adPlayerSizeTarget) {
-    this.adPlayerSizeTarget = adPlayerSizeTarget;
+  public AdPlayerSizeTarget adPlayerSize(@jakarta.annotation.Nonnull AdPlayerSize adPlayerSize) {
+    this.adPlayerSize = adPlayerSize;
     return this;
   }
 
   /**
-   * Get adPlayerSizeTarget
-   * @return adPlayerSizeTarget
+   * Get adPlayerSize
+   * @return adPlayerSize
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateAdPlayerSizeTarget getAdPlayerSizeTarget() {
-    return adPlayerSizeTarget;
+  public AdPlayerSize getAdPlayerSize() {
+    return adPlayerSize;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_AD_PLAYER_SIZE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAdPlayerSizeTarget(@jakarta.annotation.Nonnull CreateAdPlayerSizeTarget adPlayerSizeTarget) {
-    this.adPlayerSizeTarget = adPlayerSizeTarget;
+  public void setAdPlayerSize(@jakarta.annotation.Nonnull AdPlayerSize adPlayerSize) {
+    this.adPlayerSize = adPlayerSize;
   }
 
 
   /**
-   * Return true if this adPlayerSizeTarget object is equal to o.
+   * Return true if this AdPlayerSizeTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class AdPlayerSizeTarget {
       return false;
     }
     AdPlayerSizeTarget adPlayerSizeTarget = (AdPlayerSizeTarget) o;
-    return Objects.equals(this.adPlayerSizeTarget, adPlayerSizeTarget.adPlayerSizeTarget);
+    return Objects.equals(this.adPlayerSize, adPlayerSizeTarget.adPlayerSize);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adPlayerSizeTarget);
+    return Objects.hash(adPlayerSize);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdPlayerSizeTarget {\n");
-    sb.append("    adPlayerSizeTarget: ").append(toIndentedString(adPlayerSizeTarget)).append("\n");
+    sb.append("    adPlayerSize: ").append(toIndentedString(adPlayerSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class AdPlayerSizeTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `adPlayerSizeTarget` to the URL query string
-    if (getAdPlayerSizeTarget() != null) {
-      joiner.add(getAdPlayerSizeTarget().toUrlQueryString(prefix + "adPlayerSizeTarget" + suffix));
+    // add `adPlayerSize` to the URL query string
+    if (getAdPlayerSize() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadPlayerSize%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdPlayerSize()))));
     }
 
     return joiner.toString();

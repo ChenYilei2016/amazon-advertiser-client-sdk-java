@@ -22,55 +22,82 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateLocationTarget;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * LocationTarget
+ * Target based on geographic location.
  */
 @JsonPropertyOrder({
-  LocationTarget.JSON_PROPERTY_LOCATION_TARGET
+  LocationTarget.JSON_PROPERTY_LOCATION_ID,
+  LocationTarget.JSON_PROPERTY_LOCATION_ID_RESOLVED
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class LocationTarget {
-  public static final String JSON_PROPERTY_LOCATION_TARGET = "locationTarget";
+  public static final String JSON_PROPERTY_LOCATION_ID = "locationId";
   @jakarta.annotation.Nonnull
-  private CreateLocationTarget locationTarget;
+  private String locationId;
+
+  public static final String JSON_PROPERTY_LOCATION_ID_RESOLVED = "locationIdResolved";
+  @jakarta.annotation.Nullable
+  private String locationIdResolved;
 
   public LocationTarget() {
   }
 
-  public LocationTarget locationTarget(@jakarta.annotation.Nonnull CreateLocationTarget locationTarget) {
-    this.locationTarget = locationTarget;
+  public LocationTarget locationId(@jakarta.annotation.Nonnull String locationId) {
+    this.locationId = locationId;
     return this;
   }
 
   /**
-   * Get locationTarget
-   * @return locationTarget
+   * The ID of the geographic location to target.
+   * @return locationId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_LOCATION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_LOCATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateLocationTarget getLocationTarget() {
-    return locationTarget;
+  public String getLocationId() {
+    return locationId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_LOCATION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_LOCATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLocationTarget(@jakarta.annotation.Nonnull CreateLocationTarget locationTarget) {
-    this.locationTarget = locationTarget;
+  public void setLocationId(@jakarta.annotation.Nonnull String locationId) {
+    this.locationId = locationId;
+  }
+
+
+  public LocationTarget locationIdResolved(@jakarta.annotation.Nullable String locationIdResolved) {
+    this.locationIdResolved = locationIdResolved;
+    return this;
+  }
+
+  /**
+   * A human-readable location text. It&#39;s a read-only field.
+   * @return locationIdResolved
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LOCATION_ID_RESOLVED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLocationIdResolved() {
+    return locationIdResolved;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LOCATION_ID_RESOLVED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLocationIdResolved(@jakarta.annotation.Nullable String locationIdResolved) {
+    this.locationIdResolved = locationIdResolved;
   }
 
 
   /**
-   * Return true if this locationTarget object is equal to o.
+   * Return true if this LocationTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +108,21 @@ public class LocationTarget {
       return false;
     }
     LocationTarget locationTarget = (LocationTarget) o;
-    return Objects.equals(this.locationTarget, locationTarget.locationTarget);
+    return Objects.equals(this.locationId, locationTarget.locationId) &&
+        Objects.equals(this.locationIdResolved, locationTarget.locationIdResolved);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(locationTarget);
+    return Objects.hash(locationId, locationIdResolved);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LocationTarget {\n");
-    sb.append("    locationTarget: ").append(toIndentedString(locationTarget)).append("\n");
+    sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+    sb.append("    locationIdResolved: ").append(toIndentedString(locationIdResolved)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +167,14 @@ public class LocationTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `locationTarget` to the URL query string
-    if (getLocationTarget() != null) {
-      joiner.add(getLocationTarget().toUrlQueryString(prefix + "locationTarget" + suffix));
+    // add `locationId` to the URL query string
+    if (getLocationId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slocationId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLocationId()))));
+    }
+
+    // add `locationIdResolved` to the URL query string
+    if (getLocationIdResolved() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slocationIdResolved%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLocationIdResolved()))));
     }
 
     return joiner.toString();

@@ -1639,332 +1639,92 @@
         "type": "object"
       },
       "CreateTargetDetails": {
-        "oneOf": [
-          {
-            "properties": {
-              "keywordTarget": {
-                "$ref": "#/components/schemas/CreateKeywordTarget"
-              }
-            },
-            "required": [
-              "keywordTarget"
-            ],
-            "title": "keywordTarget",
-            "type": "object"
+        "type": "object",
+        "properties": {
+          "keywordTarget": {
+            "$ref": "#/components/schemas/CreateKeywordTarget"
           },
-          {
-            "properties": {
-              "productTarget": {
-                "$ref": "#/components/schemas/CreateProductTarget"
-              }
-            },
-            "required": [
-              "productTarget"
-            ],
-            "title": "productTarget",
-            "type": "object"
+          "productTarget": {
+            "$ref": "#/components/schemas/CreateProductTarget"
           },
-          {
-            "properties": {
-              "productCategoryTarget": {
-                "$ref": "#/components/schemas/CreateProductCategoryTarget"
-              }
-            },
-            "required": [
-              "productCategoryTarget"
-            ],
-            "title": "productCategoryTarget",
-            "type": "object"
+          "productCategoryTarget": {
+            "$ref": "#/components/schemas/CreateProductCategoryTarget"
           },
-          {
-            "properties": {
-              "productAudienceTarget": {
-                "$ref": "#/components/schemas/CreateProductAudienceTarget"
-              }
-            },
-            "required": [
-              "productAudienceTarget"
-            ],
-            "title": "productAudienceTarget",
-            "type": "object"
+          "productAudienceTarget": {
+            "$ref": "#/components/schemas/CreateProductAudienceTarget"
           },
-          {
-            "properties": {
-              "audienceTarget": {
-                "$ref": "#/components/schemas/CreateAudienceTarget"
-              }
-            },
-            "required": [
-              "audienceTarget"
-            ],
-            "title": "audienceTarget",
-            "type": "object"
+          "audienceTarget": {
+            "$ref": "#/components/schemas/CreateAudienceTarget"
           },
-          {
-            "properties": {
-              "locationTarget": {
-                "$ref": "#/components/schemas/CreateLocationTarget"
-              }
-            },
-            "required": [
-              "locationTarget"
-            ],
-            "title": "locationTarget",
-            "type": "object"
+          "locationTarget": {
+            "$ref": "#/components/schemas/CreateLocationTarget"
           },
-          {
-            "properties": {
-              "domainTarget": {
-                "$ref": "#/components/schemas/CreateDomainTarget"
-              }
-            },
-            "required": [
-              "domainTarget"
-            ],
-            "title": "domainTarget",
-            "type": "object"
+          "domainTarget": {
+            "$ref": "#/components/schemas/CreateDomainTarget"
           },
-          {
-            "properties": {
-              "appTarget": {
-                "$ref": "#/components/schemas/CreateAppTarget"
-              }
-            },
-            "required": [
-              "appTarget"
-            ],
-            "title": "appTarget",
-            "type": "object"
+          "appTarget": {
+            "$ref": "#/components/schemas/CreateAppTarget"
           },
-          {
-            "properties": {
-              "deviceTarget": {
-                "$ref": "#/components/schemas/CreateDeviceTarget"
-              }
-            },
-            "required": [
-              "deviceTarget"
-            ],
-            "title": "deviceTarget",
-            "type": "object"
+          "deviceTarget": {
+            "$ref": "#/components/schemas/CreateDeviceTarget"
           },
-          {
-            "properties": {
-              "dayPartTarget": {
-                "$ref": "#/components/schemas/CreateDayPartTarget"
-              }
-            },
-            "required": [
-              "dayPartTarget"
-            ],
-            "title": "dayPartTarget",
-            "type": "object"
+          "dayPartTarget": {
+            "$ref": "#/components/schemas/CreateDayPartTarget"
           },
-          {
-            "properties": {
-              "contentCategoryTarget": {
-                "$ref": "#/components/schemas/CreateContentCategoryTarget"
-              }
-            },
-            "required": [
-              "contentCategoryTarget"
-            ],
-            "title": "contentCategoryTarget",
-            "type": "object"
+          "contentCategoryTarget": {
+            "$ref": "#/components/schemas/CreateContentCategoryTarget"
           },
-          {
-            "properties": {
-              "contentGenreTarget": {
-                "$ref": "#/components/schemas/CreateContentGenreTarget"
-              }
-            },
-            "required": [
-              "contentGenreTarget"
-            ],
-            "title": "contentGenreTarget",
-            "type": "object"
+          "contentGenreTarget": {
+            "$ref": "#/components/schemas/CreateContentGenreTarget"
           },
-          {
-            "properties": {
-              "contentRatingTarget": {
-                "$ref": "#/components/schemas/CreateContentRatingTarget"
-              }
-            },
-            "required": [
-              "contentRatingTarget"
-            ],
-            "title": "contentRatingTarget",
-            "type": "object"
+          "contentRatingTarget": {
+            "$ref": "#/components/schemas/CreateContentRatingTarget"
           },
-          {
-            "properties": {
-              "brandSafetyTierTarget": {
-                "$ref": "#/components/schemas/CreateBrandSafetyTierTarget"
-              }
-            },
-            "required": [
-              "brandSafetyTierTarget"
-            ],
-            "title": "brandSafetyTierTarget",
-            "type": "object"
+          "brandSafetyTierTarget": {
+            "$ref": "#/components/schemas/CreateBrandSafetyTierTarget"
           },
-          {
-            "properties": {
-              "brandSafetyCategoryTarget": {
-                "$ref": "#/components/schemas/CreateBrandSafetyCategoryTarget"
-              }
-            },
-            "required": [
-              "brandSafetyCategoryTarget"
-            ],
-            "title": "brandSafetyCategoryTarget",
-            "type": "object"
+          "brandSafetyCategoryTarget": {
+            "$ref": "#/components/schemas/CreateBrandSafetyCategoryTarget"
           },
-          {
-            "properties": {
-              "inventorySourceTarget": {
-                "$ref": "#/components/schemas/CreateInventorySourceTarget"
-              }
-            },
-            "required": [
-              "inventorySourceTarget"
-            ],
-            "title": "inventorySourceTarget",
-            "type": "object"
+          "inventorySourceTarget": {
+            "$ref": "#/components/schemas/CreateInventorySourceTarget"
           },
-          {
-            "properties": {
-              "adInitiationTarget": {
-                "$ref": "#/components/schemas/CreateAdInitiationTarget"
-              }
-            },
-            "required": [
-              "adInitiationTarget"
-            ],
-            "title": "adInitiationTarget",
-            "type": "object"
+          "adInitiationTarget": {
+            "$ref": "#/components/schemas/CreateAdInitiationTarget"
           },
-          {
-            "properties": {
-              "adPlayerSizeTarget": {
-                "$ref": "#/components/schemas/CreateAdPlayerSizeTarget"
-              }
-            },
-            "required": [
-              "adPlayerSizeTarget"
-            ],
-            "title": "adPlayerSizeTarget",
-            "type": "object"
+          "adPlayerSizeTarget": {
+            "$ref": "#/components/schemas/CreateAdPlayerSizeTarget"
           },
-          {
-            "properties": {
-              "videoAdFormatTarget": {
-                "$ref": "#/components/schemas/CreateVideoAdFormatTarget"
-              }
-            },
-            "required": [
-              "videoAdFormatTarget"
-            ],
-            "title": "videoAdFormatTarget",
-            "type": "object"
+          "videoAdFormatTarget": {
+            "$ref": "#/components/schemas/CreateVideoAdFormatTarget"
           },
-          {
-            "properties": {
-              "thirdPartyTarget": {
-                "$ref": "#/components/schemas/CreateThirdPartyTarget"
-              }
-            },
-            "required": [
-              "thirdPartyTarget"
-            ],
-            "title": "thirdPartyTarget",
-            "type": "object"
+          "thirdPartyTarget": {
+            "$ref": "#/components/schemas/CreateThirdPartyTarget"
           },
-          {
-            "properties": {
-              "themeTarget": {
-                "$ref": "#/components/schemas/CreateThemeTarget"
-              }
-            },
-            "required": [
-              "themeTarget"
-            ],
-            "title": "themeTarget",
-            "type": "object"
+          "themeTarget": {
+            "$ref": "#/components/schemas/CreateThemeTarget"
           },
-          {
-            "properties": {
-              "contentInstreamPositionTarget": {
-                "$ref": "#/components/schemas/CreateContentInstreamPositionTarget"
-              }
-            },
-            "required": [
-              "contentInstreamPositionTarget"
-            ],
-            "title": "contentInstreamPositionTarget",
-            "type": "object"
+          "contentInstreamPositionTarget": {
+            "$ref": "#/components/schemas/CreateContentInstreamPositionTarget"
           },
-          {
-            "properties": {
-              "contentOutstreamPositionTarget": {
-                "$ref": "#/components/schemas/CreateContentOutstreamPositionTarget"
-              }
-            },
-            "required": [
-              "contentOutstreamPositionTarget"
-            ],
-            "title": "contentOutstreamPositionTarget",
-            "type": "object"
+          "contentOutstreamPositionTarget": {
+            "$ref": "#/components/schemas/CreateContentOutstreamPositionTarget"
           },
-          {
-            "properties": {
-              "videoContentDurationTarget": {
-                "$ref": "#/components/schemas/CreateVideoContentDurationTarget"
-              }
-            },
-            "required": [
-              "videoContentDurationTarget"
-            ],
-            "title": "videoContentDurationTarget",
-            "type": "object"
+          "videoContentDurationTarget": {
+            "$ref": "#/components/schemas/CreateVideoContentDurationTarget"
           },
-          {
-            "properties": {
-              "foldPositionTarget": {
-                "$ref": "#/components/schemas/CreateFoldPositionTarget"
-              }
-            },
-            "required": [
-              "foldPositionTarget"
-            ],
-            "title": "foldPositionTarget",
-            "type": "object"
+          "foldPositionTarget": {
+            "$ref": "#/components/schemas/CreateFoldPositionTarget"
           },
-          {
-            "properties": {
-              "nativeContentPositionTarget": {
-                "$ref": "#/components/schemas/CreateNativeContentPositionTarget"
-              }
-            },
-            "required": [
-              "nativeContentPositionTarget"
-            ],
-            "title": "nativeContentPositionTarget",
-            "type": "object"
+          "nativeContentPositionTarget": {
+            "$ref": "#/components/schemas/CreateNativeContentPositionTarget"
           },
-          {
-            "properties": {
-              "placementTypeTarget": {
-                "$ref": "#/components/schemas/CreatePlacementTypeTarget"
-              }
-            },
-            "required": [
-              "placementTypeTarget"
-            ],
-            "title": "placementTypeTarget",
-            "type": "object"
+          "placementTypeTarget": {
+            "$ref": "#/components/schemas/CreatePlacementTypeTarget"
           }
-        ]
+        },
+        "additionalProperties": true,
+        "description": "Typed CreateTargetDetails. The source contract uses one property per alternative."
       },
       "TargetType": {
         "description": "**TargetType Enum:**\n\n| TargetType | Description |\n|------|------|\n| `AD_INITIATION` | Target based on how the video ad is initiated. |\n| `AD_PLAYER_SIZE` | Target based on video player size. |\n| `APP` | Target based on an application. |\n| `AUDIENCE` | Target based on an audience segment. |\n| `BRAND_SAFETY_CATEGORY` | Target based on brand safety category. |\n| `BRAND_SAFETY_TIER` | Target based on brand suitability tier. |\n| `CONTENT_CATEGORY` | Target based on content category. |\n| `CONTENT_GENRE` | Target based on content genre. |\n| `CONTENT_INSTREAM_POSITION` | Target based on instream ad position. |\n| `CONTENT_OUTSTREAM_POSITION` | Target based on outstream ad position. |\n| `CONTENT_RATING` | Target based on content rating. |\n| `DAYPART` | Target based on time of day and day of week. |\n| `DEVICE` | Target based on device type. |\n| `DOMAIN` | Target based on a domain. |\n| `FOLD_POSITION` | Target based on above or below the fold placement. |\n| `INVENTORY_SOURCE` | Target based on inventory source. |\n| `KEYWORD` | Target based on customer search terms. |\n| `LOCATION` | Target based on geographic location. |\n| `NATIVE_CONTENT_POSITION` | Target based on native content position. |\n| `PLACEMENT_TYPE` | Target based on placement type. |\n| `PRODUCT_AUDIENCE` | Target customers who interacted with a specific product. |\n| `PRODUCT_CATEGORY` | Target based on a product category. |\n| `PRODUCT` | Target based on a specific product. |\n| `THEME` | Target based on a keyword theme. These were formerly known as Auto Targets for Sponsored Products. |\n| `THIRD_PARTY` | Target based on third-party data. |\n| `VIDEO_AD_FORMAT` | Target based on video ad format. This is an older function being replaced by newer targets for instream and outstream targets. |\n| `VIDEO_CONTENT_DURATION` | Target based on video content duration. |\n",
@@ -2368,332 +2128,92 @@
         "type": "object"
       },
       "TargetDetails": {
-        "oneOf": [
-          {
-            "properties": {
-              "adInitiationTarget": {
-                "$ref": "#/components/schemas/AdInitiationTarget"
-              }
-            },
-            "required": [
-              "adInitiationTarget"
-            ],
-            "title": "adInitiationTarget",
-            "type": "object"
+        "type": "object",
+        "properties": {
+          "adInitiationTarget": {
+            "$ref": "#/components/schemas/AdInitiationTarget"
           },
-          {
-            "properties": {
-              "adPlayerSizeTarget": {
-                "$ref": "#/components/schemas/AdPlayerSizeTarget"
-              }
-            },
-            "required": [
-              "adPlayerSizeTarget"
-            ],
-            "title": "adPlayerSizeTarget",
-            "type": "object"
+          "adPlayerSizeTarget": {
+            "$ref": "#/components/schemas/AdPlayerSizeTarget"
           },
-          {
-            "properties": {
-              "appTarget": {
-                "$ref": "#/components/schemas/AppTarget"
-              }
-            },
-            "required": [
-              "appTarget"
-            ],
-            "title": "appTarget",
-            "type": "object"
+          "appTarget": {
+            "$ref": "#/components/schemas/AppTarget"
           },
-          {
-            "properties": {
-              "audienceTarget": {
-                "$ref": "#/components/schemas/AudienceTarget"
-              }
-            },
-            "required": [
-              "audienceTarget"
-            ],
-            "title": "audienceTarget",
-            "type": "object"
+          "audienceTarget": {
+            "$ref": "#/components/schemas/AudienceTarget"
           },
-          {
-            "properties": {
-              "brandSafetyCategoryTarget": {
-                "$ref": "#/components/schemas/BrandSafetyCategoryTarget"
-              }
-            },
-            "required": [
-              "brandSafetyCategoryTarget"
-            ],
-            "title": "brandSafetyCategoryTarget",
-            "type": "object"
+          "brandSafetyCategoryTarget": {
+            "$ref": "#/components/schemas/BrandSafetyCategoryTarget"
           },
-          {
-            "properties": {
-              "brandSafetyTierTarget": {
-                "$ref": "#/components/schemas/BrandSafetyTierTarget"
-              }
-            },
-            "required": [
-              "brandSafetyTierTarget"
-            ],
-            "title": "brandSafetyTierTarget",
-            "type": "object"
+          "brandSafetyTierTarget": {
+            "$ref": "#/components/schemas/BrandSafetyTierTarget"
           },
-          {
-            "properties": {
-              "contentCategoryTarget": {
-                "$ref": "#/components/schemas/ContentCategoryTarget"
-              }
-            },
-            "required": [
-              "contentCategoryTarget"
-            ],
-            "title": "contentCategoryTarget",
-            "type": "object"
+          "contentCategoryTarget": {
+            "$ref": "#/components/schemas/ContentCategoryTarget"
           },
-          {
-            "properties": {
-              "contentGenreTarget": {
-                "$ref": "#/components/schemas/ContentGenreTarget"
-              }
-            },
-            "required": [
-              "contentGenreTarget"
-            ],
-            "title": "contentGenreTarget",
-            "type": "object"
+          "contentGenreTarget": {
+            "$ref": "#/components/schemas/ContentGenreTarget"
           },
-          {
-            "properties": {
-              "contentInstreamPositionTarget": {
-                "$ref": "#/components/schemas/ContentInstreamPositionTarget"
-              }
-            },
-            "required": [
-              "contentInstreamPositionTarget"
-            ],
-            "title": "contentInstreamPositionTarget",
-            "type": "object"
+          "contentInstreamPositionTarget": {
+            "$ref": "#/components/schemas/ContentInstreamPositionTarget"
           },
-          {
-            "properties": {
-              "contentOutstreamPositionTarget": {
-                "$ref": "#/components/schemas/ContentOutstreamPositionTarget"
-              }
-            },
-            "required": [
-              "contentOutstreamPositionTarget"
-            ],
-            "title": "contentOutstreamPositionTarget",
-            "type": "object"
+          "contentOutstreamPositionTarget": {
+            "$ref": "#/components/schemas/ContentOutstreamPositionTarget"
           },
-          {
-            "properties": {
-              "contentRatingTarget": {
-                "$ref": "#/components/schemas/ContentRatingTarget"
-              }
-            },
-            "required": [
-              "contentRatingTarget"
-            ],
-            "title": "contentRatingTarget",
-            "type": "object"
+          "contentRatingTarget": {
+            "$ref": "#/components/schemas/ContentRatingTarget"
           },
-          {
-            "properties": {
-              "dayPartTarget": {
-                "$ref": "#/components/schemas/DayPartTarget"
-              }
-            },
-            "required": [
-              "dayPartTarget"
-            ],
-            "title": "dayPartTarget",
-            "type": "object"
+          "dayPartTarget": {
+            "$ref": "#/components/schemas/DayPartTarget"
           },
-          {
-            "properties": {
-              "deviceTarget": {
-                "$ref": "#/components/schemas/DeviceTarget"
-              }
-            },
-            "required": [
-              "deviceTarget"
-            ],
-            "title": "deviceTarget",
-            "type": "object"
+          "deviceTarget": {
+            "$ref": "#/components/schemas/DeviceTarget"
           },
-          {
-            "properties": {
-              "domainTarget": {
-                "$ref": "#/components/schemas/DomainTarget"
-              }
-            },
-            "required": [
-              "domainTarget"
-            ],
-            "title": "domainTarget",
-            "type": "object"
+          "domainTarget": {
+            "$ref": "#/components/schemas/DomainTarget"
           },
-          {
-            "properties": {
-              "foldPositionTarget": {
-                "$ref": "#/components/schemas/FoldPositionTarget"
-              }
-            },
-            "required": [
-              "foldPositionTarget"
-            ],
-            "title": "foldPositionTarget",
-            "type": "object"
+          "foldPositionTarget": {
+            "$ref": "#/components/schemas/FoldPositionTarget"
           },
-          {
-            "properties": {
-              "inventorySourceTarget": {
-                "$ref": "#/components/schemas/InventorySourceTarget"
-              }
-            },
-            "required": [
-              "inventorySourceTarget"
-            ],
-            "title": "inventorySourceTarget",
-            "type": "object"
+          "inventorySourceTarget": {
+            "$ref": "#/components/schemas/InventorySourceTarget"
           },
-          {
-            "properties": {
-              "keywordTarget": {
-                "$ref": "#/components/schemas/KeywordTarget"
-              }
-            },
-            "required": [
-              "keywordTarget"
-            ],
-            "title": "keywordTarget",
-            "type": "object"
+          "keywordTarget": {
+            "$ref": "#/components/schemas/KeywordTarget"
           },
-          {
-            "properties": {
-              "locationTarget": {
-                "$ref": "#/components/schemas/LocationTarget"
-              }
-            },
-            "required": [
-              "locationTarget"
-            ],
-            "title": "locationTarget",
-            "type": "object"
+          "locationTarget": {
+            "$ref": "#/components/schemas/LocationTarget"
           },
-          {
-            "properties": {
-              "nativeContentPositionTarget": {
-                "$ref": "#/components/schemas/NativeContentPositionTarget"
-              }
-            },
-            "required": [
-              "nativeContentPositionTarget"
-            ],
-            "title": "nativeContentPositionTarget",
-            "type": "object"
+          "nativeContentPositionTarget": {
+            "$ref": "#/components/schemas/NativeContentPositionTarget"
           },
-          {
-            "properties": {
-              "placementTypeTarget": {
-                "$ref": "#/components/schemas/PlacementTypeTarget"
-              }
-            },
-            "required": [
-              "placementTypeTarget"
-            ],
-            "title": "placementTypeTarget",
-            "type": "object"
+          "placementTypeTarget": {
+            "$ref": "#/components/schemas/PlacementTypeTarget"
           },
-          {
-            "properties": {
-              "productAudienceTarget": {
-                "$ref": "#/components/schemas/ProductAudienceTarget"
-              }
-            },
-            "required": [
-              "productAudienceTarget"
-            ],
-            "title": "productAudienceTarget",
-            "type": "object"
+          "productAudienceTarget": {
+            "$ref": "#/components/schemas/ProductAudienceTarget"
           },
-          {
-            "properties": {
-              "productCategoryTarget": {
-                "$ref": "#/components/schemas/ProductCategoryTarget"
-              }
-            },
-            "required": [
-              "productCategoryTarget"
-            ],
-            "title": "productCategoryTarget",
-            "type": "object"
+          "productCategoryTarget": {
+            "$ref": "#/components/schemas/ProductCategoryTarget"
           },
-          {
-            "properties": {
-              "productTarget": {
-                "$ref": "#/components/schemas/ProductTarget"
-              }
-            },
-            "required": [
-              "productTarget"
-            ],
-            "title": "productTarget",
-            "type": "object"
+          "productTarget": {
+            "$ref": "#/components/schemas/ProductTarget"
           },
-          {
-            "properties": {
-              "themeTarget": {
-                "$ref": "#/components/schemas/ThemeTarget"
-              }
-            },
-            "required": [
-              "themeTarget"
-            ],
-            "title": "themeTarget",
-            "type": "object"
+          "themeTarget": {
+            "$ref": "#/components/schemas/ThemeTarget"
           },
-          {
-            "properties": {
-              "thirdPartyTarget": {
-                "$ref": "#/components/schemas/ThirdPartyTarget"
-              }
-            },
-            "required": [
-              "thirdPartyTarget"
-            ],
-            "title": "thirdPartyTarget",
-            "type": "object"
+          "thirdPartyTarget": {
+            "$ref": "#/components/schemas/ThirdPartyTarget"
           },
-          {
-            "properties": {
-              "videoAdFormatTarget": {
-                "$ref": "#/components/schemas/VideoAdFormatTarget"
-              }
-            },
-            "required": [
-              "videoAdFormatTarget"
-            ],
-            "title": "videoAdFormatTarget",
-            "type": "object"
+          "videoAdFormatTarget": {
+            "$ref": "#/components/schemas/VideoAdFormatTarget"
           },
-          {
-            "properties": {
-              "videoContentDurationTarget": {
-                "$ref": "#/components/schemas/VideoContentDurationTarget"
-              }
-            },
-            "required": [
-              "videoContentDurationTarget"
-            ],
-            "title": "videoContentDurationTarget",
-            "type": "object"
+          "videoContentDurationTarget": {
+            "$ref": "#/components/schemas/VideoContentDurationTarget"
           }
-        ]
+        },
+        "additionalProperties": true,
+        "description": "Typed TargetDetails. The source contract uses one property per alternative."
       },
       "TargetLevel": {
         "description": "**TargetLevel Enum:**\n\n| TargetLevel | Description |\n|------|------|\n| `AD_GROUP` | Target applied at the ad group level. |\n| `CAMPAIGN` | Target applied at the campaign level. |\n",

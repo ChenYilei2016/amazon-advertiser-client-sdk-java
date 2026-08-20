@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateAdInitiationTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoInitiationType;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * AdInitiationTarget
+ * Target based on how the video ad will be started.
  */
 @JsonPropertyOrder({
-  AdInitiationTarget.JSON_PROPERTY_AD_INITIATION_TARGET
+  AdInitiationTarget.JSON_PROPERTY_VIDEO_INITIATION_TYPE
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class AdInitiationTarget {
-  public static final String JSON_PROPERTY_AD_INITIATION_TARGET = "adInitiationTarget";
+  public static final String JSON_PROPERTY_VIDEO_INITIATION_TYPE = "videoInitiationType";
   @jakarta.annotation.Nonnull
-  private CreateAdInitiationTarget adInitiationTarget;
+  private VideoInitiationType videoInitiationType;
 
   public AdInitiationTarget() {
   }
 
-  public AdInitiationTarget adInitiationTarget(@jakarta.annotation.Nonnull CreateAdInitiationTarget adInitiationTarget) {
-    this.adInitiationTarget = adInitiationTarget;
+  public AdInitiationTarget videoInitiationType(@jakarta.annotation.Nonnull VideoInitiationType videoInitiationType) {
+    this.videoInitiationType = videoInitiationType;
     return this;
   }
 
   /**
-   * Get adInitiationTarget
-   * @return adInitiationTarget
+   * Get videoInitiationType
+   * @return videoInitiationType
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_AD_INITIATION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_INITIATION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateAdInitiationTarget getAdInitiationTarget() {
-    return adInitiationTarget;
+  public VideoInitiationType getVideoInitiationType() {
+    return videoInitiationType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_AD_INITIATION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_INITIATION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAdInitiationTarget(@jakarta.annotation.Nonnull CreateAdInitiationTarget adInitiationTarget) {
-    this.adInitiationTarget = adInitiationTarget;
+  public void setVideoInitiationType(@jakarta.annotation.Nonnull VideoInitiationType videoInitiationType) {
+    this.videoInitiationType = videoInitiationType;
   }
 
 
   /**
-   * Return true if this adInitiationTarget object is equal to o.
+   * Return true if this AdInitiationTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class AdInitiationTarget {
       return false;
     }
     AdInitiationTarget adInitiationTarget = (AdInitiationTarget) o;
-    return Objects.equals(this.adInitiationTarget, adInitiationTarget.adInitiationTarget);
+    return Objects.equals(this.videoInitiationType, adInitiationTarget.videoInitiationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adInitiationTarget);
+    return Objects.hash(videoInitiationType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdInitiationTarget {\n");
-    sb.append("    adInitiationTarget: ").append(toIndentedString(adInitiationTarget)).append("\n");
+    sb.append("    videoInitiationType: ").append(toIndentedString(videoInitiationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class AdInitiationTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `adInitiationTarget` to the URL query string
-    if (getAdInitiationTarget() != null) {
-      joiner.add(getAdInitiationTarget().toUrlQueryString(prefix + "adInitiationTarget" + suffix));
+    // add `videoInitiationType` to the URL query string
+    if (getVideoInitiationType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%svideoInitiationType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVideoInitiationType()))));
     }
 
     return joiner.toString();

@@ -22,55 +22,143 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateAudienceTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.AcrossGroupOperator;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.InGroupOperator;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.MarketplaceStringValue;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * AudienceTarget
+ * Target based on a specified audience ID.
  */
 @JsonPropertyOrder({
-  AudienceTarget.JSON_PROPERTY_AUDIENCE_TARGET
+  AudienceTarget.JSON_PROPERTY_ACROSS_GROUP_OPERATOR,
+  AudienceTarget.JSON_PROPERTY_AUDIENCE_ID,
+  AudienceTarget.JSON_PROPERTY_GROUP_ID,
+  AudienceTarget.JSON_PROPERTY_IN_GROUP_OPERATOR
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class AudienceTarget {
-  public static final String JSON_PROPERTY_AUDIENCE_TARGET = "audienceTarget";
+  public static final String JSON_PROPERTY_ACROSS_GROUP_OPERATOR = "acrossGroupOperator";
+  @jakarta.annotation.Nullable
+  private AcrossGroupOperator acrossGroupOperator;
+
+  public static final String JSON_PROPERTY_AUDIENCE_ID = "audienceId";
   @jakarta.annotation.Nonnull
-  private CreateAudienceTarget audienceTarget;
+  private MarketplaceStringValue audienceId;
+
+  public static final String JSON_PROPERTY_GROUP_ID = "groupId";
+  @jakarta.annotation.Nullable
+  private String groupId;
+
+  public static final String JSON_PROPERTY_IN_GROUP_OPERATOR = "inGroupOperator";
+  @jakarta.annotation.Nullable
+  private InGroupOperator inGroupOperator;
 
   public AudienceTarget() {
   }
 
-  public AudienceTarget audienceTarget(@jakarta.annotation.Nonnull CreateAudienceTarget audienceTarget) {
-    this.audienceTarget = audienceTarget;
+  public AudienceTarget acrossGroupOperator(@jakarta.annotation.Nullable AcrossGroupOperator acrossGroupOperator) {
+    this.acrossGroupOperator = acrossGroupOperator;
     return this;
   }
 
   /**
-   * Get audienceTarget
-   * @return audienceTarget
+   * Get acrossGroupOperator
+   * @return acrossGroupOperator
    */
-  @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_AUDIENCE_TARGET, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateAudienceTarget getAudienceTarget() {
-    return audienceTarget;
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ACROSS_GROUP_OPERATOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AcrossGroupOperator getAcrossGroupOperator() {
+    return acrossGroupOperator;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_AUDIENCE_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_ACROSS_GROUP_OPERATOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAcrossGroupOperator(@jakarta.annotation.Nullable AcrossGroupOperator acrossGroupOperator) {
+    this.acrossGroupOperator = acrossGroupOperator;
+  }
+
+
+  public AudienceTarget audienceId(@jakarta.annotation.Nonnull MarketplaceStringValue audienceId) {
+    this.audienceId = audienceId;
+    return this;
+  }
+
+  /**
+   * Get audienceId
+   * @return audienceId
+   */
+  @jakarta.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_AUDIENCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAudienceTarget(@jakarta.annotation.Nonnull CreateAudienceTarget audienceTarget) {
-    this.audienceTarget = audienceTarget;
+  public MarketplaceStringValue getAudienceId() {
+    return audienceId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AUDIENCE_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAudienceId(@jakarta.annotation.Nonnull MarketplaceStringValue audienceId) {
+    this.audienceId = audienceId;
+  }
+
+
+  public AudienceTarget groupId(@jakarta.annotation.Nullable String groupId) {
+    this.groupId = groupId;
+    return this;
+  }
+
+  /**
+   * The string identifying a group of audiences. Only numbers formatted as strings are accepted (e.g. &#39;1&#39;). To add audiences to a new group, choose any string not currently being used on this ad group. To add audiences to an existing group, use the existing groupId from this ad group. You may specify up to 10 include groups and 1 exclude group.
+   * @return groupId
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getGroupId() {
+    return groupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroupId(@jakarta.annotation.Nullable String groupId) {
+    this.groupId = groupId;
+  }
+
+
+  public AudienceTarget inGroupOperator(@jakarta.annotation.Nullable InGroupOperator inGroupOperator) {
+    this.inGroupOperator = inGroupOperator;
+    return this;
+  }
+
+  /**
+   * Get inGroupOperator
+   * @return inGroupOperator
+   */
+  @jakarta.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IN_GROUP_OPERATOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public InGroupOperator getInGroupOperator() {
+    return inGroupOperator;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IN_GROUP_OPERATOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInGroupOperator(@jakarta.annotation.Nullable InGroupOperator inGroupOperator) {
+    this.inGroupOperator = inGroupOperator;
   }
 
 
   /**
-   * Return true if this audienceTarget object is equal to o.
+   * Return true if this AudienceTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +169,25 @@ public class AudienceTarget {
       return false;
     }
     AudienceTarget audienceTarget = (AudienceTarget) o;
-    return Objects.equals(this.audienceTarget, audienceTarget.audienceTarget);
+    return Objects.equals(this.acrossGroupOperator, audienceTarget.acrossGroupOperator) &&
+        Objects.equals(this.audienceId, audienceTarget.audienceId) &&
+        Objects.equals(this.groupId, audienceTarget.groupId) &&
+        Objects.equals(this.inGroupOperator, audienceTarget.inGroupOperator);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(audienceTarget);
+    return Objects.hash(acrossGroupOperator, audienceId, groupId, inGroupOperator);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AudienceTarget {\n");
-    sb.append("    audienceTarget: ").append(toIndentedString(audienceTarget)).append("\n");
+    sb.append("    acrossGroupOperator: ").append(toIndentedString(acrossGroupOperator)).append("\n");
+    sb.append("    audienceId: ").append(toIndentedString(audienceId)).append("\n");
+    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
+    sb.append("    inGroupOperator: ").append(toIndentedString(inGroupOperator)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +232,24 @@ public class AudienceTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `audienceTarget` to the URL query string
-    if (getAudienceTarget() != null) {
-      joiner.add(getAudienceTarget().toUrlQueryString(prefix + "audienceTarget" + suffix));
+    // add `acrossGroupOperator` to the URL query string
+    if (getAcrossGroupOperator() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sacrossGroupOperator%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAcrossGroupOperator()))));
+    }
+
+    // add `audienceId` to the URL query string
+    if (getAudienceId() != null) {
+      joiner.add(getAudienceId().toUrlQueryString(prefix + "audienceId" + suffix));
+    }
+
+    // add `groupId` to the URL query string
+    if (getGroupId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sgroupId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGroupId()))));
+    }
+
+    // add `inGroupOperator` to the URL query string
+    if (getInGroupOperator() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sinGroupOperator%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getInGroupOperator()))));
     }
 
     return joiner.toString();

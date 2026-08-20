@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateVideoAdFormatTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.VideoAdFormat;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * VideoAdFormatTarget
+ * Target based on the video ad format.
  */
 @JsonPropertyOrder({
-  VideoAdFormatTarget.JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET
+  VideoAdFormatTarget.JSON_PROPERTY_VIDEO_AD_FORMAT
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class VideoAdFormatTarget {
-  public static final String JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET = "videoAdFormatTarget";
+  public static final String JSON_PROPERTY_VIDEO_AD_FORMAT = "videoAdFormat";
   @jakarta.annotation.Nonnull
-  private CreateVideoAdFormatTarget videoAdFormatTarget;
+  private VideoAdFormat videoAdFormat;
 
   public VideoAdFormatTarget() {
   }
 
-  public VideoAdFormatTarget videoAdFormatTarget(@jakarta.annotation.Nonnull CreateVideoAdFormatTarget videoAdFormatTarget) {
-    this.videoAdFormatTarget = videoAdFormatTarget;
+  public VideoAdFormatTarget videoAdFormat(@jakarta.annotation.Nonnull VideoAdFormat videoAdFormat) {
+    this.videoAdFormat = videoAdFormat;
     return this;
   }
 
   /**
-   * Get videoAdFormatTarget
-   * @return videoAdFormatTarget
+   * Get videoAdFormat
+   * @return videoAdFormat
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_AD_FORMAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateVideoAdFormatTarget getVideoAdFormatTarget() {
-    return videoAdFormatTarget;
+  public VideoAdFormat getVideoAdFormat() {
+    return videoAdFormat;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_VIDEO_AD_FORMAT_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_VIDEO_AD_FORMAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVideoAdFormatTarget(@jakarta.annotation.Nonnull CreateVideoAdFormatTarget videoAdFormatTarget) {
-    this.videoAdFormatTarget = videoAdFormatTarget;
+  public void setVideoAdFormat(@jakarta.annotation.Nonnull VideoAdFormat videoAdFormat) {
+    this.videoAdFormat = videoAdFormat;
   }
 
 
   /**
-   * Return true if this videoAdFormatTarget object is equal to o.
+   * Return true if this VideoAdFormatTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class VideoAdFormatTarget {
       return false;
     }
     VideoAdFormatTarget videoAdFormatTarget = (VideoAdFormatTarget) o;
-    return Objects.equals(this.videoAdFormatTarget, videoAdFormatTarget.videoAdFormatTarget);
+    return Objects.equals(this.videoAdFormat, videoAdFormatTarget.videoAdFormat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(videoAdFormatTarget);
+    return Objects.hash(videoAdFormat);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VideoAdFormatTarget {\n");
-    sb.append("    videoAdFormatTarget: ").append(toIndentedString(videoAdFormatTarget)).append("\n");
+    sb.append("    videoAdFormat: ").append(toIndentedString(videoAdFormat)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class VideoAdFormatTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `videoAdFormatTarget` to the URL query string
-    if (getVideoAdFormatTarget() != null) {
-      joiner.add(getVideoAdFormatTarget().toUrlQueryString(prefix + "videoAdFormatTarget" + suffix));
+    // add `videoAdFormat` to the URL query string
+    if (getVideoAdFormat() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%svideoAdFormat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVideoAdFormat()))));
     }
 
     return joiner.toString();

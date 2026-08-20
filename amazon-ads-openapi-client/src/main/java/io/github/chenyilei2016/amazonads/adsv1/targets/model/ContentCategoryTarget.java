@@ -22,55 +22,53 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateContentCategoryTarget;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * ContentCategoryTarget
+ * Target based on the category of content being viewed.
  */
 @JsonPropertyOrder({
-  ContentCategoryTarget.JSON_PROPERTY_CONTENT_CATEGORY_TARGET
+  ContentCategoryTarget.JSON_PROPERTY_CONTENT_CATEGORY_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ContentCategoryTarget {
-  public static final String JSON_PROPERTY_CONTENT_CATEGORY_TARGET = "contentCategoryTarget";
+  public static final String JSON_PROPERTY_CONTENT_CATEGORY_ID = "contentCategoryId";
   @jakarta.annotation.Nonnull
-  private CreateContentCategoryTarget contentCategoryTarget;
+  private String contentCategoryId;
 
   public ContentCategoryTarget() {
   }
 
-  public ContentCategoryTarget contentCategoryTarget(@jakarta.annotation.Nonnull CreateContentCategoryTarget contentCategoryTarget) {
-    this.contentCategoryTarget = contentCategoryTarget;
+  public ContentCategoryTarget contentCategoryId(@jakarta.annotation.Nonnull String contentCategoryId) {
+    this.contentCategoryId = contentCategoryId;
     return this;
   }
 
   /**
-   * Get contentCategoryTarget
-   * @return contentCategoryTarget
+   * The content category being targeted.
+   * @return contentCategoryId
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORY_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateContentCategoryTarget getContentCategoryTarget() {
-    return contentCategoryTarget;
+  public String getContentCategoryId() {
+    return contentCategoryId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORY_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_CONTENT_CATEGORY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContentCategoryTarget(@jakarta.annotation.Nonnull CreateContentCategoryTarget contentCategoryTarget) {
-    this.contentCategoryTarget = contentCategoryTarget;
+  public void setContentCategoryId(@jakarta.annotation.Nonnull String contentCategoryId) {
+    this.contentCategoryId = contentCategoryId;
   }
 
 
   /**
-   * Return true if this contentCategoryTarget object is equal to o.
+   * Return true if this ContentCategoryTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +79,19 @@ public class ContentCategoryTarget {
       return false;
     }
     ContentCategoryTarget contentCategoryTarget = (ContentCategoryTarget) o;
-    return Objects.equals(this.contentCategoryTarget, contentCategoryTarget.contentCategoryTarget);
+    return Objects.equals(this.contentCategoryId, contentCategoryTarget.contentCategoryId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contentCategoryTarget);
+    return Objects.hash(contentCategoryId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ContentCategoryTarget {\n");
-    sb.append("    contentCategoryTarget: ").append(toIndentedString(contentCategoryTarget)).append("\n");
+    sb.append("    contentCategoryId: ").append(toIndentedString(contentCategoryId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +136,9 @@ public class ContentCategoryTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `contentCategoryTarget` to the URL query string
-    if (getContentCategoryTarget() != null) {
-      joiner.add(getContentCategoryTarget().toUrlQueryString(prefix + "contentCategoryTarget" + suffix));
+    // add `contentCategoryId` to the URL query string
+    if (getContentCategoryId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scontentCategoryId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getContentCategoryId()))));
     }
 
     return joiner.toString();

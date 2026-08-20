@@ -22,55 +22,54 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.github.chenyilei2016.amazonads.adsv1.targets.model.CreateContentOutstreamPositionTarget;
+import io.github.chenyilei2016.amazonads.adsv1.targets.model.ContentOutstreamPosition;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import io.github.chenyilei2016.amazonads.adsv1.client.ApiClient;
 /**
- * ContentOutstreamPositionTarget
+ * Targets ads in the specified content outstream position
  */
 @JsonPropertyOrder({
-  ContentOutstreamPositionTarget.JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET
+  ContentOutstreamPositionTarget.JSON_PROPERTY_OUTSTREAM_POSITION
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.24.0")
 public class ContentOutstreamPositionTarget {
-  public static final String JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET = "contentOutstreamPositionTarget";
+  public static final String JSON_PROPERTY_OUTSTREAM_POSITION = "outstreamPosition";
   @jakarta.annotation.Nonnull
-  private CreateContentOutstreamPositionTarget contentOutstreamPositionTarget;
+  private ContentOutstreamPosition outstreamPosition;
 
   public ContentOutstreamPositionTarget() {
   }
 
-  public ContentOutstreamPositionTarget contentOutstreamPositionTarget(@jakarta.annotation.Nonnull CreateContentOutstreamPositionTarget contentOutstreamPositionTarget) {
-    this.contentOutstreamPositionTarget = contentOutstreamPositionTarget;
+  public ContentOutstreamPositionTarget outstreamPosition(@jakarta.annotation.Nonnull ContentOutstreamPosition outstreamPosition) {
+    this.outstreamPosition = outstreamPosition;
     return this;
   }
 
   /**
-   * Get contentOutstreamPositionTarget
-   * @return contentOutstreamPositionTarget
+   * Get outstreamPosition
+   * @return outstreamPosition
    */
   @jakarta.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_OUTSTREAM_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CreateContentOutstreamPositionTarget getContentOutstreamPositionTarget() {
-    return contentOutstreamPositionTarget;
+  public ContentOutstreamPosition getOutstreamPosition() {
+    return outstreamPosition;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_OUTSTREAM_POSITION_TARGET, required = true)
+  @JsonProperty(value = JSON_PROPERTY_OUTSTREAM_POSITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContentOutstreamPositionTarget(@jakarta.annotation.Nonnull CreateContentOutstreamPositionTarget contentOutstreamPositionTarget) {
-    this.contentOutstreamPositionTarget = contentOutstreamPositionTarget;
+  public void setOutstreamPosition(@jakarta.annotation.Nonnull ContentOutstreamPosition outstreamPosition) {
+    this.outstreamPosition = outstreamPosition;
   }
 
 
   /**
-   * Return true if this contentOutstreamPositionTarget object is equal to o.
+   * Return true if this ContentOutstreamPositionTarget object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -81,19 +80,19 @@ public class ContentOutstreamPositionTarget {
       return false;
     }
     ContentOutstreamPositionTarget contentOutstreamPositionTarget = (ContentOutstreamPositionTarget) o;
-    return Objects.equals(this.contentOutstreamPositionTarget, contentOutstreamPositionTarget.contentOutstreamPositionTarget);
+    return Objects.equals(this.outstreamPosition, contentOutstreamPositionTarget.outstreamPosition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contentOutstreamPositionTarget);
+    return Objects.hash(outstreamPosition);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ContentOutstreamPositionTarget {\n");
-    sb.append("    contentOutstreamPositionTarget: ").append(toIndentedString(contentOutstreamPositionTarget)).append("\n");
+    sb.append("    outstreamPosition: ").append(toIndentedString(outstreamPosition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -138,9 +137,9 @@ public class ContentOutstreamPositionTarget {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `contentOutstreamPositionTarget` to the URL query string
-    if (getContentOutstreamPositionTarget() != null) {
-      joiner.add(getContentOutstreamPositionTarget().toUrlQueryString(prefix + "contentOutstreamPositionTarget" + suffix));
+    // add `outstreamPosition` to the URL query string
+    if (getOutstreamPosition() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%soutstreamPosition%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOutstreamPosition()))));
     }
 
     return joiner.toString();
